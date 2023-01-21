@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!74 &7400000
+AnimationClip:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: DrillFly_Die
+  serializedVersion: 7
+  m_Legacy: 0
+  m_Compressed: 0
+  m_UseHighQualityCurve: 1
+  m_RotationCurves: []
+  m_CompressedRotationCurves: []
+  m_EulerCurves: []
+  m_PositionCurves: []
+  m_ScaleCurves: []
+  m_FloatCurves: []
+  m_PPtrCurves:
+  - curve:
+    - time: 0
+      value: {fileID: 21300000, guid: 391b4a25fc34233428edb2810595f7c5, type: 3}
+    - time: 0.05
+      value: {fileID: 21300000, guid: ba98258afcb77eb4680d32f4c2db98e4, type: 3}
+    - time: 0.11666667
+      value: {fileID: 21300000, guid: b28eb17d8bc039d4997cfcafc4436981, type: 3}
+    - time: 0.16666667
+      value: {fileID: 21300000, guid: 585a32af37f02b048ad00488658c4427, type: 3}
+    - time: 0.21666667
+      value: {fileID: 21300000, guid: c9d268287eba5f44d85b8d564ca942b6, type: 3}
+    - time: 0.28333333
+      value: {fileID: 21300000, guid: cf80ae18383a3b14595fc42d97f82c16, type: 3}
+    - time: 0.33333334
+      value: {fileID: 21300000, guid: 52ce33dd9edb0b84bbf5a98d0eb3a674, type: 3}
+    - time: 0.38333333
+      value: {fileID: 21300000, guid: 79d898101bf82214eb3a3cb72583d140, type: 3}
+    - time: 0.45
+      value: {fileID: 21300000, guid: 8793465f9bdb5c74497483b849c01da5, type: 3}
+    - time: 0.5
+      value: {fileID: 21300000, guid: e58893ae8d42d564495623e6a124c0ea, type: 3}
+    - time: 0.55
+      value: {fileID: 21300000, guid: 3a9ec1263d6873446a3fb33cd65b2808, type: 3}
+    - time: 0.6166667
+      value: {fileID: 21300000, guid: 9886b503707518b43ab710ceeb2ec2db, type: 3}
+    - time: 0.6666667
+      value: {fileID: 21300000, guid: 542c100616f3e584bae4e313a9651fe8, type: 3}
+    attribute: m_Sprite
+    path: 
+    classID: 212
+    script: {fileID: 0}
+  m_SampleRate: 60
+  m_WrapMode: 0
+  m_Bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
+  m_ClipBindingConstant:
+    genericBindings:
+    - serializedVersion: 2
+      path: 0
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+      isIntCurve: 0
+    pptrCurveMapping:
+    - {fileID: 21300000, guid: 391b4a25fc34233428edb2810595f7c5, type: 3}
+    - {fileID: 21300000, guid: ba98258afcb77eb4680d32f4c2db98e4, type: 3}
+    - {fileID: 21300000, guid: b28eb17d8bc039d4997cfcafc4436981, type: 3}
+    - {fileID: 21300000, guid: 585a32af37f02b048ad00488658c4427, type: 3}
+    - {fileID: 21300000, guid: c9d268287eba5f44d85b8d564ca942b6, type: 3}
+    - {fileID: 21300000, guid: cf80ae18383a3b14595fc42d97f82c16, type: 3}
+    - {fileID: 21300000, guid: 52ce33dd9edb0b84bbf5a98d0eb3a674, type: 3}
+    - {fileID: 21300000, guid: 79d898101bf82214eb3a3cb72583d140, type: 3}
+    - {fileID: 21300000, guid: 8793465f9bdb5c74497483b849c01da5, type: 3}
+    - {fileID: 21300000, guid: e58893ae8d42d564495623e6a124c0ea, type: 3}
+    - {fileID: 21300000, guid: 3a9ec1263d6873446a3fb33cd65b2808, type: 3}
+    - {fileID: 21300000, guid: 9886b503707518b43ab710ceeb2ec2db, type: 3}
+    - {fileID: 21300000, guid: 542c100616f3e584bae4e313a9651fe8, type: 3}
+  m_AnimationClipSettings:
+    serializedVersion: 2
+    m_AdditiveReferencePoseClip: {fileID: 0}
+    m_AdditiveReferencePoseTime: 0
+    m_StartTime: 0
+    m_StopTime: 0.68333334
+    m_OrientationOffsetY: 0
+    m_Level: 0
+    m_CycleOffset: 0
+    m_HasAdditiveReferencePose: 0
+    m_LoopTime: 0
+    m_LoopBlend: 0
+    m_LoopBlendOrientation: 0
+    m_LoopBlendPositionY: 0
+    m_LoopBlendPositionXZ: 0
+    m_KeepOriginalOrientation: 0
+    m_KeepOriginalPositionY: 1
+    m_KeepOriginalPositionXZ: 0
+    m_HeightFromFeet: 0
+    m_Mirror: 0
+  m_EditorCurves: []
+  m_EulerEditorCurves: []
+  m_HasGenericRootTransform: 0
+  m_HasMotionFloatCurves: 0
+  m_Events:
+  - time: 0.6666667
+    functionName: Deactivate
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.6666667
+    functionName: Deactivate
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
