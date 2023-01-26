@@ -15,8 +15,11 @@ public class V2PlayerMovement : MonoBehaviour
     [Header("Walk Run Parameters")]
     [SerializeField] private bool bCanWalk = true;
     private bool bIsGrounded;
+    private bool bSprinting = false;
     private float HorizontalInput;
-    [SerializeField] private float Speed;
+    [SerializeField] private float WalkSpeed;
+    [SerializeField] private float SprintSpeed;
+    [SerializeField] private float InAirMoveSpeed;
     private bool bIsFacingRight;
 
     [Header("JumpParameters")]
@@ -24,6 +27,8 @@ public class V2PlayerMovement : MonoBehaviour
     [SerializeField] private bool bCanFall = true;
     private bool bIsFalling;
     private bool bIsJumping;
+    [SerializeField] private float GravityScale;
+    [SerializeField] private float FallGravityScale;
     [SerializeField] private float JumpPower;
     [SerializeField] private float JumpCutMultiplier;
 
@@ -61,14 +66,167 @@ public class V2PlayerMovement : MonoBehaviour
         //Set bool for grounded here
         //anim.SetBool("grounded", IsGrounded());
         HorizontalInput = Input.GetAxis("Horizontal");
-        Debug.Log(HorizontalInput);
 
+
+        //If Dashing, nothing else runs until it ends
         if(bDashing)
         {
             return;
         }
+
+        if(IsGrounded())
+        {
+            SetGravityScale(GravityScale);
+        }
+
+        //To Check if the player is sprinting or walking
+        if(bCanMove)
+        {
+            if (bCanWalk)
+            {
+                if(Input.GetKey(KeyCode.LeftShift))
+                {
+                    SetIsSprinting(true);
+                }
+                else
+                {
+                    SetIsSprinting(false);
+                }
+            }
+        }
+
+        //Jump Code
+        if(bCanMove)
+        {
+            if(bCanJump)
+            {
+                if(Input.GetKeyDown(KeyCode.Space))
+                {
+                    Jump();
+                }
+                else if(Input.GetKeyUp(KeyCode.Space))
+                {
+                    OnJumpUp();
+                }
+                if(IsJumping() || IsFalling() && bCanFall)
+                {
+                    rb.velocity = new Vector2(HorizontalInput * InAirMoveSpeed, rb.velocity.y);
+                }
+
+                if(IsGrounded())
+                {
+                    CoyoteCounter = CoyoteTime;
+                    JumpCounter = ExtraJumps;
+                }
+                else
+                {
+                    CoyoteCounter -= Time.deltaTime;
+                }
+            }
+        }
+
+        Flip();
+        IsJumping();
+        IsFalling();
+        //anim.SetBool("falling", IsFalling());
+        //anim.SetBool("IsJumping", IsJumping());
     }
 
+    private void FixedUpdate()
+    {
+        if(bDashing)
+        {
+            return;
+        }
+
+        Run();
+    }
+
+    private void Run()
+    {
+        if(bCanMove)
+        {
+            if(bCanWalk && IsGrounded() && !bDashing)
+            {
+                if(IsSprinting())
+                {
+                    rb.velocity = new Vector2(HorizontalInput * SprintSpeed, rb.velocity.y);
+                }
+                else
+                {
+                    rb.velocity = new Vector2(HorizontalInput * WalkSpeed, rb.velocity.y);
+                }
+            }
+        }
+    }
+
+    private void Flip()
+    {
+        if(bIsFacingRight && HorizontalInput < 0f || !bIsFacingRight && HorizontalInput > 0f)
+        {
+            Vector3 localScale = transform.localScale;
+            bIsFacingRight = !bIsFacingRight;
+            localScale.x *= -1f;
+            transform.localScale = localScale;
+        }
+    }
+
+    private void Jump()
+    {
+        if(bCanMove)
+        {
+            if(bCanJump && bCanFall)
+            {
+                if(CoyoteCounter <= 0 && JumpPower <= 0)
+                {
+                    return;
+                }
+
+                if (IsGrounded())
+                {
+                    SetGravityScale(GravityScale);
+                    rb.velocity = new Vector2(rb.velocity.x, JumpPower);
+                    //anim.SetTrigger("Jump");
+                }
+                else
+                {
+                    if(CoyoteCounter > 0)
+                    {
+                        SetGravityScale(GravityScale);
+                        rb.velocity = new Vector2(rb.velocity.x, JumpPower);
+                        //anim.SetTrigger("Jump");
+                    }
+                    else
+                    {
+                        if(JumpCounter > 0 && bCanDoubleJump)
+                        {
+                            SetGravityScale(GravityScale);
+                            rb.velocity = new Vector2(rb.velocity.x, JumpPower);
+                            //anim.SetTrigger("DoubleJump");
+                            JumpCounter--;
+                        }
+                    }
+                }
+                CoyoteCounter = 0;
+            }
+        }
+    }
+
+    private void OnJumpUp()
+    {
+        if(bCanMove)
+        {
+            if(bCanJump && bCanFall)
+            {
+                if(rb.velocity.y > 0 && IsJumping())
+                {
+                    rb.AddForce(Vector2.down * rb.velocity.y * (1 - JumpCutMultiplier), ForceMode2D.Impulse);
+                }
+            }
+        }
+    }
+
+    //Getters and Setters && Enablers and Disablers
     public void EnableMovement()
     {
         bCanMove = true;
@@ -90,10 +248,11 @@ public class V2PlayerMovement : MonoBehaviour
         return raycastHit.collider != null;
     }
 
-    private bool IsFalling()
+    public bool IsFalling()
     {
         if (rb.velocity.y < -0.1f)
         {
+            SetGravityScale(FallGravityScale);
             bIsFalling = true;
             return true;
         }
@@ -104,7 +263,7 @@ public class V2PlayerMovement : MonoBehaviour
         }
     }
 
-    private bool IsJumping()
+    public bool IsJumping()
     {
         if (rb.velocity.y > 0)
         {
@@ -118,24 +277,46 @@ public class V2PlayerMovement : MonoBehaviour
         }
     }
 
-    public float GetSpeed()
+    public bool IsSprinting()
     {
-        return Speed;
+        return bSprinting;
     }
 
-    public void SetSpeed(float value)
+    private void SetIsSprinting(bool b)
     {
-        Speed = value;
+        bSprinting = b;
+    }
+
+    public float GetWalkSpeed()
+    {
+        return WalkSpeed;
+    }
+
+    public void SetWalkSpeed(float value)
+    {
+        WalkSpeed = value;
+    }
+
+    public float GetSprintSpeed()
+    {
+        return SprintSpeed;
+    }
+
+    public void SetSprintSpeed(float value)
+    {
+        SprintSpeed = value;
     }
 
     public bool IsFacingRight()
     {
-        if(HorizontalInput == 1)
+        if(transform.localScale.x == 1)
         {
+            bIsFacingRight = true;
             return true;
         }
         else
         {
+            bIsFacingRight = false;
             return false;
         }
     }
@@ -154,9 +335,22 @@ public class V2PlayerMovement : MonoBehaviour
     {
         bCanJump = true;
     }
+
     public void DisableJump()
     {
         bCanJump = false;
+    }
+
+    public void EnableFall()
+    {
+        SetGravityScale(GravityScale);
+        bCanFall = true;
+    }
+
+    public void DisableFall()
+    {
+        SetGravityScale(0f);
+        bCanFall = false;
     }
 
     public bool CanJump()
