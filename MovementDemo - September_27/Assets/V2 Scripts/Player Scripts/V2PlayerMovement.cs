@@ -21,6 +21,9 @@ public class V2PlayerMovement : MonoBehaviour
     [SerializeField] private float SprintSpeed;
     [SerializeField] private float InAirMoveSpeed;
     private bool bIsFacingRight;
+    [SerializeField] private float stamina;
+    [SerializeField] private float MAXstamina;
+
 
     [Header("JumpParameters")]
     [SerializeField] private bool bCanJump = true;
@@ -53,12 +56,38 @@ public class V2PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private LayerMask wallLayer;
 
+    public Stats stats;
+
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         cc = GetComponent<CapsuleCollider2D>();
+        stats = GetComponent<Stats>();
+        stats.Agility();
+        stats.Endurance();
+        if (stats.agilMult > 0)
+        {
+            WalkSpeed = (WalkSpeed + (stats.agil * 0.25f)) + (stats.agilMult * (WalkSpeed + (stats.agil * 0.25f)));
+            SprintSpeed = (SprintSpeed + (stats.agil * 0.33f)) + (stats.agilMult * (SprintSpeed + (stats.agil * 0.33f)));
+        }
+        else
+        {
+            WalkSpeed = WalkSpeed + (stats.agil * 0.25f);
+            SprintSpeed = SprintSpeed + (stats.agil * 0.33f);
+        }
+
+        if (stats.endMult > 0)
+        {
+            stamina = (stamina + (stats.end * 3f)) + (stats.endMult * (stamina + (stats.end * 3f)));
+            MAXstamina = (MAXstamina + (stats.end * 3f)) + (stats.endMult * (MAXstamina + (stats.end * 3f)));
+        }
+        else
+        {
+            stamina = stamina + (stats.end * 3f);
+            MAXstamina = MAXstamina + (stats.end * 3f);
+        }
     }
 
     private void Update()
@@ -84,13 +113,17 @@ public class V2PlayerMovement : MonoBehaviour
         {
             if (bCanWalk)
             {
-                if(Input.GetKey(KeyCode.LeftShift))
+                if(Input.GetKey(KeyCode.LeftShift) && stamina > 0)
                 {
                     SetIsSprinting(true);
+                    StartCoroutine(StaminaDepletion());
+                    StopCoroutine(StaminaRegeneration());
                 }
                 else
                 {
                     SetIsSprinting(false);
+                    StopCoroutine(StaminaDepletion());
+                    StartCoroutine(StaminaRegeneration());
                 }
             }
         }
@@ -157,6 +190,21 @@ public class V2PlayerMovement : MonoBehaviour
                     rb.velocity = new Vector2(HorizontalInput * WalkSpeed, rb.velocity.y);
                 }
             }
+        }
+    }
+
+    public IEnumerator StaminaDepletion()
+    {
+        stamina -= 0.005f;
+        yield return new WaitForSeconds(0.5f);
+    }
+
+    public IEnumerator StaminaRegeneration()
+    {
+        if (stamina < MAXstamina)
+        {
+            stamina += 0.003f;
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
