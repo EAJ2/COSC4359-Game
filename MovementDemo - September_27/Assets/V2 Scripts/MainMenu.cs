@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
@@ -13,12 +14,25 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField] private bool bIsThereSave;
 
+    [SerializeField] private Stats stats;
+
+    [SerializeField]
+    public Text vitText;
+    public Text strText;
+    public Text endText;
+    public Text wisText;
+    public Text fortText;
+    public Text dexText;
+    public Text agilText;
+
+
     private void Start()
     {
         NoSaveGameCanvas.SetActive(false);
         SaveGameCanvas.SetActive(false);
         DeleteSaveConfirmationCanvas.SetActive(false);
         ClassSelectedCanvas.SetActive(false);
+        stats = GetComponent<Stats>();
     }
 
     public void PlayButton()
@@ -120,9 +134,24 @@ public class MainMenu : MonoBehaviour
         DeleteSaveConfirmationCanvas.SetActive(false);
     }
 
-    void EnableClassSelected()
+    public void EnableClassSelected()
     {
         ClassSelectedCanvas.SetActive(true);
+        stats.vit = Random.Range(1, 7);
+        stats.str = Random.Range(1, 7);
+        stats.end = Random.Range(1, 7);
+        stats.wis = Random.Range(1, 7);
+        stats.fort = Random.Range(1, 7);
+        stats.dex = Random.Range(1, 7);
+        stats.agil = Random.Range(1, 7);
+
+        vitText.text = stats.vit.ToString();
+        strText.text = stats.str.ToString();
+        endText.text = stats.end.ToString();
+        wisText.text = stats.wis.ToString();
+        fortText.text = stats.fort.ToString();
+        dexText.text = stats.dex.ToString();
+        agilText.text = stats.agil.ToString();
     }
 
     void DisableClassSelected()
