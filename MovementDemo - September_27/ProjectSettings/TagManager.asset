@@ -8,6 +8,14 @@ TagManager:
   - SnakeEnemy
   - FlyEnemy
   - GroundEnemy
+  - BossEnemy
+  - TargetCollider
+  - Chest
+  - Spikes
+  - AntEnemy
+  - HookTarget
+  - DrillFlyEnemy
+  - HorseEnemy
   layers:
   - Default
   - TransparentFX
@@ -59,4 +67,7 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 2648330483
+    locked: 0
+  - name: UI
+    uniqueID: 2142254595
     locked: 0

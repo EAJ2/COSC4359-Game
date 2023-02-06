@@ -97,8 +97,19 @@ public class V2PlayerMovement : MonoBehaviour
         HorizontalInput = Input.GetAxis("Horizontal");
 
 
+        if (HorizontalInput != 0)
+        {
+            anim.SetBool("isMoving", true);
+        }
+        else
+        {
+            anim.StopPlayback();
+            anim.SetBool("isMoving", false);
+        }
+
+
         //If Dashing, nothing else runs until it ends
-        if(bDashing)
+        if (bDashing)
         {
             return;
         }
@@ -113,7 +124,7 @@ public class V2PlayerMovement : MonoBehaviour
         {
             if (bCanWalk)
             {
-                if(Input.GetKey(KeyCode.LeftShift) && stamina > 0)
+                if (Input.GetKey(KeyCode.LeftShift) && stamina > 0)
                 {
                     SetIsSprinting(true);
                     StartCoroutine(StaminaDepletion());
