@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     private CapsuleCollider2D cc;
     private V2PlayerMovement pm;
     private V2Health health;
+    private ClassStats stats;
 
     private void Awake()
     {
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour
         cc = GetComponent<CapsuleCollider2D>();
         pm = GetComponent<V2PlayerMovement>();
         health = GetComponent<V2Health>();
+        stats = GetComponent<ClassStats>();
     }
 
     //Save Game
@@ -30,16 +32,27 @@ public class Player : MonoBehaviour
         V2PlayerData data = SaveClassInformation.LoadPlayer();
         if(data == null)
         {
-
+            return;
         }
         else
         {
+            stats.SetClass(data.ClassName);
+            stats.SetIntelligence(data.Intelligence);
+            stats.SetStrength(data.Strength);
+            stats.SetDexterity(data.Dexterity);
+            stats.SetSneaky(data.Sneaky);
 
+            health.SetHealth(data.Health);
+
+            if(data.bDash == true)
+            {
+                pm.EnableDash();
+            }
+
+            if(data.bJump == true)
+            {
+                pm.EnableJump();
+            }
         }
-    }
-
-    private void SetClassData()
-    {
-
     }
 }

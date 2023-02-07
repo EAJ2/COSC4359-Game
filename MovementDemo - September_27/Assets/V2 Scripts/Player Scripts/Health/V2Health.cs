@@ -58,6 +58,11 @@ public class V2Health : MonoBehaviour
         return CurrentHealth;
     }
 
+    public void SetMaxHealth()
+    {
+        CurrentHealth = startingHealth;
+    }
+
     private IEnumerator Invulnerability()
     {
         Physics2D.IgnoreLayerCollision(10, 11, true);

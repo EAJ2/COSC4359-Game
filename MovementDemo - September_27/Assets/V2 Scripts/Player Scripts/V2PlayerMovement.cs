@@ -125,6 +125,25 @@ public class V2PlayerMovement : MonoBehaviour
             }
         }
 
+        //Dashing Code
+        if(Input.GetKey(KeyCode.Q) && bCanDash)
+        {
+            if(rb.velocity.y == 0)
+            {
+                bIsFalling = false;
+                bIsJumping = false;
+                StartCoroutine(Dash());
+            }
+            if(rb.velocity.y > 0 || rb.velocity.y < 0)
+            {
+                bIsFalling = false;
+                bIsJumping = false;
+                StartCoroutine(Dash());
+                bIsFalling = true;
+            }
+
+        }
+
         Flip();
         IsJumping();
         IsFalling();
@@ -224,6 +243,26 @@ public class V2PlayerMovement : MonoBehaviour
                 }
             }
         }
+    }
+
+    private IEnumerator Dash()
+    {
+        bCanDash = false;
+        DisableWalk();
+        DisableJump();
+        bDashing = true;
+        SetGravityScale(0f);
+        rb.velocity = new Vector2(transform.localScale.x * DashingPower, 0f);
+        //anim.SetTrigger("Dash");
+        //anim.SetBool("dashing", bDashing);
+        yield return new WaitForSeconds(DashingTimer);
+        SetGravityScale(GravityScale);
+        bDashing = false;
+        EnableWalk();
+        EnableJump();
+        //anim.SetBool("dashing", bDashing);
+        yield return new WaitForSeconds(DashingCooldown);
+        bCanDash = true;
     }
 
     //Getters and Setters && Enablers and Disablers

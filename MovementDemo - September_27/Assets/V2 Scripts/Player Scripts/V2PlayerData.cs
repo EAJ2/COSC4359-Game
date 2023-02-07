@@ -21,4 +21,18 @@ public class V2PlayerData
 
     public bool bDash;
     public bool bJump;
+
+    public V2PlayerData(Player player)
+    {
+        ClassName = player.GetComponent<ClassStats>().GetClass();
+        Intelligence = player.GetComponent<ClassStats>().GetIntelligence();
+        Strength = player.GetComponent<ClassStats>().GetStrength();
+        Dexterity = player.GetComponent<ClassStats>().GetDexterity();
+        Sneaky = player.GetComponent<ClassStats>().GetSneaky();
+
+        Health = player.GetComponent<V2Health>().GetHealth();
+
+        bDash = player.GetComponent<V2PlayerMovement>().CanDash();
+        bJump = player.GetComponent<V2PlayerMovement>().CanJump();
+    }
 }

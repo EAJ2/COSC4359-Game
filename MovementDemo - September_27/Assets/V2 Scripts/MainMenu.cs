@@ -10,7 +10,17 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject DeleteSaveConfirmationCanvas;
     [SerializeField] private GameObject ClassSelectedCanvas;
 
-    [SerializeField] private bool bIsThereSave;
+    [SerializeField] private Player player;
+
+    private string ClassName;
+
+    private float Intelligence;
+    private float Strength;
+
+    private float Dexterity;
+    private float Sneaky;
+
+    private bool bIsThereSave;
 
     private void Start()
     {
@@ -18,6 +28,40 @@ public class MainMenu : MonoBehaviour
         SaveGameCanvas.SetActive(false);
         DeleteSaveConfirmationCanvas.SetActive(false);
         ClassSelectedCanvas.SetActive(false);
+
+        LoadPlayer();
+    }
+
+    public void Save()
+    {
+        player.GetComponent<ClassStats>().SetIntelligence(Intelligence);
+        player.GetComponent<ClassStats>().SetStrength(Strength);
+        player.GetComponent<ClassStats>().SetDexterity(Dexterity);
+        player.GetComponent<ClassStats>().SetSneaky(Sneaky);
+
+        player.GetComponent<V2Health>().SetMaxHealth();
+
+        SaveClassInformation.SavePlayer(player);
+    }
+
+    public void LoadPlayer()
+    {
+        V2PlayerData data = SaveClassInformation.LoadPlayer();
+        if(data == null)
+        {
+            Debug.Log("There was no save");
+            bIsThereSave = false;
+        }
+        else
+        {
+            Debug.Log("There is a save");
+            bIsThereSave = true;
+        }
+    }
+
+    public void DeleteSave()
+    {
+        SaveClassInformation.DeleteSave(1);
     }
 
     public void PlayButton()
@@ -54,6 +98,7 @@ public class MainMenu : MonoBehaviour
 
     public void DoDeleteButton()
     {
+        DeleteSave();
         DisableDeleteSaveConfirmation();
         EnableMainMenu();
         bIsThereSave = false;
@@ -127,5 +172,10 @@ public class MainMenu : MonoBehaviour
     void DisableClassSelected()
     {
         ClassSelectedCanvas.SetActive(false);
+    }
+
+    public void DoExitGame()
+    {
+        Application.Quit();
     }
 }
