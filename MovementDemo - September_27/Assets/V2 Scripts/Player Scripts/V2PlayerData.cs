@@ -24,6 +24,11 @@ public class V2PlayerData
 
     public V2PlayerData(Player player)
     {
+
+
+        /*
+>>>>>>> Stashed changes
+        /*
         ClassName = player.GetComponent<ClassStats>().GetClass();
         Intelligence = player.GetComponent<ClassStats>().GetIntelligence();
         Strength = player.GetComponent<ClassStats>().GetStrength();
@@ -34,5 +39,8 @@ public class V2PlayerData
 
         bDash = player.GetComponent<V2PlayerMovement>().CanDash();
         bJump = player.GetComponent<V2PlayerMovement>().CanJump();
+<<<<<<< Updated upstream
+=======
+        */
     }
 }

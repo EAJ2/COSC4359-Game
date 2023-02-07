@@ -27,15 +27,21 @@ public class Player : MonoBehaviour
         SaveClassInformation.SavePlayer(this);
     }
 
+    
     public void LoadPlayer()
     {
+        /*
         V2PlayerData data = SaveClassInformation.LoadPlayer();
-        if(data == null)
+        if (data == null)
         {
             return;
         }
         else
         {
+<<<<<<< Updated upstream
+=======
+            
+>>>>>>> Stashed changes
             stats.SetClass(data.ClassName);
             stats.SetIntelligence(data.Intelligence);
             stats.SetStrength(data.Strength);
@@ -43,16 +49,36 @@ public class Player : MonoBehaviour
             stats.SetSneaky(data.Sneaky);
 
             health.SetHealth(data.Health);
+<<<<<<< Updated upstream
 
             if(data.bDash == true)
+=======
+            
+            if (data.bDash == true)
+>>>>>>> Stashed changes
             {
                 pm.EnableDash();
             }
 
+<<<<<<< Updated upstream
             if(data.bJump == true)
+=======
+            if (data.bJump == true)
+>>>>>>> Stashed changes
             {
                 pm.EnableJump();
             }
         }
+        
     }
+<<<<<<< Updated upstream
+=======
+        
+
+    private void SetClassData()
+    {
+
+    }
+>>>>>>> Stashed changes
+        */
 }
