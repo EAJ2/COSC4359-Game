@@ -17,6 +17,7 @@ public class EvilWizard : MonoBehaviour
     Rigidbody2D rb;
     SpriteRenderer sr;
     public Animator anim;
+    public Animator playerAnim;
 
     [SerializeField] public GameObject Player;
     [SerializeField] public V2Health hp;
@@ -24,6 +25,10 @@ public class EvilWizard : MonoBehaviour
     [SerializeField] public DetectionRight detectR;
     [SerializeField] public DetectionLeft detectL;
     [SerializeField] public AttackDetection ad;
+
+    public PlayerHealthBar playerHealth;
+
+    public GameObject DMG_Text;
 
 
     // Start is called before the first frame update
@@ -80,7 +85,6 @@ public class EvilWizard : MonoBehaviour
         else
         {
             //Debug.Log("Not Currently Attacking");
-            
         }
         
     }
@@ -89,6 +93,9 @@ public class EvilWizard : MonoBehaviour
     {
         attackTimer = 0.25f;
         hp.CurrentHealth -= 1f;
+        playerHealth.SetHealth(hp.CurrentHealth);
+        playerAnim.Play("Player_Vagabond_Hit", -1, 0f);
+        Instantiate(DMG_Text, new Vector3(player.position.x, 1, player.position.z), Quaternion.identity);
     }
 
 }

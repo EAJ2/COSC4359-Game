@@ -58,6 +58,9 @@ public class V2PlayerMovement : MonoBehaviour
 
     public Stats stats;
 
+    public AudioSource runAudio;
+
+    public PlayerStaminaBar staminaBar;
 
     private void Awake()
     {
@@ -88,6 +91,7 @@ public class V2PlayerMovement : MonoBehaviour
             stamina = stamina + (stats.end * 3f);
             MAXstamina = MAXstamina + (stats.end * 3f);
         }
+        staminaBar.SetMaxStamina(MAXstamina);
     }
 
     private void Update()
@@ -195,6 +199,7 @@ public class V2PlayerMovement : MonoBehaviour
                 if(IsSprinting())
                 {
                     rb.velocity = new Vector2(HorizontalInput * SprintSpeed, rb.velocity.y);
+
                 }
                 else
                 {
@@ -207,6 +212,7 @@ public class V2PlayerMovement : MonoBehaviour
     public IEnumerator StaminaDepletion()
     {
         stamina -= 0.005f;
+        staminaBar.SetStamina(stamina);
         yield return new WaitForSeconds(0.5f);
     }
 
@@ -215,6 +221,7 @@ public class V2PlayerMovement : MonoBehaviour
         if (stamina < MAXstamina)
         {
             stamina += 0.003f;
+            staminaBar.SetStamina(stamina);
             yield return new WaitForSeconds(0.5f);
         }
     }

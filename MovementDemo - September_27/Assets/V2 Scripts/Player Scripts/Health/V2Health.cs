@@ -19,6 +19,7 @@ public class V2Health : MonoBehaviour
     private SpriteRenderer sr;
 
     public Stats stats;
+    public PlayerHealthBar healthBar;
 
     private void Awake()
     {
@@ -37,6 +38,7 @@ public class V2Health : MonoBehaviour
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         pm = GetComponentInParent<V2PlayerMovement>();
+        healthBar.SetMaxHealth(MaxHealth);
     }
 
     public void TakeDmg(float dmg)
