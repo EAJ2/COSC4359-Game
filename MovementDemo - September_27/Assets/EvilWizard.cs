@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EvilWizard : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class EvilWizard : MonoBehaviour
     public bool inRange = false;
     public bool moving = false;
     public float moveSpeed = 2f;
+    public int xpValue;
+    public int goldValue;
     Rigidbody2D rb;
     SpriteRenderer sr;
     public Animator anim;
@@ -29,6 +32,8 @@ public class EvilWizard : MonoBehaviour
     public PlayerHealthBar playerHealth;
 
     public GameObject DMG_Text;
+
+    public TextMesh dmgTextMesh;
 
 
     // Start is called before the first frame update
@@ -95,6 +100,7 @@ public class EvilWizard : MonoBehaviour
         hp.CurrentHealth -= 1f;
         playerHealth.SetHealth(hp.CurrentHealth);
         playerAnim.Play("Player_Vagabond_Hit", -1, 0f);
+        dmgTextMesh.text = "1";
         Instantiate(DMG_Text, new Vector3(player.position.x, 1, player.position.z), Quaternion.identity);
     }
 

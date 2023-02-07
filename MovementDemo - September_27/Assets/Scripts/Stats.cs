@@ -22,6 +22,15 @@ public class Stats : MonoBehaviour
     public int agil;
     public float agilMult;
 
+    public int points;
+    public bool canLevel;
+
+
+    public int XP;
+    public double maxXP;
+
+    public int gold;
+
     //IGNORE THESE VARIABLES THEIR FOR MEMORY 
     public float BaseHP = 20f;
     public float BaseStam = 15f;
@@ -187,5 +196,10 @@ public class Stats : MonoBehaviour
         {
             agilMult = 0.08f;
         }
+    }
+
+    public void SetMaxXP()
+    {
+        maxXP *= 1.5;
     }
 }
