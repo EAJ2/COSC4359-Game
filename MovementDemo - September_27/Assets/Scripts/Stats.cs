@@ -7,6 +7,7 @@ public class Stats : MonoBehaviour
 
     //Stats
     [SerializeField]
+    public int level;
     public int vit;
     public float vitMult;
     public int str;
