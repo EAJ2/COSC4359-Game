@@ -20,6 +20,13 @@ public class V2Health : MonoBehaviour
 
     public Stats stats;
     public PlayerHealthBar healthBar;
+    public V2PlayerCombat comb;
+    public V2PlayerMovement mov;
+
+    void Update()
+    {
+        Die();
+    }
 
     private void Awake()
     {
@@ -93,5 +100,16 @@ public class V2Health : MonoBehaviour
         CurrentHealth = startingHealth;
         bDead = false;
         pm.enabled = true;
+    }
+
+    public void Die()
+    {
+        if (CurrentHealth < 0)
+        {
+            anim.SetBool("isDead", true);
+            this.enabled = false;
+            mov.enabled = false;
+            comb.enabled = false;
+        }
     }
 }

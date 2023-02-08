@@ -23,22 +23,28 @@ public class Stats : MonoBehaviour
     public int agil;
     public float agilMult;
 
+    public int dmg;
+    public int critDMG;
+    public float critMult;
+    public int critRange = 10;
+
+    //Level UP
     public int points;
     public bool canLevel;
+    public float XP;
+    public float maxXP;
+    public LevelUpBar levelBar;
 
-
-    public int XP;
-    public double maxXP;
-
+    //Currency
     public int gold;
 
     //IGNORE THESE VARIABLES THEIR FOR MEMORY 
-    public float BaseHP = 20f;
-    public float BaseStam = 15f;
-    public float BaseMana = 10f;
-    public float BaseCritCH = 0.1f;
-    public float BaseCritDMG = 1.25f;
-    public float BaseWalkSpeed = 3f;
+    public static float BaseHP = 20f;
+    public static float BaseStam = 15f;
+    public static float BaseMana = 10f;
+    public static float BaseCritCH = 0.1f;
+    public static float BaseCritDMG = 1.25f;
+    public static float BaseWalkSpeed = 3f;
 
 
     // Start is called before the first frame update
@@ -51,12 +57,15 @@ public class Stats : MonoBehaviour
         Fortitude();
         Dexterity();
         Agility();
+        levelBar.SetMaxXP(maxXP);
+        levelBar.SetXP(XP);
+        critDMG = (int)Mathf.Ceil((float)dmg * critMult);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        levelBar.SetXP(XP);
     }
 
     public void Vitality()
@@ -97,6 +106,18 @@ public class Stats : MonoBehaviour
         {
             strMult = 0.5f;
         }
+
+        if (strMult > 0)
+        {
+            dmg = (int)(dmg + (2 * str) + (dmg + (2 * str)) * strMult);
+            critDMG = (int)Mathf.Ceil((float)dmg * critMult);
+        }
+        else
+        {
+            dmg = dmg + (2 * str);
+            critDMG = (int)Mathf.Ceil((float)dmg * critMult);
+        }
+        
     }
 
     public void Endurance()
@@ -177,6 +198,17 @@ public class Stats : MonoBehaviour
         {
             dexMult = 0.2f;
         }
+
+        if (dexMult > 0)
+        {
+            critRange = (int)(critRange + (dex * 1) + (critRange + (dex * 1)) * dexMult);
+            critMult = BaseCritDMG + (dex * 0.02f) + ((BaseCritDMG + (dex * 0.02f)) * dexMult);
+        }
+        else
+        {
+            critRange = critRange + (dex * 1);
+            critMult = BaseCritDMG + (dex * 0.01f);
+        }
     }
 
     public void Agility()
@@ -201,6 +233,6 @@ public class Stats : MonoBehaviour
 
     public void SetMaxXP()
     {
-        maxXP *= 1.5;
+        maxXP *= 1.5f;
     }
 }

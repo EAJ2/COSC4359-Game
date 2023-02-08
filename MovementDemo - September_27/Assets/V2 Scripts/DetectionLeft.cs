@@ -15,7 +15,6 @@ public class DetectionLeft : MonoBehaviour
         {
             PlayerInAreaLeft = true;
             Player = col.gameObject.transform;
-            Debug.Log("Player entered range");
         }
     }
 
@@ -25,7 +24,6 @@ public class DetectionLeft : MonoBehaviour
         {
             PlayerInAreaLeft = false;
             Player = null;
-            Debug.Log("Player left range");
         }
     }
 }

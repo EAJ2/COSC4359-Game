@@ -17,6 +17,8 @@ public class EvilWizard : MonoBehaviour
     public float moveSpeed = 2f;
     public int xpValue;
     public int goldValue;
+    public int maxHP;
+    public int currentHP;
     Rigidbody2D rb;
     SpriteRenderer sr;
     public Animator anim;
@@ -81,7 +83,6 @@ public class EvilWizard : MonoBehaviour
 
         if(anim.GetCurrentAnimatorStateInfo(0).IsName("Pyromaniac_Attack"))
         {
-            //Debug.Log("Attacking Right Now");
             if (attackTimer <= 0)
             {
                 Attack();
@@ -89,7 +90,6 @@ public class EvilWizard : MonoBehaviour
         }
         else
         {
-            //Debug.Log("Not Currently Attacking");
         }
         
     }
@@ -99,9 +99,31 @@ public class EvilWizard : MonoBehaviour
         attackTimer = 0.25f;
         hp.CurrentHealth -= 1f;
         playerHealth.SetHealth(hp.CurrentHealth);
-        playerAnim.Play("Player_Vagabond_Hit", -1, 0f);
+        if (hp.CurrentHealth > 0)
+        {
+            playerAnim.Play("Player_Vagabond_Hit", -1, 0f);
+        }
         dmgTextMesh.text = "1";
         Instantiate(DMG_Text, new Vector3(player.position.x, 1, player.position.z), Quaternion.identity);
     }
 
+    public void TakeDMG(int dmg)
+    {
+        currentHP -= dmg;
+        anim.SetTrigger("Hit");
+
+        if (currentHP <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Die()
+    {
+        Player.GetComponent<Stats>().XP += xpValue;
+        Player.GetComponent<Stats>().gold += goldValue;
+        anim.SetBool("Death", true);
+        GetComponent<Collider2D>().enabled = false;
+        this.enabled = false;
+    }
 }

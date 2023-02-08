@@ -9,6 +9,7 @@ public class TextPopup : MonoBehaviour
     public TextMesh text;
     public byte alpha = 255;
     public int direction;
+    public bool isCrit;
 
     // Start is called before the first frame update
     void Awake()
@@ -20,7 +21,15 @@ public class TextPopup : MonoBehaviour
     public void FadeText()
     {
         alpha -= 15;
-        text.color = new Color32(255, 255, 255, alpha);
+        if (isCrit == true)
+        {
+            text.color = new Color32(255, 0, 0, alpha);
+        }
+        else
+        {
+            text.color = new Color32(255, 255, 255, alpha);
+        }
+        
         if (direction == 0)
         {
             transform.position = new Vector3(transform.position.x + 0.040f, transform.position.y + 0.040f, transform.position.z);
