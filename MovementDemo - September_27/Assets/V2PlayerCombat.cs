@@ -13,12 +13,15 @@ public class V2PlayerCombat : MonoBehaviour
     public LayerMask enemyLayers;
 
     [SerializeField] public Stats stats;
+    public V2PlayerMovement moveScript;
 
     public GameObject DMG_Text;
     public TextMesh dmgTextMesh;
 
     public GameObject CRIT_Text;
     public TextMesh critTextMesh;
+
+    public AudioSource hitAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -38,11 +41,23 @@ public class V2PlayerCombat : MonoBehaviour
                 nextAttackTime = Time.time + 1f / attackRate;
             }
         }
+
+        if (AttackIsPlaying() == true)
+        {
+            moveScript.enabled = false;
+            moveScript.rb.velocity = new Vector2(0f, 0f);
+        }
+        else
+        {
+            moveScript.enabled = true;
+        }
+
     }
 
     void Attack()
     {
         anim.SetTrigger("Attacking");
+        anim.SetBool("isMoving", false);
 
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
@@ -52,6 +67,7 @@ public class V2PlayerCombat : MonoBehaviour
         {
             if (enemy.name == "Pyromaniac_Enemy")
             {
+                hitAudio.Play();
                 if (critCounter <= stats.critRange)
                 {
                     enemy.GetComponent<EvilWizard>().TakeDMG(stats.critDMG);
@@ -74,5 +90,17 @@ public class V2PlayerCombat : MonoBehaviour
             return;
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+    bool AttackIsPlaying()
+    {
+        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Player_Vagabond_LightAttack"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

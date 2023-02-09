@@ -5,8 +5,6 @@ using TMPro;
 
 public class EvilWizard : MonoBehaviour
 {
-
-    
     //Player transform
     [SerializeField]public Transform player;
     public float detectRange = 5f;
@@ -123,6 +121,7 @@ public class EvilWizard : MonoBehaviour
         Player.GetComponent<Stats>().XP += xpValue;
         Player.GetComponent<Stats>().gold += goldValue;
         anim.SetBool("Death", true);
+        rb.velocity = new Vector2(0f, 0f);
         GetComponent<Collider2D>().enabled = false;
         this.enabled = false;
     }

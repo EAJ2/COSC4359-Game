@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class V2PlayerMovement : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     private Animator anim;
     private CapsuleCollider2D cc;
 
@@ -57,6 +57,7 @@ public class V2PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask wallLayer;
 
     public Stats stats;
+    public V2PlayerCombat combScript;
 
     public AudioSource runAudio;
 
