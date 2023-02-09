@@ -1947,6 +1947,7 @@ MonoBehaviour:
   fortText: {fileID: 1545230330}
   dexText: {fileID: 163424011}
   agilText: {fileID: 1857317980}
+  className: 
 --- !u!114 &215228105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1959,6 +1960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d37f8a3b6c02534a85a4bffdafd8d8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level: 0
   vit: 0
   vitMult: 0
   str: 0
@@ -1973,12 +1975,16 @@ MonoBehaviour:
   dexMult: 0
   agil: 0
   agilMult: 0
-  BaseHP: 20
-  BaseStam: 15
-  BaseMana: 10
-  BaseCritCH: 0.1
-  BaseCritDMG: 1.25
-  BaseWalkSpeed: 3
+  dmg: 0
+  critDMG: 0
+  critMult: 0
+  critRange: 10
+  points: 0
+  canLevel: 0
+  XP: 0
+  maxXP: 0
+  levelBar: {fileID: 0}
+  gold: 0
 --- !u!1 &265051928
 GameObject:
   m_ObjectHideFlags: 0
@@ -6701,6 +6707,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 215228104}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: SetClassName
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Vagabond
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1096485774

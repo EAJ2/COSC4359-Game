@@ -25,6 +25,8 @@ public class MainMenu : MonoBehaviour
     public Text dexText;
     public Text agilText;
 
+    public string className;
+
 
     private void Start()
     {
@@ -167,5 +169,10 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("Level Select");
+    }
+
+    public void SetClassName(string selectedClass)
+    {
+        className = selectedClass;
     }
 }
