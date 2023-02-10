@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class Stats : MonoBehaviour
 {
+    [SerializeField] private string Class;
+    [SerializeField] private float VitalityStat;
+    [SerializeField] private float StrengthStat;
+    [SerializeField] private float EnduranceStat;
+    [SerializeField] private float WisdomStat;
+    [SerializeField] private float FortitudeStat;
+    [SerializeField] private float DexterityStat;
+    [SerializeField] private float AgilityStat;
+
 
     //Stats
     [SerializeField]
@@ -234,5 +243,98 @@ public class Stats : MonoBehaviour
     public void SetMaxXP()
     {
         maxXP *= 1.5f;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public void SetClass(string val)
+    {
+        Class = val;
+    }
+
+    public string GetClass()
+    {
+        return Class;
+    }
+
+    public void SetVitality(float val)
+    {
+        VitalityStat = val;
+    }
+
+    public void SetStrength(float val)
+    {
+        StrengthStat = val;
+    }
+
+    public void SetEndurance(float val)
+    {
+        EnduranceStat = val;
+    }
+
+    public void SetWisdom(float val)
+    {
+        WisdomStat = val;
+    }
+
+    public void SetFortitude(float val)
+    {
+        FortitudeStat = val;
+    }
+
+    public void SetDexterity(float val)
+    {
+        DexterityStat = val;
+    }
+
+    public void SetAgility(float val)
+    {
+        AgilityStat = val;
+    }
+
+    public float GetVitality()
+    {
+        return VitalityStat;
+    }
+
+    public float GetStrength()
+    {
+        return StrengthStat;
+    }
+
+    public float GetEndurance()
+    {
+        return EnduranceStat;
+    }
+
+    public float GetWisdom()
+    {
+        return WisdomStat;
+    }
+
+    public float GetFortitude()
+    {
+        return FortitudeStat;
+    }
+
+    public float GetDexterity()
+    {
+        return DexterityStat;
+    }
+
+    public float GetAgility()
+    {
+        return AgilityStat;
     }
 }

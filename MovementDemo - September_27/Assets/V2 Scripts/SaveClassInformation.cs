@@ -11,7 +11,7 @@ public class SaveClassInformation
         string path = Application.persistentDataPath + "/PlayerInformation.fun";
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        // V2PlayerData data = new V2PlayerData(player);
+        V2PlayerData data = new V2PlayerData(player);
         stream.Close();
     }
 
