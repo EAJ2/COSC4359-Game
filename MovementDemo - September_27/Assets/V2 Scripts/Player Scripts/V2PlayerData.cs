@@ -8,13 +8,13 @@ public class V2PlayerData
 {
     public string ClassName;
 
-    public float VitalityStat;
-    public float StrengthStat;
-    public float EnduranceStat;
-    public float WisdomStat;
-    public float FortitudeStat;
-    public float DexterityStat;
-    public float AgilityStat;
+    public int VitalityStat;
+    public int StrengthStat;
+    public int EnduranceStat;
+    public int WisdomStat;
+    public int FortitudeStat;
+    public int DexterityStat;
+    public int AgilityStat;
 
 
     public string LevelName;

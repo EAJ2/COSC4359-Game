@@ -5,13 +5,6 @@ using UnityEngine;
 public class Stats : MonoBehaviour
 {
     [SerializeField] private string Class;
-    [SerializeField] private float VitalityStat;
-    [SerializeField] private float StrengthStat;
-    [SerializeField] private float EnduranceStat;
-    [SerializeField] private float WisdomStat;
-    [SerializeField] private float FortitudeStat;
-    [SerializeField] private float DexterityStat;
-    [SerializeField] private float AgilityStat;
 
 
     //Stats
@@ -66,15 +59,15 @@ public class Stats : MonoBehaviour
         Fortitude();
         Dexterity();
         Agility();
-        levelBar.SetMaxXP(maxXP);
-        levelBar.SetXP(XP);
+        //levelBar.SetMaxXP(maxXP);
+        //levelBar.SetXP(XP);
         critDMG = (int)Mathf.Ceil((float)dmg * critMult);
     }
 
     // Update is called once per frame
     void Update()
     {
-        levelBar.SetXP(XP);
+        //levelBar.SetXP(XP);
     }
 
     public void Vitality()
@@ -268,73 +261,73 @@ public class Stats : MonoBehaviour
         return Class;
     }
 
-    public void SetVitality(float val)
+    public void SetVitality(int val)
     {
-        VitalityStat = val;
+        vit = val;
     }
 
-    public void SetStrength(float val)
+    public void SetStrength(int val)
     {
-        StrengthStat = val;
+        str = val;
     }
 
-    public void SetEndurance(float val)
+    public void SetEndurance(int val)
     {
-        EnduranceStat = val;
+        end = val;
     }
 
-    public void SetWisdom(float val)
+    public void SetWisdom(int val)
     {
-        WisdomStat = val;
+        wis = val;
     }
 
-    public void SetFortitude(float val)
+    public void SetFortitude(int val)
     {
-        FortitudeStat = val;
+        fort = val;
     }
 
-    public void SetDexterity(float val)
+    public void SetDexterity(int val)
     {
-        DexterityStat = val;
+        dex = val;
     }
 
-    public void SetAgility(float val)
+    public void SetAgility(int val)
     {
-        AgilityStat = val;
+        agil = val;
     }
 
-    public float GetVitality()
+    public int GetVitality()
     {
-        return VitalityStat;
+        return vit;
     }
 
-    public float GetStrength()
+    public int GetStrength()
     {
-        return StrengthStat;
+        return str;
     }
 
-    public float GetEndurance()
+    public int GetEndurance()
     {
-        return EnduranceStat;
+        return end;
     }
 
-    public float GetWisdom()
+    public int GetWisdom()
     {
-        return WisdomStat;
+        return wis;
     }
 
-    public float GetFortitude()
+    public int GetFortitude()
     {
-        return FortitudeStat;
+        return fort;
     }
 
-    public float GetDexterity()
+    public int GetDexterity()
     {
-        return DexterityStat;
+        return dex;
     }
 
-    public float GetAgility()
+    public int GetAgility()
     {
-        return AgilityStat;
+        return agil;
     }
 }

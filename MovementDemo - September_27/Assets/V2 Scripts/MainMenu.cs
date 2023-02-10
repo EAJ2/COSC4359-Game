@@ -12,7 +12,9 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject DeleteSaveConfirmationCanvas;
     [SerializeField] private GameObject ClassSelectedCanvas;
 
-    [SerializeField] private bool bIsThereSave;
+    [SerializeField] Player player;
+
+     bool bIsThereSave;
 
     [SerializeField] private Stats stats;
 
@@ -35,6 +37,19 @@ public class MainMenu : MonoBehaviour
         DeleteSaveConfirmationCanvas.SetActive(false);
         ClassSelectedCanvas.SetActive(false);
         stats = GetComponent<Stats>();
+
+        if(player != null)
+        {
+            if(player.GetIsThereSave() == true)
+            {
+                bIsThereSave = true;
+            }
+            else
+            {
+                bIsThereSave = false;
+            }
+
+        }
     }
 
     public void PlayButton()
@@ -71,6 +86,7 @@ public class MainMenu : MonoBehaviour
 
     public void DoDeleteButton()
     {
+        SaveClassInformation.DeleteSave(1);
         DisableDeleteSaveConfirmation();
         EnableMainMenu();
         bIsThereSave = false;
@@ -165,6 +181,7 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
+
     public void StartGame()
     {
         SceneManager.LoadScene("Level Select");

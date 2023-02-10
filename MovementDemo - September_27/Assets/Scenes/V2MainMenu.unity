@@ -1225,6 +1225,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1649585701}
+        m_TargetAssemblyTypeName: Player, Assembly-CSharp
+        m_MethodName: SavePlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &155860247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1762,7 +1774,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &185292535
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1938,7 +1950,7 @@ MonoBehaviour:
   SaveGameCanvas: {fileID: 1423158837}
   DeleteSaveConfirmationCanvas: {fileID: 908800251}
   ClassSelectedCanvas: {fileID: 933644088}
-  bIsThereSave: 0
+  player: {fileID: 1649585701}
   stats: {fileID: 0}
   vitText: {fileID: 1530131509}
   strText: {fileID: 2024652914}
@@ -1961,13 +1973,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Class: 
-  VitalityStat: 0
-  StrengthStat: 0
-  EnduranceStat: 0
-  WisdomStat: 0
-  FortitudeStat: 0
-  DexterityStat: 0
-  AgilityStat: 0
   level: 0
   vit: 0
   vitMult: 0
@@ -4071,7 +4076,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &647340214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5288,7 +5293,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &908800252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9183,7 +9188,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1423158838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11127,6 +11132,17 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 18775a75b2f34a340aa8c87cced99342, type: 3}
+--- !u!114 &1649585701 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6228589433088005708, guid: 18775a75b2f34a340aa8c87cced99342, type: 3}
+  m_PrefabInstance: {fileID: 1649585700}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6063e7dc2d9b2d49ae9ac64c1506c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1650809170
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,6 +11,8 @@ public class Player : MonoBehaviour
     private V2Health health;
     private Stats stats;
 
+    private bool bIsThereSave;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -34,11 +36,13 @@ public class Player : MonoBehaviour
         if(data == null)
         {
             Debug.Log("There is no Save for the player, Player.cs");
+            bIsThereSave = false;
             return;
         }
         else
         {
             Debug.Log("There is a Save for the player, Player.cs");
+            bIsThereSave = true;
 
             stats.SetVitality(data.VitalityStat);
             stats.SetStrength(data.StrengthStat);
@@ -60,5 +64,10 @@ public class Player : MonoBehaviour
                 pm.EnableJump();
             }
         }
+    }
+
+    public bool GetIsThereSave()
+    {
+        return bIsThereSave;
     }
 }
