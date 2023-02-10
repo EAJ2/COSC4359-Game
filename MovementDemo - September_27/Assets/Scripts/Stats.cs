@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Stats : MonoBehaviour
 {
+    [SerializeField] private string Class;
+
 
     //Stats
     [SerializeField]
@@ -57,15 +59,15 @@ public class Stats : MonoBehaviour
         Fortitude();
         Dexterity();
         Agility();
-        levelBar.SetMaxXP(maxXP);
-        levelBar.SetXP(XP);
+        //levelBar.SetMaxXP(maxXP);
+        //levelBar.SetXP(XP);
         critDMG = (int)Mathf.Ceil((float)dmg * critMult);
     }
 
     // Update is called once per frame
     void Update()
     {
-        levelBar.SetXP(XP);
+        //levelBar.SetXP(XP);
     }
 
     public void Vitality()
@@ -234,5 +236,98 @@ public class Stats : MonoBehaviour
     public void SetMaxXP()
     {
         maxXP *= 1.5f;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public void SetClass(string val)
+    {
+        Class = val;
+    }
+
+    public string GetClass()
+    {
+        return Class;
+    }
+
+    public void SetVitality(int val)
+    {
+        vit = val;
+    }
+
+    public void SetStrength(int val)
+    {
+        str = val;
+    }
+
+    public void SetEndurance(int val)
+    {
+        end = val;
+    }
+
+    public void SetWisdom(int val)
+    {
+        wis = val;
+    }
+
+    public void SetFortitude(int val)
+    {
+        fort = val;
+    }
+
+    public void SetDexterity(int val)
+    {
+        dex = val;
+    }
+
+    public void SetAgility(int val)
+    {
+        agil = val;
+    }
+
+    public int GetVitality()
+    {
+        return vit;
+    }
+
+    public int GetStrength()
+    {
+        return str;
+    }
+
+    public int GetEndurance()
+    {
+        return end;
+    }
+
+    public int GetWisdom()
+    {
+        return wis;
+    }
+
+    public int GetFortitude()
+    {
+        return fort;
+    }
+
+    public int GetDexterity()
+    {
+        return dex;
+    }
+
+    public int GetAgility()
+    {
+        return agil;
     }
 }

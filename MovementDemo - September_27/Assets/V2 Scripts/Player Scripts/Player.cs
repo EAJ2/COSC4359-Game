@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
     private CapsuleCollider2D cc;
     private V2PlayerMovement pm;
     private V2Health health;
+    private Stats stats;
+
+    private bool bIsThereSave;
 
     private void Awake()
     {
@@ -17,6 +20,8 @@ public class Player : MonoBehaviour
         cc = GetComponent<CapsuleCollider2D>();
         pm = GetComponent<V2PlayerMovement>();
         health = GetComponent<V2Health>();
+
+        LoadPlayer();
     }
 
     //Save Game
@@ -30,16 +35,39 @@ public class Player : MonoBehaviour
         V2PlayerData data = SaveClassInformation.LoadPlayer();
         if(data == null)
         {
-
+            Debug.Log("There is no Save for the player, Player.cs");
+            bIsThereSave = false;
+            return;
         }
         else
         {
+            Debug.Log("There is a Save for the player, Player.cs");
+            bIsThereSave = true;
 
+            stats.SetVitality(data.VitalityStat);
+            stats.SetStrength(data.StrengthStat);
+            stats.SetEndurance(data.EnduranceStat);
+            stats.SetWisdom(data.WisdomStat);
+            stats.SetFortitude(data.FortitudeStat);
+            stats.SetDexterity(data.DexterityStat);
+            stats.SetAgility(data.AgilityStat);
+
+            health.SetHealth(data.Health);
+
+            if(data.bDash == true)
+            {
+                pm.EnableDash();
+            }
+
+            if(data.bJump == true)
+            {
+                pm.EnableJump();
+            }
         }
     }
 
-    private void SetClassData()
+    public bool GetIsThereSave()
     {
-
+        return bIsThereSave;
     }
 }

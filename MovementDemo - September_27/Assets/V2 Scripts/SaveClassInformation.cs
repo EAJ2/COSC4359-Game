@@ -11,7 +11,9 @@ public class SaveClassInformation
         string path = Application.persistentDataPath + "/PlayerInformation.fun";
         FileStream stream = new FileStream(path, FileMode.Create);
 
-        // V2PlayerData data = new V2PlayerData(player);
+        V2PlayerData data = new V2PlayerData(player);
+
+        formatter.Serialize(stream, data);
         stream.Close();
     }
 
@@ -39,7 +41,7 @@ public class SaveClassInformation
     {
         if (choice == 1)
         {
-            string path = Application.persistentDataPath + "/player1.fun";
+            string path = Application.persistentDataPath + "/PlayerInformation.fun";
             if (File.Exists(path))
             {
                 File.Delete(path);
