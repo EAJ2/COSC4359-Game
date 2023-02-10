@@ -32,9 +32,10 @@ public class EvilWizard : MonoBehaviour
     public PlayerHealthBar playerHealth;
 
     public GameObject DMG_Text;
-
     public TextMesh dmgTextMesh;
 
+
+    public AudioSource hitAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -99,6 +100,7 @@ public class EvilWizard : MonoBehaviour
         playerHealth.SetHealth(hp.CurrentHealth);
         if (hp.CurrentHealth > 0)
         {
+            hitAudio.Play();
             playerAnim.Play("Player_Vagabond_Hit", -1, 0f);
         }
         dmgTextMesh.text = "1";
