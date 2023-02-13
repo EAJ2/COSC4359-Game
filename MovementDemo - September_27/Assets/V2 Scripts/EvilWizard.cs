@@ -24,6 +24,7 @@ public class EvilWizard : MonoBehaviour
 
     [SerializeField] public GameObject Player;
     [SerializeField] public V2Health hp;
+    [SerializeField] public LevelUpBar xpBar;
 
     [SerializeField] public DetectionRight detectR;
     [SerializeField] public DetectionLeft detectL;
@@ -122,6 +123,7 @@ public class EvilWizard : MonoBehaviour
     {
         Player.GetComponent<Stats>().XP += xpValue;
         Player.GetComponent<Stats>().gold += goldValue;
+        xpBar.SetXP(Player.GetComponent<Stats>().XP);
         anim.SetBool("Death", true);
         rb.velocity = new Vector2(0f, 0f);
         GetComponent<Collider2D>().enabled = false;

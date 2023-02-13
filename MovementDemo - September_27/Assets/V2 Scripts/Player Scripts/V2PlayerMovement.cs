@@ -21,7 +21,7 @@ public class V2PlayerMovement : MonoBehaviour
     [SerializeField] private float SprintSpeed;
     [SerializeField] private float InAirMoveSpeed;
     private bool bIsFacingRight;
-    [SerializeField] private float stamina;
+    [SerializeField] public float stamina;
     [SerializeField] private float MAXstamina;
 
 
@@ -151,6 +151,7 @@ public class V2PlayerMovement : MonoBehaviour
             {
                 if(Input.GetKeyDown(KeyCode.Space))
                 {
+                    anim.SetTrigger("Jump");
                     Jump();
                 }
                 else if(Input.GetKeyUp(KeyCode.Space))

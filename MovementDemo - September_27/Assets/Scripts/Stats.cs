@@ -29,6 +29,8 @@ public class Stats : MonoBehaviour
     public int critDMG;
     public float critMult;
     public int critRange = 10;
+    public int heavyDMG;
+    public int heavyCritDMG;
 
     //Level UP
     public int points;
@@ -62,6 +64,8 @@ public class Stats : MonoBehaviour
         //levelBar.SetMaxXP(maxXP);
         //levelBar.SetXP(XP);
         critDMG = (int)Mathf.Ceil((float)dmg * critMult);
+        heavyDMG = (int)Mathf.Ceil((float)dmg * 1.25f);
+        heavyCritDMG = (int)Mathf.Ceil(((float)dmg * 1.25f) * critMult);
     }
 
     // Update is called once per frame
