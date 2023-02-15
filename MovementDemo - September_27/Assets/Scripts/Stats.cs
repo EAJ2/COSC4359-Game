@@ -31,6 +31,8 @@ public class Stats : MonoBehaviour
     public int critRange = 10;
     public int heavyDMG;
     public int heavyCritDMG;
+    public float dmgRed;
+
 
     //Level UP
     public int points;
@@ -38,9 +40,13 @@ public class Stats : MonoBehaviour
     public float XP;
     public float maxXP;
     public LevelUpBar levelBar;
+    public GameObject levelUpIcon;
 
     //Currency
     public int gold;
+
+    public float mana;
+    public float MAXmana;
 
     //IGNORE THESE VARIABLES THEIR FOR MEMORY 
     public static float BaseHP = 20f;
@@ -66,12 +72,13 @@ public class Stats : MonoBehaviour
         critDMG = (int)Mathf.Ceil((float)dmg * critMult);
         heavyDMG = (int)Mathf.Ceil((float)dmg * 1.25f);
         heavyCritDMG = (int)Mathf.Ceil(((float)dmg * 1.25f) * critMult);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        //levelBar.SetXP(XP);
+        CheckLevelUp();
     }
 
     public void Vitality()
@@ -164,6 +171,17 @@ public class Stats : MonoBehaviour
         {
             wisMult = 0.5f;
         }
+
+        if (wisMult > 0)
+        {
+            MAXmana = BaseMana + (wis * 5) + (BaseMana + (wis * 5)) * wisMult;
+            mana = MAXmana;
+        }
+        else
+        {
+            MAXmana = BaseMana + (wis * 5);
+            mana = MAXmana;
+        }
     }
 
     public void Fortitude()
@@ -183,6 +201,15 @@ public class Stats : MonoBehaviour
         else if (fort == 20)
         {
             fortMult = 0.2f;
+        }
+
+        if (fortMult > 0)
+        {
+            dmgRed = (fort * 1 + (fort * 1) * fortMult)/100;
+        }
+        else
+        {
+            dmgRed = (fort * 1)/100;
         }
     }
 
@@ -242,7 +269,32 @@ public class Stats : MonoBehaviour
         maxXP *= 1.5f;
     }
 
+    public void CheckLevelUp()
+    {
+        if (XP >= maxXP)
+        {
+            canLevel = true;
+        }
+        else
+        {
+            canLevel = false;
+        }
 
+        if (canLevel == true)
+        {
+            levelUpIcon.SetActive(true);
+        }
+        else
+        {
+            levelUpIcon.SetActive(false);
+        }
+
+        if (canLevel == true && Input.GetKeyDown(KeyCode.Tab))
+        {
+            //Add code for ui to pop up set levels and then deactivate. 
+            Debug.Log("Level Up");
+        }
+    }
 
 
 

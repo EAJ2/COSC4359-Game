@@ -9,6 +9,7 @@ public class EvilWizard : MonoBehaviour
     [SerializeField]public Transform player;
     public float detectRange = 5f;
     public float attackRange = 1f;
+    public int dmg;
     public float attackTimer;
     public bool inRange = false;
     public bool moving = false;
@@ -97,14 +98,14 @@ public class EvilWizard : MonoBehaviour
     public void Attack()
     {
         attackTimer = 0.25f;
-        hp.CurrentHealth -= 1f;
+        hp.TakeDmg((float)dmg);
         playerHealth.SetHealth(hp.CurrentHealth);
         if (hp.CurrentHealth > 0)
         {
             hitAudio.Play();
             playerAnim.Play("Player_Vagabond_Hit", -1, 0f);
         }
-        dmgTextMesh.text = "1";
+        dmgTextMesh.text = dmg.ToString();
         Instantiate(DMG_Text, new Vector3(player.position.x, 1, player.position.z), Quaternion.identity);
     }
 

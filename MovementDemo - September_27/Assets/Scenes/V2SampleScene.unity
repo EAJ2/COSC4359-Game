@@ -479,6 +479,7 @@ RectTransform:
   - {fileID: 387736283}
   - {fileID: 777491914}
   - {fileID: 45352550}
+  - {fileID: 1771231411}
   m_Father: {fileID: 1156894104}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -601,7 +602,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &121852405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -617,6 +618,7 @@ MonoBehaviour:
   player: {fileID: 1156894104}
   detectRange: 5
   attackRange: 1
+  dmg: 1
   attackTimer: 0
   inRange: 0
   moving: 0
@@ -5620,9 +5622,9 @@ MonoBehaviour:
   strMult: 0
   end: 20
   endMult: 0
-  wis: 0
+  wis: 20
   wisMult: 0
-  fort: 0
+  fort: 20
   fortMult: 0
   dex: 20
   dexMult: 0
@@ -5634,12 +5636,16 @@ MonoBehaviour:
   critRange: 10
   heavyDMG: 0
   heavyCritDMG: 0
+  dmgRed: 0
   points: 0
   canLevel: 0
   XP: 0
   maxXP: 200
   levelBar: {fileID: 837050085}
+  levelUpIcon: {fileID: 1771231410}
   gold: 0
+  mana: 0
+  MAXmana: 0
 --- !u!95 &1156894111
 Animator:
   serializedVersion: 4
@@ -6608,6 +6614,82 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1771231410
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1771231411}
+  - component: {fileID: 1771231413}
+  - component: {fileID: 1771231412}
+  m_Layer: 5
+  m_Name: LevelUp_Icon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1771231411
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771231410}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 72450108}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 109.9, y: -252}
+  m_SizeDelta: {x: 22.8566, y: 29.995}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1771231412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771231410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0.8363116, b: 0.29622638, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1771231413
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771231410}
+  m_CullTransparentMesh: 1
 --- !u!1 &1815732049
 GameObject:
   m_ObjectHideFlags: 0
@@ -6719,7 +6801,7 @@ MonoBehaviour:
   inRange: 0
   moving: 0
   moveSpeed: 6
-  xpValue: 10
+  xpValue: 200
   goldValue: 10
   maxHP: 10
   currentHP: 10

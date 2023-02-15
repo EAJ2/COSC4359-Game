@@ -97,7 +97,7 @@ public class Goblin : MonoBehaviour
     public void Attack()
     {
         attackTimer = 0.25f;
-        hp.CurrentHealth -= dmg;
+        hp.TakeDmg((float)dmg);
         playerHealth.SetHealth(hp.CurrentHealth);
         if (hp.CurrentHealth > 0)
         {

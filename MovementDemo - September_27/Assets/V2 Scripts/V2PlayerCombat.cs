@@ -233,12 +233,14 @@ public class V2PlayerCombat : MonoBehaviour
             anim.SetBool("isBlocking", true);
             block = true;
             moveScript.DisableMovement();
+            stats.dmgRed += 0.2f;
         }
         else
         {
             anim.SetBool("isBlocking", false);
             block = false;
             moveScript.EnableMovement();
+            stats.dmgRed -= 0.2f;
         }
         
     }

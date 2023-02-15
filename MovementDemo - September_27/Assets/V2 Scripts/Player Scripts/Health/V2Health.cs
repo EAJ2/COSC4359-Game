@@ -50,8 +50,9 @@ public class V2Health : MonoBehaviour
 
     public void TakeDmg(float dmg)
     {
-        CurrentHealth = Mathf.Clamp(CurrentHealth - dmg, 0, startingHealth);
-
+        CurrentHealth -= dmg - (dmg * stats.dmgRed);
+        Die();
+        /*
         if (CurrentHealth > 0)
         {
 
@@ -64,6 +65,7 @@ public class V2Health : MonoBehaviour
                 bDead = true;
             }
         }
+        */
     }
 
     public void AddHealth(float value)
