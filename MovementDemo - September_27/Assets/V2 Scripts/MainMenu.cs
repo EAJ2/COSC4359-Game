@@ -10,7 +10,14 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject NoSaveGameCanvas;
     [SerializeField] private GameObject SaveGameCanvas;
     [SerializeField] private GameObject DeleteSaveConfirmationCanvas;
-    [SerializeField] private GameObject ClassSelectedCanvas;
+    [SerializeField] public GameObject ClassSelectedCanvas;
+
+    [SerializeField] public GameObject MageSelectedCanvas;
+    [SerializeField] public GameObject KnightSelectedCanvas;
+    [SerializeField] public GameObject RangerSelectedCanvas;
+    [SerializeField] public GameObject VagabondSelectedCanvas;
+
+
 
     [SerializeField] Player player;
 
@@ -37,6 +44,7 @@ public class MainMenu : MonoBehaviour
         DeleteSaveConfirmationCanvas.SetActive(false);
         ClassSelectedCanvas.SetActive(false);
         stats = GetComponent<Stats>();
+
 
         if(player != null)
         {
@@ -190,5 +198,56 @@ public class MainMenu : MonoBehaviour
     public void SetClassName(string selectedClass)
     {
         className = selectedClass;
+    }
+
+    public void SetSelectedCanvas(GameObject selectedClass)
+    {
+        ClassSelectedCanvas = selectedClass;
+    }
+
+    public void SetText(Text vit, Text str, Text fort, Text end, Text wis, Text agil, Text dex)
+    {
+        vitText = vit;
+        strText = str;
+        fortText = fort;
+        endText = end;
+        wisText = wis;
+        agilText = agil;
+        dexText = dex;
+    }
+
+    public void SetVitalityText(Text vit)
+    {
+        vitText = vit;
+    }
+
+    public void SetStrengthText(Text text)
+    {
+        strText = text;
+    }
+
+    public void SetWisdomText(Text text)
+    {
+        wisText = text;
+    }
+
+    public void SetFortitudeText(Text text)
+    {
+        fortText = text;
+    }
+
+    public void SetEnduranceText(Text text)
+    {
+        endText = text;
+    }
+
+    public void SetAgilityText(Text text)
+    {
+        agilText = text;
+    }
+
+    public void SetDexterityText(Text text)
+    {
+        dexText = text;
     }
 }
