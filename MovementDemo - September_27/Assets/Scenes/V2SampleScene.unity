@@ -6411,8 +6411,8 @@ MonoBehaviour:
   ExtraJumps: 1
   bCanDash: 1
   DashingPower: 20
-  DashingTimer: 2
-  DashingCooldown: 5
+  DashingTimer: 0.1
+  DashingCooldown: 1
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
