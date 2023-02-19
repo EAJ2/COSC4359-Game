@@ -22,6 +22,7 @@ public class V2Health : MonoBehaviour
     public PlayerHealthBar healthBar;
     public V2PlayerCombat comb;
     public V2PlayerMovement mov;
+    public RangerCombat rc;
 
     void Update()
     {
@@ -112,6 +113,7 @@ public class V2Health : MonoBehaviour
             this.enabled = false;
             mov.enabled = false;
             comb.enabled = false;
+            rc.enabled = false;
         }
     }
 }

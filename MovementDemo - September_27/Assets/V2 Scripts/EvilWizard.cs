@@ -23,6 +23,7 @@ public class EvilWizard : MonoBehaviour
     public Animator anim;
     public Animator playerAnim;
 
+
     [SerializeField] public GameObject Player;
     [SerializeField] public V2Health hp;
     [SerializeField] public LevelUpBar xpBar;
@@ -44,6 +45,10 @@ public class EvilWizard : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        Player = GameObject.FindGameObjectWithTag("Player");
+        hp = Player.GetComponent<V2Health>();
+        playerAnim = Player.GetComponent<Animator>();
+        playerHealth = Player.transform.GetChild(0).GetChild(0).GetComponent<PlayerHealthBar>();
     }
 
     // Update is called once per frame
@@ -103,7 +108,15 @@ public class EvilWizard : MonoBehaviour
         if (hp.CurrentHealth > 0)
         {
             hitAudio.Play();
-            playerAnim.Play("Player_Vagabond_Hit", -1, 0f);
+            if (Player.name == "Player")
+            {
+                playerAnim.Play("Player_Vagabond_Hit", -1, 0f);
+            }
+
+            else if(Player.name == "Ranger")
+            {
+                playerAnim.Play("Ranger_Hurt", -1, 0f);
+            }
         }
         dmgTextMesh.text = dmg.ToString();
         Instantiate(DMG_Text, new Vector3(player.position.x, 1, player.position.z), Quaternion.identity);

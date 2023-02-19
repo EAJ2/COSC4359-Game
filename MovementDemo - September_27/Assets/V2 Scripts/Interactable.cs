@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class Interactable : MonoBehaviour
 {
+    public GameObject Character;
+
     public Transform Player;
     public GameObject interactText;
     public Stats stats;
@@ -12,6 +14,13 @@ public class Interactable : MonoBehaviour
 
     public bool isGoldChest;
     public bool isOpen = false;
+
+    private void Start()
+    {
+        Character = GameObject.FindGameObjectWithTag("Player");
+        Player = Character.GetComponent<Transform>();
+        stats = Character.GetComponent<Stats>();
+    }
 
     private void Update()
     {

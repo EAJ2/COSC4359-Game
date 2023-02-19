@@ -16,6 +16,11 @@ public class CameraController : MonoBehaviour
     private bool bFollowPlayerHeight = true;
 
 
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
     private void Update()
     {   //room camera
         //transform.position = Vector3.SmoothDamp(transform.position, new Vector3(currentPosX, transform.position.y, transform.position.z), ref velocity, speed * Time.deltaTime);
