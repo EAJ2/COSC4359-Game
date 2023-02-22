@@ -5,45 +5,84 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public static bool GameIsPaused = false;
-    public GameObject pauseMenuUI;
+    private bool bPaused = false;
+    public GameObject MenuCanvas;
+    public GameObject SaveCanvas;
+    public Player player;
+
+    private void Awake()
+    {
+        MenuCanvas.SetActive(false);
+        SaveCanvas.SetActive(false);
+    }
 
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (GameIsPaused)
+            if(bPaused)
             {
-                Resume();
+                HideAll();
             }
             else
             {
-                Pause();
+                ShowMenuCanvas();
             }
         }
     }
-    public void Resume()
+
+    public void ShowMenuCanvas()
     {
-        pauseMenuUI.SetActive(false);
-        Time.timeScale = 1f;
-        GameIsPaused = false;
-    }
-    void Pause()
-    {
-        pauseMenuUI.SetActive(true);
+        MenuCanvas.SetActive(true);
+        bPaused = true;
         Time.timeScale = 0f;
-        GameIsPaused = true;
+    }
+
+    public void HideMenuCanvas()
+    {
+        MenuCanvas.SetActive(false);
+    }
+
+    public void ShowSaveCanvas()
+    {
+        SaveCanvas.SetActive(true);
+    }
+
+    public void HideSaveCanvas()
+    {
+        SaveCanvas.SetActive(false);
+    }
+
+    public void SaveButton()
+    {
+        HideMenuCanvas();
+        ShowSaveCanvas();
+    }
+
+    public void YesButton()
+    {
+        HideSaveCanvas();
+        ShowMenuCanvas();
+        player.SavePlayer();
+    }
+
+    public void NoButton()
+    {
+        HideSaveCanvas();
+        ShowMenuCanvas();
+    }
+
+    public void HideAll()
+    {
+        HideMenuCanvas();
+        HideSaveCanvas();
+        bPaused = false;
+        Time.timeScale = 1f;
     }
 
     public void LoadMenu()
     {
-        SceneManager.LoadScene("MainMenuV2");
-        Debug.Log("Going to Main Menu");
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
+        SceneManager.LoadScene("V2MainMenu");
     }
 }
