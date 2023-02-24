@@ -49,7 +49,7 @@ public class RangerCombat : MonoBehaviour
 
             if (Input.GetMouseButtonDown(1))
             {
-                Shoot();
+                StartCoroutine(Wait());
                 nextAttackTime = Time.time + 1f / attackRate;
             }
         }
@@ -85,7 +85,7 @@ public class RangerCombat : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            if (enemy.name == "Pyromaniac_Enemy")
+            if (enemy.tag == "PyromaniacEnemy")
             {
                 hitAudio.Play();
                 if (critCounter <= stats.critRange)
@@ -102,7 +102,7 @@ public class RangerCombat : MonoBehaviour
                 }
             }
 
-            else if (enemy.name == "Goblin")
+            else if (enemy.tag == "GoblinEnemy")
             {
                 hitAudio.Play();
                 if (critCounter <= stats.critRange)
@@ -124,7 +124,7 @@ public class RangerCombat : MonoBehaviour
     void Shoot()
     {
         anim.SetTrigger("Shoot");
-        GameObject projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+        GameObject projectile = Instantiate(projectilePrefab, new Vector3(transform.position.x, transform.position.y - 1.6f, transform.position.z), Quaternion.identity);
     }
     void OnDrawGizmosSelected()
     {
@@ -164,5 +164,14 @@ public class RangerCombat : MonoBehaviour
             return false;
         }
     }
+
+    IEnumerator Wait()
+    {
+        anim.SetTrigger("Shoot");
+        yield return new WaitForSeconds(0.45f);
+        GameObject projectile = Instantiate(projectilePrefab, new Vector3(transform.position.x, transform.position.y - 1.75f, transform.position.z), Quaternion.identity);
+    }
+
+
 
 }

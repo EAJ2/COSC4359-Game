@@ -10,7 +10,6 @@ public class LevelUpBar : MonoBehaviour
     public void SetMaxXP(float xp)
     {
         slider.maxValue = xp;
-        slider.value = xp;
     }
 
     public void SetXP(float xp)

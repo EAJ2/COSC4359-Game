@@ -5,7 +5,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float speed;
     private float currentPosX;
     private Vector3 velocity = Vector3.zero;
-    [SerializeField] private float YAxisOffset = -.2f;
+    [SerializeField] private float YAxisOffset = .2f;
     private bool bFollowPlayer = true;
     private bool bFollowPoint = false;
     private bool bInstantPanToPoint = false;
@@ -22,9 +22,13 @@ public class CameraController : MonoBehaviour
     }
 
     private void Update()
-    {   //room camera
+    {
+        transform.position = player.transform.position + new Vector3(0, 1 + YAxisOffset  , -1);
+
+        //room camera
         //transform.position = Vector3.SmoothDamp(transform.position, new Vector3(currentPosX, transform.position.y, transform.position.z), ref velocity, speed * Time.deltaTime);
 
+        /*
         if(bFollowPlayer)
         {
             //follow player
@@ -62,6 +66,7 @@ public class CameraController : MonoBehaviour
                 transform.position = Vector3.MoveTowards(transform.position, new Vector3(pointPosition.x, pointPosition.y, transform.position.z), speed * Time.deltaTime);
             }
         }
+        */
     }
 
     public void MoveToNewRoom(Transform _newRoom)

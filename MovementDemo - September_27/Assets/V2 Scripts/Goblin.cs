@@ -43,6 +43,12 @@ public class Goblin : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
+        Player = GameObject.FindGameObjectWithTag("Player");
+        player = Player.GetComponent<Transform>();
+        playerAnim = Player.GetComponent<Animator>();
+        hp = Player.GetComponent<V2Health>();
+        xpBar = GameObject.FindGameObjectWithTag("XPBAR").GetComponent<LevelUpBar>();
+        playerHealth = GameObject.FindGameObjectWithTag("HEALTHBAR").GetComponent<PlayerHealthBar>();
     }
 
     // Update is called once per frame
@@ -105,7 +111,7 @@ public class Goblin : MonoBehaviour
             playerAnim.Play("Player_Vagabond_Hit", -1, 0f);
         }
         dmgTextMesh.text = dmg.ToString();
-        Instantiate(DMG_Text, new Vector3(player.position.x, 1, player.position.z), Quaternion.identity);
+        Instantiate(DMG_Text, new Vector3(player.position.x, player.position.y + 3, player.position.z), Quaternion.identity);
     }
 
     public void TakeDMG(int dmg)

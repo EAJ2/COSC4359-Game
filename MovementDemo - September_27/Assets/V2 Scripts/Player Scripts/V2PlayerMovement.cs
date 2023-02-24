@@ -176,8 +176,10 @@ public class V2PlayerMovement : MonoBehaviour
         }
 
         //Dashing Code
-        if (Input.GetKey(KeyCode.Q) && bCanDash)
+        if (Input.GetKey(KeyCode.Q) && bCanDash && IsGrounded()) 
         {
+            anim.SetTrigger("Dash");
+            stamina -= 10;
             if (rb.velocity.y == 0)
             {
                 bIsFalling = false;
@@ -260,11 +262,11 @@ public class V2PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        if(bCanMove)
+        if (bCanMove)
         {
-            if(bCanJump && bCanFall)
+            if (bCanJump && bCanFall)
             {
-                if(CoyoteCounter <= 0 && JumpPower <= 0)
+                if (CoyoteCounter <= 0 && JumpPower <= 0)
                 {
                     return;
                 }
@@ -272,23 +274,24 @@ public class V2PlayerMovement : MonoBehaviour
                 if (IsGrounded())
                 {
                     SetGravityScale(GravityScale);
-                    rb.velocity = new Vector2(rb.velocity.x, JumpPower);
+                    rb.velocity = new Vector2(rb.velocity.x, JumpPower * 0.66f);
+                    //anim.SetBool("isGrounded", true);
                     //anim.SetTrigger("Jump");
                 }
                 else
                 {
-                    if(CoyoteCounter > 0)
+                    if (CoyoteCounter > 0)
                     {
                         SetGravityScale(GravityScale);
-                        rb.velocity = new Vector2(rb.velocity.x, JumpPower);
+                        rb.velocity = new Vector2(rb.velocity.x, JumpPower * 0.66f);
                         //anim.SetTrigger("Jump");
                     }
                     else
                     {
-                        if(JumpCounter > 0 && bCanDoubleJump)
+                        if (JumpCounter > 0 && bCanDoubleJump)
                         {
                             SetGravityScale(GravityScale);
-                            rb.velocity = new Vector2(rb.velocity.x, JumpPower);
+                            rb.velocity = new Vector2(rb.velocity.x, JumpPower * 0.66f);
                             //anim.SetTrigger("DoubleJump");
                             JumpCounter--;
                         }
@@ -353,6 +356,7 @@ public class V2PlayerMovement : MonoBehaviour
     {
         
         RaycastHit2D raycastHit = Physics2D.CapsuleCast(cc.bounds.center, cc.bounds.size, CapsuleDirection2D.Vertical, 0.0f, Vector2.down, 0.1f, groundLayer);
+        //anim.SetBool("isGrounded", true);
         return raycastHit.collider != null;
     }
 
@@ -361,6 +365,7 @@ public class V2PlayerMovement : MonoBehaviour
         if (rb.velocity.y < -0.1f)
         {
             SetGravityScale(FallGravityScale);
+            //anim.SetBool("isGrounded", false);
             bIsFalling = true;
             return true;
         }
@@ -459,6 +464,7 @@ public class V2PlayerMovement : MonoBehaviour
     {
         SetGravityScale(0f);
         bCanFall = false;
+        //anim.SetBool("isGrounded", true);
     }
 
     public bool CanJump()

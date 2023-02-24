@@ -6,12 +6,24 @@ public class Projectile : MonoBehaviour
 {
     [SerializeField] private float speed;
     private bool hit;
+    public int direction;
 
     private Animator anim;
     private BoxCollider2D boxCollider;
+    public Transform playerTransform;
 
     private void Awake()
     {
+        playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+
+        if (playerTransform.localScale.x < 0)
+        {
+            speed = -speed; 
+        }
+        else
+        {
+            speed = speed;
+        }
         boxCollider = GetComponent<BoxCollider2D>();
     }
 

@@ -46,9 +46,11 @@ public class EvilWizard : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         Player = GameObject.FindGameObjectWithTag("Player");
+        player = Player.GetComponent<Transform>();
         hp = Player.GetComponent<V2Health>();
         playerAnim = Player.GetComponent<Animator>();
-        playerHealth = Player.transform.GetChild(0).GetChild(0).GetComponent<PlayerHealthBar>();
+        xpBar = GameObject.FindGameObjectWithTag("XPBAR").GetComponent<LevelUpBar>();
+        playerHealth = GameObject.FindGameObjectWithTag("HEALTHBAR").GetComponent<PlayerHealthBar>();
     }
 
     // Update is called once per frame
@@ -119,7 +121,7 @@ public class EvilWizard : MonoBehaviour
             }
         }
         dmgTextMesh.text = dmg.ToString();
-        Instantiate(DMG_Text, new Vector3(player.position.x, 1, player.position.z), Quaternion.identity);
+        Instantiate(DMG_Text, new Vector3(player.position.x, player.position.y + 3, player.position.z), Quaternion.identity);
     }
 
     public void TakeDMG(int dmg)

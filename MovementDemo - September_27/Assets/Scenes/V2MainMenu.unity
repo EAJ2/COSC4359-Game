@@ -2551,6 +2551,17 @@ MonoBehaviour:
   maxXP: 0
   levelBar: {fileID: 0}
   levelUpIcon: {fileID: 0}
+  statsCanvas: {fileID: 0}
+  vitText: {fileID: 0}
+  strText: {fileID: 0}
+  endText: {fileID: 0}
+  fortText: {fileID: 0}
+  wisText: {fileID: 0}
+  dexText: {fileID: 0}
+  agilText: {fileID: 0}
+  pointsText: {fileID: 0}
+  levelText: {fileID: 0}
+  classText: {fileID: 0}
   gold: 0
   mana: 0
   MAXmana: 0
@@ -18583,6 +18594,10 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6228589432003566572, guid: 18775a75b2f34a340aa8c87cced99342, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6228589432868885850, guid: 18775a75b2f34a340aa8c87cced99342, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -18590,6 +18605,10 @@ PrefabInstance:
     - target: {fileID: 6228589432868885850, guid: 18775a75b2f34a340aa8c87cced99342, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228589432902436149, guid: 18775a75b2f34a340aa8c87cced99342, type: 3}
+      propertyPath: m_TagString
+      value: XPBAR
       objectReference: {fileID: 0}
     - target: {fileID: 6228589432929132034, guid: 18775a75b2f34a340aa8c87cced99342, type: 3}
       propertyPath: m_AnchorMax.x
@@ -18686,6 +18705,10 @@ PrefabInstance:
     - target: {fileID: 6228589433088005751, guid: 18775a75b2f34a340aa8c87cced99342, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228589433240241722, guid: 18775a75b2f34a340aa8c87cced99342, type: 3}
+      propertyPath: m_TagString
+      value: HEALTHBAR
       objectReference: {fileID: 0}
     - target: {fileID: 6228589433285906978, guid: 18775a75b2f34a340aa8c87cced99342, type: 3}
       propertyPath: m_AnchorMax.x

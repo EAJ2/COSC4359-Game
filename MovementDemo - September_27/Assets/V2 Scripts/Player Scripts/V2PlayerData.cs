@@ -4,7 +4,7 @@ using UnityEngine;
 
 [System.Serializable]
 
-public class V2PlayerData
+public class V2PlayerData 
 {
     public string ClassName;
 

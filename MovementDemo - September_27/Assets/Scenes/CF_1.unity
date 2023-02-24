@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 13693976}
   m_Layer: 5
   m_Name: LevelUpBar
-  m_TagString: Untagged
+  m_TagString: XPBAR
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12604,7 +12604,7 @@ GameObject:
   - component: {fileID: 644089471}
   m_Layer: 5
   m_Name: HealthBar
-  m_TagString: Untagged
+  m_TagString: HEALTHBAR
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14772,7 +14772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  YAxisOffset: -0.2
+  YAxisOffset: 1.2
   player: {fileID: 791818780}
 --- !u!81 &1930961830
 AudioListener:

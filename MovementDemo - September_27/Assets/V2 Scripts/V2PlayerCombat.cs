@@ -88,37 +88,37 @@ public class V2PlayerCombat : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            if (enemy.name == "Pyromaniac_Enemy")
+            if (enemy.tag == "PyromaniacEnemy")
             {
                 hitAudio.Play();
                 if (critCounter <= stats.critRange)
                 {
                     enemy.GetComponent<EvilWizard>().TakeDMG(stats.critDMG);
                     critTextMesh.text = stats.critDMG.ToString();;
-                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, 1, enemy.transform.position.z), Quaternion.identity);
+                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
                 }
                 else
                 {
                     enemy.GetComponent<EvilWizard>().TakeDMG(stats.dmg);
                     dmgTextMesh.text = stats.dmg.ToString();
-                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, 1, enemy.transform.position.z), Quaternion.identity);
+                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
                 }
             }
 
-            else if (enemy.name == "Goblin")
+            else if (enemy.tag == "GoblinEnemy")
             {
                 hitAudio.Play();
                 if (critCounter <= stats.critRange)
                 {
                     enemy.GetComponent<Goblin>().TakeDMG(stats.critDMG);
                     critTextMesh.text = stats.critDMG.ToString(); 
-                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, 1, enemy.transform.position.z), Quaternion.identity);
+                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
                 }
                 else
                 {
                     enemy.GetComponent<Goblin>().TakeDMG(stats.dmg);
                     dmgTextMesh.text = stats.dmg.ToString();
-                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, 1, enemy.transform.position.z), Quaternion.identity);
+                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
                 }
             }
         }
@@ -136,36 +136,36 @@ public class V2PlayerCombat : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            if (enemy.name == "Pyromaniac_Enemy")
+            if (enemy.tag == "PyromaniacEnemy")
             {
                 hitAudio.Play();
                 if (critCounter <= stats.critRange)
                 {
                     enemy.GetComponent<EvilWizard>().TakeDMG(stats.critDMG);
                     critTextMesh.text = stats.critDMG.ToString(); ;
-                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, 1, enemy.transform.position.z), Quaternion.identity);
+                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
                 }
                 else
                 {
                     enemy.GetComponent<EvilWizard>().TakeDMG(stats.dmg);
                     dmgTextMesh.text = stats.dmg.ToString();
-                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, 1, enemy.transform.position.z), Quaternion.identity);
+                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
                 }
             }
-            else if (enemy.name == "Goblin")
+            else if (enemy.tag == "GoblinEnemy")
             {
                 hitAudio.Play();
                 if (critCounter <= stats.critRange)
                 {
                     enemy.GetComponent<Goblin>().TakeDMG(stats.critDMG);
                     critTextMesh.text = stats.critDMG.ToString();
-                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, 1, enemy.transform.position.z), Quaternion.identity);
+                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
                 }
                 else
                 {
                     enemy.GetComponent<Goblin>().TakeDMG(stats.dmg);
                     dmgTextMesh.text = stats.dmg.ToString();
-                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, 1, enemy.transform.position.z), Quaternion.identity);
+                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
                 }
             }
         }
@@ -183,36 +183,36 @@ public class V2PlayerCombat : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            if (enemy.name == "Pyromaniac_Enemy")
+            if (enemy.tag == "PyromaniacEnemy")
             {
                 hitAudio.Play();
                 if (critCounter <= stats.critRange)
                 {
                     enemy.GetComponent<EvilWizard>().TakeDMG(stats.heavyCritDMG);
                     critTextMesh.text = stats.heavyCritDMG.ToString(); ;
-                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, 1, enemy.transform.position.z), Quaternion.identity);
+                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
                 }
                 else
                 {
                     enemy.GetComponent<EvilWizard>().TakeDMG(stats.heavyDMG);
                     dmgTextMesh.text = stats.heavyDMG.ToString();
-                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, 1, enemy.transform.position.z), Quaternion.identity);
+                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
                 }
             }
-            else if (enemy.name == "Goblin")
+            else if (enemy.tag == "GoblinEnemy")
             {
                 hitAudio.Play();
                 if (critCounter <= stats.critRange)
                 {
                     enemy.GetComponent<Goblin>().TakeDMG(stats.critDMG);
                     critTextMesh.text = stats.critDMG.ToString();
-                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, 1, enemy.transform.position.z), Quaternion.identity);
+                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
                 }
                 else
                 {
                     enemy.GetComponent<Goblin>().TakeDMG(stats.dmg);
                     dmgTextMesh.text = stats.dmg.ToString();
-                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, 1, enemy.transform.position.z), Quaternion.identity);
+                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
                 }
             }
         }

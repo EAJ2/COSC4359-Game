@@ -16,6 +16,11 @@ TagManager:
   - HookTarget
   - DrillFlyEnemy
   - HorseEnemy
+  - Enemy
+  - PyromaniacEnemy
+  - GoblinEnemy
+  - XPBAR
+  - HEALTHBAR
   layers:
   - Default
   - TransparentFX
