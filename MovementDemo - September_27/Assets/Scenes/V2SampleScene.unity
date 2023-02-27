@@ -3021,7 +3021,7 @@ GameObject:
   - component: {fileID: 837050085}
   m_Layer: 5
   m_Name: LevelUpBar
-  m_TagString: Untagged
+  m_TagString: XPBAR
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9960,7 +9960,7 @@ GameObject:
   - component: {fileID: 1525535680}
   m_Layer: 5
   m_Name: LevelUpBar
-  m_TagString: Untagged
+  m_TagString: XPBAR
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
