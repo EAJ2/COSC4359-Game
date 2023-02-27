@@ -59,6 +59,11 @@ public class RangerCombat : MonoBehaviour
             Block();
         }
 
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Special1();
+        }
+
         if (AttackIsPlaying() == true)
         {
             moveScript.enabled = false;
@@ -151,6 +156,12 @@ public class RangerCombat : MonoBehaviour
             stats.dmgRed -= 0.2f;
         }
 
+    }
+
+    void Special1()
+    {
+        anim.SetTrigger("Special 1");
+        stats.mana -= 5;
     }
 
     bool AttackIsPlaying()

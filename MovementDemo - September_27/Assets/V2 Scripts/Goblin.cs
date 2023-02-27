@@ -107,6 +107,7 @@ public class Goblin : MonoBehaviour
         playerHealth.SetHealth(hp.CurrentHealth);
         if (hp.CurrentHealth > 0)
         {
+            hitAudio.pitch = Random.RandomRange(0.7f, 1.2f);
             hitAudio.Play();
             playerAnim.Play("Player_Vagabond_Hit", -1, 0f);
         }

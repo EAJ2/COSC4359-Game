@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
         cc = GetComponent<CapsuleCollider2D>();
         pm = GetComponent<V2PlayerMovement>();
         health = GetComponent<V2Health>();
+        stats = GetComponent<Stats>();
 
         LoadPlayer();
     }

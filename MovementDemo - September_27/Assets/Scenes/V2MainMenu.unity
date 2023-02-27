@@ -2456,7 +2456,6 @@ GameObject:
   m_Component:
   - component: {fileID: 215228103}
   - component: {fileID: 215228104}
-  - component: {fileID: 215228105}
   m_Layer: 0
   m_Name: Game Manager
   m_TagString: Untagged
@@ -2510,61 +2509,6 @@ MonoBehaviour:
   dexText: {fileID: 163424011}
   agilText: {fileID: 1857317980}
   className: 
---- !u!114 &215228105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 215228102}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d37f8a3b6c02534a85a4bffdafd8d8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Class: 
-  level: 0
-  vit: 0
-  vitMult: 0
-  str: 0
-  strMult: 0
-  end: 0
-  endMult: 0
-  wis: 0
-  wisMult: 0
-  fort: 0
-  fortMult: 0
-  dex: 0
-  dexMult: 0
-  agil: 0
-  agilMult: 0
-  dmg: 0
-  critDMG: 0
-  critMult: 0
-  critRange: 10
-  heavyDMG: 0
-  heavyCritDMG: 0
-  dmgRed: 0
-  points: 0
-  canLevel: 0
-  XP: 0
-  maxXP: 0
-  levelBar: {fileID: 0}
-  levelUpIcon: {fileID: 0}
-  statsCanvas: {fileID: 0}
-  vitText: {fileID: 0}
-  strText: {fileID: 0}
-  endText: {fileID: 0}
-  fortText: {fileID: 0}
-  wisText: {fileID: 0}
-  dexText: {fileID: 0}
-  agilText: {fileID: 0}
-  pointsText: {fileID: 0}
-  levelText: {fileID: 0}
-  classText: {fileID: 0}
-  gold: 0
-  mana: 0
-  MAXmana: 0
 --- !u!1 &225975277
 GameObject:
   m_ObjectHideFlags: 0

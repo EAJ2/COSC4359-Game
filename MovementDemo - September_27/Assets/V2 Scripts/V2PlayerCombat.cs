@@ -88,6 +88,7 @@ public class V2PlayerCombat : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnemies)
         {
+            hitAudio.pitch = Random.Range(0.7f, 1.2f);
             if (enemy.tag == "PyromaniacEnemy")
             {
                 hitAudio.Play();
@@ -136,6 +137,7 @@ public class V2PlayerCombat : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnemies)
         {
+            hitAudio.pitch = Random.Range(0.7f, 1.2f);
             if (enemy.tag == "PyromaniacEnemy")
             {
                 hitAudio.Play();
@@ -183,6 +185,7 @@ public class V2PlayerCombat : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnemies)
         {
+            hitAudio.pitch = Random.Range(0.7f, 0.9f);
             if (enemy.tag == "PyromaniacEnemy")
             {
                 hitAudio.Play();

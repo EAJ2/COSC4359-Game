@@ -96,10 +96,15 @@ public class EvilWizard : MonoBehaviour
                 Attack();
             }
         }
+        
+        if (rb.velocity.x == 0)
+        {
+            anim.SetBool("Idle", true);
+        }
         else
         {
+            anim.SetBool("Idle", false);
         }
-        
     }
 
     public void Attack()

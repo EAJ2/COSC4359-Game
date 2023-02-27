@@ -13108,19 +13108,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Class: 
   level: 1
-  vit: 20
+  vit: 0
   vitMult: 0
   str: 0
   strMult: 0
-  end: 20
+  end: 0
   endMult: 0
-  wis: 20
+  wis: 0
   wisMult: 0
-  fort: 20
+  fort: 0
   fortMult: 0
-  dex: 20
+  dex: 0
   dexMult: 0
-  agil: 20
+  agil: 0
   agilMult: 0
   dmg: 2
   critDMG: 0
@@ -13130,11 +13130,44 @@ MonoBehaviour:
   heavyCritDMG: 0
   dmgRed: 0
   points: 0
+  pointsSpent: 0
+  pointsSpent_dex: 0
+  pointsSpent_str: 0
+  pointsSpent_fort: 0
+  pointsSpent_wis: 0
+  pointsSpent_end: 0
+  pointsSpent_vit: 0
+  pointsSpent_agil: 0
   canLevel: 0
   XP: 0
   maxXP: 200
   levelBar: {fileID: 13693976}
   levelUpIcon: {fileID: 1548644605}
+  statsCanvas: {fileID: 0}
+  vitText: {fileID: 0}
+  strText: {fileID: 0}
+  endText: {fileID: 0}
+  fortText: {fileID: 0}
+  wisText: {fileID: 0}
+  dexText: {fileID: 0}
+  agilText: {fileID: 0}
+  pointsText: {fileID: 0}
+  levelText: {fileID: 0}
+  classText: {fileID: 0}
+  strArrowDown: {fileID: 0}
+  endArrowDown: {fileID: 0}
+  fortArrowDown: {fileID: 0}
+  vitArrowDown: {fileID: 0}
+  dexArrowDown: {fileID: 0}
+  agilArrowDown: {fileID: 0}
+  wisArrowDown: {fileID: 0}
+  strArrowUp: {fileID: 0}
+  vitArrowUp: {fileID: 0}
+  endArrowUp: {fileID: 0}
+  dexArrowUp: {fileID: 0}
+  agilArrowUp: {fileID: 0}
+  fortArrowUp: {fileID: 0}
+  wisArrowUp: {fileID: 0}
   gold: 0
   mana: 0
   MAXmana: 0

@@ -43,7 +43,7 @@ public class MainMenu : MonoBehaviour
         SaveGameCanvas.SetActive(false);
         DeleteSaveConfirmationCanvas.SetActive(false);
         ClassSelectedCanvas.SetActive(false);
-        stats = GetComponent<Stats>();
+        stats = player.GetComponent<Stats>();
 
 
         if(player != null)

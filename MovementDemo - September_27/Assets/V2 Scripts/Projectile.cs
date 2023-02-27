@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Projectile : MonoBehaviour
 {
@@ -11,14 +12,25 @@ public class Projectile : MonoBehaviour
     private Animator anim;
     private BoxCollider2D boxCollider;
     public Transform playerTransform;
+    public GameObject player;
+
+    public Stats stats;
+
+    public GameObject DMG_Text;
+    public TextMesh dmgTextMesh;
+
+    public AudioSource hitAudio;
 
     private void Awake()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        stats = player.GetComponent<Stats>();
 
         if (playerTransform.localScale.x < 0)
         {
-            speed = -speed; 
+            speed = -speed;
+            this.GetComponent<SpriteRenderer>().flipX = true;
         }
         else
         {
@@ -33,5 +45,26 @@ public class Projectile : MonoBehaviour
         if (hit) return;
         float movementSpeed = speed * Time.deltaTime;
         transform.Translate(movementSpeed, 0, 0);
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log(collision.gameObject.tag);
+        if (collision.gameObject.tag == "PyromaniacEnemy")
+        {
+            collision.gameObject.GetComponent<EvilWizard>().TakeDMG(stats.dmg);
+            hitAudio.Play();
+            Destroy(this.gameObject);
+            dmgTextMesh.text = stats.dmg.ToString();
+            Instantiate(DMG_Text, new Vector3(collision.transform.position.x, collision.transform.position.y + 3, collision.transform.position.z), Quaternion.identity);
+        }
+        else if (collision.gameObject.tag == "GoblinEnemy")
+        {
+            collision.gameObject.GetComponent<Goblin>().TakeDMG(stats.dmg);
+            hitAudio.Play();
+            Destroy(this.gameObject);
+            dmgTextMesh.text = stats.dmg.ToString();
+            Instantiate(DMG_Text, new Vector3(collision.transform.position.x, collision.transform.position.y + 3, collision.transform.position.z), Quaternion.identity);
+        }
     }
 }

@@ -175,6 +175,15 @@ public class V2PlayerMovement : MonoBehaviour
             }
         }
 
+        if (rb.velocity.y != 0)
+        {
+            anim.SetBool("isGrounded", false);
+        }
+        else
+        {
+            anim.SetBool("isGrounded", true);
+        }
+
         //Dashing Code
         if (Input.GetKey(KeyCode.Q) && bCanDash && IsGrounded()) 
         {
