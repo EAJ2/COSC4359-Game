@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     private Stats stats;
 
     private bool bIsThereSave;
+    private bool bTutorialDone = false;
 
     private void Awake()
     {
@@ -38,12 +39,14 @@ public class Player : MonoBehaviour
         {
             Debug.Log("There is no Save for the player, Player.cs");
             bIsThereSave = false;
+            bTutorialDone = false;
             return;
         }
         else
         {
             Debug.Log("There is a Save for the player, Player.cs");
             bIsThereSave = true;
+            bTutorialDone = data.bTutorialDone;
 
             stats.SetVitality(data.VitalityStat);
             stats.SetStrength(data.StrengthStat);
@@ -70,5 +73,15 @@ public class Player : MonoBehaviour
     public bool GetIsThereSave()
     {
         return bIsThereSave;
+    }
+
+    public bool GetIsTutorialDone()
+    {
+        return bTutorialDone;
+    }
+
+    public void SetTutorialDone()
+    {
+        bTutorialDone = true;
     }
 }

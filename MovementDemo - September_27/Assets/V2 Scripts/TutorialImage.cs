@@ -7,30 +7,38 @@ public class TutorialImage : MonoBehaviour
     [SerializeField] private GameObject Image;
     [SerializeField] private GameObject StartCollider;
     [SerializeField] private GameObject EndCollider;
-    private bool bEntered = false;
+    private bool bStartEntered = false;
+    private bool bEndEntered = false;
+
+    [Header("Tutorial Scene")]
+    [SerializeField] private bool bTutorialScene;
+    [SerializeField] private TutorialManager TM;
 
 
     private void Awake()
     {
         Image.SetActive(false);
-        transform.position = StartCollider.transform.position;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Update()
     {
-        if(collision.tag == "Player")
+        if (StartCollider.GetComponent<NotifyTriggerCollision>().IsTriggered() == true && bStartEntered == false)
         {
-            if(bEntered == false)
+            bStartEntered = true;
+            StartCollider.SetActive(false);
+            Image.SetActive(true);
+        }
+        if(EndCollider.GetComponent<NotifyTriggerCollision>().IsTriggered() == true && bEndEntered == false)
+        {
+            bEndEntered = true;
+            EndCollider.SetActive(false);
+            Image.SetActive(false);
+
+            if (bTutorialScene == true)
             {
-                Image.SetActive(true);
-                transform.position = EndCollider.transform.position;
-                bEntered = true;
+                TM.IncrTutorialsDone();
             }
-            else
-            {
-                Image.SetActive(false);
-                gameObject.SetActive(false);
-            }
+            gameObject.SetActive(false);
         }
     }
 }

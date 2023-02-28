@@ -24,6 +24,8 @@ public class V2PlayerData
     public bool bDash;
     public bool bJump;
 
+    public bool bTutorialDone;
+
     public V2PlayerData(Player player)
     {
         ClassName = player.GetComponent<Stats>().GetClass();
@@ -39,5 +41,7 @@ public class V2PlayerData
 
         bDash = player.GetComponent<V2PlayerMovement>().CanDash();
         bJump = player.GetComponent<V2PlayerMovement>().CanJump();
+
+        bTutorialDone = player.GetIsTutorialDone();
     }
 }
