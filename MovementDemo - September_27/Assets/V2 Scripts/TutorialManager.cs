@@ -10,6 +10,7 @@ public class TutorialManager : MonoBehaviour
     public NotifyTriggerCollision NTC;
     [SerializeField] private Player player;
     public GameObject ConfirmTutorialEndCanvas;
+    public GameObject StartTutorialCanvas;
 
     private int TutorialsDone = 0;
 
@@ -19,6 +20,8 @@ public class TutorialManager : MonoBehaviour
     private void Awake()
     {
         ConfirmTutorialEndCanvas.SetActive(false);
+        StartTutorialCanvas.SetActive(true);
+        player.GetComponent<V2PlayerMovement>().DisableMovement();
     }
 
     private void Update()
@@ -37,6 +40,12 @@ public class TutorialManager : MonoBehaviour
         {
             bTutorialsDone = true;
         }
+    }
+
+    public void StartTutorialButton()
+    {
+        StartTutorialCanvas.SetActive(false);
+        player.GetComponent<V2PlayerMovement>().EnableMovement();
     }
 
     //Set active end tutorial canvas when the Final Collider is triggered and all the tutorials are done

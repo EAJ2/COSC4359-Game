@@ -21,7 +21,8 @@ public class MainMenu : MonoBehaviour
 
     [SerializeField] Player player;
 
-     bool bIsThereSave;
+    bool bIsThereSave;
+    bool bTutorialDone;
 
     [SerializeField] private Stats stats;
 
@@ -33,16 +34,22 @@ public class MainMenu : MonoBehaviour
     public Text fortText;
     public Text dexText;
     public Text agilText;
+    public Text ClassName;
 
     public string className;
 
 
     private void Start()
     {
+        MainMenuCanvas.SetActive(true);
         NoSaveGameCanvas.SetActive(false);
         SaveGameCanvas.SetActive(false);
         DeleteSaveConfirmationCanvas.SetActive(false);
         ClassSelectedCanvas.SetActive(false);
+        MageSelectedCanvas.SetActive(false);
+        KnightSelectedCanvas.SetActive(false);
+        RangerSelectedCanvas.SetActive(false);
+        VagabondSelectedCanvas.SetActive(false);
         stats = player.GetComponent<Stats>();
 
 
@@ -51,23 +58,59 @@ public class MainMenu : MonoBehaviour
             if(player.GetIsThereSave() == true)
             {
                 bIsThereSave = true;
+                Debug.Log("Class Name = " + player.GetClassName());
             }
             else
             {
                 bIsThereSave = false;
             }
-
+            if(player.GetIsTutorialDone() == true)
+            {
+                bTutorialDone = true;
+                Debug.Log("The tutorial is Done");
+            }
+            else
+            {
+                bTutorialDone = false;
+                Debug.Log("The tutorial is NOT Done");
+            }
         }
     }
 
     public void PlayButton()
     {
-        if (bIsThereSave == true)
+        if(bTutorialDone == false)
+        {
+            StartTutorial();
+            return;
+        }
+        if (bIsThereSave == true && player.GetClassName() != "")
         {
             DisableMainMenu();
+            LoadSaveClassStats();
             EnableSaveGame();
         }
-        else if (bIsThereSave == false)
+        /*if (bIsThereSave == true && player.GetClassName() == "Mage")
+        {
+            DisableMainMenu();
+            MageSelectedCanvas.SetActive(true);
+        }
+        else if (bIsThereSave == true && player.GetClassName() == "Knight")
+        {
+            DisableMainMenu();
+            KnightSelectedCanvas.SetActive(true);
+        }
+        else if (bIsThereSave == true && player.GetClassName() == "Ranger")
+        {
+            DisableMainMenu();
+            RangerSelectedCanvas.SetActive(true);
+        }
+        else if (bIsThereSave == true && player.GetClassName() == "Vagabond")
+        {
+            DisableMainMenu();
+            VagabondSelectedCanvas.SetActive(true);
+        }*/
+        else if (bIsThereSave == true && player.GetClassName() == "")
         {
             DisableMainMenu();
             EnableNoSaveGame();
@@ -78,11 +121,16 @@ public class MainMenu : MonoBehaviour
     {
         DisableAllButMain();
         EnableMainMenu();
+        Debug.Log("The Class Name is = " + player.GetClassName());
     }
 
     public void BackToClassSelectButton()
     {
         DisableClassSelected();
+        MageSelectedCanvas.SetActive(false);
+        RangerSelectedCanvas.SetActive(false);
+        KnightSelectedCanvas.SetActive(false);
+        VagabondSelectedCanvas.SetActive(false);
         EnableNoSaveGame();
     }
 
@@ -98,6 +146,8 @@ public class MainMenu : MonoBehaviour
         DisableDeleteSaveConfirmation();
         EnableMainMenu();
         bIsThereSave = false;
+        bTutorialDone = false;
+        player.LoadPlayer();
     }
 
     public void DontDeleteButton()
@@ -133,6 +183,7 @@ public class MainMenu : MonoBehaviour
     void EnableSaveGame()
     {
         SaveGameCanvas.SetActive(true);
+        ClassName.text = player.GetClassName();
     }
 
     void DisableSaveGame()
@@ -160,6 +211,46 @@ public class MainMenu : MonoBehaviour
         DeleteSaveConfirmationCanvas.SetActive(false);
     }
 
+    void DisableClassesSelected()
+    {
+        MageSelectedCanvas.SetActive(false);
+        KnightSelectedCanvas.SetActive(false);
+        RangerSelectedCanvas.SetActive(false);
+        VagabondSelectedCanvas.SetActive(false);
+    }
+
+    public void MageSelectedButton()
+    {
+        DisableNoSaveGame();
+        DisableClassesSelected();
+        className = "Mage";
+        MageSelectedCanvas.SetActive(true);
+    }
+
+    public void KnightSelectedButton()
+    {
+        DisableNoSaveGame();
+        DisableClassesSelected();
+        className = "Knight";
+        KnightSelectedCanvas.SetActive(true);
+    }
+
+    public void RangerSelectedButton()
+    {
+        DisableNoSaveGame();
+        DisableClassesSelected();
+        className = "Ranger";
+        RangerSelectedCanvas.SetActive(true);
+    }
+
+    public void VagabondSelectedButton()
+    {
+        DisableNoSaveGame();
+        DisableClassesSelected();
+        className = "Vagabond";
+        VagabondSelectedCanvas.SetActive(true);
+    }
+
     public void EnableClassSelected()
     {
         ClassSelectedCanvas.SetActive(true);
@@ -180,6 +271,17 @@ public class MainMenu : MonoBehaviour
         agilText.text = stats.agil.ToString();
     }
 
+    public void LoadSaveClassStats()
+    {
+        vitText.text = stats.GetVitality().ToString();
+        strText.text = stats.GetStrength().ToString();
+        endText.text = stats.GetEndurance().ToString();
+        wisText.text = stats.GetWisdom().ToString();
+        fortText.text = stats.GetFortitude().ToString();
+        dexText.text = stats.GetDexterity().ToString();
+        agilText.text = stats.GetAgility().ToString();
+    }
+
     void DisableClassSelected()
     {
         ClassSelectedCanvas.SetActive(false);
@@ -192,7 +294,13 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
+        player.SetClassName(className);
         SceneManager.LoadScene("Level Select");
+    }
+
+    public void StartTutorial()
+    {
+        SceneManager.LoadScene("TutorialScene");
     }
 
     public void SetClassName(string selectedClass)
@@ -249,5 +357,10 @@ public class MainMenu : MonoBehaviour
     public void SetDexterityText(Text text)
     {
         dexText = text;
+    }
+
+    public void SetClassNameText(Text text)
+    {
+        ClassName = text;
     }
 }
