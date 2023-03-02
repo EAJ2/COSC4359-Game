@@ -11,6 +11,7 @@ public class TextPopup : MonoBehaviour
     public int direction;
     public bool isCrit;
 
+
     // Start is called before the first frame update
     void Awake()
     {

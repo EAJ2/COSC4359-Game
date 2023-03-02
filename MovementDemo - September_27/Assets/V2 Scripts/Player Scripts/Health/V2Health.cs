@@ -7,8 +7,8 @@ public class V2Health : MonoBehaviour
     private V2PlayerMovement pm;
 
     [Header("Health")]
-    [SerializeField] private float startingHealth;
-    private float MaxHealth;
+    [SerializeField] public float startingHealth;
+    public float MaxHealth;
     public float CurrentHealth;
     private Animator anim;
     private bool bDead;
@@ -27,22 +27,12 @@ public class V2Health : MonoBehaviour
     void Update()
     {
         Die();
+        HealthCheck();
     }
 
     private void Awake()
     {
         stats = GetComponent<Stats>();
-        stats.Vitality();
-        MaxHealth = startingHealth + (stats.vit * 5);
-        if (stats.vitMult > 0)
-        {
-            MaxHealth = (startingHealth + (stats.vit * 5)) + (stats.vitMult * (startingHealth + (stats.vit * 5)));
-        }
-        else
-        {
-            MaxHealth = startingHealth + (stats.vit * 5);
-        }
-        CurrentHealth = MaxHealth;
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
         pm = GetComponentInParent<V2PlayerMovement>();
@@ -114,6 +104,14 @@ public class V2Health : MonoBehaviour
             mov.enabled = false;
             comb.enabled = false;
             rc.enabled = false;
+        }
+    }
+
+    public void HealthCheck()
+    {
+        if (CurrentHealth > MaxHealth)
+        {
+            CurrentHealth = MaxHealth;
         }
     }
 }

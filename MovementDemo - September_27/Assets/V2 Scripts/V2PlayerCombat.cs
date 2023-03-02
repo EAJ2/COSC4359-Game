@@ -29,8 +29,7 @@ public class V2PlayerCombat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        stats.Strength();
-        stats.Dexterity();
+
     }
 
     // Update is called once per frame
@@ -69,7 +68,6 @@ public class V2PlayerCombat : MonoBehaviour
         if (anim.GetCurrentAnimatorStateInfo(0).IsName("Player_Vagabond_LightAttack") && Input.GetMouseButtonDown(0) && combo == false)
         {
             ComboAttack();
-            Debug.Log("Combo");
             StartCoroutine(ComboWaitTime());
         }
         

@@ -17,12 +17,12 @@ public class V2PlayerMovement : MonoBehaviour
     private bool bIsGrounded;
     private bool bSprinting = false;
     private float HorizontalInput;
-    [SerializeField] private float WalkSpeed;
-    [SerializeField] private float SprintSpeed;
+    [SerializeField] public float WalkSpeed;
+    [SerializeField] public float SprintSpeed;
     [SerializeField] private float InAirMoveSpeed;
     private bool bIsFacingRight;
     [SerializeField] public float stamina;
-    [SerializeField] private float MAXstamina;
+    [SerializeField] public float MAXstamina;
 
 
     [Header("JumpParameters")]
@@ -69,29 +69,6 @@ public class V2PlayerMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         cc = GetComponent<CapsuleCollider2D>();
         stats = GetComponent<Stats>();
-        stats.Agility();
-        stats.Endurance();
-        if (stats.agilMult > 0)
-        {
-            WalkSpeed = (WalkSpeed + (stats.agil * 0.25f)) + (stats.agilMult * (WalkSpeed + (stats.agil * 0.25f)));
-            SprintSpeed = (SprintSpeed + (stats.agil * 0.33f)) + (stats.agilMult * (SprintSpeed + (stats.agil * 0.33f)));
-        }
-        else
-        {
-            WalkSpeed = WalkSpeed + (stats.agil * 0.25f);
-            SprintSpeed = SprintSpeed + (stats.agil * 0.33f);
-        }
-
-        if (stats.endMult > 0)
-        {
-            stamina = (stamina + (stats.end * 3f)) + (stats.endMult * (stamina + (stats.end * 3f)));
-            MAXstamina = (MAXstamina + (stats.end * 3f)) + (stats.endMult * (MAXstamina + (stats.end * 3f)));
-        }
-        else
-        {
-            stamina = stamina + (stats.end * 3f);
-            MAXstamina = MAXstamina + (stats.end * 3f);
-        }
         staminaBar.SetMaxStamina(MAXstamina);
     }
 

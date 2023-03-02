@@ -90,9 +90,14 @@ public class Stats : MonoBehaviour
     public static float BaseHP = 20f;
     public static float BaseStam = 15f;
     public static float BaseMana = 10f;
-    public static float BaseCritCH = 0.1f;
+    public static int BaseCritRange = 10;
     public static float BaseCritDMG = 1.25f;
     public static float BaseWalkSpeed = 3f;
+    public static int BaseDMG = 5;
+
+    public V2Health hpScript;
+    public V2PlayerCombat combatScript;
+    public V2PlayerMovement movementScript;
 
 
     // Start is called before the first frame update
@@ -130,55 +135,67 @@ public class Stats : MonoBehaviour
         pointsText.text = "Points: " + points.ToString();
         classText.text = "Class: " + Class;
         levelText.text = "Level: " + level.ToString();
+
     }
 
     public void Vitality()
     {
-        if (vit == 5)
+        if (vit >= 5 && vit <= 9)
         {
             vitMult = 0.1f;
         }
-        else if (vit == 10)
+        else if (vit >= 10 && vit <= 14)
         {
             vitMult = 0.2f;
         }
-        else if (vit == 15)
+        else if (vit >= 15 && vit <= 19)
         {
             vitMult = 0.5f;
         }
-        else if (vit == 20)
+        else if (vit >= 20)
         {
             vitMult = 1f;
         }
+
+        if (vitMult > 0)
+        {
+            hpScript.MaxHealth = (hpScript.startingHealth + (vit * 5f)) + (vitMult * (hpScript.startingHealth + (vit * 5f)));
+        }
+        else
+        {
+            hpScript.MaxHealth = hpScript.startingHealth + (vit * 5f);
+        }
+        hpScript.CurrentHealth = hpScript.MaxHealth;
+        hpScript.healthBar.SetMaxHealth(hpScript.MaxHealth);
     }
 
     public void Strength()
     {
-        if (str == 5)
+        if (str >= 5 && str <= 9)
         {
             strMult = 0.05f;
         }
-        else if (str == 10)
+        else if (str >= 10 && str <= 14)
         {
             strMult = 0.1f;
         }
-        else if (str == 15)
+        else if (str >= 15 && str <= 19)
         {
             strMult = 0.2f;
         }
-        else if (str == 20)
+        else if (str >= 20)
         {
             strMult = 0.5f;
         }
 
         if (strMult > 0)
         {
-            dmg = (int)(dmg + (2 * str) + (dmg + (2 * str)) * strMult);
+            dmg = (int)(BaseDMG + (3 * str) + (BaseDMG + (3 * str)) * strMult);
             critDMG = (int)Mathf.Ceil((float)dmg * critMult);
         }
         else
         {
-            dmg = dmg + (2 * str);
+            dmg = BaseDMG + (2 * str);
             critDMG = (int)Mathf.Ceil((float)dmg * critMult);
         }
         
@@ -186,41 +203,56 @@ public class Stats : MonoBehaviour
 
     public void Endurance()
     {
-        if (end == 5)
+        if (end >= 5 && end <= 9)
         {
             endMult = 0.1f;
         }
-        else if (end == 10)
+        else if (end >= 10 && end <= 14)
         {
             endMult = 0.25f;
         }
-        else if (end == 15)
+        else if (end >= 15 && end <= 19)
         {
             endMult = 0.5f;
         }
-        else if (end == 20)
+        else if (end >= 20)
         {
             endMult = 1f;
+        }
+
+        if (endMult > 0)
+        {
+            movementScript.stamina = (movementScript.stamina + (end * 3f)) + (endMult * (movementScript.stamina + (end * 3f)));
+            movementScript.MAXstamina = (movementScript.MAXstamina + (end * 3f)) + (endMult * (movementScript.MAXstamina + (end * 3f)));
+        }
+        else
+        {
+            movementScript.stamina = movementScript.stamina + (end * 3f);
+            movementScript.MAXstamina = movementScript.MAXstamina + (end * 3f);
         }
     }
 
     public void Wisdom()
     {
-        if (wis == 5)
+        if (wis >= 5 && wis <= 9)
         {
             wisMult = 0.05f;
         }
-        else if (wis == 10)
+        else if (wis >= 10 && wis <= 14)
         {
             wisMult = 0.1f;
         }
-        else if (wis == 15)
+        else if (wis >= 15 && wis <= 19)
         {
             wisMult = 0.2f;
         }
-        else if (wis == 20)
+        else if (wis >= 20)
         {
             wisMult = 0.5f;
+        }
+        else
+        {
+            wisMult = 0f;
         }
 
         if (wisMult > 0)
@@ -237,19 +269,19 @@ public class Stats : MonoBehaviour
 
     public void Fortitude()
     {
-        if (fort == 5)
+        if (fort >= 5 && fort <= 9)
         {
             fortMult = 0.05f;
         }
-        else if (fort == 10)
+        else if (fort >= 10 && fort <= 14)
         {
             fortMult = 0.1f;
         }
-        else if (fort == 15)
+        else if (fort >= 15 && fort <= 19)
         {
             fortMult = 0.15f;
         }
-        else if (fort == 20)
+        else if (fort >= 20)
         {
             fortMult = 0.2f;
         }
@@ -260,58 +292,69 @@ public class Stats : MonoBehaviour
         }
         else
         {
-            dmgRed = (fort * 1)/100;
+            dmgRed = (fort * 1 + (fort * 1) * fortMult) / 100;
         }
     }
 
     public void Dexterity()
     {
-        if (dex == 5)
+        if (dex >= 5 && dex <= 9)
         {
             dexMult = 0.05f;
         }
-        else if (dex == 10)
+        else if (dex == 10 && dex <= 14)
         {
             dexMult = 0.1f;
         }
-        else if (dex == 15)
+        else if (dex == 15 && dex <= 19)
         {
             dexMult = 0.15f;
         }
-        else if (dex == 20)
+        else if (dex >= 20)
         {
             dexMult = 0.2f;
         }
 
         if (dexMult > 0)
         {
-            critRange = (int)(critRange + (dex * 1) + (critRange + (dex * 1)) * dexMult);
+            critRange = (int)(BaseCritRange + (dex * 1) + (BaseCritRange + (dex * 1)) * dexMult);
             critMult = BaseCritDMG + (dex * 0.02f) + ((BaseCritDMG + (dex * 0.02f)) * dexMult);
         }
         else
         {
-            critRange = critRange + (dex * 1);
+            critRange = BaseCritRange + (dex * 1);
             critMult = BaseCritDMG + (dex * 0.01f);
         }
     }
 
     public void Agility()
     {
-        if (agil == 5)
+        if (agil >= 5 && agil <= 9)
         {
             agilMult = 0.02f;
         }
-        else if (agil == 10)
+        else if (agil == 10 && agil <= 14)
         {
             agilMult = 0.04f;
         }
-        else if (agil == 15)
+        else if (agil >= 15 && agil <= 19)
         {
             agilMult = 0.06f;
         }
-        else if (agil == 20)
+        else if (agil >= 20)
         {
             agilMult = 0.08f;
+        }
+
+        if (agilMult > 0)
+        {
+            movementScript.WalkSpeed = (movementScript.WalkSpeed + (agil * 0.25f)) + (agilMult * (movementScript.WalkSpeed + (agil * 0.25f)));
+            movementScript.SprintSpeed = (movementScript.SprintSpeed + (agil * 0.33f)) + (agilMult * (movementScript.SprintSpeed + (agil * 0.33f)));
+        }
+        else
+        {
+            movementScript.WalkSpeed = movementScript.WalkSpeed + (agil * 0.25f);
+            movementScript.SprintSpeed = movementScript.SprintSpeed + (agil * 0.33f);
         }
     }
 
@@ -357,10 +400,20 @@ public class Stats : MonoBehaviour
             pointsSpent_agil = 0;
             pointsSpent_fort = 0;
             statsCanvas.SetActive(false);
+            CallStats();
         }
     }
 
-
+    public void CallStats()
+    {
+        Vitality();
+        Strength();
+        Endurance();
+        Fortitude();
+        Wisdom();
+        Dexterity();
+        Agility();
+    }
 
 
 
