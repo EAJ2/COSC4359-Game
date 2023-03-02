@@ -28,7 +28,7 @@ public class V2PlayerData
 
     public V2PlayerData(Player player)
     {
-        ClassName = player.GetComponent<Stats>().GetClass();
+        ClassName = player.GetClassName();
         VitalityStat = player.GetComponent<Stats>().GetVitality();
         StrengthStat = player.GetComponent<Stats>().GetStrength();
         EnduranceStat = player.GetComponent<Stats>().GetEndurance();

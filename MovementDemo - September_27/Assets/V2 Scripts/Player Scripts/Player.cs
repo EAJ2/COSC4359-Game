@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     private bool bIsThereSave;
     private bool bTutorialDone = false;
 
+    public string ClassName = "";
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -45,6 +47,9 @@ public class Player : MonoBehaviour
         else
         {
             Debug.Log("There is a Save for the player, Player.cs");
+
+            ClassName = data.ClassName;
+
             bIsThereSave = true;
             bTutorialDone = data.bTutorialDone;
 
@@ -73,6 +78,16 @@ public class Player : MonoBehaviour
     public bool GetIsThereSave()
     {
         return bIsThereSave;
+    }
+
+    public string GetClassName()
+    {
+        return ClassName;
+    }
+
+    public void SetClassName(string n)
+    {
+        ClassName = n;
     }
 
     public bool GetIsTutorialDone()
