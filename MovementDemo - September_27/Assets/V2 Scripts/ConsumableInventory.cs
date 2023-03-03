@@ -44,6 +44,7 @@ public class ConsumableInventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
        if (Input.GetKeyDown(KeyCode.Escape))
         {
             consInv[healthPotion] += 1;
@@ -52,7 +53,7 @@ public class ConsumableInventory : MonoBehaviour
             InventoryCheck();
             //Debug.Log("Length" + InventoryLength().ToString());
         }
-
+        */
        if (Input.GetAxisRaw("Mouse ScrollWheel") > 0) // forward
        {
             index += 1;

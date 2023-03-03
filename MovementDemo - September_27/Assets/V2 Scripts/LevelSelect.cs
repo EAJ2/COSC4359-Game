@@ -7,7 +7,7 @@ public class LevelSelect : MonoBehaviour
 {
     public void loadLevel()
     {
-        SceneManager.LoadScene("CF_1");
+        SceneManager.LoadScene("CF_2");
     }
     public void quitGame()
     {
