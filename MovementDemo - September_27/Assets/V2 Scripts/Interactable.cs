@@ -31,6 +31,7 @@ public class Interactable : MonoBehaviour
         Player = Character.GetComponent<Transform>();
         stats = Character.GetComponent<Stats>();
         inv = Character.GetComponent<ConsumableInventory>();
+        anim = this.gameObject.GetComponent<Animator>();
     }
 
     private void Update()

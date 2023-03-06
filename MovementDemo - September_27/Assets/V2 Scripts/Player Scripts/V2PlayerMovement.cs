@@ -63,6 +63,8 @@ public class V2PlayerMovement : MonoBehaviour
 
     public PlayerStaminaBar staminaBar;
 
+    public ContactPoint2D[] contacts;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -343,6 +345,7 @@ public class V2PlayerMovement : MonoBehaviour
         
         RaycastHit2D raycastHit = Physics2D.CapsuleCast(cc.bounds.center, cc.bounds.size, CapsuleDirection2D.Vertical, 0.0f, Vector2.down, 0.1f, groundLayer);
         //anim.SetBool("isGrounded", true);
+        //Debug.Log("On the Ground");
         return raycastHit.collider != null;
     }
 
