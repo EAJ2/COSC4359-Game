@@ -42,6 +42,7 @@ public class V2Health : MonoBehaviour
     public void TakeDmg(float dmg)
     {
         CurrentHealth -= dmg - (dmg * stats.dmgRed);
+        healthBar.SetHealth(CurrentHealth);
         Die();
         /*
         if (CurrentHealth > 0)

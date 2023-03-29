@@ -8,6 +8,7 @@ public class PauseMenu : MonoBehaviour
     private bool bPaused = false;
     public GameObject MenuCanvas;
     public GameObject SaveCanvas;
+    public GameObject ControlsCanvas;
     public Player player;
 
     private void Awake()
@@ -73,10 +74,17 @@ public class PauseMenu : MonoBehaviour
         ShowMenuCanvas();
     }
 
+    public void ControlsButton()
+    {
+        ControlsCanvas.SetActive(true);
+        HideMenuCanvas();
+    }
+
     public void HideAll()
     {
         HideMenuCanvas();
         HideSaveCanvas();
+        ControlsCanvas.SetActive(false);
         bPaused = false;
         Time.timeScale = 1f;
     }

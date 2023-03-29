@@ -7,6 +7,7 @@ public class V2PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     private Animator anim;
     private CapsuleCollider2D cc;
+    public GameObject spawnPoint;
 
 
     [SerializeField] private bool bCanMove = true;
@@ -79,7 +80,7 @@ public class V2PlayerMovement : MonoBehaviour
         //Set bool for grounded here
         //anim.SetBool("grounded", IsGrounded());
         HorizontalInput = Input.GetAxis("Horizontal");
-
+        ResetPlayer();
 
         if (HorizontalInput != 0)
         {
@@ -117,14 +118,14 @@ public class V2PlayerMovement : MonoBehaviour
                 else
                 {
                     SetIsSprinting(false);
-                    StopCoroutine(StaminaDepletion());
-                    StartCoroutine(StaminaRegeneration());
                 }
             }
+            StopCoroutine(StaminaDepletion());
+            StartCoroutine(StaminaRegeneration());
         }
 
         //Jump Code
-        if(bCanMove)
+        if (bCanMove)
         {
             if(bCanJump)
             {
@@ -510,4 +511,12 @@ public class V2PlayerMovement : MonoBehaviour
     {
         return bDashing;
     }
+
+    public void ResetPlayer()
+    {
+        if (transform.position.y <= -50)
+        {
+            transform.position = spawnPoint.transform.position;
+        }
+    }    
 }

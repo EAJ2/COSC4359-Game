@@ -43,7 +43,7 @@ public class V2PlayerCombat : MonoBehaviour
                 nextAttackTime = Time.time + 1f / attackRate;
             }
 
-            if (Input.GetMouseButtonDown(1))
+            if (Input.GetMouseButtonDown(1) && moveScript.stamina >= 10)
             {
                 HeavyAttack();
                 nextAttackTime = Time.time + 1f / attackRate;
@@ -120,6 +120,39 @@ public class V2PlayerCombat : MonoBehaviour
                     Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
                 }
             }
+
+            else if (enemy.tag == "BatEnemy")
+            {
+                hitAudio.Play();
+                if (critCounter <= stats.critRange)
+                {
+                    enemy.GetComponent<Bat>().TakeDMG(stats.critDMG);
+                    critTextMesh.text = stats.critDMG.ToString();
+                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+                else
+                {
+                    enemy.GetComponent<Bat>().TakeDMG(stats.dmg);
+                    dmgTextMesh.text = stats.dmg.ToString();
+                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+            }
+            else if (enemy.tag == "Reaper_Boss")
+            {
+                hitAudio.Play();
+                if (critCounter <= stats.critRange)
+                {
+                    enemy.GetComponent<Boss_Health>().TakeDMG(stats.critDMG);
+                    critTextMesh.text = stats.critDMG.ToString();
+                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+                else
+                {
+                    enemy.GetComponent<Boss_Health>().TakeDMG(stats.dmg);
+                    dmgTextMesh.text = stats.dmg.ToString();
+                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+            }
         }
     }
 
@@ -168,6 +201,22 @@ public class V2PlayerCombat : MonoBehaviour
                     Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
                 }
             }
+            else if (enemy.tag == "Reaper_Boss")
+            {
+                hitAudio.Play();
+                if (critCounter <= stats.critRange)
+                {
+                    enemy.GetComponent<Boss_Health>().TakeDMG(stats.critDMG);
+                    critTextMesh.text = stats.critDMG.ToString();
+                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+                else
+                {
+                    enemy.GetComponent<Boss_Health>().TakeDMG(stats.dmg);
+                    dmgTextMesh.text = stats.dmg.ToString();
+                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+            }
         }
     }
 
@@ -205,13 +254,29 @@ public class V2PlayerCombat : MonoBehaviour
                 hitAudio.Play();
                 if (critCounter <= stats.critRange)
                 {
-                    enemy.GetComponent<Goblin>().TakeDMG(stats.critDMG);
+                    enemy.GetComponent<Goblin>().TakeDMG(stats.heavyCritDMG);
+                    critTextMesh.text = stats.heavyCritDMG.ToString();
+                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+                else
+                {
+                    enemy.GetComponent<Goblin>().TakeDMG(stats.heavyDMG);
+                    dmgTextMesh.text = stats.heavyDMG.ToString();
+                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+            }
+            else if (enemy.tag == "Reaper_Boss")
+            {
+                hitAudio.Play();
+                if (critCounter <= stats.critRange)
+                {
+                    enemy.GetComponent<Boss_Health>().TakeDMG(stats.critDMG);
                     critTextMesh.text = stats.critDMG.ToString();
                     Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
                 }
                 else
                 {
-                    enemy.GetComponent<Goblin>().TakeDMG(stats.dmg);
+                    enemy.GetComponent<Boss_Health>().TakeDMG(stats.dmg);
                     dmgTextMesh.text = stats.dmg.ToString();
                     Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
                 }
