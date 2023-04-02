@@ -39,7 +39,7 @@ public class MainMenu : MonoBehaviour
     public string className;
 
 
-    private void Start()
+    private void Awake()
     {
         MainMenuCanvas.SetActive(true);
         NoSaveGameCanvas.SetActive(false);
@@ -52,12 +52,21 @@ public class MainMenu : MonoBehaviour
         VagabondSelectedCanvas.SetActive(false);
         stats = player.GetComponent<Stats>();
 
-
-        if(player != null)
+        if (player != null)
         {
-            if(player.GetIsThereSave() == true)
+            if(player.GetIsThereSave())
+            {
+                bTutorialDone = true;
+            }
+            else
+            {
+                bTutorialDone = false;
+            }
+
+            /*if(player.GetIsThereSave() == true)
             {
                 bIsThereSave = true;
+                bTutorialDone = true;
                 Debug.Log("Class Name = " + player.GetClassName());
             }
             else
@@ -73,44 +82,24 @@ public class MainMenu : MonoBehaviour
             {
                 bTutorialDone = false;
                 Debug.Log("The tutorial is NOT Done");
-            }
+            }*/
         }
     }
 
     public void PlayButton()
     {
-        if(bTutorialDone == false)
+        if(player.GetIsTutorialDone() == false && player.GetIsThereSave() == false)
         {
             StartTutorial();
             return;
         }
-        if (bIsThereSave == true && player.GetClassName() != "")
+        if (player.GetIsThereSave() == true && player.GetClassName() != "")
         {
             DisableMainMenu();
             LoadSaveClassStats();
             EnableSaveGame();
         }
-        /*if (bIsThereSave == true && player.GetClassName() == "Mage")
-        {
-            DisableMainMenu();
-            MageSelectedCanvas.SetActive(true);
-        }
-        else if (bIsThereSave == true && player.GetClassName() == "Knight")
-        {
-            DisableMainMenu();
-            KnightSelectedCanvas.SetActive(true);
-        }
-        else if (bIsThereSave == true && player.GetClassName() == "Ranger")
-        {
-            DisableMainMenu();
-            RangerSelectedCanvas.SetActive(true);
-        }
-        else if (bIsThereSave == true && player.GetClassName() == "Vagabond")
-        {
-            DisableMainMenu();
-            VagabondSelectedCanvas.SetActive(true);
-        }*/
-        else if (bIsThereSave == true && player.GetClassName() == "")
+        else if (player.GetIsThereSave() == true && player.GetClassName() == "")
         {
             DisableMainMenu();
             EnableNoSaveGame();
@@ -295,7 +284,11 @@ public class MainMenu : MonoBehaviour
     public void StartGame()
     {
         player.SetClassName(className);
-        SceneManager.LoadScene("Level Select");
+        player.SavePlayer();
+        Debug.Log("Class Name Chosen = " + className);
+        Debug.Log("Player.GetClassName() = " + player.GetClassName());
+
+        SceneManager.LoadScene("CF_2");
     }
 
     public void StartTutorial()

@@ -24,6 +24,8 @@ public class V2Health : MonoBehaviour
     public V2PlayerMovement mov;
     public RangerCombat rc;
 
+    [SerializeField] public GameObject RespawnPoint;
+
     void Update()
     {
         Die();
@@ -91,15 +93,20 @@ public class V2Health : MonoBehaviour
 
     public void Reset()
     {
-        CurrentHealth = startingHealth;
+        CurrentHealth = MaxHealth;
         bDead = false;
         pm.enabled = true;
+        anim.SetBool("isDead", false);
+        anim.SetBool("IsMoving", true);
+
+        gameObject.transform.position = new Vector3(RespawnPoint.transform.position.x, RespawnPoint.transform.position.y, gameObject.transform.position.z);
     }
 
     public void Die()
     {
         if (CurrentHealth < 0)
         {
+            bDead = true;
             anim.SetBool("isDead", true);
             this.enabled = false;
             mov.enabled = false;
@@ -114,5 +121,10 @@ public class V2Health : MonoBehaviour
         {
             CurrentHealth = MaxHealth;
         }
+    }
+
+    public bool IsDead()
+    {
+        return bDead;
     }
 }

@@ -9,12 +9,17 @@ public class PauseMenu : MonoBehaviour
     public GameObject MenuCanvas;
     public GameObject SaveCanvas;
     public GameObject ControlsCanvas;
+    public GameObject RespawnCanvas;
     public Player player;
+
+    private bool bRespawnCanvasShown = false;
 
     private void Awake()
     {
         MenuCanvas.SetActive(false);
         SaveCanvas.SetActive(false);
+        RespawnCanvas.SetActive(false);
+        Debug.Log("Player Class Name = " + player.GetClassName());
     }
 
     // Update is called once per frame
@@ -31,6 +36,23 @@ public class PauseMenu : MonoBehaviour
                 ShowMenuCanvas();
             }
         }
+        if(player.GetComponent<V2Health>().IsDead() && !bRespawnCanvasShown)
+        {
+            bRespawnCanvasShown = true;
+            ShowRespawnCanvas();
+        }
+    }
+
+    public void ShowRespawnCanvas()
+    {
+        RespawnCanvas.SetActive(true);
+    }
+
+    public void Respawn()
+    {
+        RespawnCanvas.SetActive(false);
+        bRespawnCanvasShown = false;
+        player.GetComponent<V2Health>().Reset();
     }
 
     public void ShowMenuCanvas()
@@ -65,6 +87,7 @@ public class PauseMenu : MonoBehaviour
     {
         HideSaveCanvas();
         ShowMenuCanvas();
+        Debug.Log("Game Saved, ClassName = " + player.GetClassName());
         player.SavePlayer();
     }
 
