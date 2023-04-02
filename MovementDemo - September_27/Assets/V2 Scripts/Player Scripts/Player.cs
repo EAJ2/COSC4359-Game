@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     private V2Health health;
     private Stats stats;
 
-    private bool bIsThereSave;
+    private bool bIsThereSave = false;
     private bool bTutorialDone = false;
 
     public string ClassName = "";
@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
             ClassName = data.ClassName;
 
             bIsThereSave = true;
-            bTutorialDone = data.bTutorialDone;
+            bTutorialDone = true;
 
             stats.SetVitality(data.VitalityStat);
             stats.SetStrength(data.StrengthStat);
