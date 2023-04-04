@@ -11,6 +11,15 @@ public class Player : MonoBehaviour
     private V2Health health;
     private Stats stats;
 
+    [Header("Inventory Stuff")]
+    [SerializeField] private InventoryV3_Ace inventory;
+    public bool bHeadUnlocked;
+    public bool bChestUnlocked;
+    public bool bLegsUnlocked;
+    public bool bShoesUnlocked;
+    public bool bWeaponUnlocked;
+    public bool bArtifactUnlocked;
+
     private bool bIsThereSave = false;
     private bool bTutorialDone = false;
 
@@ -42,6 +51,13 @@ public class Player : MonoBehaviour
             Debug.Log("There is no Save for the player, Player.cs");
             bIsThereSave = false;
             bTutorialDone = false;
+
+            bHeadUnlocked = false;
+            bChestUnlocked = false;
+            bLegsUnlocked = false;
+            bShoesUnlocked = false;
+            bWeaponUnlocked = false;
+            bArtifactUnlocked = false;
             return;
         }
         else
@@ -72,6 +88,37 @@ public class Player : MonoBehaviour
             {
                 pm.EnableJump();
             }
+
+            bHeadUnlocked = data.bHeadUnlocked;
+            if(bHeadUnlocked)
+            {
+                UnlockHead();
+            }
+            bChestUnlocked = data.bChestUnlocked;
+            if(bChestUnlocked)
+            {
+                UnlockChest();
+            }
+            bLegsUnlocked = data.bLegsUnlocked;
+            if(bLegsUnlocked)
+            {
+                UnlockLegs();
+            }
+            bShoesUnlocked = data.bShoesUnlocked;
+            if(bShoesUnlocked)
+            {
+                UnlockShoes();
+            }
+            bWeaponUnlocked = data.bWeaponUnlocked;
+            if(bWeaponUnlocked)
+            {
+                UnlockWeapon();
+            }
+            bArtifactUnlocked = data.bArtifactUnlocked;
+            if(bArtifactUnlocked)
+            {
+                UnlockArtifact();
+            }
         }
     }
 
@@ -99,4 +146,90 @@ public class Player : MonoBehaviour
     {
         bTutorialDone = true;
     }
+
+    //////////////////////Start - Inventory UI Code
+    //Unlock from Loading Save
+    public void UnlockHead()
+    {
+        bHeadUnlocked = true;
+        inventory.UnlockHead();
+    }
+    public void UnlockChest()
+    {
+        bChestUnlocked = true;
+        inventory.UnlockChest();
+    }
+    public void UnlockLegs()
+    {
+        bLegsUnlocked = true;
+        inventory.UnlockLegs();
+    }
+    public void UnlockShoes()
+    {
+        bShoesUnlocked = true;
+        inventory.UnlockShoes();
+    }
+    public void UnlockWeapon()
+    {
+        bWeaponUnlocked = true;
+        inventory.UnlockWeapon();
+    }
+    public void UnlockArtifact()
+    {
+        bArtifactUnlocked = true;
+        inventory.UnlockHead();
+    }
+
+    //Functionality
+    public void EquipHead()
+    {
+
+    }
+    public void EquipChest()
+    {
+
+    }
+    public void EquipLegs()
+    {
+
+    }
+    public void EquipShoes()
+    {
+
+    }
+    public void EquipWeapon()
+    {
+
+    }
+    public void EquipArtifact()
+    {
+
+    }
+    public void UnequipHead()
+    {
+
+    }
+    public void UnequipChest()
+    {
+
+    }
+    public void UnequipLegs()
+    {
+
+    }
+    public void UnequipShoes()
+    {
+
+    }
+    public void UnequipWeapon()
+    {
+
+    }
+    public void UnequipArtifact()
+    {
+
+    }
+
+    //Functionality of equipping 
+    //////////////////////End - Inventory UI Code
 }
