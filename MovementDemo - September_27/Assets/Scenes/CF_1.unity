@@ -397,6 +397,7 @@ GameObject:
   - component: {fileID: 123605416}
   - component: {fileID: 123605415}
   - component: {fileID: 123605417}
+  - component: {fileID: 123605418}
   m_Layer: 6
   m_Name: Tilemap
   m_TagString: Ground
@@ -8955,6 +8956,27 @@ TilemapCollider2D:
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
   m_UseDelaunayMesh: 0
+--- !u!50 &123605418
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123605412}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: 79c36e9beec8bb34aa3fd2fe3d60592a, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &173816068 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2637695272600290129, guid: e46d714d319fccf4d965899d309c88bb, type: 3}
@@ -13171,6 +13193,9 @@ MonoBehaviour:
   gold: 0
   mana: 0
   MAXmana: 0
+  hpScript: {fileID: 0}
+  combatScript: {fileID: 0}
+  movementScript: {fileID: 0}
 --- !u!114 &791818773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13184,6 +13209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 20
+  MaxHealth: 0
   CurrentHealth: 0
   iFrameDuration: 0
   NumberOfFlashes: 0
@@ -13192,6 +13218,7 @@ MonoBehaviour:
   comb: {fileID: 791818775}
   mov: {fileID: 791818774}
   rc: {fileID: 0}
+  RespawnPoint: {fileID: 0}
 --- !u!114 &791818774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13205,6 +13232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
+  spawnPoint: {fileID: 0}
   bCanMove: 1
   bCanWalk: 1
   WalkSpeed: 3
@@ -14553,6 +14581,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MenuCanvas: {fileID: 0}
   SaveCanvas: {fileID: 0}
+  ControlsCanvas: {fileID: 0}
+  RespawnCanvas: {fileID: 0}
   player: {fileID: 0}
 --- !u!1 &1747668157
 GameObject:
@@ -14680,6 +14710,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MenuCanvas: {fileID: 1977366327}
   SaveCanvas: {fileID: 173816068}
+  ControlsCanvas: {fileID: 0}
+  RespawnCanvas: {fileID: 0}
   player: {fileID: 791818776}
 --- !u!4 &1812541026
 Transform:
