@@ -26,6 +26,13 @@ public class V2PlayerData
 
     public bool bTutorialDone;
 
+    public bool bHeadUnlocked;
+    public bool bChestUnlocked;
+    public bool bLegsUnlocked;
+    public bool bShoesUnlocked;
+    public bool bWeaponUnlocked;
+    public bool bArtifactUnlocked;
+
     public V2PlayerData(Player player)
     {
         ClassName = player.GetClassName();
@@ -38,6 +45,13 @@ public class V2PlayerData
         AgilityStat = player.GetComponent<Stats>().GetAgility();
 
         Health = player.GetComponent<V2Health>().GetHealth();
+
+        bHeadUnlocked = player.bHeadUnlocked;
+        bChestUnlocked = player.bChestUnlocked;
+        bLegsUnlocked = player.bLegsUnlocked;
+        bShoesUnlocked = player.bShoesUnlocked;
+        bWeaponUnlocked = player.bWeaponUnlocked;
+        bArtifactUnlocked = player.bArtifactUnlocked;
 
         bDash = player.GetComponent<V2PlayerMovement>().CanDash();
         bJump = player.GetComponent<V2PlayerMovement>().CanJump();
