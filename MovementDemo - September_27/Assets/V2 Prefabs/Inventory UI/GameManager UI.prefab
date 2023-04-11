@@ -45,24 +45,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Canvas: {fileID: 0}
-  HeadBB: {fileID: 0}
-  ChestBB: {fileID: 0}
-  LegsBB: {fileID: 0}
-  ShoesBB: {fileID: 0}
-  WeaponBB: {fileID: 0}
-  ArtifactBB: {fileID: 0}
+  player: {fileID: 0}
+  Warrior_HeadBB: {fileID: 0}
+  Warrior_ChestBB: {fileID: 0}
+  Warrior_LegsBB: {fileID: 0}
+  Warrior_ShoesBB: {fileID: 0}
+  Warrior_WeaponBB: {fileID: 0}
+  Warrior_ArtifactBB: {fileID: 0}
+  Mage_HeadBB: {fileID: 0}
+  Mage_ChestBB: {fileID: 0}
+  Mage_LegsBB: {fileID: 0}
+  Mage_ShoesBB: {fileID: 0}
+  Mage_WeaponBB: {fileID: 0}
+  Mage_ArtifactBB: {fileID: 0}
   HeadLocked: {fileID: 0}
   ChestLocked: {fileID: 0}
   LegsLocked: {fileID: 0}
   ShoesLocked: {fileID: 0}
   WeaponLocked: {fileID: 0}
   ArtifactLocked: {fileID: 0}
-  HeadUnlockedButton: {fileID: 0}
-  ChestUnlockedButton: {fileID: 0}
-  LegsUnlockedButton: {fileID: 0}
-  ShoesUnlockedButton: {fileID: 0}
-  WeaponUnlockedButton: {fileID: 0}
-  ArtifactUnlockedButton: {fileID: 0}
+  Warrior_HeadUnlockedButton: {fileID: 0}
+  Warrior_ChestUnlockedButton: {fileID: 0}
+  Warrior_LegsUnlockedButton: {fileID: 0}
+  Warrior_ShoesUnlockedButton: {fileID: 0}
+  Warrior_WeaponUnlockedButton: {fileID: 0}
+  Warrior_ArtifactUnlockedButton: {fileID: 0}
+  Mage_HeadUnlockedButton: {fileID: 0}
+  Mage_ChestUnlockedButton: {fileID: 0}
+  Mage_LegsUnlockedButton: {fileID: 0}
+  Mage_ShoesUnlockedButton: {fileID: 0}
+  Mage_WeaponUnlockedButton: {fileID: 0}
+  Mage_ArtifactUnlockedButton: {fileID: 0}
   HeadEquipped: {fileID: 0}
   ChestEquipped: {fileID: 0}
   LegsEquipped: {fileID: 0}
@@ -70,3 +83,4 @@ MonoBehaviour:
   WeaponEquipped: {fileID: 0}
   ArtifactEquipped: {fileID: 0}
   bDemo: 1
+  ClassName: Warrior
