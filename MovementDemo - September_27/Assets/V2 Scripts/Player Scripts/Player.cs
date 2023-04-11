@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
     private V2Health health;
     private Stats stats;
 
-    [Header("Inventory Stuff")]
+    [Header("Inventory Stuff (Dont Touch the Variables) (Leave ClassName Blank")]
     [SerializeField] private InventoryV3_Ace inventory;
     public bool bHeadUnlocked;
     public bool bChestUnlocked;
@@ -183,51 +183,136 @@ public class Player : MonoBehaviour
     //Functionality
     public void EquipHead()
     {
+        if(ClassName == "Warrior")
+        {
 
+        }
+        else if (ClassName == "Mage")
+        {
+
+        }
     }
     public void EquipChest()
     {
+        if (ClassName == "Warrior")
+        {
 
+        }
+        else if (ClassName == "Mage")
+        {
+
+        }
     }
     public void EquipLegs()
     {
+        if (ClassName == "Warrior")
+        {
 
+        }
+        else if (ClassName == "Mage")
+        {
+
+        }
     }
     public void EquipShoes()
     {
+        if (ClassName == "Warrior" || ClassName == "Knight")
+        {
+            Debug.Log("Shoes Equipped");
+            pm.WarriorEquipShoes();
+        }
+        else if (ClassName == "Mage")
+        {
 
+        }
     }
     public void EquipWeapon()
     {
+        if (ClassName == "Warrior")
+        {
 
+        }
+        else if (ClassName == "Mage")
+        {
+
+        }
     }
     public void EquipArtifact()
     {
+        if (ClassName == "Warrior")
+        {
 
+        }
+        else if (ClassName == "Mage")
+        {
+
+        }
     }
     public void UnequipHead()
     {
+        if (ClassName == "Warrior")
+        {
 
+        }
+        else if (ClassName == "Mage")
+        {
+
+        }
     }
     public void UnequipChest()
     {
+        if (ClassName == "Warrior")
+        {
 
+        }
+        else if (ClassName == "Mage")
+        {
+
+        }
     }
     public void UnequipLegs()
     {
+        if (ClassName == "Warrior")
+        {
 
+        }
+        else if (ClassName == "Mage")
+        {
+
+        }
     }
     public void UnequipShoes()
     {
+        if (ClassName == "Warrior")
+        {
+            pm.WarriorUnequipShoes();
+        }
+        else if (ClassName == "Mage")
+        {
 
+        }
     }
     public void UnequipWeapon()
     {
+        if (ClassName == "Warrior")
+        {
 
+        }
+        else if (ClassName == "Mage")
+        {
+
+        }
     }
     public void UnequipArtifact()
     {
+        if (ClassName == "Warrior")
+        {
 
+        }
+        else if (ClassName == "Mage")
+        {
+
+        }
     }
 
     //Functionality of equipping 

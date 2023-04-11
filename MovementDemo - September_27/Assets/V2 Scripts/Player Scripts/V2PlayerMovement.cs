@@ -18,12 +18,18 @@ public class V2PlayerMovement : MonoBehaviour
     private bool bIsGrounded;
     private bool bSprinting = false;
     private float HorizontalInput;
+    private bool bIsFacingRight;
+
+    [Header("Speed Parameters")]
     [SerializeField] public float WalkSpeed;
     [SerializeField] public float SprintSpeed;
     [SerializeField] private float InAirMoveSpeed;
-    private bool bIsFacingRight;
     [SerializeField] public float stamina;
     [SerializeField] public float MAXstamina;
+    private float NormalWalkSpeed;
+    private float NormalSprintSpeed;
+    [SerializeField] private float BoostWalkSpeed;
+    [SerializeField] private float BoostSprintSpeed;
 
 
     [Header("JumpParameters")]
@@ -73,6 +79,9 @@ public class V2PlayerMovement : MonoBehaviour
         cc = GetComponent<CapsuleCollider2D>();
         stats = GetComponent<Stats>();
         staminaBar.SetMaxStamina(MAXstamina);
+
+        NormalWalkSpeed = WalkSpeed;
+        NormalSprintSpeed = SprintSpeed;
     }
 
     private void Update()
@@ -519,4 +528,17 @@ public class V2PlayerMovement : MonoBehaviour
             transform.position = spawnPoint.transform.position;
         }
     }    
+
+    //Inventory Item Changes
+    public void WarriorEquipShoes()
+    {
+        SetWalkSpeed(BoostWalkSpeed);
+        SetSprintSpeed(BoostSprintSpeed);
+    }
+
+    public void WarriorUnequipShoes()
+    {
+        SetWalkSpeed(NormalWalkSpeed);
+        SetSprintSpeed(NormalSprintSpeed);
+    }
 }
