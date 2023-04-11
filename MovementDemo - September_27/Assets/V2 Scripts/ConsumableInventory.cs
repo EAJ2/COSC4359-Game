@@ -32,6 +32,10 @@ public class ConsumableInventory : MonoBehaviour
     public Text previousCountText;
     public Text nextCountText;
 
+    public GameObject HP_effect;
+    public GameObject SP_effect;
+    public GameObject MP_effect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -280,16 +284,19 @@ public class ConsumableInventory : MonoBehaviour
         {
             if (consInv.ElementAt(index).Key.CompareTag("HealthPotionIcon") && consInv.ElementAt(index).Value > 0 && InventoryLength() > 2)
             {
+                HP_effect.SetActive(true);
                 healthScript.CurrentHealth += 30;
                 consInv[consInv.ElementAt(index).Key]--;
             }
             else if (consInv.ElementAt(index).Key.CompareTag("StaminaPotionIcon") && consInv.ElementAt(index).Value > 0 && InventoryLength() > 2)
             {
+                SP_effect.SetActive(true);
                 movementScript.stamina += 20;
                 consInv[consInv.ElementAt(index).Key]--;
             }
             else if (consInv.ElementAt(index).Key.CompareTag("ManaPotionIcon") && consInv.ElementAt(index).Value > 0 && InventoryLength() > 2)
             {
+                MP_effect.SetActive(true);
                 stats.mana += 10;
                 consInv[consInv.ElementAt(index).Key]--;
             }
@@ -300,18 +307,21 @@ public class ConsumableInventory : MonoBehaviour
                     GameObject potion = GetOneIndex();
                     if (potion.CompareTag("HealthPotionIcon"))
                     {
+                        HP_effect.SetActive(true);
                         healthScript.CurrentHealth += 30;
                         consInv[healthPotion]--;
                     }
 
                     if (potion.CompareTag("StaminaPotionIcon"))
                     {
+                        SP_effect.SetActive(true);
                         movementScript.stamina += 20;
                         consInv[staminaPotion]--;
                     }
 
                     if (potion.CompareTag("ManaPotionIcon"))
                     {
+                        MP_effect.SetActive(true);
                         stats.mana += 10;
                         consInv[manaPotion]--;
                     }
@@ -328,18 +338,21 @@ public class ConsumableInventory : MonoBehaviour
                     GameObject potion = p1;
                     if (potion.CompareTag("HealthPotionIcon"))
                     {
+                        HP_effect.SetActive(true);
                         healthScript.CurrentHealth += 30;
                         consInv[healthPotion]--;
                     }
 
                     if (potion.CompareTag("StaminaPotionIcon"))
                     {
+                        SP_effect.SetActive(true);
                         movementScript.stamina += 20;
                         consInv[staminaPotion]--;
                     }
 
                     if (potion.CompareTag("ManaPotionIcon"))
                     {
+                        MP_effect.SetActive(true);
                         stats.mana += 10;
                         consInv[manaPotion]--;
                     }

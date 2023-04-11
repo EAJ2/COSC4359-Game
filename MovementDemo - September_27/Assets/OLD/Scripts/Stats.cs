@@ -99,6 +99,8 @@ public class Stats : MonoBehaviour
     public V2PlayerCombat combatScript;
     public V2PlayerMovement movementScript;
 
+    public PlayerStaminaBar staminaBar;
+
 
     // Start is called before the first frame update
     void Start()
@@ -230,6 +232,9 @@ public class Stats : MonoBehaviour
             movementScript.stamina = movementScript.stamina + (end * 3f);
             movementScript.MAXstamina = movementScript.MAXstamina + (end * 3f);
         }
+
+        staminaBar.SetMaxStamina(movementScript.MAXstamina);
+        staminaBar.SetStamina(movementScript.stamina);
     }
 
     public void Wisdom()

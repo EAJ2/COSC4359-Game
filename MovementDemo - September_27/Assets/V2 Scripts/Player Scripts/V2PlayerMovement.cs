@@ -73,6 +73,7 @@ public class V2PlayerMovement : MonoBehaviour
         cc = GetComponent<CapsuleCollider2D>();
         stats = GetComponent<Stats>();
         staminaBar.SetMaxStamina(MAXstamina);
+        staminaBar.SetStamina(MAXstamina);
     }
 
     private void Update()
