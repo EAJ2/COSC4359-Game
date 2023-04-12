@@ -20,6 +20,12 @@ public class Player : MonoBehaviour
     public bool bWeaponUnlocked;
     public bool bArtifactUnlocked;
 
+    public bool bAbility1Unlocked;
+    public bool bAbility2Unlocked;
+    public bool bAbility3Unlocked;
+    public bool bAbility4Unlocked;
+
+
     private bool bIsThereSave = false;
     private bool bTutorialDone = false;
 
@@ -58,6 +64,11 @@ public class Player : MonoBehaviour
             bShoesUnlocked = false;
             bWeaponUnlocked = false;
             bArtifactUnlocked = false;
+
+            bAbility1Unlocked = false;
+            bAbility2Unlocked = false;
+            bAbility3Unlocked = false;
+            bAbility4Unlocked = false;
             return;
         }
         else
@@ -89,6 +100,7 @@ public class Player : MonoBehaviour
                 pm.EnableJump();
             }
 
+            //Gear
             bHeadUnlocked = data.bHeadUnlocked;
             if(bHeadUnlocked)
             {
@@ -118,6 +130,28 @@ public class Player : MonoBehaviour
             if(bArtifactUnlocked)
             {
                 UnlockArtifact();
+            }
+
+            //Abilities
+            bAbility1Unlocked = data.bAbility1Unlocked;
+            if(bAbility1Unlocked)
+            {
+                UnlockAbility1();
+            }
+            bAbility2Unlocked = data.bAbility2Unlocked;
+            if (bAbility2Unlocked)
+            {
+                UnlockAbility2();
+            }
+            bAbility3Unlocked = data.bAbility3Unlocked;
+            if (bAbility3Unlocked)
+            {
+                UnlockAbility3();
+            }
+            bAbility4Unlocked = data.bAbility4Unlocked;
+            if (bAbility4Unlocked)
+            {
+                UnlockAbility4();
             }
         }
     }
@@ -181,6 +215,7 @@ public class Player : MonoBehaviour
     }
 
     //Functionality
+    //Equip Gear
     public void EquipHead()
     {
         if(ClassName == "Warrior")
@@ -248,6 +283,8 @@ public class Player : MonoBehaviour
 
         }
     }
+
+    //Unequip Gear
     public void UnequipHead()
     {
         if (ClassName == "Warrior")
@@ -314,6 +351,75 @@ public class Player : MonoBehaviour
 
         }
     }
+
+
+    //Unlock Ability
+    public void UnlockAbility1()
+    {
+        bAbility1Unlocked = true;
+        inventory.UnlockAbility1();
+    }
+
+    public void UnlockAbility2()
+    {
+        bAbility2Unlocked = true;
+        inventory.UnlockAbility2();
+    }
+
+    public void UnlockAbility3()
+    {
+        bAbility3Unlocked = true;
+        inventory.UnlockAbility3();
+    }
+
+    public void UnlockAbility4()
+    {
+        bAbility4Unlocked = true;
+        inventory.UnlockAbility4();
+    }
+
+    //Equip Ability
+    public void EquipAbility1()
+    {
+
+    }
+
+    public void EquipAbility2()
+    {
+
+    }
+
+    public void EquipAbility3()
+    {
+
+    }
+
+    public void EquipAbility4()
+    {
+
+    }
+
+    //UnequipAbility
+    public void UnequipAbility1()
+    {
+
+    }
+
+    public void UnequipAbility2()
+    {
+
+    }
+
+    public void UnequipAbility3()
+    {
+
+    }
+
+    public void UnequipAbility4()
+    {
+
+    }
+
 
     //Functionality of equipping 
     //////////////////////End - Inventory UI Code

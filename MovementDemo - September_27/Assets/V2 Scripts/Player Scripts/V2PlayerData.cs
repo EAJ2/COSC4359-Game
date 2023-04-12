@@ -33,6 +33,11 @@ public class V2PlayerData
     public bool bWeaponUnlocked;
     public bool bArtifactUnlocked;
 
+    public bool bAbility1Unlocked;
+    public bool bAbility2Unlocked;
+    public bool bAbility3Unlocked;
+    public bool bAbility4Unlocked;
+
     public V2PlayerData(Player player)
     {
         ClassName = player.GetClassName();
@@ -52,6 +57,13 @@ public class V2PlayerData
         bShoesUnlocked = player.bShoesUnlocked;
         bWeaponUnlocked = player.bWeaponUnlocked;
         bArtifactUnlocked = player.bArtifactUnlocked;
+
+        bAbility1Unlocked = player.bAbility1Unlocked;
+        bAbility2Unlocked = player.bAbility2Unlocked;
+        bAbility3Unlocked = player.bAbility3Unlocked;
+        bAbility4Unlocked = player.bAbility4Unlocked;
+
+
 
         bDash = player.GetComponent<V2PlayerMovement>().CanDash();
         bJump = player.GetComponent<V2PlayerMovement>().CanJump();
