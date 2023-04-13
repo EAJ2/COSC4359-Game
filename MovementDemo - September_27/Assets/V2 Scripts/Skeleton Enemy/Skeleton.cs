@@ -11,9 +11,8 @@ public class Skeleton : MonoBehaviour
     [Header("Attack Parameters")]
     [SerializeField] private float attackCooldown;
     [SerializeField] private float damage;
-    [SerializeField] private float range;
+    [SerializeField] private float DealDamageRange;
     [SerializeField] private float rangeChase;
-    [SerializeField] private float rangePlayer;
     [SerializeField] private float chaseCooldown;
     private float cooldownTimer = 0;
     private float chaseTimer = 0;
@@ -22,7 +21,6 @@ public class Skeleton : MonoBehaviour
     [SerializeField] private BoxCollider2D boxCollider;
     [SerializeField] private float colliderDistance;
     [SerializeField] private float colliderDistanceChase;
-    [SerializeField] private float colliderDistancePlayer;
 
     [Header("Layers")]
     [SerializeField] private LayerMask groundLayer;
@@ -143,7 +141,7 @@ public class Skeleton : MonoBehaviour
     //For attack
     private bool PlayerInSight()
     {
-        RaycastHit2D hit = Physics2D.BoxCast(boxCollider.bounds.center + transform.right * range * (transform.localScale.x) * colliderDistance, new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z), 0, Vector2.left, 0, playerLayer);
+        RaycastHit2D hit = Physics2D.BoxCast(boxCollider.bounds.center + transform.right * DealDamageRange * (transform.localScale.x) * colliderDistance, new Vector3(boxCollider.bounds.size.x * DealDamageRange, boxCollider.bounds.size.y, boxCollider.bounds.size.z), 0, Vector2.left, 0, playerLayer);
         return hit.collider != null;
     }
 
@@ -160,29 +158,14 @@ public class Skeleton : MonoBehaviour
         return hit.collider != null;
     }
 
-    public bool PlayerLeft()
-    {
-        RaycastHit2D hit = Physics2D.BoxCast(boxCollider.bounds.center + transform.right * rangePlayer * -1 * colliderDistancePlayer, new Vector3(boxCollider.bounds.size.x * rangePlayer, boxCollider.bounds.size.y, boxCollider.bounds.size.z), 0, Vector2.left, 0, playerLayer);
-        return hit.collider != null;
-    }
-
-    public bool PlayerRight()
-    {
-        RaycastHit2D hit = Physics2D.BoxCast(boxCollider.bounds.center + transform.right * rangePlayer * colliderDistancePlayer, new Vector3(boxCollider.bounds.size.x * rangePlayer, boxCollider.bounds.size.y, boxCollider.bounds.size.z), 0, Vector2.left, 0, playerLayer);
-        return hit.collider != null;
-    }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(boxCollider.bounds.center + transform.right * range * (transform.localScale.x) * colliderDistance, new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z));
+        Gizmos.DrawWireCube(boxCollider.bounds.center + transform.right * DealDamageRange * (transform.localScale.x) * colliderDistance, new Vector3(boxCollider.bounds.size.x * DealDamageRange, boxCollider.bounds.size.y, boxCollider.bounds.size.z));
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(boxCollider.bounds.center + transform.right * rangeChase * (transform.localScale.x) * colliderDistanceChase, new Vector3(boxCollider.bounds.size.x * rangeChase, boxCollider.bounds.size.y, boxCollider.bounds.size.z));
 
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireCube(boxCollider.bounds.center + transform.right * rangePlayer * -1 * (transform.localScale.x) * colliderDistancePlayer, new Vector3(boxCollider.bounds.size.x * rangePlayer, boxCollider.bounds.size.y, boxCollider.bounds.size.z));
-        Gizmos.color = Color.gray;
-        Gizmos.DrawWireCube(boxCollider.bounds.center + transform.right * rangePlayer * (transform.localScale.x) * colliderDistancePlayer, new Vector3(boxCollider.bounds.size.x * rangePlayer, boxCollider.bounds.size.y, boxCollider.bounds.size.z));
     }
 
 
@@ -223,7 +206,7 @@ public class Skeleton : MonoBehaviour
     {
         if (PlayerInSight())
         {
-            //player.TakeDamage(damage);
+            player.GetComponent<V2Health>().TakeDmg(damage);
             bPlayerHit = true;
         }
     }

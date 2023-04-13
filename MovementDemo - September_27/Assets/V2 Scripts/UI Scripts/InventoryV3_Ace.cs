@@ -6,6 +6,7 @@ public class InventoryV3_Ace : MonoBehaviour
 {
     [SerializeField] private GameObject Canvas;
     [SerializeField] public Player player;
+    [SerializeField] public GameObject playerUI;
 
     [Header("Warrior Border Buttons")]
     [SerializeField] private GameObject Warrior_HeadBB;
@@ -98,6 +99,7 @@ public class InventoryV3_Ace : MonoBehaviour
 
         //ClassName = player.GetClassName();
         Debug.Log("(Remember to uncommentNe line above me) Class Name in InventoryV3_Ace = " + ClassName);
+        Debug.Log("From InventoryV3_Ace, Add the Players UI to the Gamemanage UI");
 
         if(bDemo == false)
         {
@@ -234,7 +236,7 @@ public class InventoryV3_Ace : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.I))
         {
             ToggleCanvas();
         }
@@ -246,12 +248,14 @@ public class InventoryV3_Ace : MonoBehaviour
         {
             bCanvasActive = true;
             Canvas.SetActive(true);
+            playerUI.SetActive(false);
             Time.timeScale = 0;
         }
         else
         {
             bCanvasActive = false;
             Canvas.SetActive(false);
+            playerUI.SetActive(true);
             Time.timeScale = 1;
         }
     }
