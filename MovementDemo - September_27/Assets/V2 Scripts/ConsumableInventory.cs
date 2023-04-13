@@ -48,8 +48,8 @@ public class ConsumableInventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        /*
-       if (Input.GetKeyDown(KeyCode.Escape))
+        
+       if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             consInv[healthPotion] += 1;
             consInv[staminaPotion] += 1;
@@ -57,7 +57,7 @@ public class ConsumableInventory : MonoBehaviour
             InventoryCheck();
             //Debug.Log("Length" + InventoryLength().ToString());
         }
-        */
+        
        if (Input.GetAxisRaw("Mouse ScrollWheel") > 0) // forward
        {
             index += 1;
@@ -284,19 +284,19 @@ public class ConsumableInventory : MonoBehaviour
         {
             if (consInv.ElementAt(index).Key.CompareTag("HealthPotionIcon") && consInv.ElementAt(index).Value > 0 && InventoryLength() > 2)
             {
-                HP_effect.SetActive(true);
+                Instantiate(HP_effect, new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 2, this.gameObject.transform.position.z), Quaternion.identity);
                 healthScript.CurrentHealth += 30;
                 consInv[consInv.ElementAt(index).Key]--;
             }
             else if (consInv.ElementAt(index).Key.CompareTag("StaminaPotionIcon") && consInv.ElementAt(index).Value > 0 && InventoryLength() > 2)
             {
-                SP_effect.SetActive(true);
+                Instantiate(SP_effect, new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 2, this.gameObject.transform.position.z), Quaternion.identity);
                 movementScript.stamina += 20;
                 consInv[consInv.ElementAt(index).Key]--;
             }
             else if (consInv.ElementAt(index).Key.CompareTag("ManaPotionIcon") && consInv.ElementAt(index).Value > 0 && InventoryLength() > 2)
             {
-                MP_effect.SetActive(true);
+                Instantiate(MP_effect, new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 2, this.gameObject.transform.position.z), Quaternion.identity);
                 stats.mana += 10;
                 consInv[consInv.ElementAt(index).Key]--;
             }
@@ -307,21 +307,21 @@ public class ConsumableInventory : MonoBehaviour
                     GameObject potion = GetOneIndex();
                     if (potion.CompareTag("HealthPotionIcon"))
                     {
-                        HP_effect.SetActive(true);
+                        Instantiate(HP_effect, new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 2, this.gameObject.transform.position.z), Quaternion.identity);
                         healthScript.CurrentHealth += 30;
                         consInv[healthPotion]--;
                     }
 
                     if (potion.CompareTag("StaminaPotionIcon"))
                     {
-                        SP_effect.SetActive(true);
+                        Instantiate(SP_effect, new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 2, this.gameObject.transform.position.z), Quaternion.identity);
                         movementScript.stamina += 20;
                         consInv[staminaPotion]--;
                     }
 
                     if (potion.CompareTag("ManaPotionIcon"))
                     {
-                        MP_effect.SetActive(true);
+                        Instantiate(MP_effect, new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 2, this.gameObject.transform.position.z), Quaternion.identity);
                         stats.mana += 10;
                         consInv[manaPotion]--;
                     }
@@ -338,21 +338,21 @@ public class ConsumableInventory : MonoBehaviour
                     GameObject potion = p1;
                     if (potion.CompareTag("HealthPotionIcon"))
                     {
-                        HP_effect.SetActive(true);
+                        Instantiate(HP_effect, new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 2, this.gameObject.transform.position.z), Quaternion.identity);
                         healthScript.CurrentHealth += 30;
                         consInv[healthPotion]--;
                     }
 
                     if (potion.CompareTag("StaminaPotionIcon"))
                     {
-                        SP_effect.SetActive(true);
+                        Instantiate(SP_effect, new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 2, this.gameObject.transform.position.z), Quaternion.identity);
                         movementScript.stamina += 20;
                         consInv[staminaPotion]--;
                     }
 
                     if (potion.CompareTag("ManaPotionIcon"))
                     {
-                        MP_effect.SetActive(true);
+                        Instantiate(MP_effect, new Vector3(this.gameObject.transform.position.x, this.gameObject.transform.position.y + 2, this.gameObject.transform.position.z), Quaternion.identity);
                         stats.mana += 10;
                         consInv[manaPotion]--;
                     }
