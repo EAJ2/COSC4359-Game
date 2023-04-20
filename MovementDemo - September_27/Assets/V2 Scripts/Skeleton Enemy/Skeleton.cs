@@ -169,7 +169,7 @@ public class Skeleton : MonoBehaviour
     }
 
 
-    public void TakeDamage(float _damage)
+    public void TakeDMG(float _damage)
     {
         currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
 
@@ -191,7 +191,7 @@ public class Skeleton : MonoBehaviour
     private void Die()
     {
         anim.SetTrigger("Die");
-        GetComponent<Collider2D>().enabled = false;
+        //GetComponent<Collider2D>().enabled = false;
         GetComponentInParent<SkeletonPatrol>().enabled = false;
         this.enabled = false;
         dead = true;

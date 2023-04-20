@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
     private V2Health health;
     private Stats stats;
 
+    [Header("Add the Players UI here")]
+    [SerializeField] private GameObject playerUI;
+
     [Header("Inventory Stuff (Dont Touch the Variables) (Leave ClassName Blank")]
     [SerializeField] private InventoryV3_Ace inventory;
     public bool bHeadUnlocked;
@@ -25,6 +28,9 @@ public class Player : MonoBehaviour
     public bool bAbility3Unlocked;
     public bool bAbility4Unlocked;
 
+    [Header("Ability Fields")]
+    [SerializeField] private ShurikenAbility Shuriken;
+    [SerializeField] private ArrowAbility ArrowAb;
 
     private bool bIsThereSave = false;
     private bool bTutorialDone = false;
@@ -39,6 +45,15 @@ public class Player : MonoBehaviour
         pm = GetComponent<V2PlayerMovement>();
         health = GetComponent<V2Health>();
         stats = GetComponent<Stats>();
+
+        if(playerUI == null)
+        {
+            Debug.Log("You need to add the Player UI gameobject to the Player field in the Player Script!");
+        }
+        else
+        {
+            playerUI.SetActive(true);
+        }
 
         LoadPlayer();
     }
@@ -381,12 +396,12 @@ public class Player : MonoBehaviour
     //Equip Ability
     public void EquipAbility1()
     {
-
+        Shuriken.SetEquipped();
     }
 
     public void EquipAbility2()
     {
-
+        ArrowAb.SetEquipped();
     }
 
     public void EquipAbility3()
@@ -402,12 +417,12 @@ public class Player : MonoBehaviour
     //UnequipAbility
     public void UnequipAbility1()
     {
-
+        Shuriken.Unequip();
     }
 
     public void UnequipAbility2()
     {
-
+        ArrowAb.Unequip();
     }
 
     public void UnequipAbility3()

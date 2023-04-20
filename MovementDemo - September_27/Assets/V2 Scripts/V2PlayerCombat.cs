@@ -153,6 +153,22 @@ public class V2PlayerCombat : MonoBehaviour
                     Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
                 }
             }
+            else if (enemy.tag == "GroundEnemy")
+            {
+                hitAudio.Play();
+                if (critCounter <= stats.critRange)
+                {
+                    enemy.GetComponent<Skeleton>().TakeDMG(stats.critDMG);
+                    critTextMesh.text = stats.critDMG.ToString();
+                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+                else
+                {
+                    enemy.GetComponent<Skeleton>().TakeDMG(stats.dmg);
+                    dmgTextMesh.text = stats.dmg.ToString();
+                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+            }
         }
     }
 
