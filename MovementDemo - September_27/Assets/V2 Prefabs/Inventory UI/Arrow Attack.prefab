@@ -666,7 +666,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 80
   FallSpeed: 15
-  bEquipped: 1
   CooldownTime: 2
   DurationTime: 3
   Arrows:

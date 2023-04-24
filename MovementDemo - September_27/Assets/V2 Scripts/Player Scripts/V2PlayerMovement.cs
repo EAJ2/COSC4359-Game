@@ -30,7 +30,9 @@ public class V2PlayerMovement : MonoBehaviour
     private float NormalSprintSpeed;
     [SerializeField] private float BoostWalkSpeed;
     [SerializeField] private float BoostSprintSpeed;
-
+    [SerializeField] private float AbilityWalkSpeed;
+    [SerializeField] private float AbilitySprintSpeed;
+    private bool bSpeedBoosted = false;
 
     [Header("JumpParameters")]
     [SerializeField] private bool bCanJump = true;
@@ -534,11 +536,34 @@ public class V2PlayerMovement : MonoBehaviour
     {
         SetWalkSpeed(BoostWalkSpeed);
         SetSprintSpeed(BoostSprintSpeed);
+        bSpeedBoosted = true;
     }
 
     public void WarriorUnequipShoes()
     {
         SetWalkSpeed(NormalWalkSpeed);
         SetSprintSpeed(NormalSprintSpeed);
+        bSpeedBoosted = false;
+    }
+
+    //Ability Items Changes
+    public void ActivateAbility3()
+    {
+        SetWalkSpeed(AbilityWalkSpeed);
+        SetSprintSpeed(AbilitySprintSpeed);
+    }
+
+    public void DeactivateAbility3()
+    {
+        if(bSpeedBoosted)
+        {
+            SetWalkSpeed(BoostWalkSpeed);
+            SetSprintSpeed(BoostSprintSpeed);
+        }
+        else
+        {
+            SetWalkSpeed(NormalWalkSpeed);
+            SetSprintSpeed(NormalSprintSpeed);
+        }
     }
 }

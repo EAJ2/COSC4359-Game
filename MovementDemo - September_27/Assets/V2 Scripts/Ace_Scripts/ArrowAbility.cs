@@ -6,6 +6,7 @@ public class ArrowAbility : MonoBehaviour
 {
     [SerializeField] private float Speed;
     [SerializeField] private float FallSpeed;
+    [SerializeField] private Player player;
     private SpriteRenderer sr;
 
     private Vector2 MousePosition;
@@ -29,6 +30,10 @@ public class ArrowAbility : MonoBehaviour
 
     private void Start()
     {
+        if(player == null)
+        {
+            Debug.Log("You need to add the Player to the Serialize field of the arrow ability!");
+        }
         sr = GetComponent<SpriteRenderer>();
         sr.enabled = false;
         NumberOfArrows = Arrows.Count;
@@ -49,7 +54,8 @@ public class ArrowAbility : MonoBehaviour
     {
         if(bEquipped)
         {
-            if(!bActivated)
+            player.SetAbility2Status();
+            if (!bActivated)
             {
                 CooldownTimer += Time.deltaTime;
             }
@@ -66,7 +72,6 @@ public class ArrowAbility : MonoBehaviour
                 {
                     if(Input.GetKeyUp(KeyCode.Alpha9))
                     {
-                        Debug.Log("Key Let Go!");
                         sr.enabled = false;
                         for(int i = 0; i < NumberOfArrows; i++)
                         {
@@ -117,5 +122,10 @@ public class ArrowAbility : MonoBehaviour
     public void ResetArrow(int x)
     {
         Arrows[x].transform.position = Positions[x].position;
+    }
+
+    public bool IsReady()
+    {
+        return CooldownTimer >= CooldownTime;
     }
 }

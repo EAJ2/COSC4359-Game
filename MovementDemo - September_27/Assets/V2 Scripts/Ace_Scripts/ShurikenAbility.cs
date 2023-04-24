@@ -5,17 +5,21 @@ using UnityEngine;
 public class ShurikenAbility : MonoBehaviour
 {
     [SerializeField] private float Damage;
-
+    [SerializeField] private Player player;
     [SerializeField] private float CooldownTime;
     private float CooldownTimer;
     [SerializeField] private float DurationTime;
-    private float DurationTimer;
+    private float DurationTimer = 0;
 
     private bool bActivated = false;
     private bool bEquipped = false;
 
     private void Start()
     {
+        if(player == null)
+        {
+            Debug.Log("You need to add the player to the serialize field of the Shuriken Ability!");
+        }
         gameObject.GetComponent<SpriteRenderer>().enabled = false;
         gameObject.GetComponent<CircleCollider2D>().enabled = false;
         gameObject.GetComponent<Revolve>().enabled = false;
@@ -27,9 +31,10 @@ public class ShurikenAbility : MonoBehaviour
     {
         if(bEquipped == true)
         {
-            if(Input.GetKeyDown(KeyCode.Alpha0))
+            player.SetAbility1Status();
+            if (CooldownTimer >= CooldownTime)
             {
-                if(CooldownTimer >= CooldownTime)
+                if (Input.GetKeyDown(KeyCode.Alpha0))
                 {
                     gameObject.GetComponent<SpriteRenderer>().enabled = true;
                     gameObject.GetComponent<CircleCollider2D>().enabled = true;
@@ -37,6 +42,7 @@ public class ShurikenAbility : MonoBehaviour
                     gameObject.GetComponent<Rotate>().enabled = true;
                     bActivated = true;
                     CooldownTimer = 0;
+
                 }
             }
             if(bActivated)
@@ -91,5 +97,10 @@ public class ShurikenAbility : MonoBehaviour
         {
             collision.gameObject.GetComponent<Boss_Health>().TakeDMG((int)Damage);
         }
+    }
+
+    public bool IsReady()
+    {
+        return CooldownTimer >= CooldownTime;
     }
 }

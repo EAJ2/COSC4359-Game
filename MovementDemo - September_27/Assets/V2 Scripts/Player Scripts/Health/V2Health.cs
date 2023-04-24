@@ -65,6 +65,7 @@ public class V2Health : MonoBehaviour
     public void AddHealth(float value)
     {
         CurrentHealth = Mathf.Clamp(CurrentHealth + value, 0, startingHealth);
+        healthBar.SetHealth(CurrentHealth);
     }
 
     public void SetHealth(float value)

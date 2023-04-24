@@ -5,6 +5,7 @@ using UnityEngine;
 public class InventoryV3_Ace : MonoBehaviour
 {
     [SerializeField] private GameObject Canvas;
+    [SerializeField] private GameObject CooldownCanvas;
     [SerializeField] public Player player;
     [SerializeField] public GameObject playerUI;
 
@@ -75,6 +76,18 @@ public class InventoryV3_Ace : MonoBehaviour
     [SerializeField] private GameObject Ability3Button;
     [SerializeField] private GameObject Ability4Button;
 
+    [Header("Ready Abilities")]
+    [SerializeField] private GameObject Ability1_Ready;
+    [SerializeField] private GameObject Ability2_Ready;
+    [SerializeField] private GameObject Ability3_Ready;
+    [SerializeField] private GameObject Ability4_Ready;
+
+    [Header("Cooldown Abilities")]
+    [SerializeField] private GameObject Ability1_Used;
+    [SerializeField] private GameObject Ability2_Used;
+    [SerializeField] private GameObject Ability3_Used;
+    [SerializeField] private GameObject Ability4_Used;
+
     private bool bCanvasActive = false;
 
     private bool bHeadEquipped = false;
@@ -93,13 +106,28 @@ public class InventoryV3_Ace : MonoBehaviour
     [SerializeField] private string ClassName;
 
 
+
     private void Awake()
     {
         Canvas.SetActive(false);
 
+        //Ability Cooldown Canvas SetActive(false)
+        Ability1_Ready.SetActive(false);
+        Ability2_Ready.SetActive(false);
+        Ability3_Ready.SetActive(false);
+        Ability4_Ready.SetActive(false);
+        Ability1_Used.SetActive(false);
+        Ability2_Used.SetActive(false);
+        Ability3_Used.SetActive(false);
+        Ability4_Used.SetActive(false);
+        CooldownCanvas.SetActive(false);
+
         //ClassName = player.GetClassName();
-        Debug.Log("(Remember to uncommentNe line above me) Class Name in InventoryV3_Ace = " + ClassName);
-        Debug.Log("From InventoryV3_Ace, Add the Players UI to the Gamemanage UI");
+        Debug.Log("(Remember to uncomment line above me) Class Name in InventoryV3_Ace = " + ClassName);
+        if (player == null)
+        {
+            Debug.Log("From InventoryV3_Ace, Add the Players UI to the Gamemanage UI");
+        }
 
         if(bDemo == false)
         {
@@ -248,6 +276,7 @@ public class InventoryV3_Ace : MonoBehaviour
         {
             bCanvasActive = true;
             Canvas.SetActive(true);
+            CooldownCanvas.SetActive(false);
             playerUI.SetActive(false);
             Time.timeScale = 0;
         }
@@ -255,6 +284,7 @@ public class InventoryV3_Ace : MonoBehaviour
         {
             bCanvasActive = false;
             Canvas.SetActive(false);
+            CooldownCanvas.SetActive(true);
             playerUI.SetActive(true);
             Time.timeScale = 1;
         }
@@ -641,6 +671,7 @@ public class InventoryV3_Ace : MonoBehaviour
             bAbility1Equipped = true;
             Ability1Equipped.SetActive(true);
             player.EquipAbility1();
+            CooldownCanvas.SetActive(true);
         }
         else
         {
@@ -655,6 +686,7 @@ public class InventoryV3_Ace : MonoBehaviour
             bAbility2Equipped = true;
             Ability2Equipped.SetActive(true);
             player.EquipAbility2();
+            CooldownCanvas.SetActive(true);
         }
         else
         {
@@ -669,6 +701,7 @@ public class InventoryV3_Ace : MonoBehaviour
             bAbility3Equipped = true;
             Ability3Equipped.SetActive(true);
             player.EquipAbility3();
+            CooldownCanvas.SetActive(true);
         }
         else
         {
@@ -683,6 +716,7 @@ public class InventoryV3_Ace : MonoBehaviour
             bAbility4Equipped = true;
             Ability4Equipped.SetActive(true);
             player.EquipAbility4();
+            CooldownCanvas.SetActive(true);
         }
         else
         {
@@ -695,6 +729,8 @@ public class InventoryV3_Ace : MonoBehaviour
     {
         bAbility1Equipped = false;
         Ability1Equipped.SetActive(false);
+        Ability1_Ready.SetActive(false);
+        Ability1_Used.SetActive(false);
         player.UnequipAbility1();
     }
 
@@ -702,6 +738,8 @@ public class InventoryV3_Ace : MonoBehaviour
     {
         bAbility2Equipped = false;
         Ability2Equipped.SetActive(false);
+        Ability2_Ready.SetActive(false);
+        Ability2_Used.SetActive(false);
         player.UnequipAbility2();
     }
 
@@ -709,6 +747,8 @@ public class InventoryV3_Ace : MonoBehaviour
     {
         bAbility3Equipped = false;
         Ability3Equipped.SetActive(false);
+        Ability3_Ready.SetActive(false);
+        Ability3_Used.SetActive(false);
         player.UnequipAbility3();
     }
 
@@ -716,6 +756,8 @@ public class InventoryV3_Ace : MonoBehaviour
     {
         bAbility4Equipped = false;
         Ability4Equipped.SetActive(false);
+        Ability4_Ready.SetActive(false);
+        Ability4_Used.SetActive(false);
         player.UnequipAbility4();
     }
 
@@ -739,4 +781,55 @@ public class InventoryV3_Ace : MonoBehaviour
     {
         return bAbility4Equipped;
     }
+
+    //Abilities Ready to Use
+    public void Ability1Ready()
+    {
+        Ability1_Ready.SetActive(true);
+        Ability1_Used.SetActive(false);
+    }
+
+    public void Ability2Ready()
+    {
+        Ability2_Ready.SetActive(true);
+        Ability2_Used.SetActive(false);
+    }
+
+    public void Ability3Ready()
+    {
+        Ability3_Ready.SetActive(true);
+        Ability3_Used.SetActive(false);
+    }
+
+    public void Ability4Ready()
+    {
+        Ability4_Ready.SetActive(true);
+        Ability4_Used.SetActive(false);
+    }
+
+    //Abilities on Cooldown
+    public void Ability1Used()
+    {
+        Ability1_Used.SetActive(true);
+        Ability1_Ready.SetActive(false);
+    }
+
+    public void Ability2Used()
+    {
+        Ability2_Used.SetActive(true);
+        Ability2_Ready.SetActive(false);
+    }
+
+    public void Ability3Used()
+    {
+        Ability3_Used.SetActive(true);
+        Ability3_Ready.SetActive(false);
+    }
+
+    public void Ability4Used()
+    {
+        Ability4_Used.SetActive(true);
+        Ability4_Ready.SetActive(false);
+    }
+
 }

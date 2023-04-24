@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
     [Header("Ability Fields")]
     [SerializeField] private ShurikenAbility Shuriken;
     [SerializeField] private ArrowAbility ArrowAb;
+    [SerializeField] private HealAbility HealAb;
+    private SuperSpeed ss;
 
     private bool bIsThereSave = false;
     private bool bTutorialDone = false;
@@ -45,8 +47,26 @@ public class Player : MonoBehaviour
         pm = GetComponent<V2PlayerMovement>();
         health = GetComponent<V2Health>();
         stats = GetComponent<Stats>();
+        ss = GetComponent<SuperSpeed>();
 
-        if(playerUI == null)
+        if(ss == null)
+        {
+            Debug.Log("Missing the Super Speed Script on the Player!");
+        }
+        if(HealAb == null)
+        {
+            Debug.Log("Missing the HealAbility Script on the Player!");
+        }
+        if (ArrowAb == null)
+        {
+            Debug.Log("Missing the ArrowAbility Script on the Player!");
+        }
+        if (Shuriken == null)
+        {
+            Debug.Log("Missing the Shuriken Ability Script on the Player!");
+        }
+
+        if (playerUI == null)
         {
             Debug.Log("You need to add the Player UI gameobject to the Player field in the Player Script!");
         }
@@ -397,21 +417,25 @@ public class Player : MonoBehaviour
     public void EquipAbility1()
     {
         Shuriken.SetEquipped();
+        SetAbility1Status();
     }
 
     public void EquipAbility2()
     {
         ArrowAb.SetEquipped();
+        SetAbility2Status();
     }
 
     public void EquipAbility3()
     {
-
+        ss.EquipAbility3();
+        SetAbility3Status();
     }
 
     public void EquipAbility4()
     {
-
+        HealAb.Equip();
+        SetAbility4Status();
     }
 
     //UnequipAbility
@@ -427,12 +451,62 @@ public class Player : MonoBehaviour
 
     public void UnequipAbility3()
     {
-
+        ss.UnequipAbility3();
     }
 
     public void UnequipAbility4()
     {
+        HealAb.Unequip();
+    }
 
+
+    //Check if abilities can be used
+    public void SetAbility1Status()
+    {
+        if (Shuriken.IsReady() == true)
+        {
+            inventory.Ability1Ready();
+        }
+        else
+        {
+            inventory.Ability1Used();
+        }
+    }
+
+    public void SetAbility2Status()
+    {
+        if(ArrowAb.IsReady() == true)
+        {
+            inventory.Ability2Ready();
+        }
+        else
+        {
+            inventory.Ability2Used();
+        }
+    }
+
+    public void SetAbility3Status()
+    {
+        if(ss.IsReady() == true)
+        {
+            inventory.Ability3Ready();
+        }
+        else
+        {
+            inventory.Ability3Used();
+        }
+    }
+
+    public void SetAbility4Status()
+    {
+        if(HealAb.IsReady() == true)
+        {
+            inventory.Ability4Ready();
+        }
+        else
+        {
+            inventory.Ability4Used();
+        }
     }
 
 
