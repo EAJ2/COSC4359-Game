@@ -36,7 +36,7 @@ public class BossTrigger : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             player.GetComponent<V2PlayerMovement>().DisableMovement();
-            Door.SetActive(true);
+            //Door.SetActive(true);
             player.GetComponent<Animator>().SetBool("isMoving", false);
             player.GetComponent<Animator>().SetBool("isGrounded", true);
             player.GetComponent<V2PlayerCombat>().enabled = false;

@@ -11,14 +11,18 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private Player player;
     public GameObject ConfirmTutorialEndCanvas;
     public GameObject StartTutorialCanvas;
+    public GameObject ResetTutorialCanvas;
+    public GameObject PlayerHUD;
 
     private int TutorialsDone = 0;
 
     private bool bTutorialsDone = false;
+    private bool bMenuShowing = false;
 
     //Set Canvas Inactive
     private void Awake()
     {
+        ResetTutorialCanvas.SetActive(false);
         ConfirmTutorialEndCanvas.SetActive(false);
         StartTutorialCanvas.SetActive(true);
         player.GetComponent<V2PlayerMovement>().DisableMovement();
@@ -26,10 +30,36 @@ public class TutorialManager : MonoBehaviour
 
     private void Update()
     {
-        if(bTutorialsDone)
+        if (Input.GetKey(KeyCode.Tilde))
+        {
+            Debug.Log("Escape is pressed!");
+            ToggleEscape();
+        }
+        if (bTutorialsDone)
         {
             EndTutorial();
         }
+    }
+
+    private void ToggleEscape()
+    {
+        if(bMenuShowing)
+        {
+            bMenuShowing = false;
+            PlayerHUD.SetActive(true);
+            ResetTutorialCanvas.SetActive(false);
+        }
+        else
+        {
+            bMenuShowing = true;
+            PlayerHUD.SetActive(false);
+            ResetTutorialCanvas.SetActive(true);
+        }
+    }
+
+    public void ResetTutorial()
+    {
+        SceneManager.LoadScene("TutorialScene");
     }
 
     //Increment the var TutorialsDone to equal the amount of tutorials on the manager

@@ -49,7 +49,7 @@ public class Player : MonoBehaviour
         stats = GetComponent<Stats>();
         ss = GetComponent<SuperSpeed>();
 
-        //SaveClassInformation.DeleteSave(1);
+        // SaveClassInformation.DeleteSave(1);
 
         if (ss == null)
         {
