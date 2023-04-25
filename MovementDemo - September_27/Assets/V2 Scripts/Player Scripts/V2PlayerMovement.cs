@@ -24,7 +24,7 @@ public class V2PlayerMovement : MonoBehaviour
     [SerializeField] public float WalkSpeed;
     [SerializeField] public float SprintSpeed;
     [SerializeField] private float InAirMoveSpeed;
-    [SerializeField] public float stamina;
+    public float stamina;
     [SerializeField] public float MAXstamina;
     private float NormalWalkSpeed;
     private float NormalSprintSpeed;
@@ -60,6 +60,7 @@ public class V2PlayerMovement : MonoBehaviour
     [SerializeField] private float DashingPower;
     [SerializeField] private float DashingTimer;
     [SerializeField] private float DashingCooldown;
+    [SerializeField] private float DashStaminaCost;
 
     [Header("Layers Masks")]
     [SerializeField] private LayerMask groundLayer;
@@ -81,6 +82,7 @@ public class V2PlayerMovement : MonoBehaviour
         cc = GetComponent<CapsuleCollider2D>();
         stats = GetComponent<Stats>();
         staminaBar.SetMaxStamina(MAXstamina);
+        stamina = MAXstamina;
 
         NormalWalkSpeed = WalkSpeed;
         NormalSprintSpeed = SprintSpeed;
@@ -176,10 +178,10 @@ public class V2PlayerMovement : MonoBehaviour
         }
 
         //Dashing Code
-        if (Input.GetKey(KeyCode.Q) && bCanDash && IsGrounded()) 
+        if (Input.GetKey(KeyCode.Q) && bCanDash && IsGrounded() && (stamina >= DashStaminaCost) )
         {
             anim.SetTrigger("Dash");
-            stamina -= 10;
+            stamina -= DashStaminaCost;
             if (rb.velocity.y == 0)
             {
                 bIsFalling = false;
@@ -566,5 +568,11 @@ public class V2PlayerMovement : MonoBehaviour
             SetWalkSpeed(NormalWalkSpeed);
             SetSprintSpeed(NormalSprintSpeed);
         }
+    }
+
+    public void ResetStamina()
+    {
+        stamina = MAXstamina;
+        staminaBar.SetMaxStamina(stamina);
     }
 }

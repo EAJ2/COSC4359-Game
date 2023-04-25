@@ -26,6 +26,8 @@ public class V2Health : MonoBehaviour
 
     [SerializeField] public GameObject RespawnPoint;
 
+    private bool bCanTakeDamage = true;
+
     void Update()
     {
         Die();
@@ -43,23 +45,13 @@ public class V2Health : MonoBehaviour
 
     public void TakeDmg(float dmg)
     {
-        CurrentHealth -= dmg - (dmg * stats.dmgRed);
-        healthBar.SetHealth(CurrentHealth);
-        Die();
-        /*
-        if (CurrentHealth > 0)
+        if(bCanTakeDamage == true)
         {
-
+            CurrentHealth -= dmg - (dmg * stats.dmgRed);
+            healthBar.SetHealth(CurrentHealth);
+            Die();
         }
-        else
-        {
-            if(!bDead)
-            {
-                pm.enabled = false;
-                bDead = true;
-            }
-        }
-        */
+        
     }
 
     public void AddHealth(float value)
@@ -94,23 +86,26 @@ public class V2Health : MonoBehaviour
 
     public void Reset()
     {
-        CurrentHealth = MaxHealth;
-        bDead = false;
-        pm.enabled = true;
-        anim.SetBool("isDead", false);
-        anim.SetBool("IsMoving", true);
-
         gameObject.transform.position = new Vector3(RespawnPoint.transform.position.x, RespawnPoint.transform.position.y, gameObject.transform.position.z);
+        this.GetComponent<V2PlayerMovement>().EnableMovement();
+        this.GetComponent<V2PlayerMovement>().ResetStamina();
+        CurrentHealth = MaxHealth;
+        healthBar.SetHealth(CurrentHealth);
+        bCanTakeDamage = true;
+        bDead = false;
+        comb.enabled = true;
+        rc.enabled = true;
     }
 
     public void Die()
     {
         if (CurrentHealth < 0)
         {
+            bCanTakeDamage = false;
             bDead = true;
-            anim.SetBool("isDead", true);
+            anim.SetTrigger("Dead");
             this.enabled = false;
-            mov.enabled = false;
+            this.GetComponent<V2PlayerMovement>().DisableMovement();
             comb.enabled = false;
             rc.enabled = false;
         }

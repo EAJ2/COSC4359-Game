@@ -122,7 +122,7 @@ public class InventoryV3_Ace : MonoBehaviour
         Ability4_Used.SetActive(false);
         CooldownCanvas.SetActive(false);
 
-        //ClassName = player.GetClassName();
+        ClassName = player.GetClassName();
         Debug.Log("(Remember to uncomment line above me) Class Name in InventoryV3_Ace = " + ClassName);
         if (player == null)
         {
