@@ -343,6 +343,8 @@ public class V2PlayerMovement : MonoBehaviour
         bCanMove = true;
         EnableJump();
         EnableDash();
+        EnableWalk();
+        EnableFall();
     }
 
     public void DisableMovement()
@@ -350,6 +352,8 @@ public class V2PlayerMovement : MonoBehaviour
         bCanMove = false;
         DisableJump();
         DisableDash();
+        DisableWalk();
+        DisableFall();
     }
 
     public bool IsGrounded()
