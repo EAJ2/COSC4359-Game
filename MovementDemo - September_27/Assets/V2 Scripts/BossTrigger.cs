@@ -8,10 +8,12 @@ public class BossTrigger : MonoBehaviour
     public GameObject BossConvo;
     public GameObject player;
     public Animator bossAnim;
+    public GameObject Door;
 
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        Door.SetActive(false);
     }
 
     private void Update()
@@ -34,6 +36,7 @@ public class BossTrigger : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             player.GetComponent<V2PlayerMovement>().DisableMovement();
+            Door.SetActive(true);
             player.GetComponent<Animator>().SetBool("isMoving", false);
             player.GetComponent<Animator>().SetBool("isGrounded", true);
             player.GetComponent<V2PlayerCombat>().enabled = false;

@@ -36,11 +36,11 @@ public class PauseMenu : MonoBehaviour
                 ShowMenuCanvas();
             }
         }
-        if(player.GetComponent<V2Health>().IsDead() && !bRespawnCanvasShown)
+        /*if(player.GetComponent<V2Health>().IsDead() && !bRespawnCanvasShown)
         {
             bRespawnCanvasShown = true;
             ShowRespawnCanvas();
-        }
+        }*/
     }
 
     public void ShowRespawnCanvas()
