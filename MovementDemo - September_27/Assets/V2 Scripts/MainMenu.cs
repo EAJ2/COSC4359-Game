@@ -12,7 +12,6 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private GameObject DeleteSaveConfirmationCanvas;
     [SerializeField] public GameObject ClassSelectedCanvas;
 
-    [SerializeField] public GameObject MageSelectedCanvas;
     [SerializeField] public GameObject KnightSelectedCanvas;
     [SerializeField] public GameObject RangerSelectedCanvas;
     [SerializeField] public GameObject VagabondSelectedCanvas;
@@ -46,7 +45,6 @@ public class MainMenu : MonoBehaviour
         SaveGameCanvas.SetActive(false);
         DeleteSaveConfirmationCanvas.SetActive(false);
         ClassSelectedCanvas.SetActive(false);
-        MageSelectedCanvas.SetActive(false);
         KnightSelectedCanvas.SetActive(false);
         RangerSelectedCanvas.SetActive(false);
         VagabondSelectedCanvas.SetActive(false);
@@ -62,7 +60,6 @@ public class MainMenu : MonoBehaviour
             {
                 bTutorialDone = false;
             }
-
             /*if(player.GetIsThereSave() == true)
             {
                 bIsThereSave = true;
@@ -86,6 +83,15 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        if (player != null)
+        {
+            className = player.GetClassName();
+            Debug.Log("CLass Name from Start In Main Menu = " + className);
+        }
+    }
+
     public void PlayButton()
     {
         if(player.GetIsTutorialDone() == false && player.GetIsThereSave() == false)
@@ -93,13 +99,13 @@ public class MainMenu : MonoBehaviour
             StartTutorial();
             return;
         }
-        if (player.GetIsThereSave() == true && player.GetClassName() != "")
+        if (player.GetIsTutorialDone() == true && player.GetClassName() != "")
         {
+            EnableSaveGame();
             DisableMainMenu();
             LoadSaveClassStats();
-            EnableSaveGame();
         }
-        else if (player.GetIsThereSave() == true && player.GetClassName() == "")
+        else if (player.GetIsTutorialDone() == true && player.GetClassName() == "")
         {
             DisableMainMenu();
             EnableNoSaveGame();
@@ -116,7 +122,6 @@ public class MainMenu : MonoBehaviour
     public void BackToClassSelectButton()
     {
         DisableClassSelected();
-        MageSelectedCanvas.SetActive(false);
         RangerSelectedCanvas.SetActive(false);
         KnightSelectedCanvas.SetActive(false);
         VagabondSelectedCanvas.SetActive(false);
@@ -202,18 +207,9 @@ public class MainMenu : MonoBehaviour
 
     void DisableClassesSelected()
     {
-        MageSelectedCanvas.SetActive(false);
         KnightSelectedCanvas.SetActive(false);
         RangerSelectedCanvas.SetActive(false);
         VagabondSelectedCanvas.SetActive(false);
-    }
-
-    public void MageSelectedButton()
-    {
-        DisableNoSaveGame();
-        DisableClassesSelected();
-        className = "Mage";
-        MageSelectedCanvas.SetActive(true);
     }
 
     public void KnightSelectedButton()
@@ -242,7 +238,7 @@ public class MainMenu : MonoBehaviour
 
     public void EnableClassSelected()
     {
-        ClassSelectedCanvas.SetActive(true);
+       // ClassSelectedCanvas.SetActive(true);
         stats.vit = Random.Range(1, 7);
         stats.str = Random.Range(1, 7);
         stats.end = Random.Range(1, 7);

@@ -49,7 +49,9 @@ public class Player : MonoBehaviour
         stats = GetComponent<Stats>();
         ss = GetComponent<SuperSpeed>();
 
-        if(ss == null)
+        //SaveClassInformation.DeleteSave(1);
+
+        if (ss == null)
         {
             Debug.Log("Missing the Super Speed Script on the Player!");
         }
