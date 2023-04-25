@@ -111,7 +111,7 @@ Transform:
   - {fileID: 3989848727985706303}
   - {fileID: 3989848728030245270}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3989848727802766876
 SpriteRenderer:
@@ -151,8 +151,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1183210039
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 4723107735738678597, guid: c1cdd26cc09ad224884556bc4d8296ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -175,7 +175,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.0042803213, y: -0.08845867}
@@ -206,12 +206,12 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!82 &3989848727802766875
 AudioSource:
   m_ObjectHideFlags: 0
@@ -327,10 +327,10 @@ MonoBehaviour:
   inRange: 0
   moving: 0
   moveSpeed: 6
-  xpValue: 200
+  xpValue: 100
   goldValue: 10
-  maxHP: 10
-  currentHP: 10
+  maxHP: 50
+  currentHP: 50
   anim: {fileID: 3989848727802766870}
   playerAnim: {fileID: 0}
   dmg: 3

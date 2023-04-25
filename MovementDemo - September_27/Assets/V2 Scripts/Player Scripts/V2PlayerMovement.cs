@@ -443,6 +443,7 @@ public class V2PlayerMovement : MonoBehaviour
     public void DisableWalk()
     {
         bCanWalk = false;
+        rb.velocity = Vector3.zero;
     }
 
     public void EnableJump()
