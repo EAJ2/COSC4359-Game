@@ -27,6 +27,7 @@ public class BossTrigger : MonoBehaviour
             bossAnim.SetBool("Intro", false);
             this.gameObject.SetActive(false);
             this.enabled = false;
+            Time.timeScale = 0f;
         }
     }
 
@@ -41,6 +42,7 @@ public class BossTrigger : MonoBehaviour
             player.GetComponent<Animator>().SetBool("isGrounded", true);
             player.GetComponent<V2PlayerCombat>().enabled = false;
             BossConvo.SetActive(true);
+            Time.timeScale = 0f;
         }
     }
 

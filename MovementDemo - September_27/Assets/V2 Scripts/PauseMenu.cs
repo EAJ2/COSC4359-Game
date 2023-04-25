@@ -107,7 +107,7 @@ public class PauseMenu : MonoBehaviour
     {
         HideMenuCanvas();
         HideSaveCanvas();
-        ControlsCanvas.SetActive(false);
+        // ControlsCanvas.SetActive(false);
         bPaused = false;
         Time.timeScale = 1f;
     }
@@ -115,5 +115,7 @@ public class PauseMenu : MonoBehaviour
     public void LoadMenu()
     {
         SceneManager.LoadScene("V2MainMenu");
+        bPaused = false;
+        Time.timeScale = 1f;
     }
 }
