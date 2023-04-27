@@ -6,15 +6,11 @@ using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour
 {
-    public List<TutorialImage> TutorialImages;
-    public NotifyTriggerCollision NTC;
     [SerializeField] private Player player;
     public GameObject ConfirmTutorialEndCanvas;
     public GameObject StartTutorialCanvas;
     public GameObject ResetTutorialCanvas;
     public GameObject PlayerHUD;
-
-    private int TutorialsDone = 0;
 
     private bool bTutorialsDone = false;
     private bool bMenuShowing = false;
@@ -30,14 +26,9 @@ public class TutorialManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Tilde))
+        if (Input.GetKey(KeyCode.Escape))
         {
-            Debug.Log("Escape is pressed!");
             ToggleEscape();
-        }
-        if (bTutorialsDone)
-        {
-            EndTutorial();
         }
     }
 
@@ -62,15 +53,6 @@ public class TutorialManager : MonoBehaviour
         SceneManager.LoadScene("TutorialScene");
     }
 
-    //Increment the var TutorialsDone to equal the amount of tutorials on the manager
-    public void IncrTutorialsDone()
-    {
-        TutorialsDone++;
-        if(TutorialsDone == TutorialImages.Count)
-        {
-            bTutorialsDone = true;
-        }
-    }
 
     public void StartTutorialButton()
     {
@@ -81,11 +63,6 @@ public class TutorialManager : MonoBehaviour
     //Set active end tutorial canvas when the Final Collider is triggered and all the tutorials are done
     public void EndTutorial()
     {
-        if(NTC.IsTriggered() == true)
-        {
-            player.GetComponentInChildren<V2PlayerMovement>().DisableMovement();
-            ConfirmTutorialEndCanvas.SetActive(true);
-        }
     }
 
     //Go to main menu when canvas is pressed to OK
@@ -96,14 +73,4 @@ public class TutorialManager : MonoBehaviour
         ConfirmTutorialEndCanvas.SetActive(false);
         SceneManager.LoadScene("V2MainMenu");
     }
-
-
-
-
-
-
-
-
-
-
 }

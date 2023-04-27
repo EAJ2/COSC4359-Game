@@ -116,6 +116,8 @@ public class InventoryV3_Ace : MonoBehaviour
     [SerializeField] public bool bDemo = false;
     [SerializeField] private string ClassName;
 
+    [SerializeField] private bool bTutorial = false;
+
     private int NumberOfKeys = 0;
 
 
@@ -124,175 +126,195 @@ public class InventoryV3_Ace : MonoBehaviour
     {
         Canvas.SetActive(false);
 
-        //Ability Cooldown Canvas SetActive(false)
-        Ability1_Ready.SetActive(false);
-        Ability2_Ready.SetActive(false);
-        Ability3_Ready.SetActive(false);
-        Ability4_Ready.SetActive(false);
-        Ability1_Used.SetActive(false);
-        Ability2_Used.SetActive(false);
-        Ability3_Used.SetActive(false);
-        Ability4_Used.SetActive(false);
-        CooldownCanvas.SetActive(false);
-
-        ClassName = player.GetClassName();
-        Debug.Log("Class Name in InventoryV3_Ace = " + ClassName);
-        if (player == null)
+        if(bTutorial == true)
         {
-            Debug.Log("From InventoryV3_Ace, Add the Players UI to the Gamemanage UI");
-        }
-
-        if(bDemo == false)
-        {
-            //Gear
-            Warrior_HeadBB.SetActive(false);
-            Warrior_ChestBB.SetActive(false);
-            Warrior_LegsBB.SetActive(false);
-            Warrior_ShoesBB.SetActive(false);
-            Warrior_WeaponBB.SetActive(false);
-            Warrior_ArtifactBB.SetActive(false);
-
-            Mage_HeadBB.SetActive(false);
-            Mage_ChestBB.SetActive(false);
-            Mage_LegsBB.SetActive(false);
-            Mage_ShoesBB.SetActive(false);
-            Mage_WeaponBB.SetActive(false);
-            Mage_ArtifactBB.SetActive(false);
-
-            Warrior_HeadUnlockedButton.SetActive(false);
-            Warrior_ChestUnlockedButton.SetActive(false);
-            Warrior_LegsUnlockedButton.SetActive(false);
-            Warrior_ShoesUnlockedButton.SetActive(false);
-            Warrior_WeaponUnlockedButton.SetActive(false);
-            Warrior_ArtifactUnlockedButton.SetActive(false);
-
-            Mage_HeadUnlockedButton.SetActive(false);
-            Mage_ChestUnlockedButton.SetActive(false);
-            Mage_LegsUnlockedButton.SetActive(false);
-            Mage_ShoesUnlockedButton.SetActive(false);
-            Mage_WeaponUnlockedButton.SetActive(false);
-            Mage_ArtifactUnlockedButton.SetActive(false);
-
-            HeadEquipped.SetActive(false);
-            ChestEquipped.SetActive(false);
-            LegsEquipped.SetActive(false);
-            ShoesEquipped.SetActive(false);
-            WeaponEquipped.SetActive(false);
-            ArtifactEquipped.SetActive(false);
-
-            //Abilities
-            Ability1Button.SetActive(false);
-            Ability2Button.SetActive(false);
-            Ability3Button.SetActive(false);
-            Ability4Button.SetActive(false);
-
-            Ability1Equipped.SetActive(false);
-            Ability2Equipped.SetActive(false);
-            Ability3Equipped.SetActive(false);
-            Ability4Equipped.SetActive(false);
-
-            //Keys
             K1_Locked.SetActive(true);
             K2_Locked.SetActive(true);
             K3_Locked.SetActive(true);
 
-            K1_Image.SetActive(false);
-            K2_Image.SetActive(false);
-            K3_Image.SetActive(false);
+            Ability1Locked.SetActive(true);
+            Ability2Locked.SetActive(true);
+            Ability3Locked.SetActive(true);
+            Ability4Locked.SetActive(true);
+
+            HeadLocked.SetActive(true);
+            ChestLocked.SetActive(true);
+            LegsLocked.SetActive(true);
+            ShoesLocked.SetActive(true);
+            WeaponLocked.SetActive(true);
+            ArtifactLocked.SetActive(true);
         }
         else
         {
-            NumberOfKeys = 3;
+            //Ability Cooldown Canvas SetActive(false)
+            Ability1_Ready.SetActive(false);
+            Ability2_Ready.SetActive(false);
+            Ability3_Ready.SetActive(false);
+            Ability4_Ready.SetActive(false);
+            Ability1_Used.SetActive(false);
+            Ability2_Used.SetActive(false);
+            Ability3_Used.SetActive(false);
+            Ability4_Used.SetActive(false);
+            CooldownCanvas.SetActive(false);
 
-            //Gear
-            HeadLocked.SetActive(false);
-            ChestLocked.SetActive(false);
-            LegsLocked.SetActive(false);
-            ShoesLocked.SetActive(false);
-            WeaponLocked.SetActive(false);
-            ArtifactLocked.SetActive(false);
-
-            HeadEquipped.SetActive(false);
-            ChestEquipped.SetActive(false);
-            LegsEquipped.SetActive(false);
-            ShoesEquipped.SetActive(false);
-            WeaponEquipped.SetActive(false);
-            ArtifactEquipped.SetActive(false);
-
-            Warrior_HeadBB.SetActive(false);
-            Warrior_ChestBB.SetActive(false);
-            Warrior_LegsBB.SetActive(false);
-            Warrior_ShoesBB.SetActive(false);
-            Warrior_WeaponBB.SetActive(false);
-            Warrior_ArtifactBB.SetActive(false);
-
-            Mage_HeadBB.SetActive(false);
-            Mage_ChestBB.SetActive(false);
-            Mage_LegsBB.SetActive(false);
-            Mage_ShoesBB.SetActive(false);
-            Mage_WeaponBB.SetActive(false);
-            Mage_ArtifactBB.SetActive(false);
-
-            Mage_HeadUnlockedButton.SetActive(false);
-            Mage_ChestUnlockedButton.SetActive(false);
-            Mage_LegsUnlockedButton.SetActive(false);
-            Mage_ShoesUnlockedButton.SetActive(false);
-            Mage_WeaponUnlockedButton.SetActive(false);
-            Mage_ArtifactUnlockedButton.SetActive(false);
-
-            Warrior_HeadUnlockedButton.SetActive(false);
-            Warrior_ChestUnlockedButton.SetActive(false);
-            Warrior_LegsUnlockedButton.SetActive(false);
-            Warrior_ShoesUnlockedButton.SetActive(false);
-            Warrior_WeaponUnlockedButton.SetActive(false);
-            Warrior_ArtifactUnlockedButton.SetActive(false);
-
-            if (ClassName == "Knight" || ClassName == "Vagabond")
+            ClassName = player.GetClassName();
+            Debug.Log("Class Name in InventoryV3_Ace = " + ClassName);
+            if (player == null)
             {
-                Warrior_HeadUnlockedButton.SetActive(true);
-                Warrior_ChestUnlockedButton.SetActive(true);
-                Warrior_LegsUnlockedButton.SetActive(true);
-                Warrior_ShoesUnlockedButton.SetActive(true);
-                Warrior_WeaponUnlockedButton.SetActive(true);
-                Warrior_ArtifactUnlockedButton.SetActive(true);
-            }
-            else if (ClassName == "Ranger")
-            {
-                Mage_HeadUnlockedButton.SetActive(true);
-                Mage_ChestUnlockedButton.SetActive(true);
-                Mage_LegsUnlockedButton.SetActive(true);
-                Mage_ShoesUnlockedButton.SetActive(true);
-                Mage_WeaponUnlockedButton.SetActive(true);
-                Mage_ArtifactUnlockedButton.SetActive(true);
+                Debug.Log("From InventoryV3_Ace, Add the Players UI to the Gamemanage UI");
             }
 
-            //Abilities
-            //Abilities
-            Ability1Button.SetActive(true);
-            Ability2Button.SetActive(true);
-            Ability3Button.SetActive(true);
-            Ability4Button.SetActive(true);
+            if (bDemo == false)
+            {
+                //Gear
+                Warrior_HeadBB.SetActive(false);
+                Warrior_ChestBB.SetActive(false);
+                Warrior_LegsBB.SetActive(false);
+                Warrior_ShoesBB.SetActive(false);
+                Warrior_WeaponBB.SetActive(false);
+                Warrior_ArtifactBB.SetActive(false);
 
-            Ability1Equipped.SetActive(false);
-            Ability2Equipped.SetActive(false);
-            Ability3Equipped.SetActive(false);
-            Ability4Equipped.SetActive(false);
+                Mage_HeadBB.SetActive(false);
+                Mage_ChestBB.SetActive(false);
+                Mage_LegsBB.SetActive(false);
+                Mage_ShoesBB.SetActive(false);
+                Mage_WeaponBB.SetActive(false);
+                Mage_ArtifactBB.SetActive(false);
 
-            Ability1Locked.SetActive(false);
-            Ability2Locked.SetActive(false);
-            Ability3Locked.SetActive(false);
-            Ability4Locked.SetActive(false);
+                Warrior_HeadUnlockedButton.SetActive(false);
+                Warrior_ChestUnlockedButton.SetActive(false);
+                Warrior_LegsUnlockedButton.SetActive(false);
+                Warrior_ShoesUnlockedButton.SetActive(false);
+                Warrior_WeaponUnlockedButton.SetActive(false);
+                Warrior_ArtifactUnlockedButton.SetActive(false);
 
-            //Keys
-            K1_Locked.SetActive(false);
-            K2_Locked.SetActive(false);
-            K3_Locked.SetActive(false);
+                Mage_HeadUnlockedButton.SetActive(false);
+                Mage_ChestUnlockedButton.SetActive(false);
+                Mage_LegsUnlockedButton.SetActive(false);
+                Mage_ShoesUnlockedButton.SetActive(false);
+                Mage_WeaponUnlockedButton.SetActive(false);
+                Mage_ArtifactUnlockedButton.SetActive(false);
 
-            K1_Image.SetActive(true);
-            K2_Image.SetActive(true);
-            K3_Image.SetActive(true);
+                HeadEquipped.SetActive(false);
+                ChestEquipped.SetActive(false);
+                LegsEquipped.SetActive(false);
+                ShoesEquipped.SetActive(false);
+                WeaponEquipped.SetActive(false);
+                ArtifactEquipped.SetActive(false);
+
+                //Abilities
+                Ability1Button.SetActive(false);
+                Ability2Button.SetActive(false);
+                Ability3Button.SetActive(false);
+                Ability4Button.SetActive(false);
+
+                Ability1Equipped.SetActive(false);
+                Ability2Equipped.SetActive(false);
+                Ability3Equipped.SetActive(false);
+                Ability4Equipped.SetActive(false);
+
+                //Keys
+                K1_Locked.SetActive(true);
+                K2_Locked.SetActive(true);
+                K3_Locked.SetActive(true);
+
+                K1_Image.SetActive(false);
+                K2_Image.SetActive(false);
+                K3_Image.SetActive(false);
+            }
+            else
+            {
+                NumberOfKeys = 3;
+
+                //Gear
+                HeadLocked.SetActive(false);
+                ChestLocked.SetActive(false);
+                LegsLocked.SetActive(false);
+                ShoesLocked.SetActive(false);
+                WeaponLocked.SetActive(false);
+                ArtifactLocked.SetActive(false);
+
+                HeadEquipped.SetActive(false);
+                ChestEquipped.SetActive(false);
+                LegsEquipped.SetActive(false);
+                ShoesEquipped.SetActive(false);
+                WeaponEquipped.SetActive(false);
+                ArtifactEquipped.SetActive(false);
+
+                Warrior_HeadBB.SetActive(false);
+                Warrior_ChestBB.SetActive(false);
+                Warrior_LegsBB.SetActive(false);
+                Warrior_ShoesBB.SetActive(false);
+                Warrior_WeaponBB.SetActive(false);
+                Warrior_ArtifactBB.SetActive(false);
+
+                Mage_HeadBB.SetActive(false);
+                Mage_ChestBB.SetActive(false);
+                Mage_LegsBB.SetActive(false);
+                Mage_ShoesBB.SetActive(false);
+                Mage_WeaponBB.SetActive(false);
+                Mage_ArtifactBB.SetActive(false);
+
+                Mage_HeadUnlockedButton.SetActive(false);
+                Mage_ChestUnlockedButton.SetActive(false);
+                Mage_LegsUnlockedButton.SetActive(false);
+                Mage_ShoesUnlockedButton.SetActive(false);
+                Mage_WeaponUnlockedButton.SetActive(false);
+                Mage_ArtifactUnlockedButton.SetActive(false);
+
+                Warrior_HeadUnlockedButton.SetActive(false);
+                Warrior_ChestUnlockedButton.SetActive(false);
+                Warrior_LegsUnlockedButton.SetActive(false);
+                Warrior_ShoesUnlockedButton.SetActive(false);
+                Warrior_WeaponUnlockedButton.SetActive(false);
+                Warrior_ArtifactUnlockedButton.SetActive(false);
+
+                if (ClassName == "Knight" || ClassName == "Vagabond")
+                {
+                    Warrior_HeadUnlockedButton.SetActive(true);
+                    Warrior_ChestUnlockedButton.SetActive(true);
+                    Warrior_LegsUnlockedButton.SetActive(true);
+                    Warrior_ShoesUnlockedButton.SetActive(true);
+                    Warrior_WeaponUnlockedButton.SetActive(true);
+                    Warrior_ArtifactUnlockedButton.SetActive(true);
+                }
+                else if (ClassName == "Ranger")
+                {
+                    Mage_HeadUnlockedButton.SetActive(true);
+                    Mage_ChestUnlockedButton.SetActive(true);
+                    Mage_LegsUnlockedButton.SetActive(true);
+                    Mage_ShoesUnlockedButton.SetActive(true);
+                    Mage_WeaponUnlockedButton.SetActive(true);
+                    Mage_ArtifactUnlockedButton.SetActive(true);
+                }
+
+                //Abilities
+                //Abilities
+                Ability1Button.SetActive(true);
+                Ability2Button.SetActive(true);
+                Ability3Button.SetActive(true);
+                Ability4Button.SetActive(true);
+
+                Ability1Equipped.SetActive(false);
+                Ability2Equipped.SetActive(false);
+                Ability3Equipped.SetActive(false);
+                Ability4Equipped.SetActive(false);
+
+                Ability1Locked.SetActive(false);
+                Ability2Locked.SetActive(false);
+                Ability3Locked.SetActive(false);
+                Ability4Locked.SetActive(false);
+
+                //Keys
+                K1_Locked.SetActive(false);
+                K2_Locked.SetActive(false);
+                K3_Locked.SetActive(false);
+
+                K1_Image.SetActive(true);
+                K2_Image.SetActive(true);
+                K3_Image.SetActive(true);
+            }
         }
-
     }
 
     private void Update()
