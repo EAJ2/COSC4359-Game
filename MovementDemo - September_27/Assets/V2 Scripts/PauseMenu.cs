@@ -10,6 +10,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject SaveCanvas;
     public GameObject ControlsCanvas;
     public GameObject RespawnCanvas;
+    public GameObject ShopCanvas;
     public Player player;
 
     private bool bRespawnCanvasShown = false;
@@ -36,6 +37,19 @@ public class PauseMenu : MonoBehaviour
                 ShowMenuCanvas();
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            if (bPaused)
+            {
+                HideAll();
+            }
+            else
+            {
+                ShowShopCanvas();
+            }
+        }
+        
         /*if(player.GetComponent<V2Health>().IsDead() && !bRespawnCanvasShown)
         {
             bRespawnCanvasShown = true;
@@ -61,6 +75,12 @@ public class PauseMenu : MonoBehaviour
         bPaused = true;
         Time.timeScale = 0f;
     }
+    public void ShowShopCanvas()
+    {
+        ShopCanvas.SetActive(true);
+        bPaused = true;
+        Time.timeScale = 0f;
+    }
 
     public void HideMenuCanvas()
     {
@@ -75,6 +95,10 @@ public class PauseMenu : MonoBehaviour
     public void HideSaveCanvas()
     {
         SaveCanvas.SetActive(false);
+    }
+    public void HideShopCanvas()
+    {
+        ShopCanvas.SetActive(false);
     }
 
     public void SaveButton()
@@ -107,6 +131,7 @@ public class PauseMenu : MonoBehaviour
     {
         HideMenuCanvas();
         HideSaveCanvas();
+        HideShopCanvas();
         // ControlsCanvas.SetActive(false);
         bPaused = false;
         Time.timeScale = 1f;
