@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MoveSprite2Directions : MonoBehaviour
 {
+
+    [Header("1 = Right/Down, 0 = Left/Up")]
     [SerializeField] private Transform Object;
     public List<Transform> waypoints;
     [SerializeField] private float speed;
@@ -124,6 +126,10 @@ public class MoveSprite2Directions : MonoBehaviour
     public void Activate()
     {
         bActivate = true;
+    }
+    public void Deactivate()
+    {
+        bActivate = false;
     }
 
     public bool IsAtLeftUpPosition()

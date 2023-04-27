@@ -11,7 +11,7 @@ public class V2Health : MonoBehaviour
     public float MaxHealth;
     public float CurrentHealth;
     private Animator anim;
-    private bool bDead;
+    private bool bDead = false;
 
     [Header("iFrames")]
     [SerializeField] private float iFrameDuration;
@@ -24,7 +24,8 @@ public class V2Health : MonoBehaviour
     public V2PlayerMovement mov;
     public RangerCombat rc;
 
-    [SerializeField] public GameObject RespawnPoint;
+    [Header("SpawnPoints")]
+    private Vector3 RespawnPoint;
 
     private bool bCanTakeDamage = true;
 
@@ -45,13 +46,25 @@ public class V2Health : MonoBehaviour
 
     public void TakeDmg(float dmg)
     {
-        if(bCanTakeDamage == true)
+        if (bCanTakeDamage == true)
         {
             CurrentHealth -= dmg - (dmg * stats.dmgRed);
             healthBar.SetHealth(CurrentHealth);
-            Die();
+            if (CurrentHealth > 0)
+            {
+                anim.SetTrigger("Hit");
+            }
+            else
+            {
+                bDead = true; 
+                Die();
+            }
         }
-        
+    }
+
+    public void PlayHitAnim()
+    {
+        anim.SetTrigger("Hit");
     }
 
     public void AddHealth(float value)
@@ -86,7 +99,7 @@ public class V2Health : MonoBehaviour
 
     public void Reset()
     {
-        gameObject.transform.position = new Vector3(RespawnPoint.transform.position.x, RespawnPoint.transform.position.y, gameObject.transform.position.z);
+        RespawnAtPoint();
         this.GetComponent<V2PlayerMovement>().EnableMovement();
         this.GetComponent<V2PlayerMovement>().ResetStamina();
         CurrentHealth = MaxHealth;
@@ -99,7 +112,7 @@ public class V2Health : MonoBehaviour
 
     public void Die()
     {
-        if (CurrentHealth < 0)
+        if (CurrentHealth <= 0)
         {
             bCanTakeDamage = false;
             bDead = true;
@@ -122,5 +135,15 @@ public class V2Health : MonoBehaviour
     public bool IsDead()
     {
         return bDead;
+    }
+
+    public void SetNewRespawnPoint(Vector3 position)
+    {
+        RespawnPoint = position;
+    }
+
+    private void RespawnAtPoint()
+    {
+        transform.position = new Vector3(RespawnPoint.x, RespawnPoint.y, transform.position.z);
     }
 }

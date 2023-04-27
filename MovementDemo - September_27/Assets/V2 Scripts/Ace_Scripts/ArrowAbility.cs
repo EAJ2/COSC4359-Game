@@ -64,7 +64,8 @@ public class ArrowAbility : MonoBehaviour
                 sr.enabled = true;
                 MousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
                 WorldPosition = Camera.main.ScreenToWorldPoint(MousePosition);
-                transform.position = Vector3.MoveTowards(transform.position, WorldPosition, Speed * Time.deltaTime);
+                SetPosition(WorldPosition);
+                //transform.position = Vector3.MoveTowards(transform.position, WorldPosition, Speed * Time.deltaTime);
             }
             if (!Input.GetKey(KeyCode.Alpha9) && !bActivated)
             {
@@ -127,5 +128,10 @@ public class ArrowAbility : MonoBehaviour
     public bool IsReady()
     {
         return CooldownTimer >= CooldownTime;
+    }
+
+    public void SetPosition(Vector2 position)
+    {
+        this.transform.position = new Vector3(position.x, position.y);
     }
 }

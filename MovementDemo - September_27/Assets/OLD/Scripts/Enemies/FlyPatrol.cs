@@ -34,7 +34,7 @@ public class FlyPatrol : MonoBehaviour
 
     private void OnDisable()
     {
-        anim.SetBool("moving", false);
+        anim.SetBool("Moving", false);
     }
 
     private void Update()
@@ -57,20 +57,13 @@ public class FlyPatrol : MonoBehaviour
     {
         if (enemy.position == Waypoints[target].position)
         {
-            if (target == Waypoints.Count - 1)
-            {
-                target = 0;
-            }
-            else
-            {
-                target += 1;
-            }
+            target = Random.Range(0, 3);
         }
     }
 
     private void DirectionChange()
     {
-        anim.SetBool("moving", false);
+        anim.SetBool("Moving", false);
 
         idleTimer += Time.deltaTime;
 
@@ -83,17 +76,17 @@ public class FlyPatrol : MonoBehaviour
     private void MoveInDirection()
     {
         idleTimer = 0;
-        anim.SetBool("moving", true);
+        anim.SetBool("Moving", true);
         //Fly flips right if the waypoint is even, flips left if odd
         // 0    3
         // 2    1
         if (target == 0 || target == 3)
         {
-            enemy.localScale = new Vector3(Mathf.Abs(initScale.x) * 1, initScale.y, initScale.z);
+            enemy.localScale = new Vector3(Mathf.Abs(initScale.x) * -1, initScale.y, initScale.z);
         }
         else if(target == 1 || target == 2)
         {
-            enemy.localScale = new Vector3(Mathf.Abs(initScale.x) * -1, initScale.y, initScale.z);
+            enemy.localScale = new Vector3(Mathf.Abs(initScale.x) * 1, initScale.y, initScale.z);
         }
     }
 

@@ -8,6 +8,17 @@ public class Skeleton : MonoBehaviour
     private Transform body;
     private Rigidbody2D rb;
 
+    [Header("Respawn Parameters")]
+    [SerializeField] private float RespawnTime;
+    private float RespawnTimer;
+    private bool bRespawning = false;
+    [SerializeField] private bool bCanRespawn = true;
+
+    [Header("Rewards")]
+    [SerializeField] private int xpValue;
+    [SerializeField] private int goldValue;
+    private LevelUpBar xpBar;
+
     [Header("Attack Parameters")]
     [SerializeField] private float attackCooldown;
     [SerializeField] private float damage;
@@ -59,6 +70,8 @@ public class Skeleton : MonoBehaviour
         body = GetComponent<Transform>();
         rb = GetComponent<Rigidbody2D>();
         chaseTimer = chaseCooldown;
+        RespawnTimer = 0;
+        xpBar = player.GetComponent<LevelUpBar>();
 
         if (!bCanMove)
         {
@@ -73,7 +86,6 @@ public class Skeleton : MonoBehaviour
 
         if (bCanMove)
         {
-
             if (bPlayerHit)
             {
                 StartCoroutine(ChangeDir());
@@ -94,12 +106,13 @@ public class Skeleton : MonoBehaviour
             {
                 bPlayerSeen = true;
                 anim.SetBool("Run", true);
-                PlayerPosition = player.transform.position;
+                //PlayerPosition = player.transform.position;
                 bPlayerSeen = true;
             }
 
             if (bPlayerSeen && !bHit)
             {
+                PlayerPosition = player.transform.position;
                 body.position = Vector3.MoveTowards(body.position, new Vector3(PlayerPosition.x, body.position.y, body.position.z), chaseSpeed * Time.deltaTime);
                 if (body.position.x == PlayerPosition.x && !PlayerInSight())
                 {
@@ -124,6 +137,18 @@ public class Skeleton : MonoBehaviour
                 {
                     skeletonPatrol.enabled = true;
                 }
+            }
+        }
+
+        if(bRespawning)
+        {
+            if(RespawnTimer >= RespawnTime)
+            {
+                Respawn();
+            }
+            else
+            {
+                RespawnTimer += Time.deltaTime;
             }
         }
     }
@@ -192,14 +217,40 @@ public class Skeleton : MonoBehaviour
     {
         anim.SetTrigger("Die");
         //GetComponent<Collider2D>().enabled = false;
+
+        player.GetComponent<Stats>().XP += xpValue;
+        xpBar.SetXP(player.GetComponent<Stats>().XP);
+
+        player.GetComponent<Stats>().gold += goldValue;
+
         GetComponentInParent<SkeletonPatrol>().enabled = false;
-        this.enabled = false;
         dead = true;
+        bCanMove = false;
     }
 
     private void Deactivate()
     {
-        gameObject.SetActive(false);
+        if(bCanRespawn)
+        {
+            bRespawning = true;
+        }
+        this.GetComponent<BoxCollider2D>().enabled = false;
+        this.GetComponent<SpriteRenderer>().enabled = false;
+        rb.bodyType = RigidbodyType2D.Static;
+    }
+
+    private void Respawn()
+    {
+        anim.SetTrigger("Respawn");
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        RespawnTimer = 0;
+        bRespawning = false;
+        this.GetComponent<BoxCollider2D>().enabled = true;
+        this.GetComponent<SpriteRenderer>().enabled = true;
+        GetComponentInParent<SkeletonPatrol>().enabled = true;
+        dead = false;
+        bCanMove = true;
+        ResetHealth();
     }
 
     private void DamagePlayer()
@@ -248,5 +299,10 @@ public class Skeleton : MonoBehaviour
     {
         bCanMove = false;
         skeletonPatrol.DisableMove();
+    }
+
+    private void ResetHealth()
+    {
+        currentHealth = startingHealth;
     }
 }

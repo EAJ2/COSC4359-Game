@@ -15754,6 +15754,10 @@ PrefabInstance:
       propertyPath: inventory
       value: 
       objectReference: {fileID: 622323182}
+    - target: {fileID: 6228589433088005708, guid: 18775a75b2f34a340aa8c87cced99342, type: 3}
+      propertyPath: bDeleteSave
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6228589433088005709, guid: 18775a75b2f34a340aa8c87cced99342, type: 3}
       propertyPath: m_Enabled
       value: 0

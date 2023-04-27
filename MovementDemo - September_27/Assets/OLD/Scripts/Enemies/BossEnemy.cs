@@ -158,7 +158,7 @@ public class BossEnemy : MonoBehaviour
                         {
                             foreach (FlyEnemy fly in Flies)
                             {
-                                fly.ReActivate();
+                                fly.Respawn();
                             }
                             bFliesSummoned = true;
                         }

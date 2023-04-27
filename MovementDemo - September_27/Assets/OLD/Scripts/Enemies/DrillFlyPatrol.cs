@@ -14,6 +14,7 @@ public class DrillFlyPatrol : MonoBehaviour
     [Header("Movement Parameters")]
     [SerializeField] private float patrolSpeed;
     private bool movingLeft;
+    private Vector3 initScale;
 
     [Header("Enemy Animator")]
     [SerializeField] private Animator anim;
@@ -23,6 +24,11 @@ public class DrillFlyPatrol : MonoBehaviour
     private float idleTimer;
 
     private bool bCanMove = true;
+
+    private void Awake()
+    {
+        initScale = enemy.localScale;
+    }
 
     private void OnDisable()
     {
@@ -80,6 +86,14 @@ public class DrillFlyPatrol : MonoBehaviour
     {
         idleTimer = 0;
         anim.SetBool("moving", true);
+        if(target == 0)
+        {
+            enemy.localScale = new Vector3(Mathf.Abs(initScale.x) * -1, initScale.y, initScale.z);
+        }
+        else
+        {
+            enemy.localScale = new Vector3(Mathf.Abs(initScale.x) * 1, initScale.y, initScale.z);
+        }
     }
 
     public void EnableMove()

@@ -10,11 +10,16 @@ public class FlyEnemy : MonoBehaviour
     [SerializeField] private float range;
     [SerializeField] private float PlayerRange;
 
-    [Header("Collider Parameters")]
-    [SerializeField] private CircleCollider2D circleCollider;
-    private Rigidbody2D rb;
+    [Header("Rewards")]
+    [SerializeField] private int xpValue;
+    [SerializeField] private int goldValue;
+    private LevelUpBar xpBar;
+
+    [Header("Collider Params")]
     [SerializeField] private float colliderRadius;
     [SerializeField] private float PlayerColliderRadius;
+    private CircleCollider2D circleCollider;
+    private Rigidbody2D rb;
 
     [Header("Player Layer")]
     [SerializeField] private LayerMask playerLayer;
@@ -35,18 +40,28 @@ public class FlyEnemy : MonoBehaviour
     private bool bHit = false;
     [SerializeField] private float waitAfterHitTime;
 
-    [SerializeField] private GameObject healthPickup;
-    [SerializeField] private ExoV3Movement player;
+    [SerializeField] private Player player;
     private bool bPlayerHit = false;
 
     [SerializeField] private bool bCanMove = true;
+
+    [Header("Respawn Parameters")]
+    [SerializeField] private float RespawnTime;
+    private float RespawnTimer;
+    private bool bRespawning = false;
+    [SerializeField] private bool bCanRespawn = true;
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         flyPatrol = GetComponentInParent<FlyPatrol>();
+        circleCollider = GetComponent<CircleCollider2D>();
         currentHealth = startingHealth;
         rb.gravityScale = 0f;
+       
+        xpBar = player.GetComponent<LevelUpBar>();
+        RespawnTimer = 0;
 
         if(!bCanMove)
         {
@@ -58,7 +73,7 @@ public class FlyEnemy : MonoBehaviour
     {
         cooldownTimer += Time.deltaTime;
 
-        if (bCanMove)
+        if (bCanMove && !dead)
         {
             if (PlayerInSight() && !bHit && !bPlayerHit)
             {
@@ -89,6 +104,18 @@ public class FlyEnemy : MonoBehaviour
                 {
                     flyPatrol.enabled = true;
                 }
+            }
+        }
+
+        if (bRespawning)
+        {
+            if (RespawnTimer >= RespawnTime)
+            {
+                Respawn();
+            }
+            else
+            {
+                RespawnTimer += Time.deltaTime;
             }
         }
     }
@@ -144,7 +171,7 @@ public class FlyEnemy : MonoBehaviour
 
         if (currentHealth > 0)
         {
-            anim.SetTrigger("hurt");
+            anim.SetTrigger("Hit");
             bHit = true;
         }
         else
@@ -159,28 +186,41 @@ public class FlyEnemy : MonoBehaviour
 
     private void Die()
     {
-        anim.SetTrigger("die");
-        GetComponent<Collider2D>().enabled = false;
+        anim.SetTrigger("Die");
+
+        player.GetComponent<Stats>().XP += xpValue;
+        xpBar.SetXP(player.GetComponent<Stats>().XP);
+        player.GetComponent<Stats>().gold += goldValue;
+
         GetComponentInParent<FlyPatrol>().enabled = false;
-        this.enabled = false;
         dead = true;
-        Vector2 healthPickUpVector = new Vector2(rb.position.x, rb.position.y);
-        Instantiate(healthPickup, healthPickUpVector, Quaternion.identity);
+        bCanMove = false;
     }
 
     public void Deactivate()
     {
-        gameObject.SetActive(false);
+        if(bCanRespawn)
+        {
+            bRespawning = true;
+        }
+        this.GetComponent<CircleCollider2D>().enabled = false;
+        this.GetComponent<SpriteRenderer>().enabled = false;
+        rb.bodyType = RigidbodyType2D.Static;
     }
 
-    public void ReActivate()
+    public void Respawn()
     {
-        gameObject.SetActive(true);
-        GetComponent<Collider2D>().enabled = true;
-        GetComponentInParent<FlyPatrol>().enabled = true;
-        this.enabled = true;
+        anim.SetTrigger("Respawn");
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        rb.gravityScale = 0f;
+        RespawnTimer = 0;
+        bRespawning = false;
+        this.GetComponent<CircleCollider2D>().enabled = true;
+        this.GetComponent<SpriteRenderer>().enabled = true;
+        this.GetComponentInParent<FlyPatrol>().enabled = true;
         dead = false;
-        currentHealth = 2;
+        bCanMove = true;
+        ResetHealth();
     }
 
     public bool IsDead()
@@ -192,10 +232,11 @@ public class FlyEnemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            anim.SetTrigger("Attack");
             rb.bodyType = RigidbodyType2D.Static;
             if(cooldownTimer >= attackCooldown)
             {
-                collision.gameObject.GetComponent<ExoV3Movement>().TakeDamage(damage);
+                collision.gameObject.GetComponent<V2Health>().TakeDmg(damage);
                 cooldownTimer = 0;
                 bPlayerHit = true;
             }
@@ -221,5 +262,10 @@ public class FlyEnemy : MonoBehaviour
     {
         bCanMove = false;
         flyPatrol.DisableMove();
+    }
+
+    private void ResetHealth()
+    {
+        currentHealth = startingHealth;
     }
 }

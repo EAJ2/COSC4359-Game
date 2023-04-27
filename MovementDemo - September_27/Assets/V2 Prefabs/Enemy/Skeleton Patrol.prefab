@@ -64,7 +64,7 @@ Transform:
   - {fileID: 2642238955199428939}
   - {fileID: 2642238954922980081}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2642238955039712743
 MonoBehaviour:
@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 2642238956510202116}
   m_Layer: 9
   m_Name: Skeleton
-  m_TagString: Enemy
+  m_TagString: GroundEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -291,16 +291,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d413cf298d5ad4ca59c6bb6c75b601, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RespawnTime: 15
   attackCooldown: 2
-  damage: 0
-  range: 5
-  rangeChase: 10
-  rangePlayer: 4
+  damage: 2
+  DealDamageRange: 3
+  rangeChase: 13
   chaseCooldown: 2
   boxCollider: {fileID: 2642238956510202118}
   colliderDistance: 0.6
-  colliderDistanceChase: 0.6
-  colliderDistancePlayer: 0.6
+  colliderDistanceChase: 0.5
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -310,8 +309,8 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
-  startingHealth: 1
+  startingHealth: 20
   waitAfterHitTime: 2
-  chaseSpeed: 6
+  chaseSpeed: 8
   waitTime: 2
   bCanMove: 1

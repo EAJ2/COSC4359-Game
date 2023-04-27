@@ -16,10 +16,18 @@ public class Goblin : MonoBehaviour
     public int goldValue;
     public int maxHP;
     public int currentHP;
-    Rigidbody2D rb;
+    private Rigidbody2D rb;
     SpriteRenderer sr;
     public Animator anim;
     public Animator playerAnim;
+
+    [SerializeField] private bool bCanMove = true;
+
+    [Header("Respawn Parameters")]
+    [SerializeField] private float RespawnTime;
+    private float RespawnTimer;
+    private bool bRespawning = false;
+    [SerializeField] private bool bCanRespawn = true;
 
     public int dmg;
 
@@ -32,10 +40,11 @@ public class Goblin : MonoBehaviour
     [SerializeField] public AttackDetection ad;
 
     public PlayerHealthBar playerHealth;
+    private bool bCanTakeDamage = true;
 
     public GameObject DMG_Text;
     public TextMesh dmgTextMesh;
-
+    private bool bDead = false;
 
     public AudioSource hitAudio;
     // Start is called before the first frame update
@@ -49,53 +58,67 @@ public class Goblin : MonoBehaviour
         hp = Player.GetComponent<V2Health>();
         xpBar = GameObject.FindGameObjectWithTag("XPBAR").GetComponent<LevelUpBar>();
         playerHealth = GameObject.FindGameObjectWithTag("HEALTHBAR").GetComponent<PlayerHealthBar>();
+
+        RespawnTimer = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
 
-        if (attackTimer > 0)
+        if(bCanMove)
         {
-            attackTimer -= Time.deltaTime;
-        }
-
-        if (detectR.PlayerInAreaRight == true && ad.inAttackRange == false)
-        {
-            rb.velocity = new Vector2(moveSpeed, 0f);
-            sr.flipX = false;
-            anim.SetBool("isMoving", true);
-        }
-        else if (detectL.PlayerInAreaLeft == true && ad.inAttackRange == false)
-        {
-            rb.velocity = new Vector2(-moveSpeed, 0f);
-            sr.flipX = true;
-            anim.SetBool("isMoving", true);
-        }
-        else if (detectR.PlayerInAreaRight == false && detectL.PlayerInAreaLeft == false || ad.inAttackRange == true)
-        {
-            rb.velocity = new Vector2(0f, 0f);
-            anim.SetBool("isMoving", false);
-        }
-
-        if (ad.inAttackRange == true)
-        {
-            anim.SetBool("Attack", true);
-        }
-        else
-        {
-            anim.SetBool("Attack", false);
-        }
-
-        if (anim.GetCurrentAnimatorStateInfo(0).IsName("Goblin_Attack1"))
-        {
-            if (attackTimer <= 0)
+            if (attackTimer > 0)
             {
-                Attack();
+                attackTimer -= Time.deltaTime;
+            }
+
+            if (detectR.PlayerInAreaRight == true && ad.inAttackRange == false)
+            {
+                rb.velocity = new Vector2(moveSpeed, 0f);
+                sr.flipX = false;
+                anim.SetBool("isMoving", true);
+            }
+            else if (detectL.PlayerInAreaLeft == true && ad.inAttackRange == false)
+            {
+                rb.velocity = new Vector2(-moveSpeed, 0f);
+                sr.flipX = true;
+                anim.SetBool("isMoving", true);
+            }
+            else if (detectR.PlayerInAreaRight == false && detectL.PlayerInAreaLeft == false || ad.inAttackRange == true)
+            {
+                rb.velocity = new Vector2(0f, 0f);
+                anim.SetBool("isMoving", false);
+            }
+
+            if (ad.inAttackRange == true)
+            {
+                anim.SetBool("Attack", true);
+            }
+            else
+            {
+                anim.SetBool("Attack", false);
+            }
+
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Goblin_Attack1"))
+            {
+                if (attackTimer <= 0)
+                {
+                    Attack();
+                }
             }
         }
-        else
+
+        if (bRespawning)
         {
+            if (RespawnTimer >= RespawnTime)
+            {
+                Respawn();
+            }
+            else
+            {
+                RespawnTimer += Time.deltaTime;
+            }
         }
 
     }
@@ -103,13 +126,9 @@ public class Goblin : MonoBehaviour
     public void Attack()
     {
         attackTimer = 0.25f;
-        hp.TakeDmg((float)dmg);
-        playerHealth.SetHealth(hp.CurrentHealth);
         if (hp.CurrentHealth > 0)
         {
-            hitAudio.pitch = Random.RandomRange(0.7f, 1.2f);
-            hitAudio.Play();
-            playerAnim.Play("Player_Vagabond_Hit", -1, 0f);
+            hp.TakeDmg((float)dmg);
         }
         dmgTextMesh.text = dmg.ToString();
         Instantiate(DMG_Text, new Vector3(player.position.x, player.position.y + 3, player.position.z), Quaternion.identity);
@@ -117,8 +136,11 @@ public class Goblin : MonoBehaviour
 
     public void TakeDMG(int dmg)
     {
-        currentHP -= dmg;
-        anim.SetTrigger("Hit");
+        if (bCanTakeDamage)
+        {
+            currentHP = Mathf.Clamp(currentHP - dmg, 0, maxHP);
+            anim.SetTrigger("Hit");
+        }
 
         if (currentHP <= 0)
         {
@@ -128,12 +150,53 @@ public class Goblin : MonoBehaviour
 
     public void Die()
     {
+        anim.SetTrigger("Die");
         Player.GetComponent<Stats>().XP += xpValue;
         Player.GetComponent<Stats>().gold += goldValue;
+
         xpBar.SetXP(Player.GetComponent<Stats>().XP);
-        anim.SetBool("Death", true);
-        rb.velocity = new Vector2(0f, 0f);
-        GetComponent<Collider2D>().enabled = false;
-        this.enabled = false;
+
+        bDead = true;
+        bCanMove = false;
+        bCanTakeDamage = false;
+    }
+
+    private void Deactivate()
+    {
+        if(bCanRespawn)
+        {
+            bRespawning = true;
+        }
+        rb.bodyType = RigidbodyType2D.Static;
+        this.GetComponent<BoxCollider2D>().enabled = false;
+        this.GetComponent<SpriteRenderer>().enabled = false;
+        this.GetComponentInChildren<DetectionLeft>().enabled = false;
+        this.GetComponentInChildren<DetectionRight>().enabled = false;
+    }
+
+    private void Respawn()
+    {
+        anim.SetTrigger("Respawn");
+        rb.bodyType = RigidbodyType2D.Dynamic;
+        RespawnTimer = 0;
+        bRespawning = false;
+        this.GetComponent<BoxCollider2D>().enabled = true;
+        this.GetComponent<SpriteRenderer>().enabled = true;
+        this.GetComponentInChildren<DetectionLeft>().enabled = true;
+        this.GetComponentInChildren<DetectionRight>().enabled = true;
+        bCanMove = true;
+        bCanTakeDamage = true;
+        currentHP = maxHP;
+        bDead = false;
+    }
+
+    public bool IsDead()
+    {
+        return bDead;
+    }
+
+    public void EnableMove()
+    {
+        bCanMove = true;
     }
 }

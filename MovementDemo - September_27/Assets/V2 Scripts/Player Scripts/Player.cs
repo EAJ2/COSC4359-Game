@@ -39,6 +39,9 @@ public class Player : MonoBehaviour
 
     public string ClassName = "";
 
+    [Header("This must be set to False")]
+    [SerializeField] private bool bDeleteSave = false;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -49,7 +52,10 @@ public class Player : MonoBehaviour
         stats = GetComponent<Stats>();
         ss = GetComponent<SuperSpeed>();
 
-        // SaveClassInformation.DeleteSave(1);
+        if(bDeleteSave)
+        {
+            SaveClassInformation.DeleteSave(1);
+        }
 
         if (ss == null)
         {
@@ -509,6 +515,28 @@ public class Player : MonoBehaviour
         {
             inventory.Ability4Used();
         }
+    }
+
+
+    //Key functionality
+    public bool CanEnterBossRoom()
+    {
+        return inventory.CanEnterBossRoom();
+    }
+
+    public void UnlockKey1()
+    {
+        inventory.UnlockKey1();
+    }
+
+    public void UnlockKey2()
+    {
+        inventory.UnlockKey2();
+    }
+
+    public void UnlockKey3()
+    {
+        inventory.UnlockKey3();
     }
 
 

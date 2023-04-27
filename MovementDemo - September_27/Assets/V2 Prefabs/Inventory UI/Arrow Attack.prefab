@@ -578,7 +578,7 @@ Transform:
   - {fileID: 4194068676814350396}
   - {fileID: 4194068676936300573}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4194068677310901266
 SpriteRenderer:
@@ -664,8 +664,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbbe74e5894ca684db80fdba6e8e00cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 80
-  FallSpeed: 15
+  Speed: 200
+  FallSpeed: 18
+  player: {fileID: 0}
   CooldownTime: 2
   DurationTime: 3
   Arrows:

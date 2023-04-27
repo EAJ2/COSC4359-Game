@@ -169,6 +169,38 @@ public class V2PlayerCombat : MonoBehaviour
                     Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
                 }
             }
+            else if (enemy.tag == "FlyEnemy")
+            {
+                hitAudio.Play();
+                if (critCounter <= stats.critRange)
+                {
+                    enemy.GetComponent<FlyEnemy>().TakeDamage(stats.critDMG);
+                    critTextMesh.text = stats.critDMG.ToString();
+                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+                else
+                {
+                    enemy.GetComponent<FlyEnemy>().TakeDamage(stats.dmg);
+                    dmgTextMesh.text = stats.dmg.ToString();
+                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+            }
+            else if (enemy.tag == "DrillFlyEnemy")
+            {
+                hitAudio.Play();
+                if (critCounter <= stats.critRange)
+                {
+                    enemy.GetComponent<DrillFlyEnemy>().TakeDamage(stats.critDMG);
+                    critTextMesh.text = stats.critDMG.ToString();
+                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+                else
+                {
+                    enemy.GetComponent<DrillFlyEnemy>().TakeDamage(stats.dmg);
+                    dmgTextMesh.text = stats.dmg.ToString();
+                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+            }
         }
     }
 

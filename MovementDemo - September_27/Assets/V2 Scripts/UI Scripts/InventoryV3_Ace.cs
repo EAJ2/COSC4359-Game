@@ -88,6 +88,17 @@ public class InventoryV3_Ace : MonoBehaviour
     [SerializeField] private GameObject Ability3_Used;
     [SerializeField] private GameObject Ability4_Used;
 
+    [Header("Keys Images")]
+    [SerializeField] private GameObject K1_Image;
+    [SerializeField] private GameObject K2_Image;
+    [SerializeField] private GameObject K3_Image;
+
+    [Header("Keys Locked")]
+    [SerializeField] private GameObject K1_Locked;
+    [SerializeField] private GameObject K2_Locked;
+    [SerializeField] private GameObject K3_Locked;
+
+
     private bool bCanvasActive = false;
 
     private bool bHeadEquipped = false;
@@ -104,6 +115,8 @@ public class InventoryV3_Ace : MonoBehaviour
 
     [SerializeField] public bool bDemo = false;
     [SerializeField] private string ClassName;
+
+    private int NumberOfKeys = 0;
 
 
 
@@ -123,7 +136,7 @@ public class InventoryV3_Ace : MonoBehaviour
         CooldownCanvas.SetActive(false);
 
         ClassName = player.GetClassName();
-        Debug.Log("(Remember to uncomment line above me) Class Name in InventoryV3_Ace = " + ClassName);
+        Debug.Log("Class Name in InventoryV3_Ace = " + ClassName);
         if (player == null)
         {
             Debug.Log("From InventoryV3_Ace, Add the Players UI to the Gamemanage UI");
@@ -177,9 +190,20 @@ public class InventoryV3_Ace : MonoBehaviour
             Ability2Equipped.SetActive(false);
             Ability3Equipped.SetActive(false);
             Ability4Equipped.SetActive(false);
+
+            //Keys
+            K1_Locked.SetActive(true);
+            K2_Locked.SetActive(true);
+            K3_Locked.SetActive(true);
+
+            K1_Image.SetActive(false);
+            K2_Image.SetActive(false);
+            K3_Image.SetActive(false);
         }
         else
         {
+            NumberOfKeys = 3;
+
             //Gear
             HeadLocked.SetActive(false);
             ChestLocked.SetActive(false);
@@ -223,7 +247,7 @@ public class InventoryV3_Ace : MonoBehaviour
             Warrior_WeaponUnlockedButton.SetActive(false);
             Warrior_ArtifactUnlockedButton.SetActive(false);
 
-            if (ClassName == "Warrior")
+            if (ClassName == "Knight" || ClassName == "Vagabond")
             {
                 Warrior_HeadUnlockedButton.SetActive(true);
                 Warrior_ChestUnlockedButton.SetActive(true);
@@ -232,7 +256,7 @@ public class InventoryV3_Ace : MonoBehaviour
                 Warrior_WeaponUnlockedButton.SetActive(true);
                 Warrior_ArtifactUnlockedButton.SetActive(true);
             }
-            else if (ClassName == "Mage")
+            else if (ClassName == "Ranger")
             {
                 Mage_HeadUnlockedButton.SetActive(true);
                 Mage_ChestUnlockedButton.SetActive(true);
@@ -258,6 +282,15 @@ public class InventoryV3_Ace : MonoBehaviour
             Ability2Locked.SetActive(false);
             Ability3Locked.SetActive(false);
             Ability4Locked.SetActive(false);
+
+            //Keys
+            K1_Locked.SetActive(false);
+            K2_Locked.SetActive(false);
+            K3_Locked.SetActive(false);
+
+            K1_Image.SetActive(true);
+            K2_Image.SetActive(true);
+            K3_Image.SetActive(true);
         }
 
     }
@@ -294,11 +327,11 @@ public class InventoryV3_Ace : MonoBehaviour
     public void UnlockHead()
     {
         HeadLocked.SetActive(false);
-        if (ClassName == "Warrior")
+        if (ClassName == "Knight" || ClassName == "Vagabond")
         {
             Warrior_HeadUnlockedButton.SetActive(true);
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
             Mage_HeadUnlockedButton.SetActive(true);
         }
@@ -306,11 +339,11 @@ public class InventoryV3_Ace : MonoBehaviour
     public void UnlockChest()
     {
         ChestLocked.SetActive(false);
-        if (ClassName == "Warrior")
+        if (ClassName == "Knight" || ClassName == "Vagabond")
         {
             Warrior_ChestUnlockedButton.SetActive(true);
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
             Mage_ChestUnlockedButton.SetActive(true);
         }
@@ -318,11 +351,11 @@ public class InventoryV3_Ace : MonoBehaviour
     public void UnlockLegs()
     {
         LegsLocked.SetActive(false);
-        if (ClassName == "Warrior")
+        if (ClassName == "Knight" || ClassName == "Vagabond")
         {
             Warrior_LegsUnlockedButton.SetActive(true);
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
             Mage_LegsUnlockedButton.SetActive(true);
         }
@@ -330,11 +363,11 @@ public class InventoryV3_Ace : MonoBehaviour
     public void UnlockShoes()
     {
         ShoesLocked.SetActive(false);
-        if (ClassName == "Warrior")
+        if (ClassName == "Knight" || ClassName == "Vagabond")
         {
             Warrior_ShoesUnlockedButton.SetActive(true);
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
             Mage_ShoesUnlockedButton.SetActive(true);
         }
@@ -342,11 +375,11 @@ public class InventoryV3_Ace : MonoBehaviour
     public void UnlockWeapon()
     {
         WeaponLocked.SetActive(false);
-        if (ClassName == "Warrior")
+        if (ClassName == "Knight" || ClassName == "Vagabond")
         {
             Warrior_WeaponUnlockedButton.SetActive(true);
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
             Mage_WeaponUnlockedButton.SetActive(true);
         }
@@ -354,11 +387,11 @@ public class InventoryV3_Ace : MonoBehaviour
     public void UnlockArtifact()
     {
         ArtifactLocked.SetActive(false);
-        if (ClassName == "Warrior")
+        if (ClassName == "Knight" || ClassName == "Vagabond")
         {
             Warrior_ArtifactUnlockedButton.SetActive(true);
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
             Mage_ArtifactUnlockedButton.SetActive(true);
         }
@@ -370,13 +403,13 @@ public class InventoryV3_Ace : MonoBehaviour
         bHeadEquipped = true;
         HeadEquipped.SetActive(true);
 
-        if(ClassName == "Warrior")
+        if(ClassName == "Knight" || ClassName == "Vagabond")
         {
             Warrior_HeadUnlockedButton.SetActive(false);
             Warrior_HeadUnlockedButton.GetComponent<TextHover>().mytext.SetActive(false);
             Warrior_HeadBB.SetActive(true);
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
             Mage_HeadUnlockedButton.SetActive(false);
             Mage_HeadUnlockedButton.GetComponent<TextHover>().mytext.SetActive(false);
@@ -390,13 +423,13 @@ public class InventoryV3_Ace : MonoBehaviour
         bChestEquipped = true;
         ChestEquipped.SetActive(true);
 
-        if (ClassName == "Warrior")
+        if (ClassName == "Knight" || ClassName == "Vagabond")
         {
             Warrior_ChestUnlockedButton.SetActive(false);
             Warrior_ChestUnlockedButton.GetComponent<TextHover>().mytext.SetActive(false);
             Warrior_ChestBB.SetActive(true);
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
             Mage_ChestUnlockedButton.SetActive(false);
             Mage_ChestUnlockedButton.GetComponent<TextHover>().mytext.SetActive(false);
@@ -410,13 +443,13 @@ public class InventoryV3_Ace : MonoBehaviour
         bLegsEquipped = true;
         LegsEquipped.SetActive(true);
 
-        if (ClassName == "Warrior")
+        if (ClassName == "Knight" || ClassName == "Vagabond")
         {
             Warrior_LegsUnlockedButton.SetActive(false);
             Warrior_LegsUnlockedButton.GetComponent<TextHover>().mytext.SetActive(false);
             Warrior_LegsBB.SetActive(true);
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
             Mage_LegsUnlockedButton.SetActive(false);
             Mage_LegsUnlockedButton.GetComponent<TextHover>().mytext.SetActive(false);
@@ -430,13 +463,13 @@ public class InventoryV3_Ace : MonoBehaviour
         bShoesEquipped = true;
         ShoesEquipped.SetActive(true);
 
-        if (ClassName == "Warrior")
+        if (ClassName == "Knight" || ClassName == "Vagabond")
         {
             Warrior_ShoesUnlockedButton.SetActive(false);
             Warrior_ShoesUnlockedButton.GetComponent<TextHover>().mytext.SetActive(false);
             Warrior_ShoesBB.SetActive(true);
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
             Mage_ShoesUnlockedButton.SetActive(false);
             Mage_ShoesUnlockedButton.GetComponent<TextHover>().mytext.SetActive(false);
@@ -449,13 +482,13 @@ public class InventoryV3_Ace : MonoBehaviour
         bWeaponEquipped = true;
         WeaponEquipped.SetActive(true);
 
-        if (ClassName == "Warrior")
+        if (ClassName == "Knight" || ClassName == "Vagabond")
         {
             Warrior_WeaponUnlockedButton.SetActive(false);
             Warrior_WeaponUnlockedButton.GetComponent<TextHover>().mytext.SetActive(false);
             Warrior_WeaponBB.SetActive(true);
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
             Mage_WeaponUnlockedButton.SetActive(false);
             Mage_WeaponUnlockedButton.GetComponent<TextHover>().mytext.SetActive(false);
@@ -469,13 +502,13 @@ public class InventoryV3_Ace : MonoBehaviour
         bArtifactEquipped = true;
         ArtifactEquipped.SetActive(true);
 
-        if (ClassName == "Warrior")
+        if (ClassName == "Knight" || ClassName == "Vagabond")
         {
             Warrior_ArtifactUnlockedButton.SetActive(false);
             Warrior_ArtifactUnlockedButton.GetComponent<TextHover>().mytext.SetActive(false);
             Warrior_ArtifactBB.SetActive(true);
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
             Mage_ArtifactUnlockedButton.SetActive(false);
             Mage_ArtifactUnlockedButton.GetComponent<TextHover>().mytext.SetActive(false);
@@ -490,13 +523,13 @@ public class InventoryV3_Ace : MonoBehaviour
         bHeadEquipped = false;
         HeadEquipped.SetActive(false);
 
-        if(ClassName == "Warrior")
+        if(ClassName == "Knight" || ClassName == "Vagabond")
         {
             Warrior_HeadBB.SetActive(false);
             Warrior_HeadBB.GetComponent<TextHover>().mytext.SetActive(false);
             Warrior_HeadUnlockedButton.SetActive(true);
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
             Mage_HeadBB.SetActive(false);
             Mage_HeadBB.GetComponent<TextHover>().mytext.SetActive(false);
@@ -510,13 +543,13 @@ public class InventoryV3_Ace : MonoBehaviour
         bChestEquipped = false;
         ChestEquipped.SetActive(false);
 
-        if (ClassName == "Warrior")
+        if (ClassName == "Knight" || ClassName == "Vagabond")
         {
             Warrior_ChestBB.SetActive(false);
             Warrior_ChestBB.GetComponent<TextHover>().mytext.SetActive(false);
             Warrior_ChestUnlockedButton.SetActive(true);
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
             Mage_ChestBB.SetActive(false);
             Mage_ChestBB.GetComponent<TextHover>().mytext.SetActive(false);
@@ -530,13 +563,13 @@ public class InventoryV3_Ace : MonoBehaviour
         bLegsEquipped = false;
         LegsEquipped.SetActive(false);
 
-        if (ClassName == "Warrior")
+        if (ClassName == "Knight" || ClassName == "Vagabond")
         {
             Warrior_LegsBB.SetActive(false);
             Warrior_LegsBB.GetComponent<TextHover>().mytext.SetActive(false);
             Warrior_LegsUnlockedButton.SetActive(true);
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
             Mage_LegsBB.SetActive(false);
             Mage_LegsBB.GetComponent<TextHover>().mytext.SetActive(false);
@@ -550,13 +583,13 @@ public class InventoryV3_Ace : MonoBehaviour
         bShoesEquipped = false;
         ShoesEquipped.SetActive(false);
 
-        if (ClassName == "Warrior")
+        if (ClassName == "Knight" || ClassName == "Vagabond")
         {
             Warrior_ShoesBB.SetActive(false);
             Warrior_ShoesBB.GetComponent<TextHover>().mytext.SetActive(false);
             Warrior_ShoesUnlockedButton.SetActive(true);
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
             Mage_ShoesBB.SetActive(false);
             Mage_ShoesBB.GetComponent<TextHover>().mytext.SetActive(false);
@@ -570,13 +603,13 @@ public class InventoryV3_Ace : MonoBehaviour
         bWeaponEquipped = false;
         WeaponEquipped.SetActive(false);
 
-        if (ClassName == "Warrior")
+        if (ClassName == "Knight" || ClassName == "Vagabond")
         {
             Warrior_WeaponBB.SetActive(false);
             Warrior_WeaponBB.GetComponent<TextHover>().mytext.SetActive(false);
             Warrior_WeaponUnlockedButton.SetActive(true);
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
             Mage_WeaponBB.SetActive(false);
             Mage_WeaponBB.GetComponent<TextHover>().mytext.SetActive(false);
@@ -590,13 +623,13 @@ public class InventoryV3_Ace : MonoBehaviour
         bArtifactEquipped = false;
         ArtifactEquipped.SetActive(false);
 
-        if (ClassName == "Warrior")
+        if (ClassName == "Knight" || ClassName == "Vagabond")
         {
             Warrior_ArtifactBB.SetActive(false);
             Warrior_ArtifactBB.GetComponent<TextHover>().mytext.SetActive(false);
             Warrior_ArtifactUnlockedButton.SetActive(true);
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
             Mage_ArtifactBB.SetActive(false);
             Mage_ArtifactBB.GetComponent<TextHover>().mytext.SetActive(false);
@@ -830,6 +863,40 @@ public class InventoryV3_Ace : MonoBehaviour
     {
         Ability4_Used.SetActive(true);
         Ability4_Ready.SetActive(false);
+    }
+
+    //Keys
+    public void UnlockKey1()
+    {
+        K1_Image.SetActive(true);
+        K1_Locked.SetActive(false);
+        NumberOfKeys++;
+    }
+
+    public void UnlockKey2()
+    {
+        K2_Image.SetActive(true);
+        K2_Locked.SetActive(false);
+        NumberOfKeys++;
+    }
+
+    public void UnlockKey3()
+    {
+        K3_Image.SetActive(true);
+        K3_Locked.SetActive(false);
+        NumberOfKeys++;
+    }
+
+    public bool CanEnterBossRoom()
+    {
+        if(NumberOfKeys == 3)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 }

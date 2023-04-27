@@ -5,8 +5,7 @@ using UnityEngine;
 public class DrillFlyEnemy : MonoBehaviour
 {
     private Animator anim;
-    private ExoV3Movement player;
-    [SerializeField] private GameObject healthPickup;
+    [SerializeField] private Player player;
 
     [Header("Attack Parameters")]
     [SerializeField] private float attackCooldown;
@@ -15,15 +14,20 @@ public class DrillFlyEnemy : MonoBehaviour
     [SerializeField] private float rangeY;
     private bool bHit = false;
 
+    [Header("Rewards")]
+    [SerializeField] private int xpValue;
+    [SerializeField] private int goldValue;
+    private LevelUpBar xpBar;
+
     [Header("Movement Points")]
     public List<Transform> Waypoints;
     private Vector3 HeightPosition;
     private Vector3 AttackPosition;
 
     [Header("Collider Parameters")]
-    [SerializeField] private BoxCollider2D boxCollider;
     [SerializeField] private Transform body;
     [SerializeField] private float colliderDistance;
+    [SerializeField] private BoxCollider2D boxCollider;
 
     [Header("Player Layer")]
     [SerializeField] private LayerMask playerLayer;
@@ -42,6 +46,12 @@ public class DrillFlyEnemy : MonoBehaviour
 
     [SerializeField] private bool bCanMove = true;
 
+    [Header("Respawn Parameters")]
+    [SerializeField] private float RespawnTime;
+    private float RespawnTimer;
+    private bool bRespawning = false;
+    [SerializeField] private bool bCanRespawn = true;
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -51,7 +61,10 @@ public class DrillFlyEnemy : MonoBehaviour
         AttackPosition = new Vector3(Waypoints[1].position.x, Waypoints[1].position.y, Waypoints[0].position.z);
         body.position = HeightPosition;
 
-        if(!bCanMove)
+        xpBar = player.GetComponent<LevelUpBar>();
+        RespawnTimer = 0;
+
+        if (!bCanMove)
         {
             drillFlyPatrol.DisableMove();
         }
@@ -61,28 +74,50 @@ public class DrillFlyEnemy : MonoBehaviour
     private void Update()
     {
         cooldownTimer += Time.deltaTime;
-        if(bCanMove)
+        if (bCanMove)
         {
-            if (PlayerInSight() && !bHit)
+            if (PlayerInSight() && !bHit && cooldownTimer >= attackCooldown)
             {
+                anim.SetBool("Attack", true);
+                anim.SetBool("Moving", false);
                 HeightPosition = new Vector3(body.position.x, Waypoints[0].position.y, body.position.z);
                 AttackPosition = new Vector3(body.position.x, Waypoints[1].position.y, body.position.z);
                 MoveToAttackPosition();
             }
             if (body.position.y != HeightPosition.y && bHit)
             {
+                anim.SetBool("Attack", false);
+                anim.SetBool("Moving", true);
                 MoveToHeightPosition();
             }
             if (drillFlyPatrol != null)
             {
-                drillFlyPatrol.enabled = !PlayerInSight();
+                if(PlayerInSight() == true && cooldownTimer >= attackCooldown)
+                {
+                    drillFlyPatrol.enabled = false;
+                }
+                else
+                {
+                    drillFlyPatrol.enabled = true;
+                }
+            }
+        }
+
+        if (bRespawning)
+        {
+            if (RespawnTimer >= RespawnTime)
+            {
+                Respawn();
+            }
+            else
+            {
+                RespawnTimer += Time.deltaTime;
             }
         }
     }
 
     private void MoveToAttackPosition()
     {
-        anim.SetTrigger("attack");
         body.position = Vector3.MoveTowards(body.position, AttackPosition, chaseSpeed * Time.deltaTime);
         if (body.position.y == AttackPosition.y)
         {
@@ -105,7 +140,7 @@ public class DrillFlyEnemy : MonoBehaviour
 
         if (hit.collider != null)
         {
-            player = hit.transform.GetComponent<ExoV3Movement>();
+            player = hit.transform.GetComponent<Player>();
         }
 
         return hit.collider != null;
@@ -122,7 +157,7 @@ public class DrillFlyEnemy : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
         if (currentHealth > 0)
         {
-            anim.SetTrigger("hurt");
+            anim.SetTrigger("Hit");
         }
         else
         {
@@ -136,25 +171,46 @@ public class DrillFlyEnemy : MonoBehaviour
 
     private void Die()
     {
-        anim.SetTrigger("die");
-        GetComponent<Collider2D>().enabled = false;
-        GetComponentInParent<DrillFlyPatrol>().enabled = false;
-        this.enabled = false;
+        anim.SetTrigger("Die");
+
+        player.GetComponent<Stats>().XP += xpValue;
+        xpBar.SetXP(player.GetComponent<Stats>().XP);
+        player.GetComponent<Stats>().gold += goldValue;
+
+        
+        this.GetComponentInParent<DrillFlyPatrol>().enabled = false;
         dead = true;
-        Vector2 healthPickUpVector = new Vector2(body.position.x, body.position.y);
-        Instantiate(healthPickup, healthPickUpVector, Quaternion.identity);
+        bCanMove = false;
     }
 
     private void Deactivate()
     {
-        gameObject.SetActive(false);
+        if(bCanRespawn)
+        {
+            bRespawning = true;
+        }
+        this.GetComponent<BoxCollider2D>().enabled = false;
+        this.GetComponent<SpriteRenderer>().enabled = false;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void Respawn()
     {
-        if (collision.tag == "Player" && bHit == false)
+        anim.SetTrigger("Respawn");
+        RespawnTimer = 0;
+        bRespawning = false;
+        this.GetComponent<BoxCollider2D>().enabled = true;
+        this.GetComponent<SpriteRenderer>().enabled = true;
+        this.GetComponentInParent<DrillFlyPatrol>().enabled = true;
+        dead = false;
+        bCanMove = true;
+        currentHealth = startingHealth;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Player" && bHit == false)
         {
-            collision.GetComponent<ExoV3Movement>().TakeDamage(damage);
+            collision.gameObject.GetComponent<V2Health>().TakeDmg(damage);
             cooldownTimer = 0;
             bHit = true;
         }
