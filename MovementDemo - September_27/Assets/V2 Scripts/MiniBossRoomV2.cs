@@ -13,6 +13,7 @@ public class MiniBossRoomV2 : MonoBehaviour
     public List<Skeleton> Skeletons;
     public List<Goblin> Goblins;
     public List<EvilWizard> Wizards;
+    public List<Mushroom> Mushrooms;
     private int NumberOfEnemies = 0;
     private int NumberOfDead = 0;
 
@@ -30,7 +31,7 @@ public class MiniBossRoomV2 : MonoBehaviour
         {
             Debug.Log("Missing Player in the MinisBossRoom");
         }
-        NumberOfEnemies = DrillFlys.Count + Flies.Count + Skeletons.Count + Goblins.Count + Wizards.Count;
+        NumberOfEnemies = DrillFlys.Count + Flies.Count + Skeletons.Count + Goblins.Count + Wizards.Count + Mushrooms.Count;
         Key.gameObject.SetActive(false);
     }
 
@@ -117,6 +118,17 @@ public class MiniBossRoomV2 : MonoBehaviour
                 }
             }
         }
+        if (Mushrooms != null)
+        {
+            foreach (Mushroom enemy in Mushrooms)
+            {
+                if (enemy.GetComponent<Mushroom>().IsDead())
+                {
+                    NumberOfDead++;
+                    Mushrooms.Remove(enemy);
+                }
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -166,6 +178,13 @@ public class MiniBossRoomV2 : MonoBehaviour
             foreach (EvilWizard wizard in Wizards)
             {
                 wizard.EnableMove();
+            }
+        }
+        if (Mushrooms!= null)
+        {
+            foreach (Mushroom enemy in Mushrooms)
+            {
+                enemy.EnableMove();
             }
         }
     }

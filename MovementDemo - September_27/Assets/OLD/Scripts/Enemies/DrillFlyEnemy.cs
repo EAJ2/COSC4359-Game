@@ -54,6 +54,11 @@ public class DrillFlyEnemy : MonoBehaviour
 
     private void Awake()
     {
+        if (player == null)
+        {
+            Debug.Log("Player missing in the DrillFly");
+        }
+
         anim = GetComponent<Animator>();
         currentHealth = startingHealth;
         drillFlyPatrol = GetComponentInParent<DrillFlyPatrol>();

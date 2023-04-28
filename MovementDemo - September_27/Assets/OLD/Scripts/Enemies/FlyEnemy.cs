@@ -53,13 +53,18 @@ public class FlyEnemy : MonoBehaviour
 
     private void Awake()
     {
+        if (player == null)
+        {
+            Debug.Log("Player missing in the FlyEnemy Bat");
+        }
+
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         flyPatrol = GetComponentInParent<FlyPatrol>();
         circleCollider = GetComponent<CircleCollider2D>();
         currentHealth = startingHealth;
         rb.gravityScale = 0f;
-       
+
         xpBar = player.GetComponent<LevelUpBar>();
         RespawnTimer = 0;
 

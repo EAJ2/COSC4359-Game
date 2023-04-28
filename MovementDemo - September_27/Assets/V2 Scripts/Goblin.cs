@@ -59,6 +59,11 @@ public class Goblin : MonoBehaviour
         xpBar = GameObject.FindGameObjectWithTag("XPBAR").GetComponent<LevelUpBar>();
         playerHealth = GameObject.FindGameObjectWithTag("HEALTHBAR").GetComponent<PlayerHealthBar>();
 
+        if(player == null)
+        {
+            Debug.Log("Player missing in the Goblin");
+        }
+
         RespawnTimer = 0;
     }
 

@@ -32,7 +32,7 @@ public class DrillFlyPatrol : MonoBehaviour
 
     private void OnDisable()
     {
-        anim.SetBool("moving", false);
+        anim.SetBool("Moving", false);
     }
 
     private void Update()
@@ -72,7 +72,7 @@ public class DrillFlyPatrol : MonoBehaviour
 
     private void DirectionChange()
     {
-        anim.SetBool("moving", false);
+        anim.SetBool("Moving", false);
 
         idleTimer += Time.deltaTime;
 
@@ -85,7 +85,7 @@ public class DrillFlyPatrol : MonoBehaviour
     private void MoveInDirection()
     {
         idleTimer = 0;
-        anim.SetBool("moving", true);
+        anim.SetBool("Moving", true);
         if(target == 0)
         {
             enemy.localScale = new Vector3(Mathf.Abs(initScale.x) * -1, initScale.y, initScale.z);

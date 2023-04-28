@@ -51,6 +51,11 @@ public class EvilWizard : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (player == null)
+        {
+            Debug.Log("Player missing in the Wizard");
+        }
+
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         Player = GameObject.FindGameObjectWithTag("Player");

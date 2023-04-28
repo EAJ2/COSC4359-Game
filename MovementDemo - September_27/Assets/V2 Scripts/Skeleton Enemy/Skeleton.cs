@@ -4,7 +4,7 @@ using UnityEngine;
 public class Skeleton : MonoBehaviour
 {
     private Animator anim;
-    private Player player;
+    [SerializeField] private Player player;
     private Transform body;
     private Rigidbody2D rb;
 
@@ -64,6 +64,10 @@ public class Skeleton : MonoBehaviour
 
     private void Awake()
     {
+        if (player == null)
+        {
+            Debug.Log("Player missing in the Skeleton");
+        }
         anim = GetComponent<Animator>();
         currentHealth = startingHealth;
         skeletonPatrol = GetComponentInParent<SkeletonPatrol>();
