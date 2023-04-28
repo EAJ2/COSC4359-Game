@@ -259,6 +259,69 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &39288415
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3299575806416951748, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: bDemo
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299575806416951749, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299575806416951749, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 905.38544
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299575806416951749, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 721.8627
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299575806416951749, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.9653893
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299575806416951749, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299575806416951749, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299575806416951749, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299575806416951749, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299575806416951749, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299575806416951749, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299575806416951749, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3299575806416951751, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_Name
+      value: GameManager UI 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
 --- !u!1 &39860055
 GameObject:
   m_ObjectHideFlags: 0
@@ -13227,6 +13290,7 @@ MonoBehaviour:
   hpScript: {fileID: 0}
   combatScript: {fileID: 0}
   movementScript: {fileID: 0}
+  staminaBar: {fileID: 0}
 --- !u!114 &791818773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13249,7 +13313,6 @@ MonoBehaviour:
   comb: {fileID: 791818775}
   mov: {fileID: 791818774}
   rc: {fileID: 0}
-  RespawnPoint: {fileID: 0}
 --- !u!114 &791818774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13271,6 +13334,10 @@ MonoBehaviour:
   InAirMoveSpeed: 7
   stamina: 15
   MAXstamina: 15
+  BoostWalkSpeed: 0
+  BoostSprintSpeed: 0
+  AbilityWalkSpeed: 0
+  AbilitySprintSpeed: 0
   bCanJump: 1
   bCanFall: 1
   GravityScale: 2
@@ -13284,6 +13351,7 @@ MonoBehaviour:
   DashingPower: 20
   DashingTimer: 2
   DashingCooldown: 5
+  DashStaminaCost: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -13334,6 +13402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6063e7dc2d9b2d49ae9ac64c1506c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerUI: {fileID: 0}
   inventory: {fileID: 0}
   bHeadUnlocked: 0
   bChestUnlocked: 0
@@ -13341,7 +13410,15 @@ MonoBehaviour:
   bShoesUnlocked: 0
   bWeaponUnlocked: 0
   bArtifactUnlocked: 0
+  bAbility1Unlocked: 0
+  bAbility2Unlocked: 0
+  bAbility3Unlocked: 0
+  bAbility4Unlocked: 0
+  Shuriken: {fileID: 0}
+  ArrowAb: {fileID: 0}
+  HealAb: {fileID: 0}
   ClassName: 
+  bDeleteSave: 0
 --- !u!50 &791818777
 Rigidbody2D:
   serializedVersion: 4
@@ -14621,6 +14698,7 @@ MonoBehaviour:
   SaveCanvas: {fileID: 0}
   ControlsCanvas: {fileID: 0}
   RespawnCanvas: {fileID: 0}
+  ShopCanvas: {fileID: 0}
   player: {fileID: 0}
 --- !u!1 &1747668157
 GameObject:
@@ -14750,6 +14828,7 @@ MonoBehaviour:
   SaveCanvas: {fileID: 173816068}
   ControlsCanvas: {fileID: 0}
   RespawnCanvas: {fileID: 0}
+  ShopCanvas: {fileID: 0}
   player: {fileID: 791818776}
 --- !u!4 &1812541026
 Transform:
