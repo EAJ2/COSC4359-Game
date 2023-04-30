@@ -21,6 +21,10 @@ TagManager:
   - GoblinEnemy
   - XPBAR
   - HEALTHBAR
+  - HealthPotionIcon
+  - StaminaPotionIcon
+  - ManaPotionIcon
+  - MushroomEnemy
   layers:
   - Default
   - TransparentFX

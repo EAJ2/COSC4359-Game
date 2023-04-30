@@ -11,7 +11,7 @@ public class V2Health : MonoBehaviour
     public float MaxHealth;
     public float CurrentHealth;
     private Animator anim;
-    private bool bDead;
+    private bool bDead = false;
 
     [Header("iFrames")]
     [SerializeField] private float iFrameDuration;
@@ -24,7 +24,10 @@ public class V2Health : MonoBehaviour
     public V2PlayerMovement mov;
     public RangerCombat rc;
 
-    [SerializeField] public GameObject RespawnPoint;
+    [Header("SpawnPoints")]
+    private Vector3 RespawnPoint;
+
+    private bool bCanTakeDamage = true;
 
     void Update()
     {
@@ -43,28 +46,31 @@ public class V2Health : MonoBehaviour
 
     public void TakeDmg(float dmg)
     {
-        CurrentHealth -= dmg - (dmg * stats.dmgRed);
-        healthBar.SetHealth(CurrentHealth);
-        Die();
-        /*
-        if (CurrentHealth > 0)
+        if (bCanTakeDamage == true)
         {
-
-        }
-        else
-        {
-            if(!bDead)
+            CurrentHealth -= dmg - (dmg * stats.dmgRed);
+            healthBar.SetHealth(CurrentHealth);
+            if (CurrentHealth > 0)
             {
-                pm.enabled = false;
-                bDead = true;
+                anim.SetTrigger("Hit");
+            }
+            else
+            {
+                bDead = true; 
+                Die();
             }
         }
-        */
+    }
+
+    public void PlayHitAnim()
+    {
+        anim.SetTrigger("Hit");
     }
 
     public void AddHealth(float value)
     {
         CurrentHealth = Mathf.Clamp(CurrentHealth + value, 0, startingHealth);
+        healthBar.SetHealth(CurrentHealth);
     }
 
     public void SetHealth(float value)
@@ -93,23 +99,26 @@ public class V2Health : MonoBehaviour
 
     public void Reset()
     {
+        RespawnAtPoint();
+        this.GetComponent<V2PlayerMovement>().EnableMovement();
+        this.GetComponent<V2PlayerMovement>().ResetStamina();
         CurrentHealth = MaxHealth;
+        healthBar.SetHealth(CurrentHealth);
+        bCanTakeDamage = true;
         bDead = false;
-        pm.enabled = true;
-        anim.SetBool("isDead", false);
-        anim.SetBool("IsMoving", true);
-
-        gameObject.transform.position = new Vector3(RespawnPoint.transform.position.x, RespawnPoint.transform.position.y, gameObject.transform.position.z);
+        comb.enabled = true;
+        rc.enabled = true;
     }
 
     public void Die()
     {
-        if (CurrentHealth < 0)
+        if (CurrentHealth <= 0)
         {
+            bCanTakeDamage = false;
             bDead = true;
-            anim.SetBool("isDead", true);
+            anim.SetTrigger("Dead");
             this.enabled = false;
-            mov.enabled = false;
+            this.GetComponent<V2PlayerMovement>().DisableMovement();
             comb.enabled = false;
             rc.enabled = false;
         }
@@ -126,5 +135,15 @@ public class V2Health : MonoBehaviour
     public bool IsDead()
     {
         return bDead;
+    }
+
+    public void SetNewRespawnPoint(Vector3 position)
+    {
+        RespawnPoint = position;
+    }
+
+    private void RespawnAtPoint()
+    {
+        transform.position = new Vector3(RespawnPoint.x, RespawnPoint.y, transform.position.z);
     }
 }

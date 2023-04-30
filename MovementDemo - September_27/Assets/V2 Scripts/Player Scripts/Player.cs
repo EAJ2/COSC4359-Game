@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
     private V2Health health;
     private Stats stats;
 
+    [Header("Add the Players UI here")]
+    [SerializeField] private GameObject playerUI;
+
     [Header("Inventory Stuff (Dont Touch the Variables) (Leave ClassName Blank")]
     [SerializeField] private InventoryV3_Ace inventory;
     public bool bHeadUnlocked;
@@ -20,10 +23,24 @@ public class Player : MonoBehaviour
     public bool bWeaponUnlocked;
     public bool bArtifactUnlocked;
 
+    public bool bAbility1Unlocked;
+    public bool bAbility2Unlocked;
+    public bool bAbility3Unlocked;
+    public bool bAbility4Unlocked;
+
+    [Header("Ability Fields")]
+    [SerializeField] private ShurikenAbility Shuriken;
+    [SerializeField] private ArrowAbility ArrowAb;
+    [SerializeField] private HealAbility HealAb;
+    private SuperSpeed ss;
+
     private bool bIsThereSave = false;
     private bool bTutorialDone = false;
 
     public string ClassName = "";
+
+    [Header("This must be set to False")]
+    [SerializeField] private bool bDeleteSave = false;
 
     private void Awake()
     {
@@ -33,6 +50,38 @@ public class Player : MonoBehaviour
         pm = GetComponent<V2PlayerMovement>();
         health = GetComponent<V2Health>();
         stats = GetComponent<Stats>();
+        ss = GetComponent<SuperSpeed>();
+
+        if(bDeleteSave)
+        {
+            SaveClassInformation.DeleteSave(1);
+        }
+
+        if (ss == null)
+        {
+            Debug.Log("Missing the Super Speed Script on the Player!");
+        }
+        if(HealAb == null)
+        {
+            Debug.Log("Missing the HealAbility Script on the Player!");
+        }
+        if (ArrowAb == null)
+        {
+            Debug.Log("Missing the ArrowAbility Script on the Player!");
+        }
+        if (Shuriken == null)
+        {
+            Debug.Log("Missing the Shuriken Ability Script on the Player!");
+        }
+
+        if (playerUI == null)
+        {
+            Debug.Log("You need to add the Player UI gameobject to the Player field in the Player Script!");
+        }
+        else
+        {
+            playerUI.SetActive(true);
+        }
 
         LoadPlayer();
     }
@@ -58,6 +107,11 @@ public class Player : MonoBehaviour
             bShoesUnlocked = false;
             bWeaponUnlocked = false;
             bArtifactUnlocked = false;
+
+            bAbility1Unlocked = false;
+            bAbility2Unlocked = false;
+            bAbility3Unlocked = false;
+            bAbility4Unlocked = false;
             return;
         }
         else
@@ -89,6 +143,7 @@ public class Player : MonoBehaviour
                 pm.EnableJump();
             }
 
+            //Gear
             bHeadUnlocked = data.bHeadUnlocked;
             if(bHeadUnlocked)
             {
@@ -118,6 +173,28 @@ public class Player : MonoBehaviour
             if(bArtifactUnlocked)
             {
                 UnlockArtifact();
+            }
+
+            //Abilities
+            bAbility1Unlocked = data.bAbility1Unlocked;
+            if(bAbility1Unlocked)
+            {
+                UnlockAbility1();
+            }
+            bAbility2Unlocked = data.bAbility2Unlocked;
+            if (bAbility2Unlocked)
+            {
+                UnlockAbility2();
+            }
+            bAbility3Unlocked = data.bAbility3Unlocked;
+            if (bAbility3Unlocked)
+            {
+                UnlockAbility3();
+            }
+            bAbility4Unlocked = data.bAbility4Unlocked;
+            if (bAbility4Unlocked)
+            {
+                UnlockAbility4();
             }
         }
     }
@@ -181,6 +258,7 @@ public class Player : MonoBehaviour
     }
 
     //Functionality
+    //Equip Gear
     public void EquipHead()
     {
         if(ClassName == "Warrior")
@@ -248,6 +326,8 @@ public class Player : MonoBehaviour
 
         }
     }
+
+    //Unequip Gear
     public void UnequipHead()
     {
         if (ClassName == "Warrior")
@@ -314,6 +394,151 @@ public class Player : MonoBehaviour
 
         }
     }
+
+
+    //Unlock Ability
+    public void UnlockAbility1()
+    {
+        bAbility1Unlocked = true;
+        inventory.UnlockAbility1();
+    }
+
+    public void UnlockAbility2()
+    {
+        bAbility2Unlocked = true;
+        inventory.UnlockAbility2();
+    }
+
+    public void UnlockAbility3()
+    {
+        bAbility3Unlocked = true;
+        inventory.UnlockAbility3();
+    }
+
+    public void UnlockAbility4()
+    {
+        bAbility4Unlocked = true;
+        inventory.UnlockAbility4();
+    }
+
+    //Equip Ability
+    public void EquipAbility1()
+    {
+        Shuriken.SetEquipped();
+        SetAbility1Status();
+    }
+
+    public void EquipAbility2()
+    {
+        ArrowAb.SetEquipped();
+        SetAbility2Status();
+    }
+
+    public void EquipAbility3()
+    {
+        ss.EquipAbility3();
+        SetAbility3Status();
+    }
+
+    public void EquipAbility4()
+    {
+        HealAb.Equip();
+        SetAbility4Status();
+    }
+
+    //UnequipAbility
+    public void UnequipAbility1()
+    {
+        Shuriken.Unequip();
+    }
+
+    public void UnequipAbility2()
+    {
+        ArrowAb.Unequip();
+    }
+
+    public void UnequipAbility3()
+    {
+        ss.UnequipAbility3();
+    }
+
+    public void UnequipAbility4()
+    {
+        HealAb.Unequip();
+    }
+
+
+    //Check if abilities can be used
+    public void SetAbility1Status()
+    {
+        if (Shuriken.IsReady() == true)
+        {
+            inventory.Ability1Ready();
+        }
+        else
+        {
+            inventory.Ability1Used();
+        }
+    }
+
+    public void SetAbility2Status()
+    {
+        if(ArrowAb.IsReady() == true)
+        {
+            inventory.Ability2Ready();
+        }
+        else
+        {
+            inventory.Ability2Used();
+        }
+    }
+
+    public void SetAbility3Status()
+    {
+        if(ss.IsReady() == true)
+        {
+            inventory.Ability3Ready();
+        }
+        else
+        {
+            inventory.Ability3Used();
+        }
+    }
+
+    public void SetAbility4Status()
+    {
+        if(HealAb.IsReady() == true)
+        {
+            inventory.Ability4Ready();
+        }
+        else
+        {
+            inventory.Ability4Used();
+        }
+    }
+
+
+    //Key functionality
+    public bool CanEnterBossRoom()
+    {
+        return inventory.CanEnterBossRoom();
+    }
+
+    public void UnlockKey1()
+    {
+        inventory.UnlockKey1();
+    }
+
+    public void UnlockKey2()
+    {
+        inventory.UnlockKey2();
+    }
+
+    public void UnlockKey3()
+    {
+        inventory.UnlockKey3();
+    }
+
 
     //Functionality of equipping 
     //////////////////////End - Inventory UI Code

@@ -23,7 +23,7 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        transform.position = player.transform.position + new Vector3(0, 1 + YAxisOffset  , -1);
+        transform.position = player.transform.position + new Vector3(0, 1 + YAxisOffset  , transform.position.z);
 
         //room camera
         //transform.position = Vector3.SmoothDamp(transform.position, new Vector3(currentPosX, transform.position.y, transform.position.z), ref velocity, speed * Time.deltaTime);

@@ -20,7 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level Select.unity
     guid: dd1a7b83404aca347a7938dd784c16f2
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/CF_1.unity
     guid: b8db73660c8336144a497278af61871e
   - enabled: 1
@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CF_2.unity
     guid: 1a6745b8f855641858ad1c5405e94cb1
+  - enabled: 1
+    path: Assets/Scenes/InventoryV3_Ace.unity
+    guid: 407f21feb094c8a48ac927173a225948
   m_configObjects: {}

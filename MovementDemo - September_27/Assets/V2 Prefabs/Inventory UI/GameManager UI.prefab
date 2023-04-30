@@ -82,5 +82,17 @@ MonoBehaviour:
   ShoesEquipped: {fileID: 0}
   WeaponEquipped: {fileID: 0}
   ArtifactEquipped: {fileID: 0}
+  Ability1Equipped: {fileID: 0}
+  Ability2Equipped: {fileID: 0}
+  Ability3Equipped: {fileID: 0}
+  Ability4Equipped: {fileID: 0}
+  Ability1Locked: {fileID: 0}
+  Ability2Locked: {fileID: 0}
+  Ability3Locked: {fileID: 0}
+  Ability4Locked: {fileID: 0}
+  Ability1Button: {fileID: 0}
+  Ability2Button: {fileID: 0}
+  Ability3Button: {fileID: 0}
+  Ability4Button: {fileID: 0}
   bDemo: 1
   ClassName: Warrior

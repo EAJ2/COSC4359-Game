@@ -6,19 +6,19 @@ using UnityEngine.UI;
 
 public class TutorialManager : MonoBehaviour
 {
-    public List<TutorialImage> TutorialImages;
-    public NotifyTriggerCollision NTC;
     [SerializeField] private Player player;
     public GameObject ConfirmTutorialEndCanvas;
     public GameObject StartTutorialCanvas;
-
-    private int TutorialsDone = 0;
+    public GameObject ResetTutorialCanvas;
+    public GameObject PlayerHUD;
 
     private bool bTutorialsDone = false;
+    private bool bMenuShowing = false;
 
     //Set Canvas Inactive
     private void Awake()
     {
+        ResetTutorialCanvas.SetActive(false);
         ConfirmTutorialEndCanvas.SetActive(false);
         StartTutorialCanvas.SetActive(true);
         player.GetComponent<V2PlayerMovement>().DisableMovement();
@@ -26,21 +26,33 @@ public class TutorialManager : MonoBehaviour
 
     private void Update()
     {
-        if(bTutorialsDone)
+        if (Input.GetKey(KeyCode.Escape))
         {
-            EndTutorial();
+            ToggleEscape();
         }
     }
 
-    //Increment the var TutorialsDone to equal the amount of tutorials on the manager
-    public void IncrTutorialsDone()
+    private void ToggleEscape()
     {
-        TutorialsDone++;
-        if(TutorialsDone == TutorialImages.Count)
+        if(bMenuShowing)
         {
-            bTutorialsDone = true;
+            bMenuShowing = false;
+            PlayerHUD.SetActive(true);
+            ResetTutorialCanvas.SetActive(false);
+        }
+        else
+        {
+            bMenuShowing = true;
+            PlayerHUD.SetActive(false);
+            ResetTutorialCanvas.SetActive(true);
         }
     }
+
+    public void ResetTutorial()
+    {
+        SceneManager.LoadScene("TutorialScene");
+    }
+
 
     public void StartTutorialButton()
     {
@@ -51,11 +63,6 @@ public class TutorialManager : MonoBehaviour
     //Set active end tutorial canvas when the Final Collider is triggered and all the tutorials are done
     public void EndTutorial()
     {
-        if(NTC.IsTriggered() == true)
-        {
-            player.GetComponentInChildren<V2PlayerMovement>().DisableMovement();
-            ConfirmTutorialEndCanvas.SetActive(true);
-        }
     }
 
     //Go to main menu when canvas is pressed to OK
@@ -66,14 +73,4 @@ public class TutorialManager : MonoBehaviour
         ConfirmTutorialEndCanvas.SetActive(false);
         SceneManager.LoadScene("V2MainMenu");
     }
-
-
-
-
-
-
-
-
-
-
 }

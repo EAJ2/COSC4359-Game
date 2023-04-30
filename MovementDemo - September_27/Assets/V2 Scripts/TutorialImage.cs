@@ -36,7 +36,7 @@ public class TutorialImage : MonoBehaviour
 
             if (bTutorialScene == true)
             {
-                TM.IncrTutorialsDone();
+                
             }
             gameObject.SetActive(false);
         }

@@ -9,6 +9,7 @@ public class Boss_Health : MonoBehaviour
     public int health;
     public Animator anim;
 
+
     public bool isDead = false;
     public bool Stage2 = false;
 
@@ -17,6 +18,9 @@ public class Boss_Health : MonoBehaviour
 
     public GameObject stage2Text;
     public GameObject endGameText;
+
+    public GameObject Door;
+
     // Update is called once per frame
     void Update()
     {
@@ -26,8 +30,8 @@ public class Boss_Health : MonoBehaviour
         if (health <= 0 && Stage2 == false)
         {
             Stage2 = true;
-            maxHealth = 750;
-            health = 750;
+            maxHealth = 30;
+            health = 30;
             anim.SetBool("Stage 2", true);
             stage2Text.SetActive(true);
         }
@@ -46,6 +50,7 @@ public class Boss_Health : MonoBehaviour
     {
         if (health <= 0 && isDead == false && Stage2 == true)
         {
+            Door.SetActive(false);
             anim.SetBool("isDead", true);
             isDead = true;
             endGameText.SetActive(true);

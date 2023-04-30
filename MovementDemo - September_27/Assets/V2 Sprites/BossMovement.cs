@@ -24,4 +24,15 @@ public class BossMovement : MonoBehaviour
             this.GetComponent<SpriteRenderer>().flipX = true;
         }
     }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("BossLimiter"))
+        {
+            Rigidbody2D rb = GetComponent<Rigidbody2D>();
+            rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+        }
+    }
+
 }
