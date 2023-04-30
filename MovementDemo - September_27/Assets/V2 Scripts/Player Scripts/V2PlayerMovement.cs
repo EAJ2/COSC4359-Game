@@ -30,7 +30,9 @@ public class V2PlayerMovement : MonoBehaviour
     private float NormalSprintSpeed;
     [SerializeField] private float BoostWalkSpeed;
     [SerializeField] private float BoostSprintSpeed;
-
+    [SerializeField] private float AbilityWalkSpeed;
+    [SerializeField] private float AbilitySprintSpeed;
+    private bool bShoesEquipped = false;
 
     [Header("JumpParameters")]
     [SerializeField] private bool bCanJump = true;
@@ -534,13 +536,41 @@ public class V2PlayerMovement : MonoBehaviour
     //Inventory Item Changes
     public void WarriorEquipShoes()
     {
+        bShoesEquipped = true;
         SetWalkSpeed(BoostWalkSpeed);
         SetSprintSpeed(BoostSprintSpeed);
     }
 
     public void WarriorUnequipShoes()
     {
+        bShoesEquipped = false;
         SetWalkSpeed(NormalWalkSpeed);
         SetSprintSpeed(NormalSprintSpeed);
+    }
+
+    public void ActivateAbility3()
+    {
+        SetWalkSpeed(AbilityWalkSpeed);
+        SetSprintSpeed(AbilitySprintSpeed);
+    }
+
+    public void DeactivateAbility3()
+    {
+        if(bShoesEquipped)
+        {
+            SetWalkSpeed(BoostWalkSpeed);
+            SetSprintSpeed(BoostSprintSpeed);
+        }
+        else
+        {
+            SetWalkSpeed(NormalWalkSpeed);
+            SetSprintSpeed(NormalSprintSpeed);
+        }
+    }
+
+    public void ResetStamina()
+    {
+        stamina = MAXstamina;
+        staminaBar.SetStamina(stamina);
     }
 }
