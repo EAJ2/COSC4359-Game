@@ -32,7 +32,7 @@ public class SuperSpeed : MonoBehaviour
                 {
                     bActivated = true;
                     CooldownTimer = 0;
-                    pm.ActivateAbility3();
+                   // pm.ActivateAbility3();
                 }
             }
             if (bActivated)
@@ -41,7 +41,7 @@ public class SuperSpeed : MonoBehaviour
                 if (DurationTimer >= DurationTime)
                 {
                     bActivated = false;
-                    pm.DeactivateAbility3();
+                    //pm.DeactivateAbility3();
                     DurationTimer = 0;
                 }
             }
