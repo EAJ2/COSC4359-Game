@@ -121,12 +121,14 @@ public class V2PlayerMovement : MonoBehaviour
                 if (Input.GetKey(KeyCode.LeftShift) && stamina > 0)
                 {
                     SetIsSprinting(true);
+                    anim.SetBool("isSprinting", true);
                     StartCoroutine(StaminaDepletion());
                     StopCoroutine(StaminaRegeneration());
                 }
                 else
                 {
                     SetIsSprinting(false);
+                    anim.SetBool("isSprinting", false);
                 }
             }
             StopCoroutine(StaminaDepletion());
@@ -174,7 +176,7 @@ public class V2PlayerMovement : MonoBehaviour
         }
 
         //Dashing Code
-        if (Input.GetKey(KeyCode.Q) && bCanDash && IsGrounded()) 
+        if (Input.GetKey(KeyCode.Q) && bCanDash && IsGrounded() && stamina >= 10 && stats.GetClass() == "Vagabond") 
         {
             anim.SetTrigger("Dash");
             stamina -= 10;

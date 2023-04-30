@@ -100,6 +100,7 @@ public class Stats : MonoBehaviour
     public V2PlayerMovement movementScript;
 
     public PlayerStaminaBar staminaBar;
+    public ManaBar manaBar;
 
 
     // Start is called before the first frame update
@@ -114,6 +115,7 @@ public class Stats : MonoBehaviour
         Agility();
         //levelBar.SetMaxXP(maxXP);
         //levelBar.SetXP(XP);
+        manaBar.SetMaxMana(MAXmana);
         critDMG = (int)Mathf.Ceil((float)dmg * critMult);
         heavyDMG = (int)Mathf.Ceil((float)dmg * 1.25f);
         heavyCritDMG = (int)Mathf.Ceil(((float)dmg * 1.25f) * critMult);
@@ -138,6 +140,7 @@ public class Stats : MonoBehaviour
         classText.text = "Class: " + Class;
         levelText.text = "Level: " + level.ToString();
 
+        ManaTracker();
     }
 
     public void Vitality()
@@ -799,6 +802,21 @@ public class Stats : MonoBehaviour
         else
         {
             agilArrowUp.SetActive(true);
+        }
+    }
+
+
+    public void ManaTracker()
+    {
+        manaBar.SetMana(mana);
+
+        if (mana < 0)
+        {
+            mana = 0;
+        }
+        else if (mana > MAXmana)
+        {
+            mana = MAXmana;
         }
     }
 }

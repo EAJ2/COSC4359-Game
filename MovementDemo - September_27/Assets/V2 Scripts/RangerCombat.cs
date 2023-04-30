@@ -29,6 +29,9 @@ public class RangerCombat : MonoBehaviour
     public GameObject projectilePrefab;
     public float shootForce = 10f;
 
+    public GameObject volley;
+    public int volleyDMG = 2;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,9 +62,14 @@ public class RangerCombat : MonoBehaviour
             Block();
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && stats.mana >= 10)
         {
-            Special1();
+            StartCoroutine(Special1());
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+
         }
 
         if (AttackIsPlaying() == true)
@@ -158,10 +166,20 @@ public class RangerCombat : MonoBehaviour
 
     }
 
-    void Special1()
+    IEnumerator Special1()
     {
+        SetVolleyDMG();
         anim.SetTrigger("Special 1");
+        yield return new WaitForSeconds(1f);
         stats.mana -= 5;
+        if (transform.localScale.x < 0)
+        {
+            Instantiate(volley, new Vector3(transform.position.x - 8f, transform.position.y - 0.6f, transform.position.z), Quaternion.identity);
+        }
+        else
+        {
+            Instantiate(volley, new Vector3(transform.position.x + 8f, transform.position.y - 0.6f, transform.position.z), Quaternion.identity);
+        }
     }
 
     bool AttackIsPlaying()
@@ -183,6 +201,15 @@ public class RangerCombat : MonoBehaviour
         GameObject projectile = Instantiate(projectilePrefab, new Vector3(transform.position.x, transform.position.y - 1.75f, transform.position.z), Quaternion.identity);
     }
 
+    void SetVolleyDMG()
+    {
+        volleyDMG = stats.level / 2;
+
+        if (stats.level == 1)
+        {
+            volleyDMG = 1;
+        }
+    }
 
 
 }

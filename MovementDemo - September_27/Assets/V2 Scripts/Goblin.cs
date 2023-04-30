@@ -38,6 +38,12 @@ public class Goblin : MonoBehaviour
 
 
     public AudioSource hitAudio;
+
+
+    //Ranger
+    public bool inVolley = false;
+
+
     // Start is called before the first frame update
     void Start()
     {
