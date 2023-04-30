@@ -56,7 +56,7 @@ public class V2Health : MonoBehaviour
             }
             else
             {
-                bDead = true; 
+                bDead = true;
                 Die();
             }
         }
@@ -87,7 +87,7 @@ public class V2Health : MonoBehaviour
     private IEnumerator Invulnerability()
     {
         Physics2D.IgnoreLayerCollision(10, 11, true);
-        for(int i = 0; i < NumberOfFlashes; i++)
+        for (int i = 0; i < NumberOfFlashes; i++)
         {
             sr.color = new Color(1, 0, 0, 0.5f);
             yield return new WaitForSeconds(iFrameDuration / (NumberOfFlashes * 2));

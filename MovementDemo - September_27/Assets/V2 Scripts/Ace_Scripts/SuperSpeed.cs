@@ -23,10 +23,10 @@ public class SuperSpeed : MonoBehaviour
 
     private void Update()
     {
-        if(bEquipped)
+        if (bEquipped)
         {
             player.SetAbility3Status();
-            if(CooldownTimer >= CooldownTime)
+            if (CooldownTimer >= CooldownTime)
             {
                 if (Input.GetKeyDown(KeyCode.Alpha8))
                 {
@@ -35,10 +35,10 @@ public class SuperSpeed : MonoBehaviour
                     pm.ActivateAbility3();
                 }
             }
-            if(bActivated)
+            if (bActivated)
             {
                 DurationTimer += Time.deltaTime;
-                if(DurationTimer >= DurationTime)
+                if (DurationTimer >= DurationTime)
                 {
                     bActivated = false;
                     pm.DeactivateAbility3();
