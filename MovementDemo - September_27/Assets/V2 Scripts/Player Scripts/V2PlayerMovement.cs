@@ -24,7 +24,7 @@ public class V2PlayerMovement : MonoBehaviour
     [SerializeField] public float WalkSpeed;
     [SerializeField] public float SprintSpeed;
     [SerializeField] private float InAirMoveSpeed;
-    [SerializeField] public float stamina;
+    public float stamina;
     [SerializeField] public float MAXstamina;
     private float NormalWalkSpeed;
     private float NormalSprintSpeed;
@@ -32,7 +32,7 @@ public class V2PlayerMovement : MonoBehaviour
     [SerializeField] private float BoostSprintSpeed;
     [SerializeField] private float AbilityWalkSpeed;
     [SerializeField] private float AbilitySprintSpeed;
-    private bool bShoesEquipped = false;
+    private bool bSpeedBoosted = false;
 
     [Header("JumpParameters")]
     [SerializeField] private bool bCanJump = true;
@@ -60,6 +60,7 @@ public class V2PlayerMovement : MonoBehaviour
     [SerializeField] private float DashingPower;
     [SerializeField] private float DashingTimer;
     [SerializeField] private float DashingCooldown;
+    [SerializeField] private float DashStaminaCost;
 
     [Header("Layers Masks")]
     [SerializeField] private LayerMask groundLayer;
@@ -81,6 +82,7 @@ public class V2PlayerMovement : MonoBehaviour
         cc = GetComponent<CapsuleCollider2D>();
         stats = GetComponent<Stats>();
         staminaBar.SetMaxStamina(MAXstamina);
+        stamina = MAXstamina;
 
         NormalWalkSpeed = WalkSpeed;
         NormalSprintSpeed = SprintSpeed;
@@ -110,27 +112,25 @@ public class V2PlayerMovement : MonoBehaviour
             return;
         }
 
-        if(IsGrounded())
+        if (IsGrounded())
         {
             SetGravityScale(GravityScale);
         }
 
         //To Check if the player is sprinting or walking
-        if(bCanMove)
+        if (bCanMove)
         {
             if (bCanWalk)
             {
                 if (Input.GetKey(KeyCode.LeftShift) && stamina > 0)
                 {
                     SetIsSprinting(true);
-                    anim.SetBool("isSprinting", true);
                     StartCoroutine(StaminaDepletion());
                     StopCoroutine(StaminaRegeneration());
                 }
                 else
                 {
                     SetIsSprinting(false);
-                    anim.SetBool("isSprinting", false);
                 }
             }
             StopCoroutine(StaminaDepletion());
@@ -140,23 +140,23 @@ public class V2PlayerMovement : MonoBehaviour
         //Jump Code
         if (bCanMove)
         {
-            if(bCanJump)
+            if (bCanJump)
             {
-                if(Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space))
                 {
                     anim.SetTrigger("Jump");
                     Jump();
                 }
-                else if(Input.GetKeyUp(KeyCode.Space))
+                else if (Input.GetKeyUp(KeyCode.Space))
                 {
                     OnJumpUp();
                 }
-                if(IsJumping() || IsFalling() && bCanFall)
+                if (IsJumping() || IsFalling() && bCanFall)
                 {
                     rb.velocity = new Vector2(HorizontalInput * InAirMoveSpeed, rb.velocity.y);
                 }
 
-                if(IsGrounded())
+                if (IsGrounded())
                 {
                     CoyoteCounter = CoyoteTime;
                     JumpCounter = ExtraJumps;
@@ -178,10 +178,10 @@ public class V2PlayerMovement : MonoBehaviour
         }
 
         //Dashing Code
-        if (Input.GetKey(KeyCode.Q) && bCanDash && IsGrounded() && stamina >= 10 && stats.GetClass() == "Vagabond") 
+        if (Input.GetKey(KeyCode.Q) && bCanDash && IsGrounded() && (stamina >= DashStaminaCost))
         {
             anim.SetTrigger("Dash");
-            stamina -= 10;
+            stamina -= DashStaminaCost;
             if (rb.velocity.y == 0)
             {
                 bIsFalling = false;
@@ -207,7 +207,7 @@ public class V2PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(bDashing)
+        if (bDashing)
         {
             return;
         }
@@ -217,11 +217,11 @@ public class V2PlayerMovement : MonoBehaviour
 
     private void Run()
     {
-        if(bCanMove)
+        if (bCanMove)
         {
-            if(bCanWalk && IsGrounded() && !bDashing)
+            if (bCanWalk && IsGrounded() && !bDashing)
             {
-                if(IsSprinting())
+                if (IsSprinting())
                 {
                     rb.velocity = new Vector2(HorizontalInput * SprintSpeed, rb.velocity.y);
 
@@ -253,7 +253,7 @@ public class V2PlayerMovement : MonoBehaviour
 
     private void Flip()
     {
-        if(bIsFacingRight && HorizontalInput < 0f || !bIsFacingRight && HorizontalInput > 0f)
+        if (bIsFacingRight && HorizontalInput < 0f || !bIsFacingRight && HorizontalInput > 0f)
         {
             Vector3 localScale = transform.localScale;
             bIsFacingRight = !bIsFacingRight;
@@ -306,11 +306,11 @@ public class V2PlayerMovement : MonoBehaviour
 
     private void OnJumpUp()
     {
-        if(bCanMove)
+        if (bCanMove)
         {
-            if(bCanJump && bCanFall)
+            if (bCanJump && bCanFall)
             {
-                if(rb.velocity.y > 0 && IsJumping())
+                if (rb.velocity.y > 0 && IsJumping())
                 {
                     rb.AddForce(Vector2.down * rb.velocity.y * (1 - JumpCutMultiplier), ForceMode2D.Impulse);
                 }
@@ -345,6 +345,8 @@ public class V2PlayerMovement : MonoBehaviour
         bCanMove = true;
         EnableJump();
         EnableDash();
+        EnableWalk();
+        EnableFall();
     }
 
     public void DisableMovement()
@@ -352,11 +354,13 @@ public class V2PlayerMovement : MonoBehaviour
         bCanMove = false;
         DisableJump();
         DisableDash();
+        DisableWalk();
+        DisableFall();
     }
 
     public bool IsGrounded()
     {
-        
+
         RaycastHit2D raycastHit = Physics2D.CapsuleCast(cc.bounds.center, cc.bounds.size, CapsuleDirection2D.Vertical, 0.0f, Vector2.down, 0.1f, groundLayer);
         //anim.SetBool("isGrounded", true);
         //Debug.Log("On the Ground");
@@ -425,7 +429,7 @@ public class V2PlayerMovement : MonoBehaviour
 
     public bool IsFacingRight()
     {
-        if(transform.localScale.x == 1)
+        if (transform.localScale.x == 1)
         {
             bIsFacingRight = true;
             return true;
@@ -445,6 +449,7 @@ public class V2PlayerMovement : MonoBehaviour
     public void DisableWalk()
     {
         bCanWalk = false;
+        rb.velocity = Vector3.zero;
     }
 
     public void EnableJump()
@@ -531,23 +536,24 @@ public class V2PlayerMovement : MonoBehaviour
         {
             transform.position = spawnPoint.transform.position;
         }
-    }    
+    }
 
     //Inventory Item Changes
     public void WarriorEquipShoes()
     {
-        bShoesEquipped = true;
         SetWalkSpeed(BoostWalkSpeed);
         SetSprintSpeed(BoostSprintSpeed);
+        bSpeedBoosted = true;
     }
 
     public void WarriorUnequipShoes()
     {
-        bShoesEquipped = false;
         SetWalkSpeed(NormalWalkSpeed);
         SetSprintSpeed(NormalSprintSpeed);
+        bSpeedBoosted = false;
     }
 
+    //Ability Items Changes
     public void ActivateAbility3()
     {
         SetWalkSpeed(AbilityWalkSpeed);
@@ -556,7 +562,7 @@ public class V2PlayerMovement : MonoBehaviour
 
     public void DeactivateAbility3()
     {
-        if(bShoesEquipped)
+        if (bSpeedBoosted)
         {
             SetWalkSpeed(BoostWalkSpeed);
             SetSprintSpeed(BoostSprintSpeed);
@@ -571,6 +577,6 @@ public class V2PlayerMovement : MonoBehaviour
     public void ResetStamina()
     {
         stamina = MAXstamina;
-        staminaBar.SetStamina(stamina);
+        staminaBar.SetMaxStamina(stamina);
     }
 }
