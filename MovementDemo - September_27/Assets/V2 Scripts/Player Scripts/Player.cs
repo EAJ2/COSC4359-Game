@@ -63,11 +63,11 @@ public class Player : MonoBehaviour
         }
         if(HealAb == null)
         {
-            Debug.Log("Missing the HealAbility Script on the Player!");
+            Debug.Log("Missing the Heal Ability Script on the Player!");
         }
         if (ArrowAb == null)
         {
-            Debug.Log("Missing the ArrowAbility Script on the Player!");
+            Debug.Log("Missing the Arrow Ability Script on the Player!");
         }
         if (Shuriken == null)
         {
@@ -84,6 +84,10 @@ public class Player : MonoBehaviour
         }
 
         LoadPlayer();
+        if (ClassName != stats.Class)
+        {
+            this.gameObject.SetActive(false);
+        }
     }
 
     //Save Game

@@ -93,7 +93,7 @@ public class V2PlayerCombat : MonoBehaviour
                 if (critCounter <= stats.critRange)
                 {
                     enemy.GetComponent<EvilWizard>().TakeDMG(stats.critDMG);
-                    critTextMesh.text = stats.critDMG.ToString();;
+                    critTextMesh.text = stats.critDMG.ToString();
                     Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
                 }
                 else
@@ -239,7 +239,7 @@ public class V2PlayerCombat : MonoBehaviour
                 if (critCounter <= stats.critRange)
                 {
                     enemy.GetComponent<EvilWizard>().TakeDMG(stats.critDMG);
-                    critTextMesh.text = stats.critDMG.ToString(); ;
+                    critTextMesh.text = stats.critDMG.ToString();
                     Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
                 }
                 else
@@ -277,6 +277,70 @@ public class V2PlayerCombat : MonoBehaviour
                 else
                 {
                     enemy.GetComponent<Boss_Health>().TakeDMG(stats.dmg);
+                    dmgTextMesh.text = stats.dmg.ToString();
+                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+            }
+            else if (enemy.tag == "GroundEnemy")
+            {
+                hitAudio.Play();
+                if (critCounter <= stats.critRange)
+                {
+                    enemy.GetComponent<Skeleton>().TakeDMG(stats.critDMG);
+                    critTextMesh.text = stats.critDMG.ToString();
+                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+                else
+                {
+                    enemy.GetComponent<Skeleton>().TakeDMG(stats.dmg);
+                    dmgTextMesh.text = stats.dmg.ToString();
+                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+            }
+            else if (enemy.tag == "FlyEnemy")
+            {
+                hitAudio.Play();
+                if (critCounter <= stats.critRange)
+                {
+                    enemy.GetComponent<FlyEnemy>().TakeDamage(stats.critDMG);
+                    critTextMesh.text = stats.critDMG.ToString();
+                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+                else
+                {
+                    enemy.GetComponent<FlyEnemy>().TakeDamage(stats.dmg);
+                    dmgTextMesh.text = stats.dmg.ToString();
+                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+            }
+            else if (enemy.tag == "DrillFlyEnemy")
+            {
+                hitAudio.Play();
+                if (critCounter <= stats.critRange)
+                {
+                    enemy.GetComponent<DrillFlyEnemy>().TakeDamage(stats.critDMG);
+                    critTextMesh.text = stats.critDMG.ToString();
+                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+                else
+                {
+                    enemy.GetComponent<DrillFlyEnemy>().TakeDamage(stats.dmg);
+                    dmgTextMesh.text = stats.dmg.ToString();
+                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+            }
+            else if (enemy.tag == "MushroomEnemy")
+            {
+                hitAudio.Play();
+                if (critCounter <= stats.critRange)
+                {
+                    enemy.GetComponent<Mushroom>().TakeDamage(stats.critDMG);
+                    critTextMesh.text = stats.critDMG.ToString();
+                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+                else
+                {
+                    enemy.GetComponent<Mushroom>().TakeDamage(stats.dmg);
                     dmgTextMesh.text = stats.dmg.ToString();
                     Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
                 }
@@ -334,14 +398,78 @@ public class V2PlayerCombat : MonoBehaviour
                 hitAudio.Play();
                 if (critCounter <= stats.critRange)
                 {
-                    enemy.GetComponent<Boss_Health>().TakeDMG(stats.critDMG);
-                    critTextMesh.text = stats.critDMG.ToString();
+                    enemy.GetComponent<Boss_Health>().TakeDMG(stats.heavyCritDMG);
+                    critTextMesh.text = stats.heavyCritDMG.ToString();
                     Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
                 }
                 else
                 {
-                    enemy.GetComponent<Boss_Health>().TakeDMG(stats.dmg);
-                    dmgTextMesh.text = stats.dmg.ToString();
+                    enemy.GetComponent<Boss_Health>().TakeDMG(stats.heavyDMG);
+                    dmgTextMesh.text = stats.heavyDMG.ToString();
+                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+            }
+            else if (enemy.tag == "GroundEnemy")
+            {
+                hitAudio.Play();
+                if (critCounter <= stats.critRange)
+                {
+                    enemy.GetComponent<Skeleton>().TakeDMG(stats.heavyCritDMG);
+                    critTextMesh.text = stats.heavyCritDMG.ToString();
+                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+                else
+                {
+                    enemy.GetComponent<Skeleton>().TakeDMG(stats.heavyDMG);
+                    dmgTextMesh.text = stats.heavyDMG.ToString();
+                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+            }
+            else if (enemy.tag == "FlyEnemy")
+            {
+                hitAudio.Play();
+                if (critCounter <= stats.critRange)
+                {
+                    enemy.GetComponent<FlyEnemy>().TakeDamage(stats.heavyCritDMG);
+                    critTextMesh.text = stats.heavyCritDMG.ToString();
+                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+                else
+                {
+                    enemy.GetComponent<FlyEnemy>().TakeDamage(stats.heavyDMG);
+                    dmgTextMesh.text = stats.heavyDMG.ToString();
+                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+            }
+            else if (enemy.tag == "DrillFlyEnemy")
+            {
+                hitAudio.Play();
+                if (critCounter <= stats.critRange)
+                {
+                    enemy.GetComponent<DrillFlyEnemy>().TakeDamage(stats.heavyCritDMG);
+                    critTextMesh.text = stats.heavyCritDMG.ToString();
+                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+                else
+                {
+                    enemy.GetComponent<DrillFlyEnemy>().TakeDamage(stats.heavyDMG);
+                    dmgTextMesh.text = stats.heavyDMG.ToString();
+                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+            }
+            else if (enemy.tag == "MushroomEnemy")
+            {
+                hitAudio.Play();
+                if (critCounter <= stats.critRange)
+                {
+                    enemy.GetComponent<Mushroom>().TakeDamage(stats.heavyCritDMG);
+                    critTextMesh.text = stats.heavyCritDMG.ToString();
+                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
+                }
+                else
+                {
+                    enemy.GetComponent<Mushroom>().TakeDamage(stats.heavyDMG);
+                    dmgTextMesh.text = stats.heavyDMG.ToString();
                     Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
                 }
             }
