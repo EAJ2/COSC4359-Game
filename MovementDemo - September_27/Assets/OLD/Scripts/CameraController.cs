@@ -19,6 +19,14 @@ public class CameraController : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        if (player.GetComponent<Stats>().Class == "Ranger")
+        {
+            YAxisOffset = -1.4f;
+        }
+        else
+        {
+            YAxisOffset = 1.2f;
+        }
     }
 
     private void Update()

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -12,8 +13,12 @@ public class PauseMenu : MonoBehaviour
     public GameObject RespawnCanvas;
     public GameObject ShopCanvas;
     public Player player;
+    public GameObject playerObject;
+    public Stats stats;
 
     private bool bRespawnCanvasShown = false;
+
+    public Text goldText;
 
     private void Awake()
     {
@@ -21,6 +26,10 @@ public class PauseMenu : MonoBehaviour
         SaveCanvas.SetActive(false);
         RespawnCanvas.SetActive(false);
         Debug.Log("Player Class Name = " + player.GetClassName());
+
+        playerObject = GameObject.FindGameObjectWithTag("Player");
+        stats = playerObject.GetComponent<Stats>();
+        //goldText.text = "Gold: " + stats.gold;
     }
 
     // Update is called once per frame

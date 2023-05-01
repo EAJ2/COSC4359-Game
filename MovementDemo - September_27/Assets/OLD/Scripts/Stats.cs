@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Stats : MonoBehaviour
 {
-    [SerializeField] private string Class;
+    [SerializeField] public string Class;
 
 
     //Stats

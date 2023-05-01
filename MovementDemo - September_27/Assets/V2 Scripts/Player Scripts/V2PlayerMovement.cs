@@ -178,7 +178,7 @@ public class V2PlayerMovement : MonoBehaviour
         }
 
         //Dashing Code
-        if (Input.GetKey(KeyCode.Q) && bCanDash && IsGrounded() && (stamina >= DashStaminaCost))
+        if (Input.GetKey(KeyCode.Q) && bCanDash && IsGrounded() && (stamina >= DashStaminaCost) && stats.Class == "Vagabond")
         {
             anim.SetTrigger("Dash");
             stamina -= DashStaminaCost;
