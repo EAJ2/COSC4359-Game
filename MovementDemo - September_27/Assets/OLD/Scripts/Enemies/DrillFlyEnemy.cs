@@ -52,6 +52,9 @@ public class DrillFlyEnemy : MonoBehaviour
     private bool bRespawning = false;
     [SerializeField] private bool bCanRespawn = true;
 
+    //Ranger
+    public bool inVolley = false;
+
     private void Awake()
     {
         if (player == null)

@@ -48,6 +48,10 @@ public class EvilWizard : MonoBehaviour
     public AudioSource hitAudio;
     private bool bDead = false;
 
+    //Ranger
+    public bool inVolley = false;
+
+
     // Start is called before the first frame update
     void Start()
     {

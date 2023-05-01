@@ -27,6 +27,9 @@ public class FlyPatrol : MonoBehaviour
 
     private bool bCanMove = true;
 
+    //Ranger
+    public bool inVolley = false;
+
     private void Awake()
     {
         initScale = enemy.localScale;

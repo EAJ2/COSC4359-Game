@@ -66,5 +66,45 @@ public class Projectile : MonoBehaviour
             dmgTextMesh.text = stats.dmg.ToString();
             Instantiate(DMG_Text, new Vector3(collision.transform.position.x, collision.transform.position.y + 3, collision.transform.position.z), Quaternion.identity);
         }
+        else if (collision.gameObject.tag == "DrillFlyEnemy")
+        {
+            collision.gameObject.GetComponent<DrillFlyEnemy>().TakeDamage(stats.dmg);
+            hitAudio.Play();
+            Destroy(this.gameObject);
+            dmgTextMesh.text = stats.dmg.ToString();
+            Instantiate(DMG_Text, new Vector3(collision.transform.position.x, collision.transform.position.y + 3, collision.transform.position.z), Quaternion.identity);
+        }
+        else if (collision.gameObject.tag == "MushroomEnemy")
+        {
+            collision.gameObject.GetComponent<Mushroom>().TakeDamage(stats.dmg);
+            hitAudio.Play();
+            Destroy(this.gameObject);
+            dmgTextMesh.text = stats.dmg.ToString();
+            Instantiate(DMG_Text, new Vector3(collision.transform.position.x, collision.transform.position.y + 3, collision.transform.position.z), Quaternion.identity);
+        }
+        else if (collision.gameObject.tag == "FlyEnemy")
+        {
+            collision.gameObject.GetComponent<FlyEnemy>().TakeDamage(stats.dmg);
+            hitAudio.Play();
+            Destroy(this.gameObject);
+            dmgTextMesh.text = stats.dmg.ToString();
+            Instantiate(DMG_Text, new Vector3(collision.transform.position.x, collision.transform.position.y + 3, collision.transform.position.z), Quaternion.identity);
+        }
+        else if (collision.gameObject.tag == "GroundEnemy")
+        {
+            collision.gameObject.GetComponent<Skeleton>().TakeDMG(stats.dmg);
+            hitAudio.Play();
+            Destroy(this.gameObject);
+            dmgTextMesh.text = stats.dmg.ToString();
+            Instantiate(DMG_Text, new Vector3(collision.transform.position.x, collision.transform.position.y + 3, collision.transform.position.z), Quaternion.identity);
+        }
+        else if (collision.gameObject.tag == "Reaper_Boss")
+        {
+            collision.gameObject.GetComponent<Boss_Health>().TakeDMG(stats.dmg);
+            hitAudio.Play();
+            Destroy(this.gameObject);
+            dmgTextMesh.text = stats.dmg.ToString();
+            Instantiate(DMG_Text, new Vector3(collision.transform.position.x, collision.transform.position.y + 3, collision.transform.position.z), Quaternion.identity);
+        }
     }
 }

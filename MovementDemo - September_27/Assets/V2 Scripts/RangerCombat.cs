@@ -131,6 +131,91 @@ public class RangerCombat : MonoBehaviour
                     Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, 1, enemy.transform.position.z), Quaternion.identity);
                 }
             }
+
+            else if (enemy.tag == "DrillFlyEnemy")
+            {
+                hitAudio.Play();
+                if (critCounter <= stats.critRange)
+                {
+                    enemy.GetComponent<DrillFlyEnemy>().TakeDamage(stats.critDMG);
+                    critTextMesh.text = stats.critDMG.ToString();
+                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, 1, enemy.transform.position.z), Quaternion.identity);
+                }
+                else
+                {
+                    enemy.GetComponent<DrillFlyEnemy>().TakeDamage(stats.dmg);
+                    dmgTextMesh.text = stats.dmg.ToString();
+                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, 1, enemy.transform.position.z), Quaternion.identity);
+                }
+            }
+
+            else if (enemy.tag == "FlyEnemy")
+            {
+                hitAudio.Play();
+                if (critCounter <= stats.critRange)
+                {
+                    enemy.GetComponent<FlyEnemy>().TakeDamage(stats.critDMG);
+                    critTextMesh.text = stats.critDMG.ToString();
+                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, 1, enemy.transform.position.z), Quaternion.identity);
+                }
+                else
+                {
+                    enemy.GetComponent<FlyEnemy>().TakeDamage(stats.dmg);
+                    dmgTextMesh.text = stats.dmg.ToString();
+                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, 1, enemy.transform.position.z), Quaternion.identity);
+                }
+            }
+
+            else if (enemy.tag == "MushroomEnemy")
+            {
+                hitAudio.Play();
+                if (critCounter <= stats.critRange)
+                {
+                    enemy.GetComponent<Mushroom>().TakeDamage(stats.critDMG);
+                    critTextMesh.text = stats.critDMG.ToString();
+                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, 1, enemy.transform.position.z), Quaternion.identity);
+                }
+                else
+                {
+                    enemy.GetComponent<Mushroom>().TakeDamage(stats.dmg);
+                    dmgTextMesh.text = stats.dmg.ToString();
+                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, 1, enemy.transform.position.z), Quaternion.identity);
+                }
+            }
+
+            else if (enemy.tag == "GroundEnemy")
+            {
+                hitAudio.Play();
+                if (critCounter <= stats.critRange)
+                {
+                    enemy.GetComponent<GroundEnemy>().TakeDamage(stats.critDMG);
+                    critTextMesh.text = stats.critDMG.ToString();
+                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, 1, enemy.transform.position.z), Quaternion.identity);
+                }
+                else
+                {
+                    enemy.GetComponent<GroundEnemy>().TakeDamage(stats.dmg);
+                    dmgTextMesh.text = stats.dmg.ToString();
+                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, 1, enemy.transform.position.z), Quaternion.identity);
+                }
+            }
+
+            else if (enemy.tag == "Reaper_Boss")
+            {
+                hitAudio.Play();
+                if (critCounter <= stats.critRange)
+                {
+                    enemy.GetComponent<Boss_Health>().TakeDMG(stats.critDMG);
+                    critTextMesh.text = stats.critDMG.ToString();
+                    Instantiate(CRIT_Text, new Vector3(enemy.transform.position.x, 1, enemy.transform.position.z), Quaternion.identity);
+                }
+                else
+                {
+                    enemy.GetComponent<Boss_Health>().TakeDMG(stats.dmg);
+                    dmgTextMesh.text = stats.dmg.ToString();
+                    Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, 1, enemy.transform.position.z), Quaternion.identity);
+                }
+            }
         }
     }
 
