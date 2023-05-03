@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     private V2PlayerMovement pm;
     private V2Health health;
     private Stats stats;
+    private RangerCombat rc;
 
     [Header("Add the Players UI here")]
     [SerializeField] private GameObject playerUI;
@@ -42,6 +43,11 @@ public class Player : MonoBehaviour
     [Header("This must be set to False")]
     [SerializeField] private bool bDeleteSave = false;
 
+    [SerializeField] private bool bDemo = false;
+    [SerializeField] private string DemoClass;
+
+    [SerializeField] private bool bInTutorial = false;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -51,6 +57,7 @@ public class Player : MonoBehaviour
         health = GetComponent<V2Health>();
         stats = GetComponent<Stats>();
         ss = GetComponent<SuperSpeed>();
+        rc = GetComponent<RangerCombat>();
 
         if(bDeleteSave)
         {
@@ -84,15 +91,28 @@ public class Player : MonoBehaviour
         }
 
         LoadPlayer();
-        if (ClassName != stats.Class)
+        if(bInTutorial)
+        {
+            ClassName = "Vagabond";
+        }
+        if (ClassName != stats.Class && !bInTutorial)
         {
             this.gameObject.SetActive(false);
+        }
+
+        if (bDemo)
+        {
+            ClassName = DemoClass;
         }
     }
 
     //Save Game
     public void SavePlayer()
     {
+        if(bInTutorial)
+        {
+            ClassName = "";
+        }
         SaveClassInformation.SavePlayer(this);
     }
 
@@ -265,67 +285,66 @@ public class Player : MonoBehaviour
     //Equip Gear
     public void EquipHead()
     {
-        if(ClassName == "Warrior")
+        if(ClassName == "Vagabond" || ClassName == "Knight")
         {
-
+            pm.HeadEquip();
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
-
+            pm.HeadEquip();
         }
     }
     public void EquipChest()
     {
-        if (ClassName == "Warrior")
+        if (ClassName == "Vagabond" || ClassName == "Knight")
         {
-
+            health.WarriorChestEquip();
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
-
+            pm.RangerEquipChest();
         }
     }
     public void EquipLegs()
     {
-        if (ClassName == "Warrior")
+        if (ClassName == "Vagabond" || ClassName == "Knight")
         {
-
+            pm.EnableDoubleJump();
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
-
+            pm.EnableDoubleJump();
         }
     }
     public void EquipShoes()
     {
-        if (ClassName == "Warrior" || ClassName == "Knight")
+        if (ClassName == "Vagabond" || ClassName == "Knight")
         {
-            Debug.Log("Shoes Equipped");
             pm.WarriorEquipShoes();
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
-
+            pm.RangerEquipShoes();
         }
     }
     public void EquipWeapon()
     {
-        if (ClassName == "Warrior")
+        if (ClassName == "Vagabond" || ClassName == "Knight")
         {
-
+            stats.EquipWeapon();
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
-
+            rc.EquipWeapon();
         }
     }
     public void EquipArtifact()
     {
-        if (ClassName == "Warrior")
+        if (ClassName == "Vagabond" || ClassName == "Knight")
         {
 
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
 
         }
@@ -334,66 +353,66 @@ public class Player : MonoBehaviour
     //Unequip Gear
     public void UnequipHead()
     {
-        if (ClassName == "Warrior")
+        if (ClassName == "Vagabond" || ClassName == "Knight")
         {
-
+            pm.HeadUnequip();
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
-
+            pm.HeadUnequip();
         }
     }
     public void UnequipChest()
     {
-        if (ClassName == "Warrior")
+        if (ClassName == "Vagabond" || ClassName == "Knight")
         {
-
+            health.WarriorChestUnequip();
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
-
+            pm.RangerUnequipChest();
         }
     }
     public void UnequipLegs()
     {
-        if (ClassName == "Warrior")
+        if (ClassName == "Vagabond" || ClassName == "Knight")
         {
-
+            pm.DisableDoubleJump();
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
-
+            pm.DisableDoubleJump();
         }
     }
     public void UnequipShoes()
     {
-        if (ClassName == "Warrior")
+        if (ClassName == "Vagabond" || ClassName == "Knight")
         {
             pm.WarriorUnequipShoes();
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
-
+            pm.RangerUnequipShoe();
         }
     }
     public void UnequipWeapon()
     {
-        if (ClassName == "Warrior")
+        if (ClassName == "Vagabond" || ClassName == "Knight")
         {
-
+            stats.UnequipWeapon();
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
-
+            rc.UnquipWeapon();
         }
     }
     public void UnequipArtifact()
     {
-        if (ClassName == "Warrior")
+        if (ClassName == "Vagabond" || ClassName == "Knight")
         {
 
         }
-        else if (ClassName == "Mage")
+        else if (ClassName == "Ranger")
         {
 
         }

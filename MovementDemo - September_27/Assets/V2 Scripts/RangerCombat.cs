@@ -296,5 +296,14 @@ public class RangerCombat : MonoBehaviour
         }
     }
 
+    public void EquipWeapon()
+    {
+        projectilePrefab.GetComponent<Projectile>().EquipWeapon();
+    }
+
+    public void UnquipWeapon()
+    {
+        projectilePrefab.GetComponent<Projectile>().UnequipWeapon();
+    }
 
 }

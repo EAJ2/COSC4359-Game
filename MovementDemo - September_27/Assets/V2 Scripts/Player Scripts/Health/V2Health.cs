@@ -12,6 +12,8 @@ public class V2Health : MonoBehaviour
     public float CurrentHealth;
     private Animator anim;
     private bool bDead = false;
+    [SerializeField] private float BoostMaxHealth;
+    private float NormalMaxHealth;
 
     [Header("iFrames")]
     [SerializeField] private float iFrameDuration;
@@ -28,13 +30,6 @@ public class V2Health : MonoBehaviour
     private Vector3 RespawnPoint;
 
     private bool bCanTakeDamage = true;
-
-    void Update()
-    {
-        Die();
-        HealthCheck();
-    }
-
     private void Awake()
     {
         stats = GetComponent<Stats>();
@@ -42,7 +37,16 @@ public class V2Health : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         pm = GetComponentInParent<V2PlayerMovement>();
         healthBar.SetMaxHealth(MaxHealth);
+
+        NormalMaxHealth = MaxHealth;
     }
+
+    void Update()
+    {
+        Die();
+        HealthCheck();
+    }
+
 
     public void TakeDmg(float dmg)
     {
@@ -145,5 +149,23 @@ public class V2Health : MonoBehaviour
     private void RespawnAtPoint()
     {
         transform.position = new Vector3(RespawnPoint.x, RespawnPoint.y, transform.position.z);
+    }
+
+    public void WarriorChestEquip()
+    {
+        MaxHealth = BoostMaxHealth;
+        healthBar.SetMaxHealth(MaxHealth);
+        healthBar.SetHealth(CurrentHealth);
+    }
+
+    public void WarriorChestUnequip()
+    {
+        MaxHealth = NormalMaxHealth;
+        healthBar.SetMaxHealth(MaxHealth);
+        if(CurrentHealth >= MaxHealth)
+        {
+            CurrentHealth = MaxHealth;
+        }
+        healthBar.SetHealth(CurrentHealth);
     }
 }

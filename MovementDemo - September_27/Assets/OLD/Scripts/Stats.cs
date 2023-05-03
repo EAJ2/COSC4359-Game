@@ -102,6 +102,9 @@ public class Stats : MonoBehaviour
     public PlayerStaminaBar staminaBar;
     public ManaBar manaBar;
 
+    private int NormalDamage;
+    private int BoostDamage;
+
 
     // Start is called before the first frame update
     void Start()
@@ -819,4 +822,17 @@ public class Stats : MonoBehaviour
             mana = MAXmana;
         }
     }
+
+    public void EquipWeapon()
+    {
+        NormalDamage = dmg;
+        dmg = dmg + BoostDamage;
+    }
+
+    public void UnequipWeapon()
+    {
+        dmg = NormalDamage;
+    }
+
+
 }
