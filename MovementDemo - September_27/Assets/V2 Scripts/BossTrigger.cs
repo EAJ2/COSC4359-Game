@@ -27,7 +27,7 @@ public class BossTrigger : MonoBehaviour
             bossAnim.SetBool("Intro", false);
             this.gameObject.SetActive(false);
             this.enabled = false;
-            Time.timeScale = 0f;
+            Time.timeScale = 1f;
         }
     }
 
