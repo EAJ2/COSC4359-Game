@@ -123,22 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &223641504 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7511339775234052599, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
-  m_PrefabInstance: {fileID: 5408611545321648209}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6063e7dc2d9b2d49ae9ac64c1506c4d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &223641507 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7511339775234052494, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
-  m_PrefabInstance: {fileID: 5408611545321648209}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &288576958
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,7 +188,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &595938825
 GameObject:
@@ -305,18 +289,70 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   YAxisOffset: 0.2
-  player: {fileID: 223641507}
---- !u!114 &666896546 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3299575806416951748, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-  m_PrefabInstance: {fileID: 3299575806991569254}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adb91c738d7495342823632c4a8babd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+--- !u!1001 &1070192661
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 2
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3989848727802766874, guid: 240ee6205f1ddd346be9d8a79bb7be4e, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3989848727802766877, guid: 240ee6205f1ddd346be9d8a79bb7be4e, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3989848727802766877, guid: 240ee6205f1ddd346be9d8a79bb7be4e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.6012731
+      objectReference: {fileID: 0}
+    - target: {fileID: 3989848727802766877, guid: 240ee6205f1ddd346be9d8a79bb7be4e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.2121234
+      objectReference: {fileID: 0}
+    - target: {fileID: 3989848727802766877, guid: 240ee6205f1ddd346be9d8a79bb7be4e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3989848727802766877, guid: 240ee6205f1ddd346be9d8a79bb7be4e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3989848727802766877, guid: 240ee6205f1ddd346be9d8a79bb7be4e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3989848727802766877, guid: 240ee6205f1ddd346be9d8a79bb7be4e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3989848727802766877, guid: 240ee6205f1ddd346be9d8a79bb7be4e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3989848727802766877, guid: 240ee6205f1ddd346be9d8a79bb7be4e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3989848727802766877, guid: 240ee6205f1ddd346be9d8a79bb7be4e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3989848727802766877, guid: 240ee6205f1ddd346be9d8a79bb7be4e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3989848727802766879, guid: 240ee6205f1ddd346be9d8a79bb7be4e, type: 3}
+      propertyPath: m_Name
+      value: Goblin
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_AddedGameObjects: []
+  m_SourcePrefab: {fileID: 100100000, guid: 240ee6205f1ddd346be9d8a79bb7be4e, type: 3}
 --- !u!1001 &1120111746
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -388,11 +424,6 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: f57e8c734d89a8341ba0a678c1d8b424, type: 3}
---- !u!1 &1453312094 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7511339776083514667, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
-  m_PrefabInstance: {fileID: 5408611545321648209}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3299575806991569254
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -500,19 +531,19 @@ PrefabInstance:
     - target: {fileID: 3299575806416951748, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 223641504}
+      objectReference: {fileID: 0}
     - target: {fileID: 3299575806416951748, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
       propertyPath: bKnight
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3299575806416951748, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
       propertyPath: bRanger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3299575806416951748, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
       propertyPath: playerUI
       value: 
-      objectReference: {fileID: 1453312094}
+      objectReference: {fileID: 0}
     - target: {fileID: 3299575806416951748, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
       propertyPath: ClassName
       value: 
@@ -617,9 +648,25 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6402941924336736216, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_text
+      value: 'Tempest Bible
+
+
+        Increases the amount of xp you receive from
+        killing enemies'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6402941924336736216, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+    - target: {fileID: 6402941924336736216, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6402941924434258492, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
       propertyPath: m_text
-      value: 'Heroes Leggings
+      value: 'Warriors Leggings
 
 
         You will be able to perform a second jump
@@ -634,6 +681,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
     - target: {fileID: 6402941924434258494, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6402941924599189576, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_text
+      value: 'Warrior''s katana
+
+
+        Increases the damage you deal to enemies'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6402941924599189576, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+    - target: {fileID: 6402941924599189576, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6402941924599189578, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -663,7 +729,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6402941924888884153, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
       propertyPath: m_text
-      value: 'Heroes Helmet
+      value: 'Tempest Helmet
 
 
         Your max stamina is increased'
@@ -716,13 +782,81 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6402941925005789073, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_text
+      value: 'Heal
+
+
+        Press #7 to heal yourself 1 Health every second for
+        4 seconds, and have a 10 second cooldown.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6402941925005789073, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+    - target: {fileID: 6402941925005789073, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6402941925088024080, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_text
+      value: 'Warriors Chestplate
+
+
+        Increases your total health'
+      objectReference: {fileID: 0}
     - target: {fileID: 6402941925088024080, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6402941925088024080, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+    - target: {fileID: 6402941925088024080, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
     - target: {fileID: 6402941925088024082, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6402941925155302000, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6402941925155302014, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_text
+      value: 'Shuriken
+
+
+        Press #0 to activate the Shuriken. While Active
+        the Shuriken will revolve around you dealing 1 damage to enemies it comes
+        in contact with. 5 second cooldown and it lasts 2 seconds.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6402941925155302014, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+    - target: {fileID: 6402941925155302014, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+    - target: {fileID: 6402941925385603282, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_text
+      value: 'Super Speed
+
+
+        Press #8 to gain a Speed Boost for 2.5 Seconds,
+        The cooldown is 6 seconds.'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6402941925385603282, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+    - target: {fileID: 6402941925385603282, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6402941925388776762, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
       propertyPath: m_text
@@ -747,13 +881,29 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6402941925668225816, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_text
+      value: 'Arrows
+
+
+        Hold #9 to choose the location to launch a barrage
+        of arrow on your target and let go to launch them'
+      objectReference: {fileID: 0}
+    - target: {fileID: 6402941925668225816, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+    - target: {fileID: 6402941925668225816, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6402941925783851321, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6402941925784543917, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
       propertyPath: m_text
-      value: 'Heroes Shoes
+      value: 'Warriors Shoes
 
 
         Sprint and walk speed has been increased'
@@ -792,7 +942,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6402941926030629997, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
       propertyPath: m_text
-      value: 'Heroes Helmet
+      value: 'Warriors Helmet
 
 
         Your max stamina is increased'
@@ -809,77 +959,49 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_AddedGameObjects: []
-  m_SourcePrefab: {fileID: 100100000, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
---- !u!1001 &5408611545321648209
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 2
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2623032032246538593, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
-      propertyPath: m_Name
-      value: Vagabond
-      objectReference: {fileID: 0}
-    - target: {fileID: 2623032032246538593, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
+    - target: {fileID: 6402941926078417846, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7511339775234052495, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
-      propertyPath: BoostMaxStamina
-      value: 25
+    - target: {fileID: 6402941926078417847, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_text
+      value: 'Boss Room Key
+
+
+        Collect All Three To Challenge The Boss'
       objectReference: {fileID: 0}
-    - target: {fileID: 7511339775234052599, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
-      propertyPath: inventory
+    - target: {fileID: 6402941926078417847, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 666896546}
-    - target: {fileID: 8629189268651576539, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8629189268651576539, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 7.51702
-      objectReference: {fileID: 0}
-    - target: {fileID: 8629189268651576539, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.14419022
-      objectReference: {fileID: 0}
-    - target: {fileID: 8629189268651576539, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.07738126
-      objectReference: {fileID: 0}
-    - target: {fileID: 8629189268651576539, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8629189268651576539, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
-      propertyPath: m_LocalRotation.x
+      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+    - target: {fileID: 6402941926078417847, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+    - target: {fileID: 6402941926078417847, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8629189268651576539, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
+    - target: {fileID: 6402941926184257033, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_text
+      value: 'Warrior''s Band
+
+
+        Increases the amount of gold you receive
+        from enemies'
       objectReference: {fileID: 0}
-    - target: {fileID: 8629189268651576539, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8629189268651576539, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8629189268651576539, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8629189268651576539, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
+    - target: {fileID: 6402941926184257033, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+    - target: {fileID: 6402941926184257033, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
+    - target: {fileID: 6402941926184257035, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
-  m_SourcePrefab: {fileID: 100100000, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}

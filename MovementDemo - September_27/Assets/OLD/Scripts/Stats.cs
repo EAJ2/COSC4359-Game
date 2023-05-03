@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Stats : MonoBehaviour
 {
     [SerializeField] public string Class;
+    [SerializeField] public Text goldText;
 
 
     //Stats
@@ -103,14 +104,14 @@ public class Stats : MonoBehaviour
     public ManaBar manaBar;
 
     private int GoldMultiplier = 1;
-    private int NormalGoldMultiplier;
+    private int NormalGoldMultiplier = 1;
     private int BoostGoldMultiplier = 2;
     
     private int NormalDamage;
     private int BoostDamage;
 
     private float XPMultiplier = 1;
-    private float NormalXPMultiplier;
+    private float NormalXPMultiplier = 1;
     private float BoostXPMultiplier = 1.5f;
 
 
@@ -131,8 +132,10 @@ public class Stats : MonoBehaviour
         heavyDMG = (int)Mathf.Ceil((float)dmg * 1.25f);
         heavyCritDMG = (int)Mathf.Ceil(((float)dmg * 1.25f) * critMult);
 
-        NormalGoldMultiplier = GoldMultiplier;
-        NormalXPMultiplier = XPMultiplier;
+        if(goldText == null)
+        {
+            Debug.Log("goldText serialization missing in Stats");
+        }
 
     }
 
@@ -834,9 +837,10 @@ public class Stats : MonoBehaviour
         }
     }
 
-    public void SetGold(float g)
+    public void SetGold(int g)
     {
         gold += g * GoldMultiplier;
+        goldText.text = gold.ToString();
     }
 
     public void EquipKnightArtifact()
@@ -846,7 +850,7 @@ public class Stats : MonoBehaviour
 
     public void UnequipKnightArtifact()
     {
-        GoldMultipler = NormalGoldMultiplier;
+        GoldMultiplier = NormalGoldMultiplier;
     }
     public void EquipWeapon()
     {
@@ -862,6 +866,8 @@ public class Stats : MonoBehaviour
     public void SetXP(float x)
     {
         XP += (x * XPMultiplier);
+        levelBar.SetXP(XP);
+        
     }
 
     public void EquipRangerArtifact()

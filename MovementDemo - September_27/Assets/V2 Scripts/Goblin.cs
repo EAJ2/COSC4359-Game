@@ -5,14 +5,14 @@ using UnityEngine;
 public class Goblin : MonoBehaviour
 {
     //Player transform
-    [SerializeField] public Transform player;
+    [SerializeField] public Player player;
     public float detectRange = 5f;
     public float attackRange = 1f;
     public float attackTimer;
     public bool inRange = false;
     public bool moving = false;
     public float moveSpeed = 2f;
-    public int xpValue;
+    public float xpValue;
     public int goldValue;
     public int maxHP;
     public int currentHP;
@@ -31,15 +31,12 @@ public class Goblin : MonoBehaviour
 
     public int dmg;
 
-    [SerializeField] public GameObject Player;
     [SerializeField] public V2Health hp;
-    [SerializeField] public LevelUpBar xpBar;
 
     [SerializeField] public DetectionRight detectR;
     [SerializeField] public DetectionLeft detectL;
     [SerializeField] public AttackDetection ad;
 
-    public PlayerHealthBar playerHealth;
     private bool bCanTakeDamage = true;
 
     public GameObject DMG_Text;
@@ -55,12 +52,7 @@ public class Goblin : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
-        Player = GameObject.FindGameObjectWithTag("Player");
-        player = Player.GetComponent<Transform>();
-        playerAnim = Player.GetComponent<Animator>();
-        hp = Player.GetComponent<V2Health>();
-        xpBar = GameObject.FindGameObjectWithTag("XPBAR").GetComponent<LevelUpBar>();
-        playerHealth = GameObject.FindGameObjectWithTag("HEALTHBAR").GetComponent<PlayerHealthBar>();
+        hp = player.GetComponent<V2Health>();
 
         if(player == null)
         {
@@ -139,7 +131,7 @@ public class Goblin : MonoBehaviour
             hp.TakeDmg((float)dmg);
         }
         dmgTextMesh.text = dmg.ToString();
-        Instantiate(DMG_Text, new Vector3(player.position.x, player.position.y + 3, player.position.z), Quaternion.identity);
+        Instantiate(DMG_Text, new Vector3(player.transform.position.x, player.transform.position.y + 3, player.transform.position.z), Quaternion.identity);
     }
 
     public void TakeDMG(int dmg)
@@ -158,15 +150,13 @@ public class Goblin : MonoBehaviour
 
     public void Die()
     {
+        bCanTakeDamage = false;
         anim.SetTrigger("Die");
-        Player.GetComponent<Stats>().SetXP(xpValue);
-        Player.GetComponent<Stats>().SetGold(goldValue);
-
-        xpBar.SetXP(Player.GetComponent<Stats>().XP);
+        player.GetComponent<Stats>().SetXP(xpValue);
+        player.GetComponent<Stats>().SetGold(goldValue);
 
         bDead = true;
         bCanMove = false;
-        bCanTakeDamage = false;
     }
 
     private void Deactivate()

@@ -15,9 +15,8 @@ public class Skeleton : MonoBehaviour
     [SerializeField] private bool bCanRespawn = true;
 
     [Header("Rewards")]
-    [SerializeField] private int xpValue;
+    [SerializeField] private float xpValue;
     [SerializeField] private int goldValue;
-    private LevelUpBar xpBar;
 
     [Header("Attack Parameters")]
     [SerializeField] private float attackCooldown;
@@ -78,7 +77,6 @@ public class Skeleton : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         chaseTimer = chaseCooldown;
         RespawnTimer = 0;
-        xpBar = player.GetComponent<LevelUpBar>();
 
         if (!bCanMove)
         {
@@ -226,9 +224,9 @@ public class Skeleton : MonoBehaviour
         //GetComponent<Collider2D>().enabled = false;
 
         player.GetComponent<Stats>().SetXP(xpValue);
-        xpBar.SetXP(player.GetComponent<Stats>().XP);
-
+        Debug.Log("Gold Given1");
         player.GetComponent<Stats>().SetGold(goldValue);
+        Debug.Log("Gold Given2");
 
         GetComponentInParent<SkeletonPatrol>().enabled = false;
         dead = true;
