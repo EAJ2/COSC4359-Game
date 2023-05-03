@@ -427,26 +427,46 @@ public class Player : MonoBehaviour
     //Unlock Ability
     public void UnlockAbility1()
     {
-        bAbility1Unlocked = true;
-        inventory.UnlockAbility1();
+
+        if (stats.GetGold() > 250 && bAbility1Unlocked == false)
+        {
+            bAbility1Unlocked = true;
+            inventory.UnlockAbility1();
+            stats.RemoveGold(250);
+        }
+        
     }
 
     public void UnlockAbility2()
     {
-        bAbility2Unlocked = true;
-        inventory.UnlockAbility2();
+        if (stats.GetGold() > 250 && bAbility2Unlocked == false)
+        {
+            bAbility2Unlocked = true;
+            inventory.UnlockAbility2();
+            stats.RemoveGold(250);
+        }
     }
 
     public void UnlockAbility3()
     {
-        bAbility3Unlocked = true;
-        inventory.UnlockAbility3();
+        if (stats.GetGold() > 250 && bAbility3Unlocked == false)
+        {
+            bAbility3Unlocked = true;
+            inventory.UnlockAbility3();
+            stats.RemoveGold(250);
+        }
+
     }
 
     public void UnlockAbility4()
     {
-        bAbility4Unlocked = true;
-        inventory.UnlockAbility4();
+        if (stats.GetGold() > 250 && bAbility4Unlocked == false)
+        {
+            bAbility4Unlocked = true;
+            inventory.UnlockAbility4();
+            stats.RemoveGold(250);
+        }
+
     }
 
     //Equip Ability
