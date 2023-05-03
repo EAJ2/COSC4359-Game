@@ -181,11 +181,11 @@ public class DrillFlyEnemy : MonoBehaviour
     {
         anim.SetTrigger("Die");
 
-        player.GetComponent<Stats>().XP += xpValue;
+        player.GetComponent<Stats>().SetXP(xpValue);
         xpBar.SetXP(player.GetComponent<Stats>().XP);
-        player.GetComponent<Stats>().gold += goldValue;
+        player.GetComponent<Stats>().SetGold(goldValue);
 
-        
+
         this.GetComponentInParent<DrillFlyPatrol>().enabled = false;
         dead = true;
         bCanMove = false;

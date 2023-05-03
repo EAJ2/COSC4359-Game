@@ -342,11 +342,11 @@ public class Player : MonoBehaviour
     {
         if (ClassName == "Vagabond" || ClassName == "Knight")
         {
-
+            stats.EquipKnightArtifact();
         }
         else if (ClassName == "Ranger")
         {
-
+            stats.EquipRangerArtifact();
         }
     }
 
@@ -410,11 +410,11 @@ public class Player : MonoBehaviour
     {
         if (ClassName == "Vagabond" || ClassName == "Knight")
         {
-
+            stats.UnequipKnightArtifact();
         }
         else if (ClassName == "Ranger")
         {
-
+            stats.UnequipRangerArtifact();
         }
     }
 

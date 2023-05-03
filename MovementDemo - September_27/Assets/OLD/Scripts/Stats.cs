@@ -105,8 +105,13 @@ public class Stats : MonoBehaviour
     private int GoldMultiplier = 1;
     private int NormalGoldMultiplier;
     private int BoostGoldMultiplier = 2;
+    
     private int NormalDamage;
     private int BoostDamage;
+
+    private float XPMultiplier = 1;
+    private float NormalXPMultiplier;
+    private float BoostXPMultiplier = 1.5f;
 
 
     // Start is called before the first frame update
@@ -127,6 +132,8 @@ public class Stats : MonoBehaviour
         heavyCritDMG = (int)Mathf.Ceil(((float)dmg * 1.25f) * critMult);
 
         NormalGoldMultiplier = GoldMultiplier;
+        NormalXPMultiplier = XPMultiplier;
+
     }
 
     // Update is called once per frame
@@ -852,5 +859,18 @@ public class Stats : MonoBehaviour
         dmg = NormalDamage;
     }
 
+    public void SetXP(float x)
+    {
+        XP += (x * XPMultiplier);
+    }
 
+    public void EquipRangerArtifact()
+    {
+        XPMultiplier = BoostXPMultiplier;
+    }
+
+    public void UnequipRangerArtifact()
+    {
+        XPMultiplier = NormalXPMultiplier;
+    }
 }
