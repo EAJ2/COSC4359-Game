@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     private V2Health health;
     private Stats stats;
     private RangerCombat rc;
+    private ConsumableInventory inv;
 
     [Header("Add the Players UI here")]
     [SerializeField] private GameObject playerUI;
@@ -58,8 +59,9 @@ public class Player : MonoBehaviour
         stats = GetComponent<Stats>();
         ss = GetComponent<SuperSpeed>();
         rc = GetComponent<RangerCombat>();
+        inv = GetComponent<ConsumableInventory>();
 
-        if(bDeleteSave)
+        if (bDeleteSave)
         {
             SaveClassInformation.DeleteSave(1);
         }
@@ -565,4 +567,32 @@ public class Player : MonoBehaviour
 
     //Functionality of equipping 
     //////////////////////End - Inventory UI Code
+
+    //////////////////////
+    // Shop functionality
+    public void addHealthPotion()
+    {
+        if (stats.GetGold() > 50)
+        {
+            inv.buyHealthPotion();
+            stats.RemoveGold(50);
+        }
+    }
+    public void addManaPotion()
+    {
+        if (stats.GetGold() > 50)
+        {
+            inv.buyManaPotion();
+            stats.RemoveGold(50);
+        }
+    }
+    public void addStaminaPotion()
+    {
+        if (stats.GetGold() > 50)
+        {
+            inv.buyStaminaPotion();
+            stats.RemoveGold(50);
+        }
+
+    }
 }

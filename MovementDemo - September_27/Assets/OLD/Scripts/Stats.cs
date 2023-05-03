@@ -843,6 +843,16 @@ public class Stats : MonoBehaviour
         goldText.text = gold.ToString();
     }
 
+    public int GetGold()
+    {
+        return gold;
+    }
+
+    public void RemoveGold(int g)
+    {
+        gold -= g;
+    }
+
     public void EquipKnightArtifact()
     {
         GoldMultiplier = BoostGoldMultiplier;
