@@ -104,6 +104,8 @@ public class Player : MonoBehaviour
         {
             ClassName = DemoClass;
         }
+
+        inventory.SetClassName(ClassName);
     }
 
     //Save Game

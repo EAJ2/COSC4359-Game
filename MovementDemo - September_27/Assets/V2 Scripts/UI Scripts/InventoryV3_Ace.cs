@@ -938,4 +938,14 @@ public class InventoryV3_Ace : MonoBehaviour
         }
     }
 
+    public void SetClassName(string x)
+    {
+        ClassName = x;
+    }
+
+    public string GetClassName()
+    {
+        return ClassName;
+    }
+
 }
