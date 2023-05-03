@@ -225,10 +225,10 @@ public class Skeleton : MonoBehaviour
         anim.SetTrigger("Die");
         //GetComponent<Collider2D>().enabled = false;
 
-        player.GetComponent<Stats>().XP += xpValue;
+        player.GetComponent<Stats>().SetXP(xpValue);
         xpBar.SetXP(player.GetComponent<Stats>().XP);
 
-        player.GetComponent<Stats>().gold += goldValue;
+        player.GetComponent<Stats>().SetGold(goldValue);
 
         GetComponentInParent<SkeletonPatrol>().enabled = false;
         dead = true;

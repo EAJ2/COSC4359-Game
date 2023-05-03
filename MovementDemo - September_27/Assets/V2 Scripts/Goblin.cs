@@ -159,8 +159,8 @@ public class Goblin : MonoBehaviour
     public void Die()
     {
         anim.SetTrigger("Die");
-        Player.GetComponent<Stats>().XP += xpValue;
-        Player.GetComponent<Stats>().gold += goldValue;
+        Player.GetComponent<Stats>().SetXP(xpValue);
+        Player.GetComponent<Stats>().SetGold(goldValue);
 
         xpBar.SetXP(Player.GetComponent<Stats>().XP);
 
