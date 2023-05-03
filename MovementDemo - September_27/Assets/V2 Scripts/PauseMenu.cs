@@ -9,8 +9,6 @@ public class PauseMenu : MonoBehaviour
     private bool bPaused = false;
     public GameObject MenuCanvas;
     public GameObject SaveCanvas;
-    public GameObject ControlsCanvas;
-    public GameObject RespawnCanvas;
     public GameObject ShopCanvas;
     public Player player;
     public GameObject playerObject;
@@ -21,12 +19,10 @@ public class PauseMenu : MonoBehaviour
 
     public Text goldText;
 
-    private void Awake()
+    private void Start()
     {
         MenuCanvas.SetActive(false);
         SaveCanvas.SetActive(false);
-        RespawnCanvas.SetActive(false);
-        Debug.Log("Player Class Name = " + player.GetClassName());
 
         playerObject = GameObject.FindGameObjectWithTag("Player");
         
@@ -72,15 +68,9 @@ public class PauseMenu : MonoBehaviour
         }*/
     }
 
-    public void ShowRespawnCanvas()
-    {
-        RespawnCanvas.SetActive(true);
-    }
 
     public void Respawn()
     {
-        RespawnCanvas.SetActive(false);
-        bRespawnCanvasShown = false;
         player.GetComponent<V2Health>().Reset();
     }
 
@@ -134,12 +124,6 @@ public class PauseMenu : MonoBehaviour
     {
         HideSaveCanvas();
         ShowMenuCanvas();
-    }
-
-    public void ControlsButton()
-    {
-        ControlsCanvas.SetActive(true);
-        HideMenuCanvas();
     }
 
     public void HideAll()

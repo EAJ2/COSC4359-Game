@@ -46,11 +46,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MenuCanvas: {fileID: 5885667665110251383}
   SaveCanvas: {fileID: 7585018045960945803}
-  ControlsCanvas: {fileID: 0}
-  RespawnCanvas: {fileID: 0}
   ShopCanvas: {fileID: 0}
   player: {fileID: 2730377519476256672}
-  playerObject: {fileID: 0}
+  playerObject: {fileID: 2730377519476256734}
   stats: {fileID: 0}
   ClassName: Vagabond
   goldText: {fileID: 0}
@@ -262,11 +260,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MenuCanvas: {fileID: 5885667665110251383}
   SaveCanvas: {fileID: 7585018045960945803}
-  ControlsCanvas: {fileID: 0}
-  RespawnCanvas: {fileID: 0}
   ShopCanvas: {fileID: 0}
   player: {fileID: 6636532849833643625}
-  playerObject: {fileID: 0}
+  playerObject: {fileID: 6636532849833643618}
   stats: {fileID: 0}
   ClassName: Knight
   goldText: {fileID: 0}
@@ -347,11 +343,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MenuCanvas: {fileID: 5885667665110251383}
   SaveCanvas: {fileID: 7585018045960945803}
-  ControlsCanvas: {fileID: 0}
-  RespawnCanvas: {fileID: 0}
   ShopCanvas: {fileID: 0}
   player: {fileID: 7644827925745614570}
-  playerObject: {fileID: 0}
+  playerObject: {fileID: 7644827925745614546}
   stats: {fileID: 0}
   ClassName: Ranger
   goldText: {fileID: 0}
@@ -1025,7 +1019,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7511339775234052599, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
   m_PrefabInstance: {fileID: 5609686720507199063}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 2730377519476256734}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6063e7dc2d9b2d49ae9ac64c1506c4d, type: 3}
@@ -1034,6 +1028,11 @@ MonoBehaviour:
 --- !u!4 &2730377519476256729 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7511339775234052494, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
+  m_PrefabInstance: {fileID: 5609686720507199063}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2730377519476256734 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7511339775234052489, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
   m_PrefabInstance: {fileID: 5609686720507199063}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &4186260447333823116 stripped
@@ -1162,12 +1161,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 858221704475337617, guid: 2936871e2ebb7c548bc7c6a4fd090962, type: 3}
   m_PrefabInstance: {fileID: 5609686720730661220}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7644827925745614546 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2868368720553394102, guid: 2936871e2ebb7c548bc7c6a4fd090962, type: 3}
+  m_PrefabInstance: {fileID: 5609686720730661220}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &7644827925745614570 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2868368720553394062, guid: 2936871e2ebb7c548bc7c6a4fd090962, type: 3}
   m_PrefabInstance: {fileID: 5609686720730661220}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 7644827925745614546}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6063e7dc2d9b2d49ae9ac64c1506c4d, type: 3}
@@ -1287,12 +1291,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1975169713805418216, guid: abae36b95b30e1e40ab7e81fdeec30b8, type: 3}
   m_PrefabInstance: {fileID: 5609686720991068898}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6636532849833643618 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1279074173073591424, guid: abae36b95b30e1e40ab7e81fdeec30b8, type: 3}
+  m_PrefabInstance: {fileID: 5609686720991068898}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6636532849833643625 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1279074173073591435, guid: abae36b95b30e1e40ab7e81fdeec30b8, type: 3}
   m_PrefabInstance: {fileID: 5609686720991068898}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 6636532849833643618}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b6063e7dc2d9b2d49ae9ac64c1506c4d, type: 3}
