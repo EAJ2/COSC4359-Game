@@ -102,6 +102,10 @@ public class Stats : MonoBehaviour
     public PlayerStaminaBar staminaBar;
     public ManaBar manaBar;
 
+    private int GoldMultiplier = 1;
+    private int NormalGoldMultiplier;
+    private int BoostGoldMultiplier = 2;
+
 
     // Start is called before the first frame update
     void Start()
@@ -120,6 +124,7 @@ public class Stats : MonoBehaviour
         heavyDMG = (int)Mathf.Ceil((float)dmg * 1.25f);
         heavyCritDMG = (int)Mathf.Ceil(((float)dmg * 1.25f) * critMult);
 
+        NormalGoldMultiplier = GoldMultiplier;
     }
 
     // Update is called once per frame
@@ -818,5 +823,20 @@ public class Stats : MonoBehaviour
         {
             mana = MAXmana;
         }
+    }
+
+    public void SetGold(float g)
+    {
+        gold += g * GoldMultiplier;
+    }
+
+    public void EquipKnightArtifact()
+    {
+        GoldMultiplier = BoostGoldMultiplier;
+    }
+
+    public void UnequipKnightArtifact()
+    {
+        GoldMultipler = NormalGoldMultiplier;
     }
 }
