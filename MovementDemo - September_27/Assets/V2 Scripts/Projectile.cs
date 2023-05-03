@@ -23,6 +23,8 @@ public class Projectile : MonoBehaviour
 
     public AudioSource hitAudio;
 
+    [SerializeField] private float ArrowTime = 3f;
+
     private void Awake()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
@@ -41,6 +43,7 @@ public class Projectile : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
 
         NormalSpeed = speed;
+        StartCoroutine(CountdownToDestroy(gameObject));
     }
 
     // Update is called once per frame
@@ -49,6 +52,14 @@ public class Projectile : MonoBehaviour
         if (hit) return;
         float movementSpeed = speed * Time.deltaTime;
         transform.Translate(movementSpeed, 0, 0);
+    }
+
+    IEnumerator CountdownToDestroy(GameObject projectile)
+    {
+        Debug.Log("Starting countdown to destroy projectile: " + projectile.name);
+        yield return new WaitForSeconds(ArrowTime);
+        Debug.Log("Destroying projectile: " + projectile.name);
+        Destroy(projectile);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
