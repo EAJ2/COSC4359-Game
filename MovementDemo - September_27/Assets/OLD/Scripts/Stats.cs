@@ -105,6 +105,8 @@ public class Stats : MonoBehaviour
     private int GoldMultiplier = 1;
     private int NormalGoldMultiplier;
     private int BoostGoldMultiplier = 2;
+    private int NormalDamage;
+    private int BoostDamage;
 
 
     // Start is called before the first frame update
@@ -839,4 +841,16 @@ public class Stats : MonoBehaviour
     {
         GoldMultipler = NormalGoldMultiplier;
     }
+    public void EquipWeapon()
+    {
+        NormalDamage = dmg;
+        dmg = dmg + BoostDamage;
+    }
+
+    public void UnequipWeapon()
+    {
+        dmg = NormalDamage;
+    }
+
+
 }

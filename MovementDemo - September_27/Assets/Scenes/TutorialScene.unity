@@ -5715,6 +5715,10 @@ PrefabInstance:
       value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 6228589433088005706, guid: 18775a75b2f34a340aa8c87cced99342, type: 3}
+      propertyPath: bCanDoubleJump
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228589433088005706, guid: 18775a75b2f34a340aa8c87cced99342, type: 3}
       propertyPath: DashingCooldown
       value: 1
       objectReference: {fileID: 0}
@@ -5734,6 +5738,10 @@ PrefabInstance:
       propertyPath: inventory
       value: 
       objectReference: {fileID: 1096249119}
+    - target: {fileID: 6228589433088005708, guid: 18775a75b2f34a340aa8c87cced99342, type: 3}
+      propertyPath: bInTutorial
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6228589433088005711, guid: 18775a75b2f34a340aa8c87cced99342, type: 3}
       propertyPath: m_RootOrder
       value: 7

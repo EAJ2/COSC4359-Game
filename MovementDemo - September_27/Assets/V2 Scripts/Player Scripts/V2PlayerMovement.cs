@@ -26,10 +26,14 @@ public class V2PlayerMovement : MonoBehaviour
     [SerializeField] private float InAirMoveSpeed;
     public float stamina;
     [SerializeField] public float MAXstamina;
+    private float NormalStamina;
+    [SerializeField] private float BoostMaxStamina;
     private float NormalWalkSpeed;
     private float NormalSprintSpeed;
     [SerializeField] private float BoostWalkSpeed;
     [SerializeField] private float BoostSprintSpeed;
+    private float RangerBoostWalkSpeed;
+    private float RangerBoostSprintSpeed;
     [SerializeField] private float AbilityWalkSpeed;
     [SerializeField] private float AbilitySprintSpeed;
     private bool bSpeedBoosted = false;
@@ -43,6 +47,10 @@ public class V2PlayerMovement : MonoBehaviour
     [SerializeField] private float FallGravityScale;
     [SerializeField] private float JumpPower;
     [SerializeField] private float JumpCutMultiplier;
+    private float NormalJumpPower;
+    private float NormalFallGS;
+    [SerializeField] private float BoostJumpPower;
+    [SerializeField] private float BoostGravityScale;
 
     [Header("Coyote Timer")]
     [SerializeField] private float CoyoteTime;
@@ -60,7 +68,9 @@ public class V2PlayerMovement : MonoBehaviour
     [SerializeField] private float DashingPower;
     [SerializeField] private float DashingTimer;
     [SerializeField] private float DashingCooldown;
-    [SerializeField] private float DashStaminaCost;
+    private float DashStaminaCost;
+    [SerializeField] private float RegularStaminaCost;
+    [SerializeField] private float BoostStaminaCost;
 
     [Header("Layers Masks")]
     [SerializeField] private LayerMask groundLayer;
@@ -84,8 +94,19 @@ public class V2PlayerMovement : MonoBehaviour
         staminaBar.SetMaxStamina(MAXstamina);
         stamina = MAXstamina;
 
+        DashStaminaCost = RegularStaminaCost;
         NormalWalkSpeed = WalkSpeed;
         NormalSprintSpeed = SprintSpeed;
+        RangerBoostWalkSpeed = BoostWalkSpeed - 1;
+        RangerBoostSprintSpeed = BoostSprintSpeed - 1;
+
+        NormalJumpPower = JumpPower;
+        NormalFallGS = FallGravityScale;
+        NormalStamina = MAXstamina;
+        if(GetComponent<Player>().GetClassName() == "Ranger")
+        {
+            BoostMaxStamina = BoostMaxStamina - 5;
+        }
     }
 
     private void Update()
@@ -178,7 +199,7 @@ public class V2PlayerMovement : MonoBehaviour
         }
 
         //Dashing Code
-        if (Input.GetKey(KeyCode.Q) && bCanDash && IsGrounded() && (stamina >= DashStaminaCost) && stats.Class == "Vagabond")
+        if (Input.GetKey(KeyCode.Q) && bCanDash && IsGrounded() && (stamina >= DashStaminaCost) && GetComponent<Player>().GetClassName() == "Vagabond")
         {
             anim.SetTrigger("Dash");
             stamina -= DashStaminaCost;
@@ -553,6 +574,20 @@ public class V2PlayerMovement : MonoBehaviour
         bSpeedBoosted = false;
     }
 
+    public void RangerEquipShoes()
+    {
+        SetWalkSpeed(RangerBoostWalkSpeed);
+        SetSprintSpeed(RangerBoostSprintSpeed);
+        DashStaminaCost = BoostStaminaCost;
+    }
+
+    public void RangerUnequipShoe()
+    {
+        SetWalkSpeed(NormalWalkSpeed);
+        SetSprintSpeed(NormalSprintSpeed);
+        DashStaminaCost = RegularStaminaCost;
+    }
+
     //Ability Items Changes
     public void ActivateAbility3()
     {
@@ -562,15 +597,31 @@ public class V2PlayerMovement : MonoBehaviour
 
     public void DeactivateAbility3()
     {
-        if (bSpeedBoosted)
+        if (GetComponent<Player>().GetClassName() == "Knight" || GetComponent<Player>().GetClassName() == "Vagabond")
         {
-            SetWalkSpeed(BoostWalkSpeed);
-            SetSprintSpeed(BoostSprintSpeed);
+            if (bSpeedBoosted)
+            {
+                SetWalkSpeed(BoostWalkSpeed);
+                SetSprintSpeed(BoostSprintSpeed);
+            }
+            else
+            {
+                SetWalkSpeed(NormalWalkSpeed);
+                SetSprintSpeed(NormalSprintSpeed);
+            }
         }
         else
         {
-            SetWalkSpeed(NormalWalkSpeed);
-            SetSprintSpeed(NormalSprintSpeed);
+            if(bSpeedBoosted)
+            {
+                SetWalkSpeed(RangerBoostWalkSpeed);
+                SetSprintSpeed(RangerBoostSprintSpeed);
+            }
+            else
+            {
+                SetWalkSpeed(NormalWalkSpeed);
+                SetSprintSpeed(NormalSprintSpeed);
+            }
         }
     }
 
@@ -578,5 +629,50 @@ public class V2PlayerMovement : MonoBehaviour
     {
         stamina = MAXstamina;
         staminaBar.SetMaxStamina(stamina);
+    }
+
+    public void SetFallGravityScale(float x)
+    {
+        FallGravityScale = x;
+    }
+
+    public void SetNormalFallGS()
+    {
+        SetFallGravityScale(NormalFallGS);
+    }
+
+    public void SetBoostFallGS()
+    {
+        SetFallGravityScale(BoostGravityScale);
+    }
+
+    public void RangerEquipChest()
+    {
+        JumpPower = BoostJumpPower;
+        SetBoostFallGS();
+    }
+
+    public void RangerUnequipChest()
+    {
+        JumpPower = NormalJumpPower;
+        SetNormalFallGS();
+    }
+
+    public void HeadEquip()
+    {
+        MAXstamina = BoostMaxStamina;
+        staminaBar.SetMaxStamina(MAXstamina);
+        staminaBar.SetStamina(stamina);
+    }
+
+    public void HeadUnequip()
+    {
+        MAXstamina = NormalStamina;
+        staminaBar.SetMaxStamina(MAXstamina);
+        if(stamina >= MAXstamina)
+        {
+            stamina = MAXstamina;
+        }
+        staminaBar.SetStamina(stamina);
     }
 }

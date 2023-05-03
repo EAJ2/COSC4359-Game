@@ -114,7 +114,13 @@ public class InventoryV3_Ace : MonoBehaviour
     private bool bAbility4Equipped = false;
 
     [SerializeField] public bool bDemo = false;
+
+    [Header("Leave Blank")]
     [SerializeField] private string ClassName;
+    [SerializeField] private bool bRanger = false;
+    [SerializeField] private bool bKnight = false;
+    [SerializeField] private bool bVagabond = false;
+
 
     [SerializeField] private bool bTutorial = false;
 
@@ -225,7 +231,18 @@ public class InventoryV3_Ace : MonoBehaviour
             else
             {
                 NumberOfKeys = 3;
-
+                if(bRanger)
+                {
+                    ClassName = "Ranger";
+                }
+                if(bKnight)
+                {
+                    ClassName = "Knight";
+                }
+                if(bVagabond)
+                {
+                    ClassName = "Vagabond";
+                }
                 //Gear
                 HeadLocked.SetActive(false);
                 ChestLocked.SetActive(false);

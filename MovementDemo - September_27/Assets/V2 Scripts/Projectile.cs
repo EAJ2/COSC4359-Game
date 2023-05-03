@@ -6,6 +6,8 @@ using TMPro;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private float BoostSpeed;
+    private float NormalSpeed;
     private bool hit;
     public int direction;
 
@@ -40,6 +42,7 @@ public class Projectile : MonoBehaviour
         }
         boxCollider = GetComponent<BoxCollider2D>();
 
+        NormalSpeed = speed;
         StartCoroutine(CountdownToDestroy(gameObject));
     }
 
@@ -118,5 +121,15 @@ public class Projectile : MonoBehaviour
             dmgTextMesh.text = stats.dmg.ToString();
             Instantiate(DMG_Text, new Vector3(collision.transform.position.x, collision.transform.position.y + 3, collision.transform.position.z), Quaternion.identity);
         }
+    }
+
+    public void EquipWeapon()
+    {
+        speed = BoostSpeed;
+    }
+
+    public void UnequipWeapon()
+    {
+        speed = NormalSpeed;
     }
 }
