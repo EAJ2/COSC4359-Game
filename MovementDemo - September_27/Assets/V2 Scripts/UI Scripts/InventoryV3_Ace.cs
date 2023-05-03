@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class InventoryV3_Ace : MonoBehaviour
 {
+    [SerializeField] private string InventoryClassName;
+
     [SerializeField] private GameObject Canvas;
     [SerializeField] private GameObject CooldownCanvas;
     [SerializeField] public Player player;
@@ -164,10 +166,16 @@ public class InventoryV3_Ace : MonoBehaviour
             CooldownCanvas.SetActive(false);
 
             ClassName = player.GetClassName();
-            Debug.Log("Class Name in InventoryV3_Ace = " + ClassName);
             if (player == null)
             {
                 Debug.Log("From InventoryV3_Ace, Add the Players UI to the Gamemanage UI");
+            }
+
+            if(InventoryClassName != player.GetClassName())
+            {
+                Debug.Log("InventoryClassName = " + InventoryClassName);
+                Debug.Log("Inventory playerClassName = " + player.GetClassName());
+                gameObject.SetActive(false);
             }
 
             if (bDemo == false)

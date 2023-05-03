@@ -22,7 +22,6 @@ public class Mushroom : MonoBehaviour
     [Header("Rewards")]
     [SerializeField] private int xpValue;
     [SerializeField] private int goldValue;
-    private LevelUpBar xpBar;
 
     [Header("Attack Parameters")]
     [SerializeField] private float attackCooldown;
@@ -59,6 +58,7 @@ public class Mushroom : MonoBehaviour
 
     private void Awake()
     {
+        player = FindObjectOfType<Player>();
         if (player == null)
         {
             Debug.Log("Player missing in the Mushroom");
@@ -68,7 +68,6 @@ public class Mushroom : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         RespawnTimer = 0;
-        xpBar = player.GetComponent<LevelUpBar>();
         initScale = transform.localScale;
         if(bMoveRightFirst)
         {
@@ -181,7 +180,6 @@ public class Mushroom : MonoBehaviour
         //GetComponent<Collider2D>().enabled = false;
 
         player.GetComponent<Stats>().SetXP(xpValue);
-        xpBar.SetXP(player.GetComponent<Stats>().XP);
 
         player.GetComponent<Stats>().SetGold(goldValue);
 

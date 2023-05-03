@@ -108,6 +108,7 @@ public class Player : MonoBehaviour
         }
 
         inventory.SetClassName(ClassName);
+        Debug.Log("Player " + ClassName);
     }
 
     //Save Game
@@ -282,7 +283,7 @@ public class Player : MonoBehaviour
     public void UnlockArtifact()
     {
         bArtifactUnlocked = true;
-        inventory.UnlockHead();
+        inventory.UnlockArtifact();
     }
 
     //Functionality

@@ -95,7 +95,7 @@ Transform:
   - {fileID: 4405104439653331981}
   - {fileID: 4405104439461933269}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4405104440126575266
 MonoBehaviour:
@@ -240,6 +240,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Goblin
       objectReference: {fileID: 0}
+    - target: {fileID: 4201090759892009584, guid: 240ee6205f1ddd346be9d8a79bb7be4e, type: 3}
+      propertyPath: HeadPrefab
+      value: 
+      objectReference: {fileID: 1619060073029702430, guid: e51406924bc550040bae26b2036260ce, type: 3}
+    - target: {fileID: 4201090759892009584, guid: 240ee6205f1ddd346be9d8a79bb7be4e, type: 3}
+      propertyPath: LegsPrefab
+      value: 
+      objectReference: {fileID: 2219085716391542458, guid: ebb6c37d897c48d4990191ad7a941092, type: 3}
+    - target: {fileID: 4201090759892009584, guid: 240ee6205f1ddd346be9d8a79bb7be4e, type: 3}
+      propertyPath: ChestPrefab
+      value: 
+      objectReference: {fileID: 7121320930253311068, guid: f8c6504b49e0b254b9e96153a396fcf1, type: 3}
+    - target: {fileID: 4201090759892009584, guid: 240ee6205f1ddd346be9d8a79bb7be4e, type: 3}
+      propertyPath: ShoesPrefab
+      value: 
+      objectReference: {fileID: 3471388012750555475, guid: 6859c8c771b82f643b2c2c14b0ef61bf, type: 3}
+    - target: {fileID: 4201090759892009584, guid: 240ee6205f1ddd346be9d8a79bb7be4e, type: 3}
+      propertyPath: WeaponPrefab
+      value: 
+      objectReference: {fileID: 7813966898311854406, guid: 9d057eb7d6d6bce48bbaa1a44caebbae, type: 3}
+    - target: {fileID: 4201090759892009584, guid: 240ee6205f1ddd346be9d8a79bb7be4e, type: 3}
+      propertyPath: ArtifactPrefab
+      value: 
+      objectReference: {fileID: 5515941413540131255, guid: f5012e9bb598fb24f912eb85785dba59, type: 3}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 240ee6205f1ddd346be9d8a79bb7be4e, type: 3}

@@ -15,6 +15,7 @@ public class PauseMenu : MonoBehaviour
     public Player player;
     public GameObject playerObject;
     public Stats stats;
+    [SerializeField] private string ClassName;
 
     private bool bRespawnCanvasShown = false;
 
@@ -28,6 +29,11 @@ public class PauseMenu : MonoBehaviour
         Debug.Log("Player Class Name = " + player.GetClassName());
 
         playerObject = GameObject.FindGameObjectWithTag("Player");
+        
+        if(ClassName != player.GetClassName())
+        {
+            gameObject.SetActive(false);
+        }
         stats = playerObject.GetComponent<Stats>();
         //goldText.text = "Gold: " + stats.gold;
     }
