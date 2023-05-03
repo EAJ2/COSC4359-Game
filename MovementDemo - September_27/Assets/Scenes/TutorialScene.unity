@@ -3027,6 +3027,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1009958765}
     - target: {fileID: 280003717508218701, guid: 980e5632713a1ae4d92a87e00a6598b2, type: 3}
+      propertyPath: ClassName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 280003717508218701, guid: 980e5632713a1ae4d92a87e00a6598b2, type: 3}
       propertyPath: K1_Locked
       value: 
       objectReference: {fileID: 1469413293}
@@ -3041,6 +3045,10 @@ PrefabInstance:
     - target: {fileID: 280003717508218701, guid: 980e5632713a1ae4d92a87e00a6598b2, type: 3}
       propertyPath: bTutorial
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 280003717508218701, guid: 980e5632713a1ae4d92a87e00a6598b2, type: 3}
+      propertyPath: bVagabond
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 280003717508218701, guid: 980e5632713a1ae4d92a87e00a6598b2, type: 3}
       propertyPath: HeadLocked
@@ -3082,6 +3090,10 @@ PrefabInstance:
       propertyPath: ArtifactLocked
       value: 
       objectReference: {fileID: 1673847018}
+    - target: {fileID: 280003717508218701, guid: 980e5632713a1ae4d92a87e00a6598b2, type: 3}
+      propertyPath: InventoryClassName
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 280003717508218702, guid: 980e5632713a1ae4d92a87e00a6598b2, type: 3}
       propertyPath: m_Name
       value: GameManager UI
@@ -3997,6 +4009,7 @@ MonoBehaviour:
   speed: 0
   YAxisOffset: 0.2
   player: {fileID: 203939500}
+  ClassName: Vagabond
 --- !u!1 &1009958765 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6228589432003566572, guid: 18775a75b2f34a340aa8c87cced99342, type: 3}
@@ -5731,9 +5744,17 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6228589433088005708, guid: 18775a75b2f34a340aa8c87cced99342, type: 3}
+      propertyPath: bDemo
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228589433088005708, guid: 18775a75b2f34a340aa8c87cced99342, type: 3}
       propertyPath: playerUI
       value: 
       objectReference: {fileID: 1009958765}
+    - target: {fileID: 6228589433088005708, guid: 18775a75b2f34a340aa8c87cced99342, type: 3}
+      propertyPath: DemoClass
+      value: Vagabond
+      objectReference: {fileID: 0}
     - target: {fileID: 6228589433088005708, guid: 18775a75b2f34a340aa8c87cced99342, type: 3}
       propertyPath: inventory
       value: 
