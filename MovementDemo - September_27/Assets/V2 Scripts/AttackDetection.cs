@@ -9,7 +9,7 @@ public class AttackDetection : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Player"))
+        if(col.tag == "Player")
         {
             inAttackRange = true;
         }
@@ -17,7 +17,7 @@ public class AttackDetection : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D col)
     {
-        if (col.CompareTag("Player"))
+        if (col.tag == "Player")
         {
             inAttackRange = false;
         }

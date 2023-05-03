@@ -4,7 +4,7 @@ using UnityEngine;
 public class Skeleton : MonoBehaviour
 {
     private Animator anim;
-    [SerializeField] private Player player;
+    private Player player;
     private Transform body;
     private Rigidbody2D rb;
 
@@ -66,10 +66,7 @@ public class Skeleton : MonoBehaviour
 
     private void Awake()
     {
-        if (player == null)
-        {
-            Debug.Log("Player missing in the Skeleton");
-        }
+        
         anim = GetComponent<Animator>();
         currentHealth = startingHealth;
         skeletonPatrol = GetComponentInParent<SkeletonPatrol>();
@@ -224,9 +221,7 @@ public class Skeleton : MonoBehaviour
         //GetComponent<Collider2D>().enabled = false;
 
         player.GetComponent<Stats>().SetXP(xpValue);
-        Debug.Log("Gold Given1");
         player.GetComponent<Stats>().SetGold(goldValue);
-        Debug.Log("Gold Given2");
 
         GetComponentInParent<SkeletonPatrol>().enabled = false;
         dead = true;

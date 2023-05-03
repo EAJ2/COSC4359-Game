@@ -56,7 +56,10 @@ public class V2Health : MonoBehaviour
             healthBar.SetHealth(CurrentHealth);
             if (CurrentHealth > 0)
             {
-                anim.SetTrigger("Hit");
+                if (GetComponent<Player>().GetClassName() == "Vagabond" || GetComponent<Player>().GetClassName() == "Ranger")
+                {
+                    anim.SetTrigger("Hit");
+                }
             }
             else
             {
@@ -120,11 +123,18 @@ public class V2Health : MonoBehaviour
         {
             bCanTakeDamage = false;
             bDead = true;
-            anim.SetTrigger("Dead");
-            this.enabled = false;
-            this.GetComponent<V2PlayerMovement>().DisableMovement();
-            comb.enabled = false;
-            rc.enabled = false;
+            if(GetComponent<Player>().GetClassName() == "Vagabond" || GetComponent<Player>().GetClassName() == "Ranger")
+            {
+                anim.SetTrigger("Dead");
+                this.enabled = false;
+                this.GetComponent<V2PlayerMovement>().DisableMovement();
+                comb.enabled = false;
+                rc.enabled = false;
+            }
+            else
+            {
+                Reset();
+            }
         }
     }
 
