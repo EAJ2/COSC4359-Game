@@ -452,4 +452,20 @@ public class ConsumableInventory : MonoBehaviour
             return true;
         }
     }
+
+    public void buyHealthPotion()
+    {
+        consInv[healthPotion] += 1;
+        InventoryCheck();
+    }
+    public void buyManaPotion()
+    {
+        consInv[manaPotion] += 1;
+        InventoryCheck();
+    }
+    public void buyStaminaPotion()
+    {
+        consInv[staminaPotion] += 1;
+        InventoryCheck();
+    }
 }
