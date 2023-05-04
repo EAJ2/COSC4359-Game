@@ -627,6 +627,9 @@ MonoBehaviour:
     Sydney
 
 
+    Vonte
+
+
     Angel
 
 
@@ -712,8 +715,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Programming/Art/UI \n\nProgramming/UI\n\nStory/UI/Music \n\nSomething
-    \n\nTBH i'm not sure \n"
+  m_Text: "Programming/Art/UI \n\nProgramming/UI\n\nStory/UI/Music\n\nLevel Design\n\nProgramming\n\nBoss
+    Design"
 --- !u!222 &1301465755
 CanvasRenderer:
   m_ObjectHideFlags: 0
