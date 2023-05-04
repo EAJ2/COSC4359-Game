@@ -62,6 +62,7 @@ public class Player : MonoBehaviour
         ss = GetComponent<SuperSpeed>();
         rc = GetComponent<RangerCombat>();
         inv = GetComponent<ConsumableInventory>();
+       
 
         if (bDeleteSave)
         {
