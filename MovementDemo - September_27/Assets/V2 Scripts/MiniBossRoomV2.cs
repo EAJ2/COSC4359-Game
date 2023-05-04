@@ -23,9 +23,15 @@ public class MiniBossRoomV2 : MonoBehaviour
 
     [Header("Key")]
     [SerializeField] private UnlockKey Key;
+    [SerializeField] private string ClassName;
 
-    private void Awake()
+    private void Start()
     {
+        player = FindObjectOfType<Player>();
+        if(ClassName != player.GetClassName())
+        {
+            gameObject.SetActive(false);
+        }
         col = GetComponent<BoxCollider2D>();
         if(player == null)
         {

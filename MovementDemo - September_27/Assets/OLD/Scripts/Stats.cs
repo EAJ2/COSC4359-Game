@@ -841,6 +841,13 @@ public class Stats : MonoBehaviour
     {
         gold += g * GoldMultiplier;
         goldText.text = gold.ToString();
+        GetComponent<Player>().GetGold(gold);
+    }
+
+    public void SetOriginalGold(int g)
+    {
+        gold = g;
+        goldText.text = gold.ToString();
     }
 
     public int GetGold()

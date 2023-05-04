@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &95985726 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3299575806416951748, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-  m_PrefabInstance: {fileID: 3299575806991569254}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adb91c738d7495342823632c4a8babd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &288576958
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,8 +188,13 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &507121909 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7511339776083514667, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
+  m_PrefabInstance: {fileID: 2103353523}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &595938825
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,6 +295,18 @@ MonoBehaviour:
   speed: 0
   YAxisOffset: 0.2
   player: {fileID: 0}
+  ClassName: 
+--- !u!114 &666896546 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4009776432378012484, guid: 566b5dc4fd4e0ee43b602587bf6f97be, type: 3}
+  m_PrefabInstance: {fileID: 4009776431954389990}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb91c738d7495342823632c4a8babd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1120111746
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -372,7 +378,18 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: f57e8c734d89a8341ba0a678c1d8b424, type: 3}
---- !u!1001 &1975169713137885156
+--- !u!114 &1454847336 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7511339775234052599, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
+  m_PrefabInstance: {fileID: 2103353523}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6063e7dc2d9b2d49ae9ac64c1506c4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &2103353523
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -380,94 +397,70 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 806769125244193345, guid: abae36b95b30e1e40ab7e81fdeec30b8, type: 3}
-      propertyPath: m_AnchorMax.x
+    - target: {fileID: 2623032032246538593, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
+      propertyPath: m_Name
+      value: Vagabond
+      objectReference: {fileID: 0}
+    - target: {fileID: 7511339775234052599, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
+      propertyPath: bDemo
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 806769125244193345, guid: abae36b95b30e1e40ab7e81fdeec30b8, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
+    - target: {fileID: 7511339775234052599, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
+      propertyPath: DemoClass
+      value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 806769125856551379, guid: abae36b95b30e1e40ab7e81fdeec30b8, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 806769125856551379, guid: abae36b95b30e1e40ab7e81fdeec30b8, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 806769126173490840, guid: abae36b95b30e1e40ab7e81fdeec30b8, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 806769126173490840, guid: abae36b95b30e1e40ab7e81fdeec30b8, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 806769126458459176, guid: abae36b95b30e1e40ab7e81fdeec30b8, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 806769126458459176, guid: abae36b95b30e1e40ab7e81fdeec30b8, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1279074173073591435, guid: abae36b95b30e1e40ab7e81fdeec30b8, type: 3}
+    - target: {fileID: 7511339775234052599, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
       propertyPath: inventory
       value: 
-      objectReference: {fileID: 95985726}
-    - target: {fileID: 1975169713805418216, guid: abae36b95b30e1e40ab7e81fdeec30b8, type: 3}
+      objectReference: {fileID: 666896546}
+    - target: {fileID: 8629189268651576539, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 1975169713805418216, guid: abae36b95b30e1e40ab7e81fdeec30b8, type: 3}
+    - target: {fileID: 8629189268651576539, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.78
+      value: -2.3580532
       objectReference: {fileID: 0}
-    - target: {fileID: 1975169713805418216, guid: abae36b95b30e1e40ab7e81fdeec30b8, type: 3}
+    - target: {fileID: 8629189268651576539, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.09
+      value: 0.20162725
       objectReference: {fileID: 0}
-    - target: {fileID: 1975169713805418216, guid: abae36b95b30e1e40ab7e81fdeec30b8, type: 3}
+    - target: {fileID: 8629189268651576539, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.19225281
+      value: -0.07738126
       objectReference: {fileID: 0}
-    - target: {fileID: 1975169713805418216, guid: abae36b95b30e1e40ab7e81fdeec30b8, type: 3}
+    - target: {fileID: 8629189268651576539, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1975169713805418216, guid: abae36b95b30e1e40ab7e81fdeec30b8, type: 3}
+    - target: {fileID: 8629189268651576539, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1975169713805418216, guid: abae36b95b30e1e40ab7e81fdeec30b8, type: 3}
+    - target: {fileID: 8629189268651576539, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1975169713805418216, guid: abae36b95b30e1e40ab7e81fdeec30b8, type: 3}
+    - target: {fileID: 8629189268651576539, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1975169713805418216, guid: abae36b95b30e1e40ab7e81fdeec30b8, type: 3}
+    - target: {fileID: 8629189268651576539, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1975169713805418216, guid: abae36b95b30e1e40ab7e81fdeec30b8, type: 3}
+    - target: {fileID: 8629189268651576539, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1975169713805418216, guid: abae36b95b30e1e40ab7e81fdeec30b8, type: 3}
+    - target: {fileID: 8629189268651576539, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1975169713805418223, guid: abae36b95b30e1e40ab7e81fdeec30b8, type: 3}
-      propertyPath: m_Name
-      value: Knight
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
-  m_SourcePrefab: {fileID: 100100000, guid: abae36b95b30e1e40ab7e81fdeec30b8, type: 3}
---- !u!1001 &3299575806991569254
+  m_SourcePrefab: {fileID: 100100000, guid: 673f4345cea33724d907dfc03ec98bec, type: 3}
+--- !u!1001 &4009776431954389990
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -475,576 +468,62 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3299575805476779772, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575805476779772, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575805476779772, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.4597
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575805476779772, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.4597
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575805476779772, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.4597
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575805476779772, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575805476779772, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -8
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575805476779773, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 7c8dbc59677c2c24281bc3dfd1e5cb8d, type: 3}
-    - target: {fileID: 3299575805686484226, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575805686484238, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575805686484238, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575805686484238, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575805686484238, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575805686484238, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575805686484238, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575806206887683, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575806206887683, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575806206887683, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575806206887683, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575806206887683, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575806206887683, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575806206887687, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575806301281559, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575806365165137, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575806416951748, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+    - target: {fileID: 4009776432378012484, guid: 566b5dc4fd4e0ee43b602587bf6f97be, type: 3}
       propertyPath: player
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575806416951748, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: bKnight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575806416951748, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: bRanger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575806416951748, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      objectReference: {fileID: 1454847336}
+    - target: {fileID: 4009776432378012484, guid: 566b5dc4fd4e0ee43b602587bf6f97be, type: 3}
       propertyPath: playerUI
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575806416951748, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: ClassName
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575806416951749, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+      objectReference: {fileID: 507121909}
+    - target: {fileID: 4009776432378012485, guid: 566b5dc4fd4e0ee43b602587bf6f97be, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3299575806416951749, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+    - target: {fileID: 4009776432378012485, guid: 566b5dc4fd4e0ee43b602587bf6f97be, type: 3}
       propertyPath: m_LocalPosition.x
       value: 905.38544
       objectReference: {fileID: 0}
-    - target: {fileID: 3299575806416951749, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+    - target: {fileID: 4009776432378012485, guid: 566b5dc4fd4e0ee43b602587bf6f97be, type: 3}
       propertyPath: m_LocalPosition.y
       value: 721.8627
       objectReference: {fileID: 0}
-    - target: {fileID: 3299575806416951749, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+    - target: {fileID: 4009776432378012485, guid: 566b5dc4fd4e0ee43b602587bf6f97be, type: 3}
       propertyPath: m_LocalPosition.z
       value: -5.9653893
       objectReference: {fileID: 0}
-    - target: {fileID: 3299575806416951749, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+    - target: {fileID: 4009776432378012485, guid: 566b5dc4fd4e0ee43b602587bf6f97be, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3299575806416951749, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+    - target: {fileID: 4009776432378012485, guid: 566b5dc4fd4e0ee43b602587bf6f97be, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3299575806416951749, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+    - target: {fileID: 4009776432378012485, guid: 566b5dc4fd4e0ee43b602587bf6f97be, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3299575806416951749, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+    - target: {fileID: 4009776432378012485, guid: 566b5dc4fd4e0ee43b602587bf6f97be, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3299575806416951749, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+    - target: {fileID: 4009776432378012485, guid: 566b5dc4fd4e0ee43b602587bf6f97be, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3299575806416951749, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+    - target: {fileID: 4009776432378012485, guid: 566b5dc4fd4e0ee43b602587bf6f97be, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3299575806416951749, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+    - target: {fileID: 4009776432378012485, guid: 566b5dc4fd4e0ee43b602587bf6f97be, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3299575806416951751, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+    - target: {fileID: 4009776432378012487, guid: 566b5dc4fd4e0ee43b602587bf6f97be, type: 3}
       propertyPath: m_Name
       value: GameManager UI
       objectReference: {fileID: 0}
-    - target: {fileID: 3299575806831447460, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575806831447460, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575806831447460, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.3624
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575806831447460, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.3624
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575806831447460, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.3624
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575806831447460, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575806831447460, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -9
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299575806831447461, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 7c8dbc59677c2c24281bc3dfd1e5cb8d, type: 3}
-    - target: {fileID: 6402941924249679356, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_text
-      value: 'Tempest Shoes
-
-
-        movement speed is increased and stamina cost
-        to roll is reduced from 4 stamina cost to 2 stamina cost.'
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941924249679356, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 6402941924249679356, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 6402941924249679358, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941924336736216, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_text
-      value: 'Tempest Bible
-
-
-        Increases the amount of xp you receive from
-        killing enemies'
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941924336736216, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 6402941924336736216, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941924434258492, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_text
-      value: 'Warriors Leggings
-
-
-        You will be able to perform a second jump
-        while in the air by pressing spacebar again'
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941924434258492, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 6402941924434258492, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 6402941924434258494, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941924599189576, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_text
-      value: 'Warrior''s katana
-
-
-        Increases the damage you deal to enemies'
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941924599189576, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 6402941924599189576, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941924599189578, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941924885993697, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941924885993711, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_text
-      value: 'Tempest Chestplate
-
-
-        The height of which you jump has been
-        increased and you fall speed has been increased'
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941924885993711, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 6402941924885993711, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 6402941924885993711, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941924888884153, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_text
-      value: 'Tempest Helmet
-
-
-        Your max stamina is increased'
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941924888884153, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 6402941924888884153, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 6402941924888884155, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941924960437491, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 7c8dbc59677c2c24281bc3dfd1e5cb8d, type: 3}
-    - target: {fileID: 6402941924960437492, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941924960437492, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941924960437492, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.6838238
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941924960437492, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.6838238
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941924960437492, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.6838238
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941924960437492, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 25.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941924960437492, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -8.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941924960437495, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941925005789073, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_text
-      value: 'Heal
-
-
-        Press #7 to heal yourself 1 Health every second for
-        4 seconds, and have a 10 second cooldown.'
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941925005789073, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 6402941925005789073, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941925088024080, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_text
-      value: 'Warriors Chestplate
-
-
-        Increases your total health'
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941925088024080, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941925088024080, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 6402941925088024080, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 6402941925088024082, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941925155302000, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941925155302014, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_text
-      value: 'Shuriken
-
-
-        Press #0 to activate the Shuriken. While Active
-        the Shuriken will revolve around you dealing 1 damage to enemies it comes
-        in contact with. 5 second cooldown and it lasts 2 seconds.'
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941925155302014, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 6402941925155302014, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 6402941925385603282, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_text
-      value: 'Super Speed
-
-
-        Press #8 to gain a Speed Boost for 2.5 Seconds,
-        The cooldown is 6 seconds.'
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941925385603282, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 6402941925385603282, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941925388776762, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_text
-      value: 'Tempest BOW
-
-
-        When equipped, arrows travel at a faster rate'
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941925388776762, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 6402941925388776762, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 6402941925388776762, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941925388776764, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941925668225816, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_text
-      value: 'Arrows
-
-
-        Hold #9 to choose the location to launch a barrage
-        of arrow on your target and let go to launch them'
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941925668225816, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 6402941925668225816, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941925783851321, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941925784543917, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_text
-      value: 'Warriors Shoes
-
-
-        Sprint and walk speed has been increased'
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941925784543917, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 6402941925784543917, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 6402941925784543919, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941925992794097, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_text
-      value: 'Tempest Leggings
-
-
-        You will be able to perform a second jump
-        while in the air by pressing spacebar again'
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941925992794097, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 6402941925992794097, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 6402941925992794099, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941926030629997, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_text
-      value: 'Warriors Helmet
-
-
-        Your max stamina is increased'
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941926030629997, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 6402941926030629997, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 6402941926030629999, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941926078417846, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941926078417847, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_text
-      value: 'Boss Room Key
-
-
-        Collect All Three To Challenge The Boss'
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941926078417847, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 6402941926078417847, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 6402941926078417847, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941926184257033, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_text
-      value: 'Warrior''s Band
-
-
-        Increases the amount of gold you receive
-        from enemies'
-      objectReference: {fileID: 0}
-    - target: {fileID: 6402941926184257033, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 6402941926184257033, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
-    - target: {fileID: 6402941926184257035, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
-  m_SourcePrefab: {fileID: 100100000, guid: b55a6f10e0d39f6479e581b7a77caff6, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 566b5dc4fd4e0ee43b602587bf6f97be, type: 3}

@@ -56,6 +56,7 @@ public class FlyEnemy : MonoBehaviour
 
     private void Awake()
     {
+        player = FindObjectOfType<Player>();
         if (player == null)
         {
             Debug.Log("Player missing in the FlyEnemy Bat");
