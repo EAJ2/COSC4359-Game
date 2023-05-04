@@ -32,7 +32,7 @@ public class GoblinPatrol : MonoBehaviour
 
     private bool bCanMove = true;
 
-    private void Awake()
+    private void Start()
     {
         initScale = enemy.localScale;
         rb = GetComponentInChildren<Rigidbody2D>();

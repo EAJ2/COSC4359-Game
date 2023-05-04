@@ -276,7 +276,7 @@ public class Goblin : MonoBehaviour
         goblinPatrol.ChangeDirection();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    /*private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
@@ -290,6 +290,22 @@ public class Goblin : MonoBehaviour
         {
             rb.bodyType = RigidbodyType2D.Dynamic;
         }
+    }*/
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            rb.bodyType = RigidbodyType2D.Static;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            rb.bodyType = RigidbodyType2D.Dynamic;
+        }
     }
 
     public bool IsDead()
@@ -300,6 +316,7 @@ public class Goblin : MonoBehaviour
     public void EnableMove()
     {
         bCanMove = true;
+        goblinPatrol.EnableMove();
     }
 
     public void DisableMove()

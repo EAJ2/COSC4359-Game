@@ -40,7 +40,7 @@ public class Mushroom : MonoBehaviour
 
     [Header("Health")]
     [SerializeField] private float startingHealth;
-    public float currentHealth { get; private set; }
+    [SerializeField] public float currentHealth { get; private set; }
     private bool dead;
 
     [Header("Movement Parameter")]
@@ -50,6 +50,7 @@ public class Mushroom : MonoBehaviour
     private Vector3 initScale;
 
     private bool bPlayerHit = false;
+    private bool bCanTakeDamage = true;
 
     [SerializeField] private bool bCanMove = true;
 
@@ -158,18 +159,21 @@ public class Mushroom : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
-        currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingHealth);
+        if(bCanTakeDamage)
+        {
+            currentHealth = Mathf.Clamp(currentHealth - damage, 0, startingHealth);
 
-        if (currentHealth > 0)
-        {
-            anim.SetTrigger("TakeDmg");
-        }
-        else
-        {
-            //player dead
-            if (!dead)
+            if (currentHealth > 0)
             {
-                Die();
+                anim.SetTrigger("TakeDmg");
+            }
+            else
+            {
+                //player dead
+                if (!dead)
+                {
+                    Die();
+                }
             }
         }
     }
@@ -178,10 +182,12 @@ public class Mushroom : MonoBehaviour
     {
         anim.SetTrigger("Die");
         //GetComponent<Collider2D>().enabled = false;
+        bCanTakeDamage = false;
 
         player.GetComponent<Stats>().SetXP(xpValue);
 
         player.GetComponent<Stats>().SetGold(goldValue);
+        rb.bodyType = RigidbodyType2D.Static;
 
 
         dead = true;
@@ -196,7 +202,6 @@ public class Mushroom : MonoBehaviour
         }
         this.GetComponent<BoxCollider2D>().enabled = false;
         this.GetComponent<SpriteRenderer>().enabled = false;
-        rb.bodyType = RigidbodyType2D.Static;
     }
 
     private void Respawn()
@@ -209,6 +214,7 @@ public class Mushroom : MonoBehaviour
         this.GetComponent<SpriteRenderer>().enabled = true;
         dead = false;
         bCanMove = true;
+        bCanTakeDamage = true;
         currentHealth = startingHealth;
     }
 
