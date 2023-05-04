@@ -116130,6 +116130,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9113970794846096669, guid: 6c092c86fe34e5b428df938725c470c8, type: 3}
   m_PrefabInstance: {fileID: 764574270}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &772209663 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5057709843665969777, guid: a0c6b2c661683164d965e4c090446d7e, type: 3}
+  m_PrefabInstance: {fileID: 2104258716}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &772480785
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -123275,6 +123280,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Parent Manager
       objectReference: {fileID: 0}
+    - target: {fileID: 2730377519476256735, guid: a0c6b2c661683164d965e4c090446d7e, type: 3}
+      propertyPath: interactText
+      value: 
+      objectReference: {fileID: 2104258720}
     - target: {fileID: 2848644333291349503, guid: a0c6b2c661683164d965e4c090446d7e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.58218
@@ -123423,10 +123432,22 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.14556885
       objectReference: {fileID: 0}
+    - target: {fileID: 6636532849833643621, guid: a0c6b2c661683164d965e4c090446d7e, type: 3}
+      propertyPath: interactText
+      value: 
+      objectReference: {fileID: 2104258721}
+    - target: {fileID: 6935881054297746149, guid: a0c6b2c661683164d965e4c090446d7e, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7289889579031997682, guid: a0c6b2c661683164d965e4c090446d7e, type: 3}
       propertyPath: audioMixer
       value: 
       objectReference: {fileID: 24100000, guid: 7071badd2d66716409e52208d948b424, type: 2}
+    - target: {fileID: 7644827925745614550, guid: a0c6b2c661683164d965e4c090446d7e, type: 3}
+      propertyPath: interactText
+      value: 
+      objectReference: {fileID: 772209663}
     - target: {fileID: 8226004690463891087, guid: a0c6b2c661683164d965e4c090446d7e, type: 3}
       propertyPath: audioMixer
       value: 
@@ -123467,6 +123488,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6063e7dc2d9b2d49ae9ac64c1506c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2104258720 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2730377518564862590, guid: a0c6b2c661683164d965e4c090446d7e, type: 3}
+  m_PrefabInstance: {fileID: 2104258716}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2104258721 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5110358966308979050, guid: a0c6b2c661683164d965e4c090446d7e, type: 3}
+  m_PrefabInstance: {fileID: 2104258716}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2116809217
 PrefabInstance:
   m_ObjectHideFlags: 0
