@@ -298,7 +298,7 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Class Name Chosen = " + className);
         Debug.Log("Player.GetClassName() = " + player.GetClassName());
 
-        SceneManager.LoadScene("CF_1");
+        SceneManager.LoadScene("CF_2");
     }
 
     public void StartTutorial()

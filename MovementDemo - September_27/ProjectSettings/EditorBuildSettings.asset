@@ -15,21 +15,30 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
+    path: Assets/Scenes/IntroCutscene.unity
+    guid: 7308c2dcd971e8542bd4622ae4f2abfb
+  - enabled: 1
     path: Assets/Scenes/V2MainMenu.unity
     guid: 2703aecf6279b0a4ab8e9790f876004b
   - enabled: 1
+    path: Assets/Scenes/CF_2.unity
+    guid: 1a6745b8f855641858ad1c5405e94cb1
+  - enabled: 1
+    path: Assets/Scenes/TutorialScene.unity
+    guid: 5f944e76aa853214c989e51f0f3a3c7a
+  - enabled: 0
     path: Assets/Scenes/Level Select.unity
     guid: dd1a7b83404aca347a7938dd784c16f2
   - enabled: 1
     path: Assets/Scenes/CF_1.unity
     guid: b8db73660c8336144a497278af61871e
   - enabled: 1
-    path: Assets/Scenes/TutorialScene.unity
-    guid: 5f944e76aa853214c989e51f0f3a3c7a
-  - enabled: 1
-    path: Assets/Scenes/CF_2.unity
-    guid: 1a6745b8f855641858ad1c5405e94cb1
-  - enabled: 1
+    path: Assets/Scenes/CF_3.unity
+    guid: c231a33a6b7bf4094a0635b14c4e996c
+  - enabled: 0
     path: Assets/Scenes/InventoryV3_Ace.unity
     guid: 407f21feb094c8a48ac927173a225948
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: a96357a5c1e61744d9829385ae9d01be
   m_configObjects: {}
