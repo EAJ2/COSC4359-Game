@@ -108,7 +108,7 @@ public class V2Health : MonoBehaviour
     {
         RespawnAtPoint();
         this.GetComponent<V2PlayerMovement>().EnableMovement();
-        //this.GetComponent<V2PlayerMovement>().ResetStamina();
+        this.GetComponent<V2PlayerMovement>().ResetStamina();
         CurrentHealth = MaxHealth;
         healthBar.SetHealth(CurrentHealth);
         bCanTakeDamage = true;

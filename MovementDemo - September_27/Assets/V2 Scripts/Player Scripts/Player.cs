@@ -30,6 +30,8 @@ public class Player : MonoBehaviour
     public bool bAbility3Unlocked;
     public bool bAbility4Unlocked;
 
+    public int Gold;
+
     [Header("Ability Fields")]
     [SerializeField] private ShurikenAbility Shuriken;
     [SerializeField] private ArrowAbility ArrowAb;
@@ -141,6 +143,10 @@ public class Player : MonoBehaviour
             bAbility2Unlocked = false;
             bAbility3Unlocked = false;
             bAbility4Unlocked = false;
+
+            Gold = data.Gold;
+            GetComponent<Stats>().SetOriginalGold(Gold);
+
             return;
         }
         else
@@ -225,6 +231,9 @@ public class Player : MonoBehaviour
             {
                 UnlockAbility4();
             }
+
+            Gold = data.Gold;
+            GetComponent<Stats>().SetOriginalGold(Gold);
         }
     }
 
@@ -617,5 +626,10 @@ public class Player : MonoBehaviour
             stats.RemoveGold(50);
         }
 
+    }
+
+    public void GetGold(int x)
+    {
+        Gold = x;
     }
 }
