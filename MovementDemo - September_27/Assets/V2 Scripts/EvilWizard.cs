@@ -168,8 +168,8 @@ public class EvilWizard : MonoBehaviour
     public void Die()
     {
         anim.SetTrigger("Die");
-        Player.GetComponent<Stats>().XP += xpValue;
-        Player.GetComponent<Stats>().gold += goldValue;
+        player.GetComponent<Stats>().SetXP(xpValue);
+        player.GetComponent<Stats>().SetGold(goldValue);
 
         xpBar.SetXP(Player.GetComponent<Stats>().XP);
 

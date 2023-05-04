@@ -6,6 +6,8 @@ using TMPro;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private float speed;
+    [SerializeField] private float BoostSpeed;
+    private float NormalSpeed;
     private bool hit;
     public int direction;
 
@@ -20,6 +22,8 @@ public class Projectile : MonoBehaviour
     public TextMesh dmgTextMesh;
 
     public AudioSource hitAudio;
+
+    [SerializeField] private float ArrowTime = 3f;
 
     private void Awake()
     {
@@ -37,6 +41,9 @@ public class Projectile : MonoBehaviour
             speed = speed;
         }
         boxCollider = GetComponent<BoxCollider2D>();
+
+        NormalSpeed = speed;
+        StartCoroutine(CountdownToDestroy(gameObject));
     }
 
     // Update is called once per frame
@@ -47,9 +54,16 @@ public class Projectile : MonoBehaviour
         transform.Translate(movementSpeed, 0, 0);
     }
 
+    IEnumerator CountdownToDestroy(GameObject projectile)
+    {
+        Debug.Log("Starting countdown to destroy projectile: " + projectile.name);
+        yield return new WaitForSeconds(ArrowTime);
+        Debug.Log("Destroying projectile: " + projectile.name);
+        Destroy(projectile);
+    }
+
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.tag == "PyromaniacEnemy")
         {
             collision.gameObject.GetComponent<EvilWizard>().TakeDMG(stats.dmg);
@@ -106,5 +120,15 @@ public class Projectile : MonoBehaviour
             dmgTextMesh.text = stats.dmg.ToString();
             Instantiate(DMG_Text, new Vector3(collision.transform.position.x, collision.transform.position.y + 3, collision.transform.position.z), Quaternion.identity);
         }
+    }
+
+    public void EquipWeapon()
+    {
+        speed = BoostSpeed;
+    }
+
+    public void UnequipWeapon()
+    {
+        speed = NormalSpeed;
     }
 }

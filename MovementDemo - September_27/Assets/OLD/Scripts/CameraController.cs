@@ -15,10 +15,16 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Transform player;
     private bool bFollowPlayerHeight = true;
 
+    [SerializeField] private string ClassName;
+    [SerializeField] private bool bTutorial = false;
+
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
+        if(ClassName != player.gameObject.GetComponent<Player>().GetClassName() && !bTutorial)
+        {
+            gameObject.SetActive(false);
+        }
         if (player.GetComponent<Stats>().Class == "Ranger")
         {
             YAxisOffset = -1.4f;

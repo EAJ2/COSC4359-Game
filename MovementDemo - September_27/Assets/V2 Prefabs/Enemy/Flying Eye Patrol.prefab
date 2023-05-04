@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 6798062349118708812}
   - component: {fileID: 6798062349118708816}
   - component: {fileID: 6798062349118708819}
+  - component: {fileID: 1009928489142851513}
   - component: {fileID: 6798062349118708818}
   - component: {fileID: 6798062349118708817}
   m_Layer: 9
@@ -217,6 +218,36 @@ CircleCollider2D:
   m_Offset: {x: 0.19810769, y: 0.030477941}
   serializedVersion: 2
   m_Radius: 0.90030223
+--- !u!114 &1009928489142851513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6798062349118708823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e6c69288196333478876a5d579d90bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Head: 0
+  Chest: 0
+  Legs: 0
+  Shoes: 0
+  Weapon: 0
+  Artifact: 0
+  Goblin: 0
+  Wizard: 0
+  Bat: 1
+  DrillBat: 0
+  Mushroom: 0
+  Skeleton: 0
+  HeadPrefab: {fileID: 1619060073029702430, guid: e51406924bc550040bae26b2036260ce, type: 3}
+  ChestPrefab: {fileID: 7121320930253311068, guid: f8c6504b49e0b254b9e96153a396fcf1, type: 3}
+  LegsPrefab: {fileID: 2219085716391542458, guid: ebb6c37d897c48d4990191ad7a941092, type: 3}
+  ShoesPrefab: {fileID: 3471388012750555475, guid: 6859c8c771b82f643b2c2c14b0ef61bf, type: 3}
+  WeaponPrefab: {fileID: 7813966898311854406, guid: 9d057eb7d6d6bce48bbaa1a44caebbae, type: 3}
+  ArtifactPrefab: {fileID: 5515941413540131255, guid: f5012e9bb598fb24f912eb85785dba59, type: 3}
 --- !u!114 &6798062349118708818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -233,8 +264,8 @@ MonoBehaviour:
   damage: 3
   range: 0
   PlayerRange: 1
-  xpValue: 0
-  goldValue: 0
+  xpValue: 50
+  goldValue: 10
   colliderRadius: 5
   PlayerColliderRadius: 3
   playerLayer:
@@ -245,8 +276,9 @@ MonoBehaviour:
   waitAfterHitTime: 1
   player: {fileID: 0}
   bCanMove: 1
-  RespawnTime: 2
+  RespawnTime: 25
   bCanRespawn: 1
+  inVolley: 0
 --- !u!50 &6798062349118708817
 Rigidbody2D:
   serializedVersion: 4
@@ -292,7 +324,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6798062349217350523}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.6158776, y: -1.2429997, z: -26.991535}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -303,7 +335,7 @@ Transform:
   - {fileID: 6798062347869882241}
   - {fileID: 6798062348230406463}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6798062349217350516
 MonoBehaviour:
@@ -326,6 +358,7 @@ MonoBehaviour:
   BasicSpeed: 4
   anim: {fileID: 6798062349118708816}
   idleDuration: 2
+  inVolley: 0
 --- !u!1 &6798062349660972191
 GameObject:
   m_ObjectHideFlags: 0

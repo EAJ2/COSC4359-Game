@@ -38,6 +38,8 @@ public class V2PlayerData
     public bool bAbility3Unlocked;
     public bool bAbility4Unlocked;
 
+    public int Gold;
+
     public V2PlayerData(Player player)
     {
         ClassName = player.GetClassName();

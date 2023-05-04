@@ -24,6 +24,8 @@ public class Boss_Health : MonoBehaviour
     //Ranger
     public bool inVolley = false;
 
+    private bool bDead = false;
+
     // Update is called once per frame
     void Update()
     {
@@ -53,10 +55,16 @@ public class Boss_Health : MonoBehaviour
     {
         if (health <= 0 && isDead == false && Stage2 == true)
         {
+            bDead = true;
             Door.SetActive(false);
             anim.SetBool("isDead", true);
             isDead = true;
             endGameText.SetActive(true);
         }
+    }
+
+    public bool IsDead()
+    {
+        return bDead;
     }
 }

@@ -53,9 +53,11 @@ public class FlyEnemy : MonoBehaviour
 
     //Ranger
     public bool inVolley = false;
+    public bool bCanTakeDamage = true;
 
     private void Awake()
     {
+        player = FindObjectOfType<Player>();
         if (player == null)
         {
             Debug.Log("Player missing in the FlyEnemy Bat");
@@ -175,19 +177,22 @@ public class FlyEnemy : MonoBehaviour
 
     public void TakeDamage(float _damage)
     {
-        currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
+        if(bCanTakeDamage)
+        {
+            currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
 
-        if (currentHealth > 0)
-        {
-            anim.SetTrigger("Hit");
-            bHit = true;
-        }
-        else
-        {
-            //player dead
-            if (!dead)
+            if (currentHealth > 0)
             {
-                Die();
+                anim.SetTrigger("Hit");
+                bHit = true;
+            }
+            else
+            {
+                //player dead
+                if (!dead)
+                {
+                    Die();
+                }
             }
         }
     }
@@ -196,9 +201,8 @@ public class FlyEnemy : MonoBehaviour
     {
         anim.SetTrigger("Die");
 
-        player.GetComponent<Stats>().XP += xpValue;
-        xpBar.SetXP(player.GetComponent<Stats>().XP);
-        player.GetComponent<Stats>().gold += goldValue;
+        player.GetComponent<Stats>().SetXP(xpValue);
+        player.GetComponent<Stats>().SetGold(goldValue);
 
         GetComponentInParent<FlyPatrol>().enabled = false;
         dead = true;
@@ -219,6 +223,7 @@ public class FlyEnemy : MonoBehaviour
     public void Respawn()
     {
         anim.SetTrigger("Respawn");
+        bCanTakeDamage = true;
         rb.bodyType = RigidbodyType2D.Dynamic;
         rb.gravityScale = 0f;
         RespawnTimer = 0;

@@ -11,7 +11,7 @@ public class DetectionRight : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        if (col.CompareTag("Player"))
+        if (col.tag == "Player")
         {
             PlayerInAreaRight = true;
             Player = col.gameObject.transform;
@@ -20,7 +20,7 @@ public class DetectionRight : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D col)
     {
-        if (col.CompareTag("Player"))
+        if (col.tag == "Player")
         {
             PlayerInAreaRight = false;
             Player = null;

@@ -87,7 +87,7 @@ public class V2PlayerCombat : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             hitAudio.pitch = Random.Range(0.7f, 1.2f);
-            if (enemy.tag == "PyromaniacEnemy")
+            if (enemy.tag == "PyromaniacEnemy" && !enemy.gameObject.GetComponent<EvilWizard>().IsDead())
             {
                 hitAudio.Play();
                 if (critCounter <= stats.critRange)
@@ -104,7 +104,7 @@ public class V2PlayerCombat : MonoBehaviour
                 }
             }
 
-            else if (enemy.tag == "GoblinEnemy")
+            else if (enemy.tag == "GoblinEnemy" && !enemy.gameObject.GetComponent<Goblin>().IsDead())
             {
                 hitAudio.Play();
                 if (critCounter <= stats.critRange)
@@ -137,7 +137,7 @@ public class V2PlayerCombat : MonoBehaviour
                     Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
                 }
             }
-            else if (enemy.tag == "Reaper_Boss")
+            else if (enemy.tag == "Reaper_Boss" && !enemy.gameObject.GetComponent<Boss_Health>().IsDead())
             {
                 hitAudio.Play();
                 if (critCounter <= stats.critRange)
@@ -153,7 +153,7 @@ public class V2PlayerCombat : MonoBehaviour
                     Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
                 }
             }
-            else if (enemy.tag == "GroundEnemy")
+            else if (enemy.tag == "GroundEnemy" && !enemy.gameObject.GetComponent<Skeleton>().IsDead())
             {
                 hitAudio.Play();
                 if (critCounter <= stats.critRange)
@@ -169,7 +169,7 @@ public class V2PlayerCombat : MonoBehaviour
                     Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
                 }
             }
-            else if (enemy.tag == "FlyEnemy")
+            else if (enemy.tag == "FlyEnemy" && !enemy.gameObject.GetComponent<FlyEnemy>().IsDead())
             {
                 hitAudio.Play();
                 if (critCounter <= stats.critRange)
@@ -185,7 +185,7 @@ public class V2PlayerCombat : MonoBehaviour
                     Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
                 }
             }
-            else if (enemy.tag == "DrillFlyEnemy")
+            else if (enemy.tag == "DrillFlyEnemy" && !enemy.gameObject.GetComponent<DrillFlyEnemy>().IsDead())
             {
                 hitAudio.Play();
                 if (critCounter <= stats.critRange)
@@ -201,7 +201,7 @@ public class V2PlayerCombat : MonoBehaviour
                     Instantiate(DMG_Text, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z), Quaternion.identity);
                 }
             }
-            else if (enemy.tag == "MushroomEnemy")
+            else if (enemy.tag == "MushroomEnemy" && !enemy.gameObject.GetComponent<Mushroom>().IsDead())
             {
                 hitAudio.Play();
                 if (critCounter <= stats.critRange)

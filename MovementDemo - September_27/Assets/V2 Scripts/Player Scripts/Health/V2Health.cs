@@ -12,6 +12,8 @@ public class V2Health : MonoBehaviour
     public float CurrentHealth;
     private Animator anim;
     private bool bDead = false;
+    [SerializeField] private float BoostMaxHealth;
+    private float NormalMaxHealth;
 
     [Header("iFrames")]
     [SerializeField] private float iFrameDuration;
@@ -28,13 +30,6 @@ public class V2Health : MonoBehaviour
     private Vector3 RespawnPoint;
 
     private bool bCanTakeDamage = true;
-
-    void Update()
-    {
-        Die();
-        HealthCheck();
-    }
-
     private void Awake()
     {
         stats = GetComponent<Stats>();
@@ -42,7 +37,16 @@ public class V2Health : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
         pm = GetComponentInParent<V2PlayerMovement>();
         healthBar.SetMaxHealth(MaxHealth);
+
+        NormalMaxHealth = MaxHealth;
     }
+
+    void Update()
+    {
+        Die();
+        HealthCheck();
+    }
+
 
     public void TakeDmg(float dmg)
     {
@@ -52,7 +56,10 @@ public class V2Health : MonoBehaviour
             healthBar.SetHealth(CurrentHealth);
             if (CurrentHealth > 0)
             {
-                anim.SetTrigger("Hit");
+                if (GetComponent<Player>().GetClassName() == "Vagabond" || GetComponent<Player>().GetClassName() == "Ranger")
+                {
+                    anim.SetTrigger("Hit");
+                }
             }
             else
             {
@@ -101,7 +108,7 @@ public class V2Health : MonoBehaviour
     {
         RespawnAtPoint();
         this.GetComponent<V2PlayerMovement>().EnableMovement();
-        //this.GetComponent<V2PlayerMovement>().ResetStamina();
+        this.GetComponent<V2PlayerMovement>().ResetStamina();
         CurrentHealth = MaxHealth;
         healthBar.SetHealth(CurrentHealth);
         bCanTakeDamage = true;
@@ -116,11 +123,18 @@ public class V2Health : MonoBehaviour
         {
             bCanTakeDamage = false;
             bDead = true;
-            anim.SetTrigger("Dead");
-            this.enabled = false;
-            this.GetComponent<V2PlayerMovement>().DisableMovement();
-            comb.enabled = false;
-            rc.enabled = false;
+            if(GetComponent<Player>().GetClassName() == "Vagabond" || GetComponent<Player>().GetClassName() == "Ranger")
+            {
+                anim.SetTrigger("Dead");
+                this.enabled = false;
+                this.GetComponent<V2PlayerMovement>().DisableMovement();
+                comb.enabled = false;
+                rc.enabled = false;
+            }
+            else
+            {
+                Reset();
+            }
         }
     }
 
@@ -145,5 +159,23 @@ public class V2Health : MonoBehaviour
     private void RespawnAtPoint()
     {
         transform.position = new Vector3(RespawnPoint.x, RespawnPoint.y, transform.position.z);
+    }
+
+    public void WarriorChestEquip()
+    {
+        MaxHealth = BoostMaxHealth;
+        healthBar.SetMaxHealth(MaxHealth);
+        healthBar.SetHealth(CurrentHealth);
+    }
+
+    public void WarriorChestUnequip()
+    {
+        MaxHealth = NormalMaxHealth;
+        healthBar.SetMaxHealth(MaxHealth);
+        if(CurrentHealth >= MaxHealth)
+        {
+            CurrentHealth = MaxHealth;
+        }
+        healthBar.SetHealth(CurrentHealth);
     }
 }

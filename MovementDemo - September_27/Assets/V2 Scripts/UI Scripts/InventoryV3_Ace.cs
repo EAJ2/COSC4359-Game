@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class InventoryV3_Ace : MonoBehaviour
 {
+    [SerializeField] private string InventoryClassName;
+
     [SerializeField] private GameObject Canvas;
     [SerializeField] private GameObject CooldownCanvas;
     [SerializeField] public Player player;
@@ -114,7 +116,13 @@ public class InventoryV3_Ace : MonoBehaviour
     private bool bAbility4Equipped = false;
 
     [SerializeField] public bool bDemo = false;
+
+    [Header("Leave Blank")]
     [SerializeField] private string ClassName;
+    [SerializeField] private bool bRanger = false;
+    [SerializeField] private bool bKnight = false;
+    [SerializeField] private bool bVagabond = false;
+
 
     [SerializeField] private bool bTutorial = false;
 
@@ -122,7 +130,7 @@ public class InventoryV3_Ace : MonoBehaviour
 
 
 
-    private void Awake()
+    private void Start()
     {
         Canvas.SetActive(false);
 
@@ -158,10 +166,16 @@ public class InventoryV3_Ace : MonoBehaviour
             CooldownCanvas.SetActive(false);
 
             ClassName = player.GetClassName();
-            Debug.Log("Class Name in InventoryV3_Ace = " + ClassName);
             if (player == null)
             {
                 Debug.Log("From InventoryV3_Ace, Add the Players UI to the Gamemanage UI");
+            }
+
+            if(InventoryClassName != player.GetClassName())
+            {
+                Debug.Log("InventoryClassName = " + InventoryClassName);
+                Debug.Log("Inventory playerClassName = " + player.GetClassName());
+                gameObject.SetActive(false);
             }
 
             if (bDemo == false)
@@ -225,7 +239,18 @@ public class InventoryV3_Ace : MonoBehaviour
             else
             {
                 NumberOfKeys = 3;
-
+                if(bRanger)
+                {
+                    ClassName = "Ranger";
+                }
+                if(bKnight)
+                {
+                    ClassName = "Knight";
+                }
+                if(bVagabond)
+                {
+                    ClassName = "Vagabond";
+                }
                 //Gear
                 HeadLocked.SetActive(false);
                 ChestLocked.SetActive(false);
@@ -919,6 +944,16 @@ public class InventoryV3_Ace : MonoBehaviour
         {
             return false;
         }
+    }
+
+    public void SetClassName(string x)
+    {
+        ClassName = x;
+    }
+
+    public string GetClassName()
+    {
+        return ClassName;
     }
 
 }

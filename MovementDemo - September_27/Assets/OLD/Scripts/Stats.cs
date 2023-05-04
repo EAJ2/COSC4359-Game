@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Stats : MonoBehaviour
 {
     [SerializeField] public string Class;
+    [SerializeField] public Text goldText;
 
 
     //Stats
@@ -102,6 +103,17 @@ public class Stats : MonoBehaviour
     public PlayerStaminaBar staminaBar;
     public ManaBar manaBar;
 
+    private int GoldMultiplier = 1;
+    private int NormalGoldMultiplier = 1;
+    private int BoostGoldMultiplier = 2;
+    
+    private int NormalDamage;
+    private int BoostDamage;
+
+    private float XPMultiplier = 1;
+    private float NormalXPMultiplier = 1;
+    private float BoostXPMultiplier = 1.5f;
+
 
     // Start is called before the first frame update
     void Start()
@@ -119,6 +131,11 @@ public class Stats : MonoBehaviour
         critDMG = (int)Mathf.Ceil((float)dmg * critMult);
         heavyDMG = (int)Mathf.Ceil((float)dmg * 1.25f);
         heavyCritDMG = (int)Mathf.Ceil(((float)dmg * 1.25f) * critMult);
+
+        if(goldText == null)
+        {
+            Debug.Log("goldText serialization missing in Stats");
+        }
 
     }
 
@@ -818,5 +835,65 @@ public class Stats : MonoBehaviour
         {
             mana = MAXmana;
         }
+    }
+
+    public void SetGold(int g)
+    {
+        gold += g * GoldMultiplier;
+        goldText.text = gold.ToString();
+        GetComponent<Player>().GetGold(gold);
+    }
+
+    public void SetOriginalGold(int g)
+    {
+        gold = g;
+        goldText.text = gold.ToString();
+    }
+
+    public int GetGold()
+    {
+        return gold;
+    }
+
+    public void RemoveGold(int g)
+    {
+        gold -= g;
+    }
+
+    public void EquipKnightArtifact()
+    {
+        GoldMultiplier = BoostGoldMultiplier;
+    }
+
+    public void UnequipKnightArtifact()
+    {
+        GoldMultiplier = NormalGoldMultiplier;
+    }
+    public void EquipWeapon()
+    {
+        NormalDamage = dmg;
+        dmg = dmg + BoostDamage;
+    }
+
+    public void UnequipWeapon()
+    {
+        dmg = NormalDamage;
+    }
+
+    public void SetXP(float x)
+    {
+        XP += (x * XPMultiplier);
+        levelBar.SetXP(XP);
+        
+    }
+
+    public void EquipRangerArtifact()
+    {
+        XPMultiplier = BoostXPMultiplier;
+    }
+
+    public void UnequipRangerArtifact()
+    {
+        XPMultiplier = NormalXPMultiplier;
     }
 }

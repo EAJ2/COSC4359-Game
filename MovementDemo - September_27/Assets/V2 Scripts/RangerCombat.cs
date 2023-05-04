@@ -26,11 +26,14 @@ public class RangerCombat : MonoBehaviour
 
     public AudioSource hitAudio;
 
+    // [SerializeField] private float ArrowTime = 3f;
+
     public GameObject projectilePrefab;
     public float shootForce = 10f;
 
     public GameObject volley;
     public int volleyDMG = 2;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -219,11 +222,25 @@ public class RangerCombat : MonoBehaviour
         }
     }
 
+    /*
+    IEnumerator CountdownToDestroy(GameObject projectile)
+    {
+        Debug.Log("Starting countdown to destroy projectile: " + projectile.name);
+        yield return new WaitForSeconds(ArrowTime);
+        Debug.Log("Destroying projectile: " + projectile.name);
+        Destroy(projectile);
+    }
+    */
+
     void Shoot()
     {
         anim.SetTrigger("Shoot");
         GameObject projectile = Instantiate(projectilePrefab, new Vector3(transform.position.x, transform.position.y - 1.6f, transform.position.z), Quaternion.identity);
+        // StartCoroutine(CountdownToDestroy(projectile));
     }
+
+
+
     void OnDrawGizmosSelected()
     {
         if (attackPoint == null)
@@ -296,5 +313,14 @@ public class RangerCombat : MonoBehaviour
         }
     }
 
+    public void EquipWeapon()
+    {
+        projectilePrefab.GetComponent<Projectile>().EquipWeapon();
+    }
+
+    public void UnquipWeapon()
+    {
+        projectilePrefab.GetComponent<Projectile>().UnequipWeapon();
+    }
 
 }

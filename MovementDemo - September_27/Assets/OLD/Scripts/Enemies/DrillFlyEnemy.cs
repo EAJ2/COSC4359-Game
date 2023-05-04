@@ -54,9 +54,11 @@ public class DrillFlyEnemy : MonoBehaviour
 
     //Ranger
     public bool inVolley = false;
+    private bool bCanTakeDamage = true;
 
     private void Awake()
     {
+        player = FindObjectOfType<Player>();
         if (player == null)
         {
             Debug.Log("Player missing in the DrillFly");
@@ -162,17 +164,20 @@ public class DrillFlyEnemy : MonoBehaviour
 
     public void TakeDamage(float _damage)
     {
-        currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
-        if (currentHealth > 0)
+        if(bCanTakeDamage)
         {
-            anim.SetTrigger("Hit");
-        }
-        else
-        {
-            //player dead
-            if (!dead)
+            currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
+            if (currentHealth > 0)
             {
-                Die();
+                anim.SetTrigger("Hit");
+            }
+            else
+            {
+                //player dead
+                if (!dead)
+                {
+                    Die();
+                }
             }
         }
     }
@@ -180,12 +185,12 @@ public class DrillFlyEnemy : MonoBehaviour
     private void Die()
     {
         anim.SetTrigger("Die");
+        bCanTakeDamage = false;
 
-        player.GetComponent<Stats>().XP += xpValue;
-        xpBar.SetXP(player.GetComponent<Stats>().XP);
-        player.GetComponent<Stats>().gold += goldValue;
+        player.GetComponent<Stats>().SetXP(xpValue);
+        player.GetComponent<Stats>().SetGold(goldValue);
 
-        
+
         this.GetComponentInParent<DrillFlyPatrol>().enabled = false;
         dead = true;
         bCanMove = false;
@@ -204,6 +209,7 @@ public class DrillFlyEnemy : MonoBehaviour
     public void Respawn()
     {
         anim.SetTrigger("Respawn");
+        bCanTakeDamage = true;
         RespawnTimer = 0;
         bRespawning = false;
         this.GetComponent<BoxCollider2D>().enabled = true;

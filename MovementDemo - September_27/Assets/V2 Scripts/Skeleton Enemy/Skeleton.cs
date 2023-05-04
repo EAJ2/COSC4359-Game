@@ -4,7 +4,7 @@ using UnityEngine;
 public class Skeleton : MonoBehaviour
 {
     private Animator anim;
-    [SerializeField] private Player player;
+    private Player player;
     private Transform body;
     private Rigidbody2D rb;
 
@@ -15,9 +15,8 @@ public class Skeleton : MonoBehaviour
     [SerializeField] private bool bCanRespawn = true;
 
     [Header("Rewards")]
-    [SerializeField] private int xpValue;
+    [SerializeField] private float xpValue;
     [SerializeField] private int goldValue;
-    private LevelUpBar xpBar;
 
     [Header("Attack Parameters")]
     [SerializeField] private float attackCooldown;
@@ -67,10 +66,7 @@ public class Skeleton : MonoBehaviour
 
     private void Awake()
     {
-        if (player == null)
-        {
-            Debug.Log("Player missing in the Skeleton");
-        }
+        
         anim = GetComponent<Animator>();
         currentHealth = startingHealth;
         skeletonPatrol = GetComponentInParent<SkeletonPatrol>();
@@ -78,7 +74,6 @@ public class Skeleton : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         chaseTimer = chaseCooldown;
         RespawnTimer = 0;
-        xpBar = player.GetComponent<LevelUpBar>();
 
         if (!bCanMove)
         {
@@ -225,10 +220,10 @@ public class Skeleton : MonoBehaviour
         anim.SetTrigger("Die");
         //GetComponent<Collider2D>().enabled = false;
 
-        player.GetComponent<Stats>().XP += xpValue;
-        xpBar.SetXP(player.GetComponent<Stats>().XP);
+        player.GetComponent<Stats>().SetXP(xpValue);
+        player.GetComponent<Stats>().SetGold(goldValue);
 
-        player.GetComponent<Stats>().gold += goldValue;
+        rb.bodyType = RigidbodyType2D.Static;
 
         GetComponentInParent<SkeletonPatrol>().enabled = false;
         dead = true;
@@ -243,7 +238,6 @@ public class Skeleton : MonoBehaviour
         }
         this.GetComponent<BoxCollider2D>().enabled = false;
         this.GetComponent<SpriteRenderer>().enabled = false;
-        rb.bodyType = RigidbodyType2D.Static;
     }
 
     private void Respawn()
