@@ -20,6 +20,7 @@ public class Boss_Health : MonoBehaviour
     public GameObject endGameText;
 
     public GameObject Door;
+    public GameObject SceneChanger;
 
     //Ranger
     public bool inVolley = false;
@@ -59,7 +60,8 @@ public class Boss_Health : MonoBehaviour
             Door.SetActive(false);
             anim.SetBool("isDead", true);
             isDead = true;
-            endGameText.SetActive(true);
+            //endGameText.SetActive(true);
+            SceneChanger.SetActive(true);
         }
     }
 
