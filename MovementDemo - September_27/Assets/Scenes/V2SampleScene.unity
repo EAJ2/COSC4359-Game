@@ -2332,7 +2332,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &584434664
 GameObject:
@@ -7048,7 +7048,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1363315164}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
         m_MethodName: AddVit
         m_Mode: 1
@@ -7255,7 +7255,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &982258202
 GameObject:
@@ -7345,7 +7345,7 @@ Transform:
   - {fileID: 1395339373}
   - {fileID: 1403413664}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &982258205
 Rigidbody2D:
@@ -8136,6 +8136,9 @@ MonoBehaviour:
   HealAb: {fileID: 0}
   ClassName: 
   bDeleteSave: 0
+  bDemo: 0
+  DemoClass: 
+  bInTutorial: 0
 --- !u!114 &1156894108
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8151,6 +8154,7 @@ MonoBehaviour:
   startingHealth: 20
   MaxHealth: 0
   CurrentHealth: 0
+  BoostMaxHealth: 0
   iFrameDuration: 0
   NumberOfFlashes: 0
   stats: {fileID: 0}
@@ -8179,14 +8183,19 @@ MonoBehaviour:
   InAirMoveSpeed: 7
   stamina: 15
   MAXstamina: 15
+  BoostMaxStamina: 0
   BoostWalkSpeed: 0
   BoostSprintSpeed: 0
+  AbilityWalkSpeed: 0
+  AbilitySprintSpeed: 0
   bCanJump: 1
   bCanFall: 1
   GravityScale: 2
   FallGravityScale: 5
   JumpPower: 14
   JumpCutMultiplier: 0.1
+  BoostJumpPower: 0
+  BoostGravityScale: 0
   CoyoteTime: 0.15
   bCanDoubleJump: 1
   ExtraJumps: 1
@@ -8194,6 +8203,8 @@ MonoBehaviour:
   DashingPower: 20
   DashingTimer: 0.1
   DashingCooldown: 1
+  RegularStaminaCost: 0
+  BoostStaminaCost: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -8217,6 +8228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Class: Vagabond
+  goldText: {fileID: 0}
   level: 1
   vit: 0
   vitMult: 0
@@ -9569,7 +9581,7 @@ RectTransform:
   - {fileID: 1835137219}
   - {fileID: 2061727038}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9675,17 +9687,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1351735884}
   m_CullTransparentMesh: 1
---- !u!114 &1363315164 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3181646011116992323, guid: 5993744682614314c97760a6a8b6e835, type: 3}
-  m_PrefabInstance: {fileID: 3181646012446424735}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d37f8a3b6c02534a85a4bffdafd8d8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1386479094
 GameObject:
   m_ObjectHideFlags: 0
@@ -10709,7 +10710,7 @@ RectTransform:
   - {fileID: 868201797}
   - {fileID: 1566706075}
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -12079,7 +12080,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1941639748534978980, guid: 450f0f820dce1af41972c21486842403, type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 1941639748534978980, guid: 450f0f820dce1af41972c21486842403, type: 3}
       propertyPath: m_LocalPosition.x
@@ -12256,6 +12257,50 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 961426198610038163, guid: 5993744682614314c97760a6a8b6e835, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 961426198610038163, guid: 5993744682614314c97760a6a8b6e835, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 961426198690206398, guid: 5993744682614314c97760a6a8b6e835, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 961426198690206398, guid: 5993744682614314c97760a6a8b6e835, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 961426199107010475, guid: 5993744682614314c97760a6a8b6e835, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 961426199107010475, guid: 5993744682614314c97760a6a8b6e835, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 961426200075546661, guid: 5993744682614314c97760a6a8b6e835, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 961426200075546661, guid: 5993744682614314c97760a6a8b6e835, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409661337602976791, guid: 5993744682614314c97760a6a8b6e835, type: 3}
+      propertyPath: m_RootOrder
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409661337602976791, guid: 5993744682614314c97760a6a8b6e835, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2409661337602976811, guid: 5993744682614314c97760a6a8b6e835, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3181646010688367668, guid: 5993744682614314c97760a6a8b6e835, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -12529,7 +12574,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3989848727802766879, guid: 240ee6205f1ddd346be9d8a79bb7be4e, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3989848727802766879, guid: 240ee6205f1ddd346be9d8a79bb7be4e, type: 3}
       propertyPath: m_TagString
