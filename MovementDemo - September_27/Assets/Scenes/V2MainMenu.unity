@@ -2441,15 +2441,18 @@ MonoBehaviour:
   KnightSelectedCanvas: {fileID: 1358195716}
   RangerSelectedCanvas: {fileID: 757006637}
   VagabondSelectedCanvas: {fileID: 743967188}
+  KnightSaveImageCanvas: {fileID: 1782643622}
+  RangerSaveImageCanvas: {fileID: 329035664}
+  VagabondSaveImageCanvas: {fileID: 1828581105}
   player: {fileID: 1649585701}
   stats: {fileID: 0}
-  vitText: {fileID: 0}
-  strText: {fileID: 0}
-  endText: {fileID: 0}
-  wisText: {fileID: 0}
-  fortText: {fileID: 0}
-  dexText: {fileID: 0}
-  agilText: {fileID: 0}
+  vitText: {fileID: 298865687}
+  strText: {fileID: 181388558}
+  endText: {fileID: 357080960}
+  wisText: {fileID: 75407079}
+  fortText: {fileID: 715531334}
+  dexText: {fileID: 1540917261}
+  agilText: {fileID: 1193652}
   ClassName: {fileID: 45943260}
   className: 
 --- !u!1 &225975277
@@ -3417,7 +3420,7 @@ GameObject:
   - component: {fileID: 329035667}
   - component: {fileID: 329035666}
   m_Layer: 5
-  m_Name: Class 3 Image
+  m_Name: RangerSaveImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3463,7 +3466,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: a165a77bf9567604d9516b8e5bec0c71, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8584,82 +8587,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 936250352}
   m_CullTransparentMesh: 1
---- !u!1 &943840076
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 943840077}
-  - component: {fileID: 943840079}
-  - component: {fileID: 943840078}
-  m_Layer: 5
-  m_Name: Class 4 Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &943840077
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 943840076}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1423158841}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 294, y: -73.392}
-  m_SizeDelta: {x: 461.6752, y: 511.6434}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &943840078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 943840076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &943840079
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 943840076}
-  m_CullTransparentMesh: 1
 --- !u!1 &953871046
 GameObject:
   m_ObjectHideFlags: 0
@@ -12927,7 +12854,6 @@ RectTransform:
   - {fileID: 1828581106}
   - {fileID: 1782643623}
   - {fileID: 329035665}
-  - {fileID: 943840077}
   - {fileID: 654821899}
   - {fileID: 23495863}
   - {fileID: 1230913211}
@@ -16062,7 +15988,7 @@ GameObject:
   - component: {fileID: 1782643625}
   - component: {fileID: 1782643624}
   m_Layer: 5
-  m_Name: Class 2 Image
+  m_Name: KnightSaveImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16108,7 +16034,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 490790803, guid: fb0e5512dbe1a8d489ba891c923c655c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16220,7 +16146,7 @@ GameObject:
   - component: {fileID: 1828581108}
   - component: {fileID: 1828581107}
   m_Layer: 5
-  m_Name: Class 1 Image
+  m_Name: VagabondSaveImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16266,7 +16192,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: ae297123f091bbf4e8f1835eb98fb293, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
