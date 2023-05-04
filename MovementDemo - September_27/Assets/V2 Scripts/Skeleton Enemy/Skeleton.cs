@@ -223,6 +223,8 @@ public class Skeleton : MonoBehaviour
         player.GetComponent<Stats>().SetXP(xpValue);
         player.GetComponent<Stats>().SetGold(goldValue);
 
+        rb.bodyType = RigidbodyType2D.Static;
+
         GetComponentInParent<SkeletonPatrol>().enabled = false;
         dead = true;
         bCanMove = false;
@@ -236,7 +238,6 @@ public class Skeleton : MonoBehaviour
         }
         this.GetComponent<BoxCollider2D>().enabled = false;
         this.GetComponent<SpriteRenderer>().enabled = false;
-        rb.bodyType = RigidbodyType2D.Static;
     }
 
     private void Respawn()

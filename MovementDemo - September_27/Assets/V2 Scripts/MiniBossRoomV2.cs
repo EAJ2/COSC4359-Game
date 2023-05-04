@@ -45,6 +45,7 @@ public class MiniBossRoomV2 : MonoBehaviour
     {
         if(Door.IsAtRightDownPosition() && bDoorClosed == false)
         {
+            Debug.Log("Door closed");
             EnableMovementOnEnemies();
             Door.Deactivate();
             player.GetComponent<V2PlayerMovement>().EnableMovement();

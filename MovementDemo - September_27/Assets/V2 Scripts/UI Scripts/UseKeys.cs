@@ -5,6 +5,7 @@ using UnityEngine;
 public class UseKeys : MonoBehaviour
 {
     [SerializeField] private Player player;
+    [SerializeField] private string ClassName;
 
     [Header("Key Start Locations - Only Move First Location Horizontally")]
     [SerializeField] private GameObject StartLoc1;
@@ -34,6 +35,11 @@ public class UseKeys : MonoBehaviour
 
     private void Start()
     {
+        if (ClassName != player.GetClassName())
+        {
+            gameObject.SetActive(false);
+        }
+
         Key1.GetComponent<SpriteRenderer>().enabled = false;
         Key2.GetComponent<SpriteRenderer>().enabled = false;
         Key3.GetComponent<SpriteRenderer>().enabled = false;
