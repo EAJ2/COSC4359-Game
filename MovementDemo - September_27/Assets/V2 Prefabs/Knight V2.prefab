@@ -121,7 +121,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 768173031178306812}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
         m_MethodName: AddAgil
         m_Mode: 1
@@ -391,7 +391,7 @@ Transform:
   - {fileID: 768173031581665708}
   - {fileID: 6325095076523545663}
   m_Father: {fileID: 0}
-  m_RootOrder: 26
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &768173031178306807
 CapsuleCollider2D:
@@ -506,6 +506,7 @@ MonoBehaviour:
   bAbility2Unlocked: 0
   bAbility3Unlocked: 0
   bAbility4Unlocked: 0
+  Gold: 0
   Shuriken: {fileID: 0}
   ArrowAb: {fileID: 0}
   HealAb: {fileID: 0}
@@ -1099,7 +1100,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 768173031178306812}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
         m_MethodName: SubWis
         m_Mode: 1
@@ -4385,7 +4386,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 768173031178306812}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
         m_MethodName: AddStr
         m_Mode: 1
@@ -4754,7 +4755,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 768173031178306812}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
         m_MethodName: AddFort
         m_Mode: 1
@@ -4969,7 +4970,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 768173031178306812}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
         m_MethodName: SubEnd
         m_Mode: 1
@@ -5102,7 +5103,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 768173031178306812}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
         m_MethodName: AddDex
         m_Mode: 1
@@ -5397,7 +5398,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 768173031178306812}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
         m_MethodName: SubFort
         m_Mode: 1
@@ -5530,7 +5531,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 768173031178306812}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
         m_MethodName: SubStr
         m_Mode: 1
@@ -5825,7 +5826,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 768173031178306812}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
         m_MethodName: SubAgil
         m_Mode: 1
@@ -6196,7 +6197,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 768173031178306812}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
         m_MethodName: AddVit
         m_Mode: 1
@@ -6411,7 +6412,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 768173031178306812}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
         m_MethodName: AddEnd
         m_Mode: 1
@@ -6704,7 +6705,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 768173031178306812}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
         m_MethodName: AddWis
         m_Mode: 1
@@ -6920,7 +6921,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 768173031178306812}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
         m_MethodName: SubDex
         m_Mode: 1
@@ -7133,7 +7134,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 768173031178306812}
         m_TargetAssemblyTypeName: Stats, Assembly-CSharp
         m_MethodName: SubVit
         m_Mode: 1
