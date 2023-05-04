@@ -56,7 +56,7 @@ public class Mushroom : MonoBehaviour
     //Ranger
     public bool inVolley = false;
 
-    private void Awake()
+    private void Start()
     {
         player = FindObjectOfType<Player>();
         if (player == null)

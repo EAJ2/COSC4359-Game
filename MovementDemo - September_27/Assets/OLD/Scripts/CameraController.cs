@@ -16,11 +16,12 @@ public class CameraController : MonoBehaviour
     private bool bFollowPlayerHeight = true;
 
     [SerializeField] private string ClassName;
+    [SerializeField] private bool bTutorial = false;
 
 
     private void Start()
     {
-        if(ClassName != player.gameObject.GetComponent<Player>().GetClassName())
+        if(ClassName != player.gameObject.GetComponent<Player>().GetClassName() && !bTutorial)
         {
             gameObject.SetActive(false);
         }

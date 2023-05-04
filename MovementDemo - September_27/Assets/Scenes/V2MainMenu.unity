@@ -15029,6 +15029,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6063e7dc2d9b2d49ae9ac64c1506c4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1649585712 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6228589433088005711, guid: 18775a75b2f34a340aa8c87cced99342, type: 3}
+  m_PrefabInstance: {fileID: 1649585700}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1656728750
 GameObject:
   m_ObjectHideFlags: 0
@@ -18921,6 +18926,7 @@ GameObject:
   - component: {fileID: 2036421322}
   - component: {fileID: 2036421325}
   - component: {fileID: 2036421326}
+  - component: {fileID: 2036421327}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -19104,6 +19110,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 7071badd2d66716409e52208d948b424, type: 2}
   resolutionDropdown: {fileID: 0}
+--- !u!114 &2036421327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2036421321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a82ac98c3a3b0e74e8dc7e0f5c4e4125, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  YAxisOffset: 0.2
+  player: {fileID: 1649585712}
+  ClassName: 
+  bTutorial: 0
 --- !u!1 &2078166039
 GameObject:
   m_ObjectHideFlags: 0

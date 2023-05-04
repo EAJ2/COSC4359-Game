@@ -130,7 +130,7 @@ public class InventoryV3_Ace : MonoBehaviour
 
 
 
-    private void Awake()
+    private void Start()
     {
         Canvas.SetActive(false);
 

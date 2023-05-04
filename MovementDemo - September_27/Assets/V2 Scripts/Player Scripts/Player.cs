@@ -110,7 +110,6 @@ public class Player : MonoBehaviour
         }
 
         inventory.SetClassName(ClassName);
-        Debug.Log("Player " + ClassName);
     }
 
     //Save Game

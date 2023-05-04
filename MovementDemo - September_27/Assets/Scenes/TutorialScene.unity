@@ -3092,7 +3092,7 @@ PrefabInstance:
       objectReference: {fileID: 1673847018}
     - target: {fileID: 280003717508218701, guid: 980e5632713a1ae4d92a87e00a6598b2, type: 3}
       propertyPath: InventoryClassName
-      value: 
+      value: Vagabond
       objectReference: {fileID: 0}
     - target: {fileID: 280003717508218702, guid: 980e5632713a1ae4d92a87e00a6598b2, type: 3}
       propertyPath: m_Name
@@ -4010,6 +4010,7 @@ MonoBehaviour:
   YAxisOffset: 0.2
   player: {fileID: 203939500}
   ClassName: Vagabond
+  bTutorial: 1
 --- !u!1 &1009958765 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6228589432003566572, guid: 18775a75b2f34a340aa8c87cced99342, type: 3}
@@ -5734,6 +5735,14 @@ PrefabInstance:
     - target: {fileID: 6228589433088005706, guid: 18775a75b2f34a340aa8c87cced99342, type: 3}
       propertyPath: DashingCooldown
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228589433088005706, guid: 18775a75b2f34a340aa8c87cced99342, type: 3}
+      propertyPath: BoostStaminaCost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6228589433088005706, guid: 18775a75b2f34a340aa8c87cced99342, type: 3}
+      propertyPath: RegularStaminaCost
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6228589433088005707, guid: 18775a75b2f34a340aa8c87cced99342, type: 3}
       propertyPath: MaxHealth
