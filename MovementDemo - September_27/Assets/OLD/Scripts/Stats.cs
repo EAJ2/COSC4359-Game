@@ -7,7 +7,7 @@ public class Stats : MonoBehaviour
 {
     [SerializeField] public string Class;
     [SerializeField] public Text goldText;
-
+    public GameObject interactText;
 
     //Stats
     [SerializeField]
