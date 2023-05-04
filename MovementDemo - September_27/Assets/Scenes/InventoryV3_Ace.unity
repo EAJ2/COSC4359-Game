@@ -295,6 +295,7 @@ MonoBehaviour:
   speed: 0
   YAxisOffset: 0.2
   player: {fileID: 0}
+  ClassName: 
 --- !u!114 &666896546 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4009776432378012484, guid: 566b5dc4fd4e0ee43b602587bf6f97be, type: 3}

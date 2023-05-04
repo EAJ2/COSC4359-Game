@@ -95,7 +95,7 @@ Transform:
   - {fileID: 4491706042262070498}
   - {fileID: 4491706042053697594}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4491706041661407821
 MonoBehaviour:
@@ -134,7 +134,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3989848727802766874, guid: 240ee6205f1ddd346be9d8a79bb7be4e, type: 3}
       propertyPath: damage
-      value: 10
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3989848727802766874, guid: 240ee6205f1ddd346be9d8a79bb7be4e, type: 3}
       propertyPath: xpValue

@@ -264,8 +264,8 @@ MonoBehaviour:
   damage: 3
   range: 0
   PlayerRange: 1
-  xpValue: 0
-  goldValue: 0
+  xpValue: 50
+  goldValue: 10
   colliderRadius: 5
   PlayerColliderRadius: 3
   playerLayer:
@@ -276,7 +276,7 @@ MonoBehaviour:
   waitAfterHitTime: 1
   player: {fileID: 0}
   bCanMove: 1
-  RespawnTime: 2
+  RespawnTime: 25
   bCanRespawn: 1
   inVolley: 0
 --- !u!50 &6798062349118708817
@@ -335,7 +335,7 @@ Transform:
   - {fileID: 6798062347869882241}
   - {fileID: 6798062348230406463}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6798062349217350516
 MonoBehaviour:

@@ -39,7 +39,7 @@ Transform:
   - {fileID: 9125911501877334609}
   - {fileID: 9125911501881813725}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &9125911501468653203
 SpriteRenderer:
@@ -113,13 +113,13 @@ MonoBehaviour:
   inRange: 0
   moving: 0
   moveSpeed: 3
-  xpValue: 15
+  xpValue: 100
   goldValue: 20
-  maxHP: 20
+  maxHP: 40
   currentHP: 20
   anim: {fileID: 9125911501468653215}
   playerAnim: {fileID: 0}
-  RespawnTime: 3
+  RespawnTime: 30
   bCanRespawn: 1
   Player: {fileID: 0}
   hp: {fileID: 0}

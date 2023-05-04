@@ -177,8 +177,8 @@ MonoBehaviour:
   damage: 4
   rangeX: 1
   rangeY: 7
-  xpValue: 0
-  goldValue: 0
+  xpValue: 100
+  goldValue: 15
   Waypoints:
   - {fileID: 9113970795068219588}
   - {fileID: 9113970795246570899}
@@ -192,7 +192,7 @@ MonoBehaviour:
   chaseSpeed: 35
   resetSpeed: 10
   bCanMove: 1
-  RespawnTime: 2
+  RespawnTime: 30
   bCanRespawn: 1
   inVolley: 0
 --- !u!61 &9113970793585427873
@@ -256,7 +256,7 @@ Transform:
   - {fileID: 9113970795068219588}
   - {fileID: 9113970795246570899}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9113970794846096666
 MonoBehaviour:
