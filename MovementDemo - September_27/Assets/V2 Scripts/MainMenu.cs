@@ -16,6 +16,10 @@ public class MainMenu : MonoBehaviour
     [SerializeField] public GameObject RangerSelectedCanvas;
     [SerializeField] public GameObject VagabondSelectedCanvas;
 
+    [SerializeField] public GameObject KnightSaveImageCanvas;
+    [SerializeField] public GameObject RangerSaveImageCanvas;
+    [SerializeField] public GameObject VagabondSaveImageCanvas;
+
 
 
     [SerializeField] Player player;
@@ -48,6 +52,9 @@ public class MainMenu : MonoBehaviour
         KnightSelectedCanvas.SetActive(false);
         RangerSelectedCanvas.SetActive(false);
         VagabondSelectedCanvas.SetActive(false);
+        KnightSaveImageCanvas.SetActive(false);
+        RangerSaveImageCanvas.SetActive(false);
+        VagabondSaveImageCanvas.SetActive(false);
         stats = player.GetComponent<Stats>();
 
         if (player != null)
@@ -258,6 +265,13 @@ public class MainMenu : MonoBehaviour
 
     public void LoadSaveClassStats()
     {
+        if (className == "Vagabond")
+            VagabondSaveImageCanvas.SetActive(true);
+        else if (className == "Knight")
+            KnightSaveImageCanvas.SetActive(true);
+        else if (className == "Ranger")
+            RangerSaveImageCanvas.SetActive(true);
+
         vitText.text = stats.GetVitality().ToString();
         strText.text = stats.GetStrength().ToString();
         endText.text = stats.GetEndurance().ToString();
@@ -284,7 +298,7 @@ public class MainMenu : MonoBehaviour
         Debug.Log("Class Name Chosen = " + className);
         Debug.Log("Player.GetClassName() = " + player.GetClassName());
 
-        SceneManager.LoadScene("CF_2");
+        SceneManager.LoadScene("CF_1");
     }
 
     public void StartTutorial()

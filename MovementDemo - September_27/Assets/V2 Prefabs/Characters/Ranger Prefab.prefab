@@ -214,6 +214,10 @@ PrefabInstance:
       propertyPath: goldText
       value: 
       objectReference: {fileID: 858221704014499814}
+    - target: {fileID: 2409661337602976815, guid: 5993744682614314c97760a6a8b6e835, type: 3}
+      propertyPath: interactText
+      value: 
+      objectReference: {fileID: 858221703821812501}
     - target: {fileID: 3181646011116992321, guid: 5993744682614314c97760a6a8b6e835, type: 3}
       propertyPath: DashingTimer
       value: 0.1
@@ -325,6 +329,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2301729151915682518}
   m_SourcePrefab: {fileID: 100100000, guid: 5993744682614314c97760a6a8b6e835, type: 3}
+--- !u!1 &858221703821812501 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 961426200044515464, guid: 5993744682614314c97760a6a8b6e835, type: 3}
+  m_PrefabInstance: {fileID: 486010662137123741}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &858221704014499814 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 961426199986101371, guid: 5993744682614314c97760a6a8b6e835, type: 3}

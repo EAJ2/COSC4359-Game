@@ -32,7 +32,7 @@ Transform:
   - {fileID: 5408611545836976013}
   - {fileID: 5408611545535857562}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3647729823261107905
 PrefabInstance:
@@ -221,6 +221,10 @@ PrefabInstance:
       propertyPath: goldText
       value: 
       objectReference: {fileID: 7511339775551901344}
+    - target: {fileID: 2536261276681668332, guid: d60a59c4cc96dc54da86c9ae652b0e80, type: 3}
+      propertyPath: interactText
+      value: 
+      objectReference: {fileID: 7511339776101569577}
     - target: {fileID: 2536261276681668333, guid: d60a59c4cc96dc54da86c9ae652b0e80, type: 3}
       propertyPath: m_Name
       value: Player
@@ -265,6 +269,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7511339776101569577 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2536261277952361293, guid: d60a59c4cc96dc54da86c9ae652b0e80, type: 3}
+  m_PrefabInstance: {fileID: 5408611544066299748}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8159234682090205065
 PrefabInstance:
   m_ObjectHideFlags: 0

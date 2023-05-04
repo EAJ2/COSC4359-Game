@@ -30,6 +30,7 @@ public class Interactable : MonoBehaviour
         Character = GameObject.FindGameObjectWithTag("Player");
         Player = Character.GetComponent<Transform>();
         stats = Character.GetComponent<Stats>();
+        interactText = stats.interactText;
         inv = Character.GetComponent<ConsumableInventory>();
         anim = this.gameObject.GetComponent<Animator>();
     }

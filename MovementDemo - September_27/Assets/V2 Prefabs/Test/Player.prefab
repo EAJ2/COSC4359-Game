@@ -798,7 +798,7 @@ Transform:
   - {fileID: 2536261278508849507}
   - {fileID: 2454313942473861376}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!70 &2536261276681668240
 CapsuleCollider2D:
@@ -913,11 +913,15 @@ MonoBehaviour:
   bAbility2Unlocked: 0
   bAbility3Unlocked: 0
   bAbility4Unlocked: 0
+  Gold: 0
   Shuriken: {fileID: 0}
   ArrowAb: {fileID: 0}
   HealAb: {fileID: 2454313942473861379}
   ClassName: 
   bDeleteSave: 0
+  bDemo: 0
+  DemoClass: 
+  bInTutorial: 0
 --- !u!114 &2536261276681668328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -967,6 +971,7 @@ MonoBehaviour:
   InAirMoveSpeed: 7
   stamina: 15
   MAXstamina: 15
+  BoostMaxStamina: 0
   BoostWalkSpeed: 5
   BoostSprintSpeed: 8
   AbilityWalkSpeed: 10
@@ -977,6 +982,8 @@ MonoBehaviour:
   FallGravityScale: 5
   JumpPower: 20
   JumpCutMultiplier: 0.1
+  BoostJumpPower: 0
+  BoostGravityScale: 0
   CoyoteTime: 0.15
   bCanDoubleJump: 1
   ExtraJumps: 1
@@ -984,7 +991,8 @@ MonoBehaviour:
   DashingPower: 20
   DashingTimer: 0.1
   DashingCooldown: 1
-  DashStaminaCost: 4
+  RegularStaminaCost: 0
+  BoostStaminaCost: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -1010,6 +1018,7 @@ MonoBehaviour:
   startingHealth: 20
   MaxHealth: 20
   CurrentHealth: 0
+  BoostMaxHealth: 0
   iFrameDuration: 0
   NumberOfFlashes: 0
   stats: {fileID: 0}
@@ -1030,6 +1039,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Class: Vagabond
+  goldText: {fileID: 0}
+  interactText: {fileID: 2536261277952361293}
   level: 1
   vit: 0
   vitMult: 0
@@ -1098,6 +1109,7 @@ MonoBehaviour:
   combatScript: {fileID: 2536261276681668328}
   movementScript: {fileID: 2536261276681668331}
   staminaBar: {fileID: 2536261278094911909}
+  manaBar: {fileID: 0}
 --- !u!114 &2536261276681668244
 MonoBehaviour:
   m_ObjectHideFlags: 0
