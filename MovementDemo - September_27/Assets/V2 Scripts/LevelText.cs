@@ -12,7 +12,7 @@ public class LevelText : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        stats = GameObject.FindGameObjectWithTag("Player").GetComponent<Stats>();
     }
 
     // Update is called once per frame
